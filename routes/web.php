@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminPanelController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,8 +14,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('admin.index');
+route::prefix("admin")->middleware(['auth:sanctum', 'verified', "admin"])->group(function () {
+
+    // new way to use a controller for all routes
+    route::controller(AdminPanelController::class)->group(function () {
+        route::get("/home", "index")->name("admin.panel");
+    });
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {

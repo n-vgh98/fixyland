@@ -1,6 +1,5 @@
 @extends('admin.layouts.master')
 @section('content')
-
     <!-- Small boxes (Stat box) -->
     <div class="row">
         <div class="col-lg-3 col-6">
@@ -69,8 +68,8 @@
     <div class="row">
         <!-- Left col -->
         <section class="col-lg-7 connectedSortable">
+            left col
 
-            
         </section>
         <!-- /.Left col -->
         <!-- right col (We are only adding the ID to make the widgets sortable)-->
