@@ -96,7 +96,10 @@
                                     </button>
                                     <div class="dropdown-menu text-center">
                                         {{-- button for editing account --}}
-                                        <a class="dropdown-item" href="#">Edit Account</a>
+                                        <button type="button" class="btn btn-primary" data-toggle="modal"
+                                            data-target="#edituser{{ $user->id }}">
+                                            Edit Information
+                                        </button>
 
                                         <div class="dropdown-divider"></div>
                                         {{-- button for removing account --}}
@@ -112,6 +115,93 @@
                         @php
                             $number++;
                         @endphp
+
+                        <!-- Modal for editing  user -->
+                        <div class="modal fade mt-5" id="edituser{{ $user->id }}" tabindex="-1" role="dialog"
+                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">update {{ $user->firstname }}
+                                            {{ $user->lastname }} information</h5>
+                                        <button type="button" class="close" data-dismiss="modal"
+                                            aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form method="post" action="{{ route('admin.users.update', $user) }}">
+                                            @csrf
+                                            <div class="form-group">
+                                                <label for="firstname">first name</label>
+                                                <input type="text" value="{{ $user->firstname }}" class="form-control"
+                                                    id="firstname" name="firstname">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="lastname">last name</label>
+                                                <input type="text" value="{{ $user->lastname }}" class="form-control"
+                                                    id="lastname" name="lastname">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="exampleFormControlInput1">Email address</label>
+                                                <input type="email" value="{{ $user->email }}" name="email"
+                                                    class="form-control" id="exampleFormControlInput1"
+                                                    placeholder="name@example.com">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="phone">Phone</label>
+                                                <input type="text" value="{{ $user->phone }}" class="form-control"
+                                                    id="phone" name="phone">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="password">password</label>
+                                                <input type="text" class="form-control" id="password" name="password">
+                                            </div>
+
+
+
+                                            <div class="form-group">
+                                                <label for="exampleFormControlSelect1">Role</label>
+                                                <select name="role" class="form-control" id="exampleFormControlSelect1">
+                                                    @if ($user->role_name == 'superadmin')
+                                                        <option selected value="superadmin">Super Admin</option>
+                                                        <option value="admin">Admin</option>
+                                                        <option value="user">User</option>
+                                                        <option value="technician">Technician</option>
+                                                    @elseif($user->role_name == 'admin')
+                                                        <option value="superadmin">Super Admin</option>
+                                                        <option selected value="admin">Admin</option>
+                                                        <option value="user">User</option>
+                                                        <option value="technician">Technician</option>
+                                                    @elseif($user->role_name == 'user')
+                                                        <option value="superadmin">Super Admin</option>
+                                                        <option value="admin">Admin</option>
+                                                        <option selected value="user">User</option>
+                                                        <option value="technician">Technician</option>
+                                                    @elseif($user->role_name == 'technician')
+                                                        <option value="superadmin">Super Admin</option>
+                                                        <option value="admin">Admin</option>
+                                                        <option value="user">User</option>
+                                                        <option selected value="technician">Technician</option>
+                                                    @endif
+                                                </select>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-dismiss="modal">Close</button>
+                                                <button type="submit" class="btn btn-primary">Save changes</button>
+                                            </div>
+                                        </form>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
                     @endforeach
 
                 </tbody>
@@ -126,8 +216,78 @@
                     </tr>
                 </tfoot>
             </table>
+
+
+
         </div>
-        <!-- /.card-body -->
+    </div>
+    <!-- Button for making new user -->
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+        Make new user
+    </button>
+
+
+    <!-- Modal for making new user -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Create User</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form method="post" action="{{ route('admin.users.create') }}">
+                        @csrf
+                        <div class="form-group">
+                            <label for="firstname">first name</label>
+                            <input type="text" required class="form-control" id="firstname" name="firstname">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="lastname">last name</label>
+                            <input type="text" required class="form-control" id="lastname" name="lastname">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleFormControlInput1">Email address</label>
+                            <input type="email" required name="email" class="form-control" id="exampleFormControlInput1"
+                                placeholder="name@example.com">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">Phone</label>
+                            <input type="text" required class="form-control" id="phone" name="phone">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password">password</label>
+                            <input type="text" required class="form-control" id="password" name="password">
+                        </div>
+
+
+
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect1">Role</label>
+                            <select required name="role" class="form-control" id="exampleFormControlSelect1">
+                                <option value="superadmin">Super Admin</option>
+                                <option value="admin">Admin</option>
+                                <option value="user">User</option>
+                                <option value="technician">Technician</option>
+                            </select>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </form>
+
+                </div>
+
+            </div>
+        </div>
     </div>
 @endsection
 @section('script')

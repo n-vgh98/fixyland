@@ -1,9 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Hash;
 
 class AdminUsersController extends Controller
 {
@@ -182,5 +185,40 @@ class AdminUsersController extends Controller
             $user->save();
             return redirect()->back()->with("success", "User Account promoted to technician");
         }
+    }
+
+    public function createUser(Request $request)
+    {
+
+        Validator::make($request->all(), [
+            'firstname' => ['required', 'string', 'max:255'],
+            'lastname' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'phone' => ['required', 'numeric', 'unique:users'],
+        ])->validate();
+
+        $user = new User();
+        $user->firstname = $request->firstname;
+        $user->lastname = $request->lastname;
+        $user->phone = $request->phone;
+        $user->email = $request->email;
+        $user->password = Hash::make($request->password);
+        $user->code = Hash::make($request->email);
+        $user->role_name = $request->role;
+        $user->save();
+        return redirect()->back()->with("success", "User Account added successfully");
+    }
+
+    public function edituser(User $user, Request $request)
+    {
+        $user->firstname = $request->firstname;
+        $user->lastname = $request->lastname;
+        $user->phone = $request->phone;
+        $user->email = $request->email;
+        $user->password = Hash::make($request->password);
+        $user->code = Hash::make($request->email);
+        $user->role_name = $request->role;
+        $user->save();
+        return redirect()->back()->with("success", "User Account updated successfully");
     }
 }

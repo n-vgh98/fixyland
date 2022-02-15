@@ -1,8 +1,8 @@
 <?php
 
-use App\Http\Controllers\Admin\AdminPanelController;
-use App\Http\Controllers\AdminUsersController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\AdminPanelController;
+use App\Http\Controllers\Admin\AdminUsersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,6 +39,12 @@ route::prefix("admin")->middleware(['auth:sanctum', 'verified', "admin"])->group
             route::post("/change_to_Admin/{user}", "promotetoAdmin")->name("admin.users.changetoadmin");
             route::post("/change_to_User/{user}", "promotetoUser")->name("admin.users.changetouser");
             route::post("/change_to_Technician/{user}", "promotetoTechnician")->name("admin.users.changetotechnician");
+
+            // route for creating new user
+            route::post("/make_new_user", "createUser")->name("admin.users.create");
+
+            // route for updating  user
+            route::post("/update_user/{user}", "edituser")->name("admin.users.update");
         });
     });
 });
