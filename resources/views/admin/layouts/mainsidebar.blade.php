@@ -88,6 +88,16 @@
                                 </a>
                             </li>
 
+                            {{-- Super Admins --}}
+                            <li class="nav-item">
+                                <a href="{{ route('admin.users.superadmins') }}" class="nav-link">
+                                    <i class="nav-icon fa  fa-users"></i>
+                                    <p>
+                                        Super Admins
+                                    </p>
+                                </a>
+                            </li>
+
                             {{-- admins --}}
                             <li class="nav-item">
                                 <a href="{{ route('admin.users.admins') }}" class="nav-link">
@@ -110,10 +120,10 @@
 
                             {{-- customers --}}
                             <li class="nav-item">
-                                <a href="{{ route('admin.users.users') }}" class="nav-link">
+                                <a href="{{ route('admin.users.customers') }}" class="nav-link">
                                     <i class="nav-icon fa  fa-user"></i>
                                     <p>
-                                        Users
+                                        Customers
                                     </p>
                                 </a>
                             </li>

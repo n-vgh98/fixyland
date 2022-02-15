@@ -24,28 +24,28 @@ class AdminUsersController extends Controller
     // for showing all super admins
     public function superadmins()
     {
-        $users = User::where("role_name", "superadmin");
+        $users = User::where("role_name", "superadmin")->get();
         return view("admin.users.superadmins", compact("users"));
     }
 
     // for showing all admins
     public function admins()
     {
-        $users = User::where("role_name", "admin");
+        $users = User::where("role_name", "admin")->get();
         return view("admin.users.admins", compact("users"));
     }
 
     // for showing all customers
-    public function users()
+    public function customers()
     {
-        $users = User::where("role_name", "user");
+        $users = User::where("role_name", "user")->get();
         return view("admin.users.users", compact("users"));
     }
 
     // for showing all technicians
     public function technicians()
     {
-        $users = User::where("role_name", "technician");
+        $users = User::where("role_name", "technician")->get();
         return view("admin.users.technicians", compact("users"));
     }
 
