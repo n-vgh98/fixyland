@@ -47,7 +47,28 @@
                             </td>
                             <td class="text-center">{{ $user->role_name }}</td>
 
-                            <td class="text-center">h</td>
+                            <td class="text-center">
+                                {{-- button for setting --}}
+                                <div class="btn-group text-center">
+                                    <button type="button" class="btn btn-info">Actions</button>
+                                    <button type="button" class="btn btn-info dropdown-toggle dropdown-toggle-split"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <span class="sr-only">Toggle Dropdown</span>
+                                    </button>
+                                    <div class="dropdown-menu text-center">
+                                        {{-- button for editing account --}}
+                                        <a class="dropdown-item" href="#">Edit Account</a>
+
+                                        <div class="dropdown-divider"></div>
+                                        {{-- button for removing account --}}
+                                        <form action="{{ route('admin.users.destroy', $user) }}" method="post">
+                                            @method("delete")
+                                            @csrf
+                                            <button type="submit" class="btn btn-danger ">Delet Account</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </td>
                         </tr>
                         @php
                             $number++;

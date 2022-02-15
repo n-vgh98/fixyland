@@ -31,7 +31,7 @@ route::prefix("admin")->middleware(['auth:sanctum', 'verified', "admin"])->group
             route::get("/users", "users")->name("admin.users.users");
             route::post("/activate_user/{user}", "activate")->name("admin.users.activate");
             route::post("/deactive_user/{user}", "deactive")->name("admin.users.deactive");
-            route::delete("/destroy/{user}", "destroy")->name("admin.users.destroy");
+            route::DELETE("/destroy/{user}", "destroy")->name("admin.users.destroy");
         });
     });
 });
