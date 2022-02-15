@@ -73,7 +73,8 @@ class AdminRuleController extends Controller
      */
     public function edit($id)
     {
-        //
+        $rules = Rule::findOrFail($id);
+        return view('admin.rules.edit',compact('rules'));
     }
 
     /**
@@ -85,7 +86,14 @@ class AdminRuleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $rules = Rule::findOrFail($id);
+        $rules->text_1 = $request->input('text_1');
+        $rules->text_2 = $request->input('text_2');
+        $rules->text_3 = $request->input('text_3');
+        $rules->text_4 = $request->input('text_4');
+        $rules->text_5 = $request->input('text_5');
+        $rules->save();
+        return redirect()->route('admin.rules.index',$rules->language->name)->with('success','Rules Was Successfuly Updated');
     }
 
     /**
@@ -96,6 +104,9 @@ class AdminRuleController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $rules = Rule::findOrFail($id);
+        $rules->language()->delete();
+        $rules->delete();
+        return redirect()->back()->with("success","Rules Was Successfuly Deleted");
     }
 }

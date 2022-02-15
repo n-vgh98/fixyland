@@ -56,18 +56,17 @@
                                         <span class="sr-only">Toggle Dropdown</span>
                                     </button>
                                     <div class="dropdown-menu text-center">
-                                        {{-- button for editing account --}}
-                                        <button type="button" class="btn btn-primary" data-toggle="modal"
-                                            data-target="#edituser{{ $rule->id }}">
-                                            Edit Information
-                                        </button>
+                                        {{-- button for editing rule  --}}
+                                        <a href="{{ route('admin.rules.edit', $rule->id) }}" class="btn btn-primary">
+                                            Edit Rules
+                                        </a>
 
                                         <div class="dropdown-divider"></div>
-                                        {{-- button for removing account --}}
-                                        <form action="" method="post">
+                                        {{-- button for removing rules --}}
+                                        <form action="{{ route('admin.rules.delete', $rule->id) }}" method="post">
                                             @method("delete")
                                             @csrf
-                                            <button type="submit" class="btn btn-danger ">Delet Account</button>
+                                            <button type="submit" class="btn btn-danger ">Delet Rules</button>
                                         </form>
                                     </div>
                                 </div>
