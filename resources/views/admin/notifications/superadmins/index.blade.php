@@ -3,12 +3,12 @@
     @include("admin.layouts.datatable.head")
 @endsection
 @section('title')
-    All notifications
+    Super Admins notifications
 @endsection
 @section('content')
     <div class="card mt-4">
         <div class="card-header">
-            <h3 class="card-title">All Notifications Table</h3>
+            <h3 class="card-title">Super Admins Notifications Table</h3>
         </div>
         <!-- /.card-header -->
         <div class="card-body">

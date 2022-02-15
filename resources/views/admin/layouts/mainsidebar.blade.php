@@ -130,6 +130,70 @@
                         </ul>
                     </li>
 
+                    {{-- notifications link --}}
+                    <li class="nav-item has-treeview ">
+                        <a href="#" class="nav-link bg-info active">
+                            <i class="nav-icon fa  fa-bell"></i>
+                            <p>
+                                Notifications
+                                <i class="right fa fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+
+                            {{-- all notifications --}}
+                            <li class="nav-item">
+                                <a href="{{ route('admin.notifications.all') }}" class="nav-link">
+                                    <i class="nav-icon fa  fa-bell"></i>
+                                    <p>
+                                        All notifs
+                                    </p>
+                                </a>
+                            </li>
+
+                            {{-- superadmins notifications --}}
+                            <li class="nav-item">
+                                <a href="{{ route('admin.notifications.superadmins') }}" class="nav-link">
+                                    <i class="nav-icon fa  fa-bell"></i>
+                                    <p>
+                                        Super Admins notifs
+                                    </p>
+                                </a>
+                            </li>
+
+                            {{-- Admins notifications --}}
+                            <li class="nav-item">
+                                <a href="{{ route('admin.notifications.admins') }}" class="nav-link">
+                                    <i class="nav-icon fa  fa-bell"></i>
+                                    <p>
+                                        Admins notifs
+                                    </p>
+                                </a>
+                            </li>
+
+                            {{-- Customers notifications --}}
+                            <li class="nav-item">
+                                <a href="{{ route('admin.notifications.customers') }}" class="nav-link">
+                                    <i class="nav-icon fa  fa-bell"></i>
+                                    <p>
+                                        Customers notifs
+                                    </p>
+                                </a>
+                            </li>
+
+                            {{-- Technicians notifications --}}
+                            <li class="nav-item">
+                                <a href="{{ route('admin.notifications.technicians') }}" class="nav-link">
+                                    <i class="nav-icon fa  fa-bell"></i>
+                                    <p>
+                                        Technicians notifs
+                                    </p>
+                                </a>
+                            </li>
+
+                        </ul>
+                    </li>
+
                     {{-- link to jetstream --}}
                     <li class="nav-item has-treeview mt-4 ">
 

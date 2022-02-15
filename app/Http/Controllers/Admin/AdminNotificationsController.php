@@ -19,6 +19,34 @@ class AdminNotificationsController extends Controller
         return view("admin.notifications.index", compact("notifications"));
     }
 
+    public function superadmins()
+    {
+        $notifications = Notification::where("receivers", "SuperAdmins")->get();
+        return view("admin.notifications.superadmins.index", compact("notifications"));
+    }
+
+
+    public function admins()
+    {
+        $notifications = Notification::where("receivers", "Admins")->get();
+        return view("admin.notifications.admins.index", compact("notifications"));
+    }
+
+
+    public function customers()
+    {
+        $notifications = Notification::where("receivers", "Customers")->get();
+        return view("admin.notifications.customers.index", compact("notifications"));
+    }
+
+
+    public function technicians()
+    {
+        $notifications = Notification::where("receivers", "Technicians")->get();
+        return view("admin.notifications.technicians.index", compact("notifications"));
+    }
+
+
     /**
      * Show the form for creating a new resource.
      *
