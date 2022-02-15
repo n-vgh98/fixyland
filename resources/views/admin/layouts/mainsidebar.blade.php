@@ -12,11 +12,12 @@
             <!-- Sidebar user panel (optional) -->
             <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                 <div class="image">
-                    <img src="https://www.gravatar.com/avatar/52f0fbcbedee04a121cba8dad1174462?s=200&amp;d=mm&amp;r=g"
-                        class="img-circle elevation-2" alt="User Image">
+                    <img src="{{ asset(auth()->user()->profile_photo_url) }}" class="img-circle elevation-2"
+                        alt="User Image">
                 </div>
                 <div class="info">
-                    <a href="{{ route('dashboard') }}" class="d-block">test</a>
+                    <a href="{{ route('dashboard') }}" class="d-block">{{ auth()->user()->firstname }}
+                        {{ auth()->user()->lastname }}</a>
                 </div>
             </div>
 
