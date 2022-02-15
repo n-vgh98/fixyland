@@ -45,7 +45,46 @@
                                     </form>
                                 @endif
                             </td>
-                            <td class="text-center">{{ $user->role_name }}</td>
+                            <td class="text-center">
+                                {{-- button for changing roll --}}
+
+                                <div class="btn-group text-center">
+                                    <button type="button" class="btn btn-primary">{{ $user->role_name }}</button>
+                                    <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <span class="sr-only">Toggle Dropdown</span>
+                                    </button>
+                                    <div class="dropdown-menu text-center">
+                                        {{-- button promoting to super admin --}}
+                                        <form action="{{ route('admin.users.changetosuperadmin', $user) }}" method="post">
+                                            @csrf
+                                            <button type="submit" class="btn btn-danger ">Change to Super Admin</button>
+                                        </form>
+                                        {{-- button promoting to  admin --}}
+                                        <form action="{{ route('admin.users.changetoadmin', $user) }}"
+                                            class="mt-2" method="post">
+                                            @csrf
+                                            <button type="submit" class="btn btn-danger ">Change to Admin</button>
+                                        </form>
+
+                                        <form action="{{ route('admin.users.changetouser', $user) }}"
+                                            class="mt-2" method="post">
+                                            @csrf
+                                            <button type="submit" class="btn btn-danger ">Change to User</button>
+                                        </form>
+
+                                        <form action="{{ route('admin.users.changetotechnician', $user) }}"
+                                            class="mt-2" method="post">
+                                            @csrf
+                                            <button type="submit" class="btn btn-danger ">Change to technician</button>
+                                        </form>
+
+
+
+
+                                    </div>
+                                </div>
+                            </td>
 
                             <td class="text-center">
                                 {{-- button for setting --}}

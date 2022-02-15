@@ -104,4 +104,54 @@ class AdminUsersController extends Controller
         $user->save();
         return redirect()->back()->with("success", "User Account Deactivated");
     }
+
+    // method for changing user roll to super admin
+    public function SuperAdmin(User $user)
+    {
+
+
+        if ($user->role_name == "superadmin") {
+            return redirect()->back()->with("fail", "This account Already Has this roll");
+        } else {
+            $user->role_name = "superadmin";
+            $user->save();
+            return redirect()->back()->with("success", "User Account promoted to SuperAdmin");
+        }
+    }
+
+    // method for changing user roll to super admin
+    public function Admin(User $user)
+    {
+        if ($user->role_name == "admin") {
+            return redirect()->back()->with("fail", "This account Already Has this roll");
+        } else {
+            $user->role_name = "admin";
+            $user->save();
+            return redirect()->back()->with("success", "User Account promoted to admin");
+        }
+    }
+
+    // method for changing user roll to super admin
+    public function User(User $user)
+    {
+        if ($user->role_name == "user") {
+            return redirect()->back()->with("fail", "This account Already Has this roll");
+        } else {
+            $user->role_name = "user";
+            $user->save();
+            return redirect()->back()->with("success", "User Account promoted to user");
+        }
+    }
+
+    // method for changing user roll to super admin
+    public function Technician(User $user)
+    {
+        if ($user->role_name == "technician") {
+            return redirect()->back()->with("fail", "This account Already Has this roll");
+        } else {
+            $user->role_name = "technician";
+            $user->save();
+            return redirect()->back()->with("success", "User Account promoted to technician");
+        }
+    }
 }
