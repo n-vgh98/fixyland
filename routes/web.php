@@ -57,6 +57,7 @@ route::prefix("admin")->middleware(['auth:sanctum', 'verified', "admin"])->group
             route::get("/customers", "customers")->name("admin.notifications.customers");
             route::get("/admins", "admins")->name("admin.notifications.admins");
             route::get("/technicians", "technicians")->name("admin.notifications.technicians");
+            route::get("/show/{notification}", "show")->name("admin.notifications.show");
             route::post("/store", "store")->name("admin.notifications.store");
             route::post("/{notification}", "update")->name("admin.notifications.update");
             route::delete("/{notification}", "destroy")->name("admin.notifications.destroy");

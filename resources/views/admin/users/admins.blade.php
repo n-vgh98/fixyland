@@ -117,6 +117,17 @@
                                         data-target="#notif{{ $user->id }}">
                                         send Notif
                                     </button>
+                                    <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <span class="sr-only">Toggle Dropdown</span>
+                                    </button>
+                                    <div class="dropdown-menu text-center">
+                                        {{-- button for editing account --}}
+                                        <a href="{{ route('admin.notifications.show', $user->id) }}"
+                                            class="dropdown-item">
+                                            All
+                                            Notifications</a>
+                                    </div>
                                 </div>
                             </td>
                         </tr>

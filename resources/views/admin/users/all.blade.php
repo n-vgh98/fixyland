@@ -117,6 +117,16 @@
                                         data-target="#notif{{ $user->id }}">
                                         send Notif
                                     </button>
+                                    <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <span class="sr-only">Toggle Dropdown</span>
+                                    </button>
+                                    <div class="dropdown-menu text-center">
+                                        {{-- button for editing account --}}
+                                        <a href="{{ route('admin.notifications.show', $user->id) }}" class="dropdown-item">
+                                            All
+                                            Notifications</a>
+                                    </div>
                                 </div>
                             </td>
                         </tr>
@@ -125,12 +135,13 @@
                         @endphp
 
                         <!-- Modal for editing  user -->
-                        <div class="modal fade mt-5" id="edituser{{ $user->id }}" tabindex="-1" role="dialog"
+                        <div class=" modal fade mt-5" id="edituser{{ $user->id }}" tabindex="-1" role="dialog"
                             aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">update {{ $user->firstname }}
+                                        <h5 class="modal-title" id="exampleModalLabel">update
+                                            {{ $user->firstname }}
                                             {{ $user->lastname }} information</h5>
                                         <button type="button" class="close" data-dismiss="modal"
                                             aria-label="Close">
@@ -176,7 +187,8 @@
                                                 <label for="exampleFormControlSelect1">Role</label>
                                                 <select name="role" class="form-control" id="exampleFormControlSelect1">
                                                     @if ($user->role_name == 'superadmin')
-                                                        <option selected value="superadmin">Super Admin</option>
+                                                        <option selected value="superadmin">Super Admin
+                                                        </option>
                                                         <option value="admin">Admin</option>
                                                         <option value="user">User</option>
                                                         <option value="technician">Technician</option>
@@ -194,14 +206,16 @@
                                                         <option value="superadmin">Super Admin</option>
                                                         <option value="admin">Admin</option>
                                                         <option value="user">User</option>
-                                                        <option selected value="technician">Technician</option>
+                                                        <option selected value="technician">Technician
+                                                        </option>
                                                     @endif
                                                 </select>
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary"
                                                     data-dismiss="modal">Close</button>
-                                                <button type="submit" class="btn btn-primary">Save changes</button>
+                                                <button type="submit" class="btn btn-primary">Save
+                                                    changes</button>
                                             </div>
                                         </form>
 
@@ -217,7 +231,8 @@
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Create Notification</h5>
+                                        <h5 class="modal-title" id="exampleModalLabel">Create Notification
+                                        </h5>
                                         <button type="button" class="close" data-dismiss="modal"
                                             aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
@@ -228,7 +243,8 @@
                                             @csrf
 
                                             <div class="form-group">
-                                                <label for="exampleFormControlTextarea1">Notification Text</label>
+                                                <label for="exampleFormControlTextarea1">Notification
+                                                    Text</label>
                                                 <textarea class="form-control" name="text"
                                                     id="exampleFormControlTextarea1" rows="3"></textarea>
                                             </div>

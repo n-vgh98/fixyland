@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\User;
 use App\Models\Notification;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -76,7 +77,7 @@ class AdminNotificationsController extends Controller
         } elseif ($request->mode == "private") {
             $notifcation->text = $request->text;
             $notifcation->receivers = $request->receivers;
-            $notifcation->mode = 0;
+            $notifcation->mode = 1;
             $notifcation->sender_id = auth()->user()->id;
             $notifcation->receiver_id = $request->receiver;
             $notifcation->save();
@@ -94,7 +95,9 @@ class AdminNotificationsController extends Controller
      */
     public function show($id)
     {
-        //
+        $notifications = Notification::where("receiver_id", $id)->get();
+
+        return view("admin.notifications.show", compact("notifications"));
     }
 
     /**
