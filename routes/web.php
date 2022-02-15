@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AdminNotificationsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminPanelController;
+use App\Http\Controllers\Admin\AdminRuleController;
 use App\Http\Controllers\Admin\AdminUsersController;
 
 /*
@@ -46,6 +47,7 @@ route::prefix("admin")->middleware(['auth:sanctum', 'verified', "admin"])->group
 
             // route for updating  user
             route::post("/update_user/{user}", "edituser")->name("admin.users.update");
+
         });
     });
 
@@ -63,6 +65,16 @@ route::prefix("admin")->middleware(['auth:sanctum', 'verified', "admin"])->group
             route::delete("/{notification}", "destroy")->name("admin.notifications.destroy");
         });
     });
+
+    //routes for rules
+    Route::prefix("rules")->group(function(){
+        Route::controller(AdminRuleController::class)->group(function(){
+            Route::get("/{lang}","index")->name('admin.rules.index');
+            Route::get("/create/{lang}","create")->name('admin.rules.create');
+            Route::post("/store","store")->name('admin.rules.store');
+        });
+    });
+    
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {

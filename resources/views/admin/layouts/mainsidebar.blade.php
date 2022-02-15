@@ -194,6 +194,29 @@
                         </ul>
                     </li>
 
+                    <!-- rules link -->
+                    <li class="nav-item has-treeview ">
+                        <a href="#" class="nav-link bg-info active">
+                            <i class="nav-icon fa  fa-bell"></i>
+                            <p>
+                                Rules
+                                <i class="right fa fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+
+                            {{-- rules index --}}
+                            <li class="nav-item">
+                                <a href="{{ route('admin.rules.index','ar') }}" class="nav-link">
+                                    <i class="nav-icon fa  fa-bell"></i>
+                                    <p>
+                                        All Rules
+                                    </p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
                     {{-- link to jetstream --}}
                     <li class="nav-item has-treeview mt-4 ">
 
