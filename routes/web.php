@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminNotificationsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminPanelController;
 use App\Http\Controllers\Admin\AdminUsersController;
@@ -45,6 +46,16 @@ route::prefix("admin")->middleware(['auth:sanctum', 'verified', "admin"])->group
 
             // route for updating  user
             route::post("/update_user/{user}", "edituser")->name("admin.users.update");
+        });
+    });
+
+    // route for showing users
+    route::prefix("notifications")->group(function () {
+        route::controller(AdminNotificationsController::class)->group(function () {
+            route::get("/", "index")->name("admin.notifications.all");
+            route::post("/store", "store")->name("admin.notifications.store");
+            route::post("/{notification}", "update")->name("admin.notifications.update");
+            route::delete("/{notification}", "destroy")->name("admin.notifications.destroy");
         });
     });
 });
