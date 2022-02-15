@@ -110,6 +110,14 @@
                                         </form>
                                     </div>
                                 </div>
+
+                                {{-- button for sending meesage --}}
+                                <div class="btn-group text-center">
+                                    <button type="button" class="btn btn-primary" data-toggle="modal"
+                                        data-target="#notif{{ $user->id }}">
+                                        send Notif
+                                    </button>
+                                </div>
                             </td>
                         </tr>
                         @php
@@ -194,6 +202,47 @@
                                                 <button type="button" class="btn btn-secondary"
                                                     data-dismiss="modal">Close</button>
                                                 <button type="submit" class="btn btn-primary">Save changes</button>
+                                            </div>
+                                        </form>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Modal for making new message -->
+                        <div class="modal fade mt-5" id="notif{{ $user->id }}" tabindex="-1" role="dialog"
+                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Create Notification</h5>
+                                        <button type="button" class="close" data-dismiss="modal"
+                                            aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form method="post" action="{{ route('admin.notifications.store') }}">
+                                            @csrf
+
+                                            <div class="form-group">
+                                                <label for="exampleFormControlTextarea1">Notification Text</label>
+                                                <textarea class="form-control" name="text"
+                                                    id="exampleFormControlTextarea1" rows="3"></textarea>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <input type="hidden" name="receivers"
+                                                    value="{{ $user->firstname }}{{ $user->lastname }}">
+                                                <input type="hidden" name="receiver" value="{{ $user->id }}">
+                                            </div>
+                                            <input type="hidden" value="private" name="mode">
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-dismiss="modal">Close</button>
+                                                <button type="submit" class="btn btn-primary">Send</button>
                                             </div>
                                         </form>
 

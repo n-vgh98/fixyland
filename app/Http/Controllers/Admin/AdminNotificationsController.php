@@ -73,6 +73,16 @@ class AdminNotificationsController extends Controller
             $notifcation->sender_id = auth()->user()->id;
             $notifcation->save();
             return redirect()->back()->with("success", "your notifcation sent for $request->receivers");
+        } elseif ($request->mode == "private") {
+            $notifcation->text = $request->text;
+            $notifcation->receivers = $request->receivers;
+            $notifcation->mode = 0;
+            $notifcation->sender_id = auth()->user()->id;
+            $notifcation->receiver_id = $request->receiver;
+            $notifcation->save();
+            return redirect()->back()->with("success", "your notifcation sent for $request->receivers");
+        } else {
+            return redirect()->back()->with("fail", "somthing went wrong please contact programming team");
         }
     }
 
