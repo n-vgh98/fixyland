@@ -41,11 +41,38 @@
                         @endphp
                         <tr>
                             <td class="text-center">{{ $number }}</td>
-                            <td class="text-center">{{ $rule->text_1 }}</td>
-                            <td class="text-center">{{ $rule->text_2 }}</td>
-                            <td class="text-center">{{ $rule->text_3 }}</td>
-                            <td class="text-center">{{ $rule->text_4 }}</td>
-                            <td class="text-center">{{ $rule->text_5 }}</td>
+                            <td class="text-center">
+                            {!! \Illuminate\Support\Str::limit($rule->text_1,'30') !!}
+                                <button type="button" class="btn btn-sm btn-primary" data-toggle="modal"
+                                    data-target="#text_1{{ $rule->id }}">
+                                    Full Text  
+                                </button>
+                            </td>
+                            <td class="text-center">
+                            {!! \Illuminate\Support\Str::limit($rule->text_2,'30') !!}
+                                <button type="button" class="btn btn-sm btn-primary" data-toggle="modal"
+                                    data-target="#text_2{{ $rule->id }}">
+                                    Full Text  
+                                </button>
+                            </td>
+                            <td class="text-center"> 
+                            {!! \Illuminate\Support\Str::limit($rule->text_3,'10') !!}
+                                <button type="button" class="btn btn-sm btn-primary" data-toggle="modal"
+                                    data-target="#text_3{{ $rule->id }}">
+                                    Full Text  
+                                </button></td>
+                            <td class="text-center">
+                            {!! \Illuminate\Support\Str::limit($rule->text_4,'10') !!}
+                                <button type="button" class="btn btn-sm btn-primary" data-toggle="modal"
+                                    data-target="#text_4{{ $rule->id }}">
+                                    Full Text 
+                                </button></td>
+                            <td class="text-center">
+                            {!! \Illuminate\Support\Str::limit($rule->text_5,'10') !!}
+                                <button type="button" class="btn btn-sm btn-primary" data-toggle="modal"
+                                    data-target="#text_5{{ $rule->id }}">
+                                    Full Text 
+                                </button></td>
 
                             <td class="text-center">
                                 {{-- button for setting --}}
@@ -72,6 +99,122 @@
                                 </div>
                             </td>
                         </tr>
+                        {{-- modal to show full text_1  --}}
+                            <div class="modal fade" id="text_1{{ $rule->id }}" tabindex="-1" role="dialog"
+                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Full Text_1 </h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            @php
+                                                echo $rule->text_1;
+                                            @endphp
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    {{-- end of modal to show full text_1 --}}
+                    {{-- modal to show full text_2  --}}
+                            <div class="modal fade" id="text_2{{ $rule->id }}" tabindex="-1" role="dialog"
+                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Full Text_2 </h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            @php
+                                                echo $rule->text_2;
+                                            @endphp
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    {{-- end of modal to show full text_2 --}}
+                    {{-- modal to show full text_3 --}}
+                            <div class="modal fade" id="text_3{{ $rule->id }}" tabindex="-1" role="dialog"
+                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Full Text_3 </h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            @php
+                                                echo $rule->text_3;
+                                            @endphp
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    {{-- end of modal to show full text_3--}}
+                    {{-- modal to show full text_4  --}}
+                            <div class="modal fade" id="text_4{{ $rule->id }}" tabindex="-1" role="dialog"
+                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Full Text_4 </h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            @php
+                                                echo $rule->text_4;
+                                            @endphp
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    {{-- end of modal to show full text_4 --}}
+                     {{-- modal to show full text_5  --}}
+                            <div class="modal fade" id="text_5{{ $rule->id }}" tabindex="-1" role="dialog"
+                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Full Text_5 </h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            @php
+                                                echo $rule->text_5;
+                                            @endphp
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    {{-- end of modal to show full text_5 --}}
+
                         @php
                             $number++;
                         @endphp
