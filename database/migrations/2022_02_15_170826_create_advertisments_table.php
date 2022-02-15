@@ -18,6 +18,7 @@ return new class extends Migration
             $table->text("photo_path");
             $table->text("alt");
             $table->text("title");
+            $table->tinyInteger("status")->default(1)->comment("0 is deactive 1 is active");
             $table->timestamps();
         });
     }

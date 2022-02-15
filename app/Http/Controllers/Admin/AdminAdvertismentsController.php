@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Advertisment;
+use App\Models\Notification;
 use Illuminate\Http\Request;
 
 class AdminAdvertismentsController extends Controller
@@ -14,7 +16,8 @@ class AdminAdvertismentsController extends Controller
      */
     public function index()
     {
-        //
+        $ads = Advertisment::all();
+        return view("admin.ads.index", compact("ads"));
     }
 
     /**
@@ -35,7 +38,15 @@ class AdminAdvertismentsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $ad = new Advertisment();
+        $imagename = time() . "." . $request->image->extension();
+        $request->image->move(public_path("Images/Advertisments/"), $imagename);
+        $ad->photo_path = "Images/Advertisments/" . $imagename;
+        $ad->alt = $request->alt;
+        $ad->title = $request->title;
+        $ad->save();
+        return redirect()->back()->with("success", "Your Ad saved successfully");
     }
 
     /**
@@ -69,7 +80,17 @@ class AdminAdvertismentsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $ad = Advertisment::find($id);
+        if ($request->image != null) {
+            unlink($ad->photo_path);
+            $imagename = time() . "." . $request->image->extension();
+            $request->image->move(public_path("Images/Advertisments/"), $imagename);
+            $ad->photo_path = "Images/Advertisments/" . $imagename;
+        }
+        $ad->alt = $request->alt;
+        $ad->title = $request->title;
+        $ad->save();
+        return redirect()->back()->with("success", "Your Ad updated successfully");
     }
 
     /**
@@ -78,8 +99,10 @@ class AdminAdvertismentsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Advertisment $ads)
     {
-        //
+        unlink($ads->photo_path);
+        $ads->delete();
+        return redirect()->back()->with("success", "Your Ad removed successfully");
     }
 }

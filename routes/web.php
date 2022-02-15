@@ -70,7 +70,8 @@ route::prefix("admin")->middleware(['auth:sanctum', 'verified', "admin"])->group
         route::controller(AdminAdvertismentsController::class)->group(function () {
             route::get("/", "index")->name("admin.ads.index");
             route::post("/store", "store")->name("admin.ads.store");
-            route::post("/destroy/{ads}", "destroy")->name("admin.ads.destroy");
+            route::post("/update/{id}", "update")->name("admin.ads.update");
+            route::delete("/destroy/{ads}", "destroy")->name("admin.ads.destroy");
         });
     });
 });
