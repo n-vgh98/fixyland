@@ -35,3 +35,5 @@
 <script src="{{ asset('panel/dist/js/pages/dashboard.js') }}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{ asset('panel/dist/js/demo.js') }}"></script>
+<!-- Sweet alert -->
+<script src="{{ asset('panel/dist/tools/sweetalert/sweetalert2.all.min.js') }}"></script>

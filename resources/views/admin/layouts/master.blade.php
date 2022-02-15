@@ -21,6 +21,7 @@
             <section class="content">
                 <div class="container-fluid">
                     @yield('content')
+                    @include("admin.layouts.sweetalert.error")
                 </div><!-- /.container-fluid -->
             </section>
             <!-- /.content -->

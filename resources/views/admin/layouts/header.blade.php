@@ -26,3 +26,6 @@
 <link rel="stylesheet" href="{{ asset('panel/dist/css/bootstrap-rtl.min.css') }}">
 <!-- template rtl version -->
 <link rel="stylesheet" href="{{ asset('panel/dist/css/custom-style.css') }}">
+<!-- sweet alert -->
+<link rel="stylesheet" href="{{ asset('panel/dist/tools/sweetalert/sweetalert2.min.css') }}">
+<script src="{{ asset('panel/dist/tools/sweetalert/sweetalert2.min.js ') }}"></script>
