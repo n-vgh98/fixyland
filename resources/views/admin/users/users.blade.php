@@ -20,7 +20,7 @@
                         <th class="text-center">Email</th>
                         <th class="text-center">Status</th>
                         <th class="text-center">Role</th>
-                        <th class="text-center">Setting</th>
+                        <th class="text-center">Options</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -87,9 +87,9 @@
                             </td>
 
                             <td class="text-center">
-                                {{-- button for setting --}}
+                                {{-- button for Options --}}
                                 <div class="btn-group text-center">
-                                    <button type="button" class="btn btn-info">Actions</button>
+                                    <button type="button" class="btn btn-info">Setting</button>
                                     <button type="button" class="btn btn-info dropdown-toggle dropdown-toggle-split"
                                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <span class="sr-only">Toggle Dropdown</span>
@@ -212,7 +212,7 @@
                         <th class="text-center">Email</th>
                         <th class="text-center">Status</th>
                         <th class="text-center">Role</th>
-                        <th class="text-center">Setting</th>
+                        <th class="text-center">Options</th>
                     </tr>
                 </tfoot>
             </table>
