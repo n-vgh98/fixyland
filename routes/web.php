@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AdminAdvertismentsController;
 use App\Http\Controllers\Admin\AdminNotificationsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminPanelController;
+use App\Http\Controllers\Admin\AdminRuleController;
 use App\Http\Controllers\Admin\AdminUsersController;
 
 /*
@@ -72,6 +73,14 @@ route::prefix("admin")->middleware(['auth:sanctum', 'verified', "admin"])->group
             route::post("/store", "store")->name("admin.ads.store");
             route::post("/update/{id}", "update")->name("admin.ads.update");
             route::delete("/destroy/{ads}", "destroy")->name("admin.ads.destroy");
+        });
+    });
+    //routes for rules
+    Route::prefix("rules")->group(function () {
+        Route::controller(AdminRuleController::class)->group(function () {
+            Route::get("/{lang}", "index")->name('admin.rules.index');
+            Route::get("/create/{lang}", "create")->name('admin.rules.create');
+            Route::post("/store", "store")->name('admin.rules.store');
         });
     });
 });
