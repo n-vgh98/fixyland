@@ -21,6 +21,34 @@ class AdminUsersController extends Controller
         return view("admin.users.all", compact("users"));
     }
 
+    // for showing all super admins
+    public function superadmins()
+    {
+        $users = User::where("role_name", "superadmin");
+        return view("admin.users.superadmins", compact("users"));
+    }
+
+    // for showing all admins
+    public function admins()
+    {
+        $users = User::where("role_name", "admin");
+        return view("admin.users.admins", compact("users"));
+    }
+
+    // for showing all customers
+    public function users()
+    {
+        $users = User::where("role_name", "user");
+        return view("admin.users.users", compact("users"));
+    }
+
+    // for showing all technicians
+    public function technicians()
+    {
+        $users = User::where("role_name", "technician");
+        return view("admin.users.technicians", compact("users"));
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -82,6 +110,7 @@ class AdminUsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    // for destroying users
     public function destroy(User $user)
     {
         $user->delete();
@@ -106,7 +135,7 @@ class AdminUsersController extends Controller
     }
 
     // method for changing user roll to super admin
-    public function SuperAdmin(User $user)
+    public function promotetoSuperAdmin(User $user)
     {
 
 
@@ -120,7 +149,7 @@ class AdminUsersController extends Controller
     }
 
     // method for changing user roll to super admin
-    public function Admin(User $user)
+    public function promotetoAdmin(User $user)
     {
         if ($user->role_name == "admin") {
             return redirect()->back()->with("fail", "This account Already Has this roll");
@@ -132,7 +161,7 @@ class AdminUsersController extends Controller
     }
 
     // method for changing user roll to super admin
-    public function User(User $user)
+    public function promotetoUser(User $user)
     {
         if ($user->role_name == "user") {
             return redirect()->back()->with("fail", "This account Already Has this roll");
@@ -144,7 +173,7 @@ class AdminUsersController extends Controller
     }
 
     // method for changing user roll to super admin
-    public function Technician(User $user)
+    public function promotetoTechnician(User $user)
     {
         if ($user->role_name == "technician") {
             return redirect()->back()->with("fail", "This account Already Has this roll");

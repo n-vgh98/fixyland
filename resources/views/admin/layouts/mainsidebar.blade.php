@@ -80,7 +80,7 @@
 
                             {{-- all users --}}
                             <li class="nav-item">
-                                <a href="#" class="nav-link">
+                                <a href="{{ route('admin.users.all') }}" class="nav-link">
                                     <i class="nav-icon fa  fa-users"></i>
                                     <p>
                                         All Users
@@ -90,7 +90,7 @@
 
                             {{-- admins --}}
                             <li class="nav-item">
-                                <a href="#" class="nav-link">
+                                <a href="{{ route('admin.users.admins') }}" class="nav-link">
                                     <i class="nav-icon fa  fa-info"></i>
                                     <p>
                                         Admins
@@ -100,7 +100,7 @@
 
                             {{-- technicians --}}
                             <li class="nav-item">
-                                <a href="#" class="nav-link">
+                                <a href="{{ route('admin.users.technicians') }}" class="nav-link">
                                     <i class="nav-icon fa  fa-wrench"></i>
                                     <p>
                                         Technicians
@@ -110,7 +110,7 @@
 
                             {{-- customers --}}
                             <li class="nav-item">
-                                <a href="#" class="nav-link">
+                                <a href="{{ route('admin.users.users') }}" class="nav-link">
                                     <i class="nav-icon fa  fa-user"></i>
                                     <p>
                                         Users

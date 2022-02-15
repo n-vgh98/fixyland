@@ -34,10 +34,10 @@ route::prefix("admin")->middleware(['auth:sanctum', 'verified', "admin"])->group
             route::DELETE("/destroy/{user}", "destroy")->name("admin.users.destroy");
 
             // routes for changing rolls
-            route::post("/change_to_SuperAdmin/{user}", "SuperAdmin")->name("admin.users.changetosuperadmin");
-            route::post("/change_to_Admin/{user}", "Admin")->name("admin.users.changetoadmin");
-            route::post("/change_to_User/{user}", "User")->name("admin.users.changetouser");
-            route::post("/change_to_Technician/{user}", "Technician")->name("admin.users.changetotechnician");
+            route::post("/change_to_SuperAdmin/{user}", " promotetoSuperAdmin")->name("admin.users.changetosuperadmin");
+            route::post("/change_to_Admin/{user}", " promotetoAdmin")->name("admin.users.changetoadmin");
+            route::post("/change_to_User/{user}", " promotetoUser")->name("admin.users.changetouser");
+            route::post("/change_to_Technician/{user}", " promotetoTechnician")->name("admin.users.changetotechnician");
         });
     });
 });
