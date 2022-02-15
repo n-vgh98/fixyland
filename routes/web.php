@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminAdvertismentsController;
 use App\Http\Controllers\Admin\AdminNotificationsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminPanelController;
@@ -49,7 +50,7 @@ route::prefix("admin")->middleware(['auth:sanctum', 'verified', "admin"])->group
         });
     });
 
-    // route for showing users
+    // route for notifing users
     route::prefix("notifications")->group(function () {
         route::controller(AdminNotificationsController::class)->group(function () {
             route::get("/", "index")->name("admin.notifications.all");
@@ -61,6 +62,15 @@ route::prefix("admin")->middleware(['auth:sanctum', 'verified', "admin"])->group
             route::post("/store", "store")->name("admin.notifications.store");
             route::post("/{notification}", "update")->name("admin.notifications.update");
             route::delete("/{notification}", "destroy")->name("admin.notifications.destroy");
+        });
+    });
+
+    // route for advertisment
+    route::prefix("advertisment")->group(function () {
+        route::controller(AdminAdvertismentsController::class)->group(function () {
+            route::get("/", "index")->name("admin.ads.index");
+            route::post("/store", "store")->name("admin.ads.store");
+            route::post("/destroy/{ads}", "destroy")->name("admin.ads.destroy");
         });
     });
 });
