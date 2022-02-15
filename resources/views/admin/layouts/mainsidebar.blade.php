@@ -33,13 +33,14 @@
                         <a href="#" class="nav-link active">
                             <i class="nav-icon ion ion-person-add"></i>
                             <p>
-                                کاربران
+                                Users
                                 <i class="right fa fa-angle-left"></i>
                             </p>
                         </a>
                         <ul class="nav nav-treeview">
-                            {{-- students --}}
-                            <li class="nav-item">
+                            {{-- if needed --}}
+
+                            {{-- <li class="nav-item">
                                 <a href="#" class="nav-link">
                                     <i class="nav-icon fa  fa-graduation-cap"></i>
                                     <p>
@@ -48,32 +49,7 @@
                                     </p>
                                 </a>
                                 <ul class="nav nav-treeview">
-                                    {{-- 10th grade students --}}
-                                    <li class="nav-item">
-                                        <a href="#" class="nav-link">
-                                            <i class="fa fa-circle nav-icon"></i>
-                                            <p>
-                                                دهم
-                                                <i class="right fa fa-angle-left"></i>
-                                            </p>
-                                        </a>
-                                        <ul class="nav nav-treeview">
-                                            <li class="nav-item">
-                                                <a href="#" class="nav-link">
-                                                    <i class="fa fa-dot-circle-o nav-icon"></i>
-                                                    <p> دهم تجربی</p>
-                                                </a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a href="#" class="nav-link">
-                                                    <i class="fa fa-dot-circle-o nav-icon"></i>
-                                                    <p> دهم ریاضی</p>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </li>
 
-                                    {{-- 11th grade students --}}
                                     <li class="nav-item">
                                         <a href="#" class="nav-link">
                                             <i class="fa fa-circle nav-icon"></i>
@@ -98,111 +74,45 @@
                                         </ul>
                                     </li>
 
-                                    {{-- 12th grade students --}}
-                                    <li class="nav-item">
-                                        <a href="#" class="nav-link">
-                                            <i class="fa fa-circle nav-icon"></i>
-                                            <p>
-                                                دوازدهم
-                                                <i class="right fa fa-angle-left"></i>
-                                            </p>
-                                        </a>
-                                        <ul class="nav nav-treeview">
-                                            <li class="nav-item">
-                                                <a href="#" class="nav-link">
-                                                    <i class="fa fa-dot-circle-o nav-icon"></i>
-                                                    <p>دوازدهم تجربی</p>
-                                                </a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a href="#" class="nav-link">
-                                                    <i class="fa fa-dot-circle-o nav-icon"></i>
-                                                    <p>دوازدهم ریاضی</p>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </li>
-
-                                    {{-- math field students --}}
-                                    <li class="nav-item">
-                                        <a href="#" class="nav-link">
-                                            <i class="fa fa-circle nav-icon"></i>
-                                            <p>
-                                                ریاضی
-                                                <i class="right fa fa-angle-left"></i>
-                                            </p>
-                                        </a>
-                                        <ul class="nav nav-treeview">
-                                            <li class="nav-item">
-                                                <a href="#" class="nav-link">
-                                                    <i class="fa fa-dot-circle-o nav-icon"></i>
-                                                    <p>دهم ریاضی</p>
-                                                </a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a href="#" class="nav-link">
-                                                    <i class="fa fa-dot-circle-o nav-icon"></i>
-                                                    <p>یازدهم ریاضی</p>
-                                                </a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a href="#" class="nav-link">
-                                                    <i class="fa fa-dot-circle-o nav-icon"></i>
-                                                    <p>دوازدهم ریاضی</p>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </li>
-
-                                    {{-- science field students --}}
-                                    <li class="nav-item">
-                                        <a href="#" class="nav-link">
-                                            <i class="fa fa-circle nav-icon"></i>
-                                            <p>
-                                                تجربی
-                                                <i class="right fa fa-angle-left"></i>
-                                            </p>
-                                        </a>
-                                        <ul class="nav nav-treeview">
-                                            <li class="nav-item">
-                                                <a href="#" class="nav-link">
-                                                    <i class="fa fa-dot-circle-o nav-icon"></i>
-                                                    <p>دهم تجربی</p>
-                                                </a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a href="#" class="nav-link">
-                                                    <i class="fa fa-dot-circle-o nav-icon"></i>
-                                                    <p>یازدهم تجربی</p>
-                                                </a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a href="#" class="nav-link">
-                                                    <i class="fa fa-dot-circle-o nav-icon"></i>
-                                                    <p>دوازدهم تجربی</p>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </li>
-
-                                    {{-- science field students --}}
-                                    <li class="nav-item">
-                                        <a href="#" class="nav-link">
-                                            <i class="fa fa-circle nav-icon"></i>
-                                            <p>
-                                                همه دانش آموزان
-                                            </p>
-                                        </a>
-                                    </li>
                                 </ul>
-                            </li>
+                            </li> --}}
 
-                            {{-- moshaver --}}
+                            {{-- all users --}}
                             <li class="nav-item">
                                 <a href="#" class="nav-link">
-                                    <i class="nav-icon fa  fa-list"></i>
+                                    <i class="nav-icon fa  fa-users"></i>
                                     <p>
-                                        مشاوران
+                                        All Users
+                                    </p>
+                                </a>
+                            </li>
+
+                            {{-- admins --}}
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                    <i class="nav-icon fa  fa-info"></i>
+                                    <p>
+                                        Admins
+                                    </p>
+                                </a>
+                            </li>
+
+                            {{-- technicians --}}
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                    <i class="nav-icon fa  fa-wrench"></i>
+                                    <p>
+                                        Technicians
+                                    </p>
+                                </a>
+                            </li>
+
+                            {{-- customers --}}
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                    <i class="nav-icon fa  fa-user"></i>
+                                    <p>
+                                        Users
                                     </p>
                                 </a>
                             </li>
@@ -215,7 +125,7 @@
                         <a href="{{ route('profile.show') }}" class="nav-link bg-warning active">
                             <i class="nav-icon fa fa-lock"></i>
                             <p>
-                                تنظیمات امنیتی
+                                Security Setting
                             </p>
                         </a>
                     </li>
@@ -227,7 +137,7 @@
                             <button type="submit" class="nav-link bg-danger active">
                                 <i class="fa fa-times-circle"></i>
                                 <p>
-                                    خروج
+                                    Log Out
                                 </p>
                                 </a>
                         </form>
