@@ -94,7 +94,7 @@ class AdminUsersController extends Controller
 
         $user->status = 1;
         $user->save();
-        return redirect()->back();
+        return redirect()->back()->with("success", "User Account Activated");
     }
 
     // method for deactiving user account
@@ -102,6 +102,6 @@ class AdminUsersController extends Controller
     {
         $user->status = 0;
         $user->save();
-        return redirect()->back();
+        return redirect()->back()->with("success", "User Account Deactivated");
     }
 }
