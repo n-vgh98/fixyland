@@ -85,7 +85,7 @@ class AdminUsersController extends Controller
     public function destroy(User $user)
     {
         $user->delete();
-        return redirect()->back();
+        return redirect()->back()->with("success", "User Account Destroyed");
     }
 
     // method for activating user account
