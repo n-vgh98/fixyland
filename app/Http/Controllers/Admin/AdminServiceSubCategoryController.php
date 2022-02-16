@@ -49,7 +49,7 @@ class AdminServiceSubCategoryController extends Controller
         $subcategory->title = $request->title;
         $subcategory->name = $request->name;
         $subcategory->save();
-        return redirect()->route("admin.services.subcategory.index", $subcategory->category->language->name)->with("success", "Your service subcategory created successfully");
+        return redirect()->back()->with("success", "Your service subcategory created successfully");
     }
 
     /**
@@ -58,9 +58,11 @@ class AdminServiceSubCategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(ServiceCategory $category)
     {
-        //
+
+        $categories = ServiceCategory::all();
+        return view("admin.services.subcategory.show", compact("category", "categories"));
     }
 
     /**
@@ -96,7 +98,7 @@ class AdminServiceSubCategoryController extends Controller
         $subcategory->title = $request->title;
         $subcategory->name = $request->name;
         $subcategory->save();
-        return redirect()->route("admin.services.subcategory.index", $subcategory->category->language->name)->with("success", "Your service subcategory updated successfully");
+        return redirect()->back()->with("success", "Your service subcategory updated successfully");
     }
 
     /**
@@ -108,7 +110,6 @@ class AdminServiceSubCategoryController extends Controller
     public function destroy(ServiceSubCategory $subcategory)
     {
         unlink($subcategory->photo_path);
-        $subcategory->language->delete();
         $subcategory->delete();
         return redirect()->back()->with("success", "Your Service Subcategory removed successfully");
     }

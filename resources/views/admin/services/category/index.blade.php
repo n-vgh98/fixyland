@@ -27,6 +27,7 @@
                         <th class="text-center">Image Alt</th>
                         <th class="text-center">Image Title</th>
                         <th class="text-center">Language</th>
+                        <th class="text-center">subcategories</th>
                         <th class="text-center">Status</th>
                         <th class="text-center">Options</th>
                     </tr>
@@ -55,6 +56,16 @@
                             <td class="text-center">{{ $category->alt }}</td>
                             <td class="text-center">{{ $category->title }}</td>
                             <td class="text-center">{{ $category->language->name == 'en' ? 'English' : 'Arabic' }}
+                            </td>
+                            <td class="text-center">
+                                <a class="btn btn-success"
+                                    href="{{ route('admin.services.subcategory.show', $category) }}">
+                                    @if (count($category->subcategories) == null)
+                                        {{ 'make' }}
+                                    @else
+                                        {{ 'show' }}
+                                    @endif
+                                </a>
                             </td>
 
                             <td class="text-center">
@@ -174,6 +185,7 @@
                         <th class="text-center">Image Alt</th>
                         <th class="text-center">Image Title</th>
                         <th class="text-center">Language</th>
+                        <th class="text-center">subcategories</th>
                         <th class="text-center">Status</th>
                         <th class="text-center">Options</th>
                     </tr>

@@ -98,6 +98,7 @@ route::prefix("admin")->middleware(['auth:sanctum', 'verified', "admin"])->group
         route::prefix("subcategories")->group(function () {
             route::controller(AdminServiceSubCategoryController::class)->group(function () {
                 route::get("/", "index")->name("admin.services.subcategory.index");
+                route::get("/show/{category}", "show")->name("admin.services.subcategory.show");
                 route::post("/", "store")->name("admin.services.subcategory.store");
                 route::delete("/destroy/{subcategory}", "destroy")->name("admin.services.subcategory.destroy");
                 route::post("/update/{subcategory}", "update")->name("admin.services.subcategory.update");

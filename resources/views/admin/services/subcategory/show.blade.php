@@ -3,12 +3,12 @@
     @include("admin.layouts.datatable.head")
 @endsection
 @section('title')
-    All Service subcategories
+    {{ $category->name }} Service subcategories
 @endsection
 @section('content')
     <div class="card mt-4">
         <div class="card-header">
-            <h3 class="card-title">All Service subcategories Table</h3>
+            <h3 class="card-title">{{ $category->name }} Service subcategories Table</h3>
         </div>
         <!-- /.card-header -->
         <div class="card-body">
@@ -30,7 +30,7 @@
                     @php
                         $number = 1;
                     @endphp
-                    @foreach ($subcategories as $subcategory)
+                    @foreach ($category->subcategories as $subcategory)
                         <tr>
                             <td class="text-center">{{ $number }}</td>
                             <td class="text-center">{{ $subcategory->name }}</td>
@@ -155,7 +155,6 @@
                             </div>
                         </div>
                     @endforeach
-
                 </tbody>
                 <tfoot>
                     <tr>
@@ -176,9 +175,9 @@
 
         </div>
     </div>
-    {{-- <!-- Button for making new subcategory -->
+    <!-- Button for making new subcategory -->
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-        Make new Category
+        Make new subcategory
     </button>
 
 
@@ -188,7 +187,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Create Category</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Create Subcategory</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -199,7 +198,7 @@
                         @csrf
 
                         <div class="form-group">
-                            <label for="name">Category Name</label>
+                            <label for="name">Subcategory Name</label>
                             <input type="text" required name="name" class="form-control" id="name">
                         </div>
 
@@ -218,13 +217,7 @@
                             <input type="text" required name="title" class="form-control" id="title">
                         </div>
 
-                        <div class="form-group">
-                            <label for="exampleFormControlSelect1">Language</label>
-                            <select required name="language" class="form-control" id="exampleFormControlSelect1">
-                                <option value="en">English</option>
-                                <option value="ar">Arabic</option>
-                            </select>
-                        </div>
+                        <input type="hidden" name="category_id" value="{{ $category->id }}">
 
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -236,7 +229,7 @@
 
             </div>
         </div>
-    </div> --}}
+    </div>
 @endsection
 @section('script')
     @include('admin.layouts.datatable.script')

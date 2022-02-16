@@ -12,4 +12,9 @@ class ServiceCategory extends Model
     {
         return $this->morphOne("App\Models\Lang", "langable");
     }
+
+    public function subcategories()
+    {
+        return $this->hasMany("App\Models\ServiceSubCategory", "category_id");
+    }
 }
