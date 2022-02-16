@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use App\Models\Lang;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class AdminServiceSubCategoryController extends Controller
 {
@@ -12,9 +13,10 @@ class AdminServiceSubCategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($lang)
     {
-        //
+        $languages = Lang::where([["langable_type", "App\Models\ServiceSubCategory"], ["name", $lang]])->get();
+        return view("admin.services.subcategory.index", compact("languages"));
     }
 
     /**

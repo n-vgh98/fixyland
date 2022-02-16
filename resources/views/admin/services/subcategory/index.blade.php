@@ -3,18 +3,18 @@
     @include("admin.layouts.datatable.head")
 @endsection
 @section('title')
-    All Advertisments
+    All Service Categories
 @endsection
 @section('content')
     <section class="text-center">
         <div class="btn-group btn-group-toggle">
-            <a href="{{ route('admin.ads.index', 'ar') }}" class="btn btn-primary">Arabic</a>
-            <a href="{{ route('admin.ads.index', 'en') }}" class="btn btn-primary">English</a>
+            <a href="{{ route('admin.services.category.index', 'ar') }}" class="btn btn-primary">Arabic</a>
+            <a href="{{ route('admin.services.category.index', 'en') }}" class="btn btn-primary">English</a>
         </div>
     </section>
     <div class="card mt-4">
         <div class="card-header">
-            <h3 class="card-title">All Advertisments Table</h3>
+            <h3 class="card-title">All Service Categories Table</h3>
         </div>
         <!-- /.card-header -->
         <div class="card-body">
@@ -22,9 +22,10 @@
                 <thead>
                     <tr>
                         <th class="text-center">#</th>
-                        <th class="text-center">Advertisment</th>
-                        <th class="text-center">Alt</th>
-                        <th class="text-center">Title</th>
+                        <th class="text-center">name</th>
+                        <th class="text-center">Image</th>
+                        <th class="text-center">Image Alt</th>
+                        <th class="text-center">Image Title</th>
                         <th class="text-center">Language</th>
                         <th class="text-center">Status</th>
                         <th class="text-center">Options</th>
@@ -36,29 +37,36 @@
                     @endphp
                     @foreach ($languages as $language)
                         @php
-                            $ad = $language->langable;
+                            $category = $language->langable;
                         @endphp
 
                         <tr>
                             <td class="text-center">{{ $number }}</td>
                             <td class="text-center">
-                                <button data-toggle="modal" data-target="#edit{{ $ad->id }}">
-                                    <img src="{{ asset($ad->photo_path) }}" style="height: 60px; width:60px;"
-                                        class="img-fluid" alt="{{ $ad->alt }}" title="{{ $ad->title }}">
+                                {{ $category->name }}
+                            </td>
+                            <td class="text-center">
+                                <button data-toggle="modal" data-target="#edit{{ $category->id }}">
+                                    <img src="{{ asset($category->photo_path) }}" style="height: 60px; width:60px;"
+                                        class="img-fluid" alt="{{ $category->alt }}"
+                                        title="{{ $category->title }}">
                                 </button>
                             </td>
-                            <td class="text-center">{{ $ad->alt }}</td>
-                            <td class="text-center">{{ $ad->title }}</td>
-                            <td class="text-center">{{ $ad->language->name == 'en' ? 'English' : 'Arabic' }}</td>
+                            <td class="text-center">{{ $category->alt }}</td>
+                            <td class="text-center">{{ $category->title }}</td>
+                            <td class="text-center">{{ $category->language->name == 'en' ? 'English' : 'Arabic' }}
+                            </td>
 
                             <td class="text-center">
-                                @if ($ad->status == 1)
-                                    <form action="{{ route('admin.ads.deactive', $ad) }}" method="post">
+                                @if ($category->status == 1)
+                                    <form action="{{ route('admin.services.category.deactive', $category) }}"
+                                        method="post">
                                         @csrf
                                         <button class="btn btn-success" type="submit">Active</button>
                                     </form>
                                 @else
-                                    <form action="{{ route('admin.ads.activate', $ad) }}" method="post">
+                                    <form action="{{ route('admin.services.category.activate', $category) }}"
+                                        method="post">
                                         @csrf
                                         <button class="btn btn-danger" type="submit">Deactive</button>
                                     </form>
@@ -75,7 +83,8 @@
                                     </button>
                                     <div class="dropdown-menu text-center">
                                         {{-- button for removing account --}}
-                                        <form action="{{ route('admin.ads.destroy', $ad) }}" method="post">
+                                        <form action="{{ route('admin.services.category.destroy', $category) }}"
+                                            method="post">
                                             @method("delete")
                                             @csrf
                                             <button type="submit" class="btn btn-danger ">Delet Advertisment</button>
@@ -89,7 +98,7 @@
                         @endphp
 
                         <!-- Modal for editing  ad -->
-                        <div class="modal fade" id="edit{{ $ad->id }}" tabindex="-1" role="dialog"
+                        <div class="modal fade" id="edit{{ $category->id }}" tabindex="-1" role="dialog"
                             aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
@@ -102,9 +111,16 @@
                                     </div>
                                     <div class="modal-body">
                                         <form class="mt-5" method="post"
-                                            action="{{ route('admin.ads.update', $ad->id) }}"
+                                            action="{{ route('admin.services.category.update', $category->id) }}"
                                             enctype="multipart/form-data">
                                             @csrf
+
+                                            <div class="form-group">
+                                                <label for="name">category name</label>
+                                                <input type="text" value="{{ $category->name }}" required name="name"
+                                                    class="form-control" id="name">
+                                            </div>
+
                                             <div class="form-group">
                                                 <label for="exampleFormControlFile1">File</label>
                                                 <input type="file" name="image" class="form-control-file"
@@ -113,13 +129,13 @@
 
                                             <div class="form-group">
                                                 <label for="alt">Alt for Image</label>
-                                                <input value="{{ $ad->alt }}" type="text" required name="alt"
+                                                <input value="{{ $category->alt }}" type="text" required name="alt"
                                                     class="form-control" id="alt">
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="Titile">Titile for Image</label>
-                                                <input type="text" value="{{ $ad->title }}" required name="title"
+                                                <input type="text" value="{{ $category->title }}" required name="title"
                                                     class="form-control" id="Titile">
                                             </div>
 
@@ -128,10 +144,10 @@
                                                 <select required name="language" class="form-control"
                                                     id="exampleFormControlSelect1">
                                                     <option value="en"
-                                                        {{ $ad->language->name == 'en' ? 'selected' : '' }}>
+                                                        {{ $category->language->name == 'en' ? 'selected' : '' }}>
                                                         English</option>
                                                     <option value="ar"
-                                                        {{ $ad->language->name == 'ar' ? 'selected' : '' }}>
+                                                        {{ $category->language->name == 'ar' ? 'selected' : '' }}>
                                                         Arabic</option>
                                                 </select>
                                             </div>
@@ -153,9 +169,10 @@
                 <tfoot>
                     <tr>
                         <th class="text-center">#</th>
-                        <th class="text-center">Advertisment</th>
-                        <th class="text-center">Alt</th>
-                        <th class="text-center">Title</th>
+                        <th class="text-center">name</th>
+                        <th class="text-center">Image</th>
+                        <th class="text-center">Image Alt</th>
+                        <th class="text-center">Image Title</th>
                         <th class="text-center">Language</th>
                         <th class="text-center">Status</th>
                         <th class="text-center">Options</th>
@@ -167,27 +184,33 @@
 
         </div>
     </div>
-    <!-- Button for making new user -->
+    <!-- Button for making new category -->
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-        Make new Add
+        Make new Category
     </button>
 
 
-    <!-- Modal for making new ad -->
+    <!-- Modal for making new category -->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Create Advertisment</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Create Category</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form class="mt-5" method="post" action="{{ route('admin.ads.store') }}"
+                    <form class="mt-5" method="post" action="{{ route('admin.services.category.store') }}"
                         enctype="multipart/form-data">
                         @csrf
+
+                        <div class="form-group">
+                            <label for="name">Category Name</label>
+                            <input type="text" required name="name" class="form-control" id="name">
+                        </div>
+
                         <div class="form-group">
                             <label for="exampleFormControlFile1">File</label>
                             <input type="file" required name="image" class="form-control-file" id="exampleFormControlFile1">
@@ -199,8 +222,8 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="Titile">Titile for Image</label>
-                            <input type="text" required name="title" class="form-control" id="Titile">
+                            <label for="title">title for Image</label>
+                            <input type="text" required name="title" class="form-control" id="title">
                         </div>
 
                         <div class="form-group">
