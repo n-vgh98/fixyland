@@ -3,7 +3,7 @@
     @include("admin.layouts.datatable.head")
 @endsection
 @section('title')
-  Create Rules
+  Edit About Us
 @endsection
 @section('content')
    
@@ -12,63 +12,66 @@
         <div class="card-header">
             <h3 class="card-title">Create Rules</h3>
         </div>
-        <form action="{{ route('admin.rules.update',$rules->id) }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('admin.about_us.update',$about_us->id) }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="mb-3 m-3">
-            <label for="text_1" class="form-label">{{ __('Text-1:') }}</label>
-            <textarea class="form-control" id="text_1" rows="3" class="form-control @error('text_1') is-invalid @enderror"
-                name="text_1" value="{{ old('text_1') }}" required autocomplete="text_1" autofocus>
-                {{$rules->text_1}}
+            <label for="description" class="form-label">{{ __('Description:') }}</label>
+            <textarea class="form-control" id="description" rows="3" class="form-control @error('description') is-invalid @enderror"
+                name="description" value="{{ old('description') }}" required autocomplete="description" autofocus>
+                {{$about_us->description}}
             </textarea>
-            @error('text_1')
+            @error('description')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
                 </span>
             @enderror
         </div>
         <div class="mb-3 m-3">
-            <label for="text_2" class="form-label">{{ __('Text-2:') }}</label>
-            <textarea class="form-control" id="text_2" rows="3" class="form-control @error('text_2') is-invalid @enderror"
-                name="text_2" value="{{ old('text_2') }}" required autocomplete="text_2" autofocus>
-                {{$rules->text_2}}
-            </textarea>
-            @error('text_2')
+            <label for="photo_path" class="form-label">{{ __('Photo:') }}</label>
+            <input type="file" name="photo_path" id="photo_path" required class="form-control">
+            @error('photo_path')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
                 </span>
             @enderror
         </div>
         <div class="mb-3 m-3">
-            <label for="text_3" class="form-label">{{ __('Text-3:') }}</label>
-            <textarea class="form-control" id="text_3" rows="3" class="form-control @error('text_3') is-invalid @enderror"
-                name="text_3" value="{{ old('text_3') }}" required autocomplete="text_3" autofocus>
-                {{$rules->text_3}}
-            </textarea>
-            @error('text_3')
+            <label for="photo_alt" class="form-label">{{ __('Photo Alt:') }}</label>
+            <input type="text" name="photo_alt" id="photo_alt" required class="form-control" value="{{$about_us->photo_alt}}">
+            @error('photo_alt')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
                 </span>
             @enderror
         </div>
         <div class="mb-3 m-3">
-            <label for="text_4" class="form-label">{{ __('Text-4:') }}</label>
-            <textarea class="form-control" id="text_4" rows="3" class="form-control @error('text_4') is-invalid @enderror"
-                name="text_4" value="{{ old('text_4') }}" required autocomplete="text_4" autofocus>
-                {{$rules->text_4}}
-            </textarea>
-            @error('text_4')
+            <label for="photo_name" class="form-label">{{ __('Photo Name:') }}</label>
+            <input type="text" name="photo_name" id="photo_name" required class="form-control" value="{{$about_us->photo_name}}">
+            @error('photo_name')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
                 </span>
             @enderror
         </div>
         <div class="mb-3 m-3">
-            <label for="text_5" class="form-label">{{ __('Text-5:') }}</label>
-            <textarea class="form-control" id="text_5" rows="3" class="form-control @error('text_5') is-invalid @enderror"
-                name="text_5" value="{{ old('text_5') }}" required autocomplete="text_5" autofocus>
-                {{$rules->text_5}}
+            <label for="meta_keywords" class="form-label">{{ __('Meta Keywords:') }}</label>
+            <textarea class="form-control" id="meta_keywords" rows="3" class="form-control @error('meta_keywords') is-invalid @enderror"
+                name="meta_keywords" value="{{ old('meta_keywords') }}" required autocomplete="meta_keywords" autofocus>
+                {{$about_us->meta_keywords}}
             </textarea>
-            @error('text_5')
+            @error('meta_keywords')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+        </div>
+        <div class="mb-3 m-3">
+            <label for="meta_description" class="form-label">{{ __('Meta Description:') }}</label>
+            <textarea class="form-control" id="meta_description" rows="3" class="form-control @error('meta_description') is-invalid @enderror"
+                name="meta_description" value="{{ old('meta_description') }}" required autocomplete="meta_description" autofocus>
+                {{$about_us->meta_description}}
+            </textarea>
+            @error('meta_description')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
                 </span>
@@ -85,10 +88,6 @@
 @section('script')
     <script src="{{ asset('panel/ckeditor/ckeditor.js') }}"></script>
     <script>
-        CKEDITOR.replace('text_1');
-        CKEDITOR.replace('text_2');
-        CKEDITOR.replace('text_3');
-        CKEDITOR.replace('text_4');
-        CKEDITOR.replace('text_5');
+        CKEDITOR.replace('description');
     </script>
 @endsection

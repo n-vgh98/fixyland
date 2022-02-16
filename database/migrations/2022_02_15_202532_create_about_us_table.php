@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('photo_alt');
             $table->string('photo_name');
             $table->text('meta_keywords');
-            $table->text('meta_descriptiion');
+            $table->text('meta_description');
             $table->timestamps();
         });
     }
