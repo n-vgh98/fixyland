@@ -21,4 +21,9 @@ class ServiceSubCategory extends Model
     {
         return $this->hasOne("App\Models\ServiceSubcategoryDescription", "subcategory_id");
     }
+
+    public function form()
+    {
+        return $this->hasOne("App\Models\Form", "subcategory_id");
+    }
 }

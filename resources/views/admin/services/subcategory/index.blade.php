@@ -83,7 +83,26 @@
 
                             <td class="text-center">
                                 {{-- button for Options --}}
-                                <div class="btn-group text-center">
+                                <div class="btn-group text-center ">
+
+                                    @if ($subcategory->form == null)
+                                        <form method="post" action="{{ route('admin.forms.store') }}">
+                                            @csrf
+                                            <input type="hidden" name="subcategory_id" value="{{ $subcategory->id }}">
+                                            <button type="submit" class="btn btn-warning" data-toggle="modal"
+                                                data-target="#makeform{{ $subcategory->id }}">
+                                                Make Form
+                                            </button>
+                                        </form>
+
+                                        {{-- @elseif(count($subcategory->form->questions) == 0)
+                                        <a class="btn btn-success" href="#">
+                                            Make First Question</a> --}}
+                                    @else
+                                        <a class="btn btn-success" href="#">
+                                            See Questions</a>
+                                    @endif
+
                                     <button type="button" class="btn btn-info">Setting</button>
                                     <button type="button" class="btn btn-info dropdown-toggle dropdown-toggle-split"
                                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -100,12 +119,24 @@
                                                 Descriptions</a>
                                         @endif
                                         {{-- button for removing subcategory --}}
-                                        <form action="{{ route('admin.services.subcategory.destroy', $subcategory) }}"
+                                        <form class="mt-3"
+                                            action="{{ route('admin.services.subcategory.destroy', $subcategory) }}"
                                             method="post">
                                             @method("delete")
                                             @csrf
                                             <button type="submit" class="btn btn-danger ">Delet subcategory</button>
                                         </form>
+
+                                        @if ($subcategory->form != null)
+                                            {{-- button for removing form --}}
+                                            <form class="mt-3"
+                                                action="{{ route('admin.forms.destroy', $subcategory->form) }}"
+                                                method="post">
+                                                @method("delete")
+                                                @csrf
+                                                <button type="submit" class="btn btn-danger ">Delet Form</button>
+                                            </form>
+                                        @endif
                                     </div>
                                 </div>
                             </td>
@@ -203,7 +234,7 @@
 
         </div>
     </div>
-    {{-- <!-- Button for making new subcategory -->
+    <!-- Button for making new subcategory -->
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
         Make new Category
     </button>
@@ -263,7 +294,7 @@
 
             </div>
         </div>
-    </div> --}}
+    </div>
 @endsection
 @section('script')
     @include('admin.layouts.datatable.script')

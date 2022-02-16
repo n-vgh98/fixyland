@@ -302,6 +302,18 @@
                         </a>
                     </li>
 
+                    {{-- link to form --}}
+                    <li class="nav-item has-treeview">
+
+                        <a href="{{ route('admin.forms.index') }}" class="nav-link bg-primary active">
+                            <i class="nav-icon fa fa-check"></i>
+                            <p>
+                                Form Maker
+                            </p>
+                        </a>
+                    </li>
+
+
                     {{-- link to scores --}}
                     <li class="nav-item has-treeview">
 

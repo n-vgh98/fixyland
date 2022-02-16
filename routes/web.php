@@ -12,7 +12,9 @@ use App\Http\Controllers\Admin\AdminAboutUsController;
 use App\Http\Controllers\Admin\AdminIndexSliderController;
 use App\Http\Controllers\Admin\AdminIndexFeatureController;
 use App\Http\Controllers\Admin\AdminAdvertismentsController;
+use App\Http\Controllers\Admin\AdminFormController;
 use App\Http\Controllers\Admin\AdminIndexStaticController;
+use App\Http\Controllers\Admin\AdminInputController;
 use App\Http\Controllers\Admin\AdminNotificationsController;
 use App\Http\Controllers\Admin\AdminServiceCategoryController;
 use App\Http\Controllers\Admin\AdminServiceSubCategoryController;
@@ -62,7 +64,7 @@ route::prefix("admin")->middleware(['auth:sanctum', 'verified', "admin"])->group
         });
     });
 
-    // route for
+    // route for decoratiion
     route::prefix("decoration")->group(function () {
         route::prefix("index")->group(function () {
             // route for slider
@@ -99,6 +101,18 @@ route::prefix("admin")->middleware(['auth:sanctum', 'verified', "admin"])->group
                     route::post("/activate_slider/{static}", "activate")->name("admin.decoration.index.statics.activate");
                     route::post("/deactive_slider/{static}", "deactive")->name("admin.decoration.index.statics.deactive");
                 });
+            });
+        });
+    });
+
+    route::prefix("forms")->group(function () {
+        route::controller(AdminFormController::class)->group(function () {
+            route::get("/", "index")->name("admin.forms.index");
+            route::post("/store", "store")->name("admin.forms.store");
+            route::delete("/destroy/{form}", "destroy")->name("admin.forms.destroy");
+        });
+        route::prefix("questions")->group(function () {
+            route::controller(AdminInputController::class)->group(function () {
             });
         });
     });
