@@ -16,8 +16,8 @@ class AdminRuleController extends Controller
      */
     public function index($lang)
     {
-        $languages = Lang::where([["langable_type","App\Models\Rule"],["name",$lang]])->get();
-        return view('admin.rules.index',compact(["languages","lang"]));
+        $languages = Lang::where([["langable_type", "App\Models\Rule"], ["name", $lang]])->get();
+        return view('admin.rules.index', compact(["languages", "lang"]));
     }
 
     /**
@@ -27,7 +27,7 @@ class AdminRuleController extends Controller
      */
     public function create($lang)
     {
-        return view('admin.rules.create',compact("lang"));
+        return view('admin.rules.create', compact("lang"));
     }
 
     /**
@@ -51,7 +51,7 @@ class AdminRuleController extends Controller
         $language->name = $request->lang;
         $rules->language()->save($language);
 
-        return redirect()->route('admin.rules.index',$request->lang)->with("success","Rules was successfuly registered.");
+        return redirect()->route('admin.rules.index', $request->lang)->with("success", "Rules was successfuly registered.");
     }
 
     /**

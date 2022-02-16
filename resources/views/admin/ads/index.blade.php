@@ -3,9 +3,15 @@
     @include("admin.layouts.datatable.head")
 @endsection
 @section('title')
-    All Customers
+    All Advertisments
 @endsection
 @section('content')
+    <section class="text-center">
+        <div class="btn-group btn-group-toggle">
+            <a href="{{ route('admin.ads.index', 'ar') }}" class="btn btn-primary">Arabic</a>
+            <a href="{{ route('admin.ads.index', 'en') }}" class="btn btn-primary">English</a>
+        </div>
+    </section>
     <div class="card mt-4">
         <div class="card-header">
             <h3 class="card-title">All Customers Table</h3>
@@ -19,6 +25,8 @@
                         <th class="text-center">Advertisment</th>
                         <th class="text-center">Alt</th>
                         <th class="text-center">Title</th>
+                        <th class="text-center">Language</th>
+                        <th class="text-center">Status</th>
                         <th class="text-center">Options</th>
                     </tr>
                 </thead>
@@ -26,7 +34,11 @@
                     @php
                         $number = 1;
                     @endphp
-                    @foreach ($ads as $ad)
+                    @foreach ($languages as $language)
+                        @php
+                            $ad = $language->langable;
+                        @endphp
+
                         <tr>
                             <td class="text-center">{{ $number }}</td>
                             <td class="text-center">
@@ -37,6 +49,21 @@
                             </td>
                             <td class="text-center">{{ $ad->alt }}</td>
                             <td class="text-center">{{ $ad->title }}</td>
+                            <td class="text-center">{{ $ad->language->name == 'en' ? 'English' : 'Arabic' }}</td>
+
+                            <td class="text-center">
+                                @if ($ad->status == 1)
+                                    <form action="{{ route('admin.ads.deactive', $ad) }}" method="post">
+                                        @csrf
+                                        <button class="btn btn-success" type="submit">Active</button>
+                                    </form>
+                                @else
+                                    <form action="{{ route('admin.ads.activate', $ad) }}" method="post">
+                                        @csrf
+                                        <button class="btn btn-danger" type="submit">Deactive</button>
+                                    </form>
+                                @endif
+                            </td>
 
                             <td class="text-center">
                                 {{-- button for Options --}}
@@ -95,6 +122,19 @@
                                                 <input type="text" value="{{ $ad->title }}" required name="title"
                                                     class="form-control" id="Titile">
                                             </div>
+
+                                            <div class="form-group">
+                                                <label for="exampleFormControlSelect1">Language</label>
+                                                <select required name="language" class="form-control"
+                                                    id="exampleFormControlSelect1">
+                                                    <option value="en"
+                                                        {{ $ad->language->name == 'en' ? 'selected' : '' }}>
+                                                        English</option>
+                                                    <option value="ar"
+                                                        {{ $ad->language->name == 'ar' ? 'selected' : '' }}>
+                                                        Arabic</option>
+                                                </select>
+                                            </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary"
                                                     data-dismiss="modal">Close</button>
@@ -116,6 +156,8 @@
                         <th class="text-center">Advertisment</th>
                         <th class="text-center">Alt</th>
                         <th class="text-center">Title</th>
+                        <th class="text-center">Language</th>
+                        <th class="text-center">Status</th>
                         <th class="text-center">Options</th>
                     </tr>
                 </tfoot>
@@ -160,6 +202,15 @@
                             <label for="Titile">Titile for Image</label>
                             <input type="text" required name="title" class="form-control" id="Titile">
                         </div>
+
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect1">Language</label>
+                            <select required name="language" class="form-control" id="exampleFormControlSelect1">
+                                <option value="en">English</option>
+                                <option value="ar">Arabic</option>
+                            </select>
+                        </div>
+
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                             <button type="submit" class="btn btn-primary">Save changes</button>

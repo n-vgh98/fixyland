@@ -69,10 +69,12 @@ route::prefix("admin")->middleware(['auth:sanctum', 'verified', "admin"])->group
     // route for advertisment
     route::prefix("advertisment")->group(function () {
         route::controller(AdminAdvertismentsController::class)->group(function () {
-            route::get("/", "index")->name("admin.ads.index");
+            route::get("/{lang}", "index")->name("admin.ads.index");
             route::post("/store", "store")->name("admin.ads.store");
             route::post("/update/{id}", "update")->name("admin.ads.update");
             route::delete("/destroy/{ads}", "destroy")->name("admin.ads.destroy");
+            route::post("/activate_ad/{ad}", "activate")->name("admin.ads.activate");
+            route::post("/deactive_ad/{ad}", "deactive")->name("admin.ads.deactive");
         });
     });
     //routes for rules

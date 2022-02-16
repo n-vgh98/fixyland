@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Advertisment extends Model
 {
     use HasFactory;
+
+    public function language()
+    {
+        return $this->morphOne("App\Models\Lang", "langable");
+    }
 }
