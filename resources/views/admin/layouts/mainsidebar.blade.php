@@ -130,6 +130,41 @@
                         </ul>
                     </li>
 
+                    {{-- sevices links --}}
+                    <li class="nav-item has-treeview ">
+                        <a href="#" class="nav-link active">
+                            <i class="nav-icon fa fa-gear"></i>
+                            <p>
+                                Services
+                                <i class="right fa fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+
+                            {{-- Service Categories --}}
+                            <li class="nav-item">
+                                <a href="{{ route('admin.services.category.index', 'ar') }}" class="nav-link">
+                                    <i class="nav-icon fa  fa-gears"></i>
+                                    <p>
+                                        Service Categories
+                                    </p>
+                                </a>
+                            </li>
+
+                            {{-- Service Subcategories --}}
+                            <li class="nav-item">
+                                <a href="{{ route('admin.services.subcategory.index', 'ar') }}"
+                                    class="nav-link">
+                                    <i class="nav-icon fa  fa-gears"></i>
+                                    <p>
+                                        Service Subcategories
+                                    </p>
+                                </a>
+                            </li>
+
+                        </ul>
+                    </li>
+
                     {{-- notifications link --}}
                     <li class="nav-item has-treeview ">
                         <a href="#" class="nav-link bg-info active">

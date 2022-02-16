@@ -5,6 +5,8 @@ use App\Http\Controllers\Admin\AdminNotificationsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminPanelController;
 use App\Http\Controllers\Admin\AdminRuleController;
+use App\Http\Controllers\Admin\AdminServiceCategoryController;
+use App\Http\Controllers\Admin\AdminServiceSubCategoryController;
 use App\Http\Controllers\Admin\AdminUsersController;
 
 /*
@@ -80,8 +82,18 @@ route::prefix("admin")->middleware(['auth:sanctum', 'verified', "admin"])->group
 
     // route for services
     route::prefix("services")->group(function () {
-        route::controller(AdminAdvertismentsController::class)->group(function () {
-           
+        // routing for service categories
+        route::prefix("categories")->group(function () {
+            route::controller(AdminServiceCategoryController::class)->group(function () {
+                route::get("/{lang}", "index")->name("admin.services.category.index");
+            });
+        });
+
+        // routing for service subcategories
+        route::prefix("subcategories")->group(function () {
+            route::controller(AdminServiceSubCategoryController::class)->group(function () {
+                route::get("/{lang}", "index")->name("admin.services.subcategory.index");
+            });
         });
     });
 

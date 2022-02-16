@@ -15,6 +15,11 @@ return new class extends Migration
     {
         Schema::create('service_categories', function (Blueprint $table) {
             $table->id();
+            $table->string("name");
+            $table->text("photo_path");
+            $table->string("alt");
+            $table->string("title");
+            $table->tinyInteger("status")->default(1)->comment("0 is deactive and 1 is active");
             $table->timestamps();
         });
     }

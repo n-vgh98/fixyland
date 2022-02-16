@@ -15,6 +15,12 @@ return new class extends Migration
     {
         Schema::create('service_sub_categories', function (Blueprint $table) {
             $table->id();
+            $table->foreignId("category_id")->constrained("service_categories")->onDelete("cascade")->onUpdate("cascade");
+            $table->string("name");
+            $table->text("photo_path");
+            $table->string("alt");
+            $table->string("title");
+            $table->tinyInteger("status")->default(1)->comment("0 is deactive and 1 is active");
             $table->timestamps();
         });
     }
