@@ -15,6 +15,12 @@ return new class extends Migration
     {
         Schema::create('index_features', function (Blueprint $table) {
             $table->id();
+            $table->text("photo_path");
+            $table->text("alt");
+            $table->text("title");
+            $table->text("card_title");
+            $table->text("card_text");
+            $table->tinyInteger("status")->default(1)->comment("0 is deactive 1 is active");
             $table->timestamps();
         });
     }

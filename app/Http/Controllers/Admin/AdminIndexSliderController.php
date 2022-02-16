@@ -42,8 +42,8 @@ class AdminIndexSliderController extends Controller
         $lang->name = $request->language;
         $slider = new IndexSlider();
         $imagename = time() . "." . $request->image->extension();
-        $request->image->move(public_path("Images/IndexSlider/"), $imagename);
-        $slider->photo_path = "Images/IndexSlider/" . $imagename;
+        $request->image->move(public_path("Images/Decoration/IndexSlider/"), $imagename);
+        $slider->photo_path = "Images/Decoration/IndexSlider/" . $imagename;
         $slider->alt = $request->alt;
         $slider->title = $request->title;
         $slider->save();
@@ -86,8 +86,8 @@ class AdminIndexSliderController extends Controller
         if ($request->image != null) {
             unlink($slider->photo_path);
             $imagename = time() . "." . $request->image->extension();
-            $request->image->move(public_path("Images/IndexSlider/"), $imagename);
-            $slider->photo_path = "Images/IndexSlider/" . $imagename;
+            $request->image->move(public_path("Images/Decoration/IndexSlider/"), $imagename);
+            $slider->photo_path = "Images/Decoration/IndexSlider/" . $imagename;
         }
 
         $slider->alt = $request->alt;

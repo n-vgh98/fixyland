@@ -163,6 +163,17 @@
                                         </a>
                                     </li>
 
+
+                                    <li class="nav-item">
+                                        <a href="{{ route('admin.decoration.index.features.index', 'ar') }}"
+                                            class="nav-link">
+                                            <i class="nav-icon fa  fa-sliders"></i>
+                                            <p>
+                                                Features
+                                                <i class="right fa"></i>
+                                            </p>
+                                        </a>
+                                    </li>
                                 </ul>
                             </li>
 

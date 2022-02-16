@@ -1,16 +1,17 @@
 <?php
 
-use App\Http\Controllers\Admin\AdminAboutUsController;
-use App\Http\Controllers\Admin\AdminAdvertismentsController;
-use App\Http\Controllers\Admin\AdminIndexSliderController;
-use App\Http\Controllers\Admin\AdminNotificationsController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\AdminPanelController;
 use App\Http\Controllers\Admin\AdminRuleController;
+use App\Http\Controllers\Admin\AdminPanelController;
 use App\Http\Controllers\Admin\AdminScoreController;
+use App\Http\Controllers\Admin\AdminUsersController;
+use App\Http\Controllers\Admin\AdminAboutUsController;
+use App\Http\Controllers\Admin\AdminIndexSliderController;
+use App\Http\Controllers\Admin\AdminIndexFeatureController;
+use App\Http\Controllers\Admin\AdminAdvertismentsController;
+use App\Http\Controllers\Admin\AdminNotificationsController;
 use App\Http\Controllers\Admin\AdminServiceCategoryController;
 use App\Http\Controllers\Admin\AdminServiceSubCategoryController;
-use App\Http\Controllers\Admin\AdminUsersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -59,6 +60,7 @@ route::prefix("admin")->middleware(['auth:sanctum', 'verified', "admin"])->group
     // route for
     route::prefix("decoration")->group(function () {
         route::prefix("index")->group(function () {
+            // route for slider
             route::prefix("slider")->group(function () {
                 route::controller(AdminIndexSliderController::class)->group(function () {
                     route::get("/{lang}", "index")->name("admin.decoration.index.slider.index");
@@ -67,6 +69,18 @@ route::prefix("admin")->middleware(['auth:sanctum', 'verified', "admin"])->group
                     route::post("/update/{slider}", "update")->name("admin.decoration.index.slider.update");
                     route::post("/activate_slider/{slider}", "activate")->name("admin.decoration.index.slider.activate");
                     route::post("/deactive_slider/{slider}", "deactive")->name("admin.decoration.index.slider.deactive");
+                });
+            });
+
+            // route for features
+            route::prefix("features")->group(function () {
+                route::controller(AdminIndexFeatureController::class)->group(function () {
+                    route::get("/{lang}", "index")->name("admin.decoration.index.features.index");
+                    route::post("/store", "store")->name("admin.decoration.index.features.store");
+                    route::delete("/destroy/{feature}", "destroy")->name("admin.decoration.index.features.destroy");
+                    route::post("/update/{feature}", "update")->name("admin.decoration.index.features.update");
+                    route::post("/activate_slider/{feature}", "activate")->name("admin.decoration.index.features.activate");
+                    route::post("/deactive_slider/{feature}", "deactive")->name("admin.decoration.index.features.deactive");
                 });
             });
         });
