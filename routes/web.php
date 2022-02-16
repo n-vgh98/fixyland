@@ -190,6 +190,25 @@ route::prefix("admin")->middleware(['auth:sanctum', 'verified', "admin"])->group
             Route::delete("/destroy/{id}", "destroy")->name('admin.about_us.delete');
         });
     });
+    //routes for faq
+    Route::prefix("faq")->group(function () {
+        Route::prefix("categories")->group(function () {
+            Route::controller(AdminFaqCategoryController::class)->group(function () {
+                Route::get("/{lang}", "index")->name('admin.faq_categories.index');
+                Route::post("/store", "store")->name('admin.faq_categories.store');
+                Route::post("/update/{id}", "update")->name('admin.faq_categories.update');
+                Route::delete("/destroy/{id}", "destroy")->name('admin.faq_categories.delete');
+            });
+        });
+        // Route::controller(AdminAboutUsController::class)->group(function () {
+        //     Route::get("/{lang}", "index")->name('admin.about_us.index');
+        //     Route::get("/create/{lang}", "create")->name('admin.about_us.create');
+        //     Route::post("/store", "store")->name('admin.about_us.store');
+        //     Route::get("/edit/{id}","edit")->name('admin.about_us.edit');
+        //     Route::post("/update/{id}","update")->name('admin.about_us.update');
+        //     Route::delete("/destroy/{id}","destroy")->name('admin.about_us.delete');
+        // });
+    });
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {

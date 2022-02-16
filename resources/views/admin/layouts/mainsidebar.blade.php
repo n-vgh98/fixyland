@@ -306,12 +306,46 @@
                     <li class="nav-item has-treeview">
 
                         <a href="{{ route('admin.rules.index', 'ar') }}" class="nav-link bg-primary active">
-                            <i class="nav-icon fa fa-pencil-square-o"></i>
+                            <i class="nav-icon fa fa-exclamation-circle"></i>
                             <p>
                                 Rules
                             </p>
                         </a>
                     </li>
+
+                    <!-- faq links-->
+                    <li class="nav-item has-treeview ">
+                        <a href="#" class="nav-link bg-info active">
+                            <i class="nav-icon fa  fa-bars"></i>
+                            <p>
+                                Frequently Asked Questions
+                                <i class="right fa fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+
+                            {{-- faq_categories --}}
+                            <li class="nav-item">
+                                <a href="{{ route('admin.faq_categories.index','ar') }}" class="nav-link">
+                                    <i class="nav-icon fa  fa-clone"></i>
+                                    <p>
+                                        Faq Categories
+                                    </p>
+                                </a>
+                            </li>
+
+                            {{-- faq --}}
+                            <li class="nav-item">
+                                <a href="" class="nav-link">
+                                    <i class="nav-icon fa  fa-file-text-o"></i>
+                                    <p>
+                                        All Faq
+                                    </p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
 
                     <!-- about us link -->
                     <li class="nav-item has-treeview">
