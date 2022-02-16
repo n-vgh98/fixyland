@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AdminAboutUsController;
 use App\Http\Controllers\Admin\AdminAdvertismentsController;
+use App\Http\Controllers\Admin\AdminIndexSliderController;
 use App\Http\Controllers\Admin\AdminNotificationsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminPanelController;
@@ -55,7 +56,23 @@ route::prefix("admin")->middleware(['auth:sanctum', 'verified', "admin"])->group
         });
     });
 
-    // route for showing users
+    // route for
+    route::prefix("decoration")->group(function () {
+        route::prefix("index")->group(function () {
+            route::prefix("slider")->group(function () {
+                route::controller(AdminIndexSliderController::class)->group(function () {
+                    route::get("/{lang}", "index")->name("admin.decoration.index.slider.index");
+                    route::post("/store", "store")->name("admin.decoration.index.slider.store");
+                    route::delete("/destroy/{slider}", "destroy")->name("admin.decoration.index.slider.destroy");
+                    route::post("/update/{slider}", "update")->name("admin.decoration.index.slider.update");
+                    route::post("/activate_slider/{slider}", "activate")->name("admin.decoration.index.slider.activate");
+                    route::post("/deactive_slider/{slider}", "deactive")->name("admin.decoration.index.slider.deactive");
+                });
+            });
+        });
+    });
+
+    // route for  scores
     route::prefix("scores")->group(function () {
         route::controller(AdminScoreController::class)->group(function () {
             route::get("/{lang}", "index")->name("admin.scores.index");

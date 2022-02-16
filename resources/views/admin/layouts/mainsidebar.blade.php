@@ -130,6 +130,45 @@
                         </ul>
                     </li>
 
+                    {{-- decoration links --}}
+                    <li class="nav-item has-treeview ">
+                        <a href="#" class="nav-link active">
+                            <i class="nav-icon fa fa-star"></i>
+                            <p>
+                                Decoration
+                                <i class="right fa fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+
+
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                    <i class="nav-icon fa  fa-archive"></i>
+                                    <p>
+                                        Index
+                                        <i class="right fa fa-angle-left"></i>
+                                    </p>
+                                </a>
+                                <ul class="nav nav-treeview">
+
+                                    <li class="nav-item">
+                                        <a href="{{ route('admin.decoration.index.slider.index', 'ar') }}"
+                                            class="nav-link">
+                                            <i class="nav-icon fa  fa-sliders"></i>
+                                            <p>
+                                                Slider
+                                                <i class="right fa"></i>
+                                            </p>
+                                        </a>
+                                    </li>
+
+                                </ul>
+                            </li>
+
+                        </ul>
+                    </li>
+
                     {{-- sevices links --}}
                     <li class="nav-item has-treeview ">
                         <a href="#" class="nav-link active">
