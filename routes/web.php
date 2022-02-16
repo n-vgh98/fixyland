@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\AdminAboutUsController;
 use App\Http\Controllers\Admin\AdminIndexSliderController;
 use App\Http\Controllers\Admin\AdminIndexFeatureController;
 use App\Http\Controllers\Admin\AdminAdvertismentsController;
+use App\Http\Controllers\Admin\AdminIndexStaticController;
 use App\Http\Controllers\Admin\AdminNotificationsController;
 use App\Http\Controllers\Admin\AdminServiceCategoryController;
 use App\Http\Controllers\Admin\AdminServiceSubCategoryController;
@@ -81,6 +82,18 @@ route::prefix("admin")->middleware(['auth:sanctum', 'verified', "admin"])->group
                     route::post("/update/{feature}", "update")->name("admin.decoration.index.features.update");
                     route::post("/activate_slider/{feature}", "activate")->name("admin.decoration.index.features.activate");
                     route::post("/deactive_slider/{feature}", "deactive")->name("admin.decoration.index.features.deactive");
+                });
+            });
+
+            // route for statics
+            route::prefix("statics")->group(function () {
+                route::controller(AdminIndexStaticController::class)->group(function () {
+                    route::get("/{lang}", "index")->name("admin.decoration.index.statics.index");
+                    route::post("/store", "store")->name("admin.decoration.index.statics.store");
+                    route::delete("/destroy/{static}", "destroy")->name("admin.decoration.index.statics.destroy");
+                    route::post("/update/{static}", "update")->name("admin.decoration.index.statics.update");
+                    route::post("/activate_slider/{static}", "activate")->name("admin.decoration.index.statics.activate");
+                    route::post("/deactive_slider/{static}", "deactive")->name("admin.decoration.index.statics.deactive");
                 });
             });
         });

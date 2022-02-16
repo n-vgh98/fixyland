@@ -15,6 +15,9 @@ return new class extends Migration
     {
         Schema::create('index_statics', function (Blueprint $table) {
             $table->id();
+            $table->text("title");
+            $table->text("value");
+            $table->tinyInteger("status")->default(1)->comment("0 is deactive 1 is active");
             $table->timestamps();
         });
     }
