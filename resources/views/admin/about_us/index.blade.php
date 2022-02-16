@@ -3,7 +3,7 @@
     @include("admin.layouts.datatable.head")
 @endsection
 @section('title')
-   Rules
+   About Us
 @endsection
 @section('content')
     <section class="text-center">

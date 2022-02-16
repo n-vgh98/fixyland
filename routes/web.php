@@ -83,6 +83,9 @@ route::prefix("admin")->middleware(['auth:sanctum', 'verified', "admin"])->group
             Route::get("/{lang}", "index")->name('admin.rules.index');
             Route::get("/create/{lang}", "create")->name('admin.rules.create');
             Route::post("/store", "store")->name('admin.rules.store');
+            Route::get("/edit/{id}","edit")->name('admin.rules.edit');
+            Route::post("/update/{id}","update")->name('admin.rules.update');
+            Route::delete("/destroy/{id}","destroy")->name('admin.rules.delete');
         });
     });
 });
