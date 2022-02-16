@@ -229,7 +229,8 @@
                         </ul>
                     </li>
 
-                    {{-- link to jetstream --}}
+
+                    {{-- link to ads --}}
                     <li class="nav-item has-treeview">
 
                         <a href="{{ route('admin.ads.index', 'en') }}" class="nav-link bg-primary active">
@@ -240,13 +241,24 @@
                         </a>
                     </li>
 
+                    {{-- link to scores --}}
+                    <li class="nav-item has-treeview">
+
+                        <a href="{{ route('admin.scores.index', 'ar') }}" class="nav-link bg-primary active">
+                            <i class="nav-icon fa fa-tasks"></i>
+                            <p>
+                                Scores
+                            </p>
+                        </a>
+                    </li>
+
                     <!-- rules link -->
                     <li class="nav-item has-treeview">
 
                         <a href="{{ route('admin.rules.index', 'ar') }}" class="nav-link bg-primary active">
                             <i class="nav-icon fa fa-pencil-square-o"></i>
                             <p>
-                            Rules
+                                Rules
                             </p>
                         </a>
                     </li>

@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\AdminNotificationsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminPanelController;
 use App\Http\Controllers\Admin\AdminRuleController;
+use App\Http\Controllers\Admin\AdminScoreController;
 use App\Http\Controllers\Admin\AdminServiceCategoryController;
 use App\Http\Controllers\Admin\AdminServiceSubCategoryController;
 use App\Http\Controllers\Admin\AdminUsersController;
@@ -51,6 +52,18 @@ route::prefix("admin")->middleware(['auth:sanctum', 'verified', "admin"])->group
 
             // route for updating  user
             route::post("/update_user/{user}", "edituser")->name("admin.users.update");
+        });
+    });
+
+    // route for showing users
+    route::prefix("scores")->group(function () {
+        route::controller(AdminScoreController::class)->group(function () {
+            route::get("/{lang}", "index")->name("admin.scores.index");
+            route::post("/store", "store")->name("admin.scores.store");
+            route::delete("/destroy/{score}", "destroy")->name("admin.scores.destroy");
+            route::post("/update/{score}", "update")->name("admin.scores.update");
+            route::post("/activate_score/{score}", "activate")->name("admin.scores.activate");
+            route::post("/deactive_score/{score}", "deactive")->name("admin.scores.deactive");
         });
     });
 
@@ -128,9 +141,9 @@ route::prefix("admin")->middleware(['auth:sanctum', 'verified', "admin"])->group
             Route::get("/{lang}", "index")->name('admin.about_us.index');
             Route::get("/create/{lang}", "create")->name('admin.about_us.create');
             Route::post("/store", "store")->name('admin.about_us.store');
-            Route::get("/edit/{id}","edit")->name('admin.about_us.edit');
-            Route::post("/update/{id}","update")->name('admin.about_us.update');
-            Route::delete("/destroy/{id}","destroy")->name('admin.about_us.delete');
+            Route::get("/edit/{id}", "edit")->name('admin.about_us.edit');
+            Route::post("/update/{id}", "update")->name('admin.about_us.update');
+            Route::delete("/destroy/{id}", "destroy")->name('admin.about_us.delete');
         });
     });
 });
