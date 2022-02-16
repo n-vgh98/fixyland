@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminAboutUsController;
 use App\Http\Controllers\Admin\AdminAdvertismentsController;
 use App\Http\Controllers\Admin\AdminNotificationsController;
 use Illuminate\Support\Facades\Route;
@@ -119,6 +120,17 @@ route::prefix("admin")->middleware(['auth:sanctum', 'verified', "admin"])->group
             Route::get("/edit/{id}", "edit")->name('admin.rules.edit');
             Route::post("/update/{id}", "update")->name('admin.rules.update');
             Route::delete("/destroy/{id}", "destroy")->name('admin.rules.delete');
+        });
+    });
+    //rutes for about us
+    Route::prefix("about_us")->group(function () {
+        Route::controller(AdminAboutUsController::class)->group(function () {
+            Route::get("/{lang}", "index")->name('admin.about_us.index');
+            Route::get("/create/{lang}", "create")->name('admin.about_us.create');
+            Route::post("/store", "store")->name('admin.about_us.store');
+            Route::get("/edit/{id}","edit")->name('admin.about_us.edit');
+            Route::post("/update/{id}","update")->name('admin.about_us.update');
+            Route::delete("/destroy/{id}","destroy")->name('admin.about_us.delete');
         });
     });
 });

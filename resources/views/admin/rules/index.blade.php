@@ -93,7 +93,7 @@
                                         <form action="{{ route('admin.rules.delete', $rule->id) }}" method="post">
                                             @method("delete")
                                             @csrf
-                                            <button type="submit" class="btn btn-danger ">Delet Rules</button>
+                                            <button type="submit" class="btn btn-danger ">Delete Rules</button>
                                         </form>
                                     </div>
                                 </div>
