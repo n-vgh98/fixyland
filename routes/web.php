@@ -77,15 +77,23 @@ route::prefix("admin")->middleware(['auth:sanctum', 'verified', "admin"])->group
             route::post("/deactive_ad/{ad}", "deactive")->name("admin.ads.deactive");
         });
     });
+
+    // route for services
+    route::prefix("services")->group(function () {
+        route::controller(AdminAdvertismentsController::class)->group(function () {
+           
+        });
+    });
+
     //routes for rules
     Route::prefix("rules")->group(function () {
         Route::controller(AdminRuleController::class)->group(function () {
             Route::get("/{lang}", "index")->name('admin.rules.index');
             Route::get("/create/{lang}", "create")->name('admin.rules.create');
             Route::post("/store", "store")->name('admin.rules.store');
-            Route::get("/edit/{id}","edit")->name('admin.rules.edit');
-            Route::post("/update/{id}","update")->name('admin.rules.update');
-            Route::delete("/destroy/{id}","destroy")->name('admin.rules.delete');
+            Route::get("/edit/{id}", "edit")->name('admin.rules.edit');
+            Route::post("/update/{id}", "update")->name('admin.rules.update');
+            Route::delete("/destroy/{id}", "destroy")->name('admin.rules.delete');
         });
     });
 });
