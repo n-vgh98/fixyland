@@ -5,16 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class FaqCategory extends Model
+class Faq extends Model
 {
     use HasFactory;
-    protected $table="faq_categories";
+    protected $table="faqs";
 
     public function language(){
         return $this->morphOne("App\Models\Lang","langable");
     }
 
-    public function faqs(){
-        return $this->hasMany("App\Models\Faq");
+    public function category(){
+        return $this->belongsTo("App\Models\FaqCategory");
     }
 }

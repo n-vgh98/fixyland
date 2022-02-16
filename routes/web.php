@@ -1,5 +1,8 @@
 <?php
 
+
+use App\Http\Controllers\Admin\AdminFaqCategoryController;
+use App\Http\Controllers\Admin\AdminFaqController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminRuleController;
 use App\Http\Controllers\Admin\AdminPanelController;
@@ -200,14 +203,12 @@ route::prefix("admin")->middleware(['auth:sanctum', 'verified', "admin"])->group
                 Route::delete("/destroy/{id}", "destroy")->name('admin.faq_categories.delete');
             });
         });
-        // Route::controller(AdminAboutUsController::class)->group(function () {
-        //     Route::get("/{lang}", "index")->name('admin.about_us.index');
-        //     Route::get("/create/{lang}", "create")->name('admin.about_us.create');
-        //     Route::post("/store", "store")->name('admin.about_us.store');
-        //     Route::get("/edit/{id}","edit")->name('admin.about_us.edit');
-        //     Route::post("/update/{id}","update")->name('admin.about_us.update');
-        //     Route::delete("/destroy/{id}","destroy")->name('admin.about_us.delete');
-        // });
+        Route::controller(AdminFaqController::class)->group(function () {
+            Route::get("/{lang}", "index")->name('admin.faq.index');
+            Route::post("/store", "store")->name('admin.faq.store');
+            Route::post("/update/{id}","update")->name('admin.faq.update');
+            Route::delete("/destroy/{id}","destroy")->name('admin.faq.delete');
+        });
     });
 });
 

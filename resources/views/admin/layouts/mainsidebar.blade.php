@@ -336,7 +336,7 @@
 
                             {{-- faq --}}
                             <li class="nav-item">
-                                <a href="" class="nav-link">
+                                <a href="{{route('admin.faq.index','ar')}}" class="nav-link">
                                     <i class="nav-icon fa  fa-file-text-o"></i>
                                     <p>
                                         All Faq
