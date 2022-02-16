@@ -163,6 +163,17 @@
                                         </a>
                                     </li>
 
+                                    <li class="nav-item">
+                                        <a href="{{ route('admin.decoration.index.statics.index', 'ar') }}"
+                                            class="nav-link">
+                                            <i class="nav-icon fa  fa-sliders"></i>
+                                            <p>
+                                                statics
+                                                <i class="right fa"></i>
+                                            </p>
+                                        </a>
+                                    </li>
+
 
                                     <li class="nav-item">
                                         <a href="{{ route('admin.decoration.index.features.index', 'ar') }}"
@@ -326,7 +337,7 @@
 
                             {{-- faq_categories --}}
                             <li class="nav-item">
-                                <a href="{{ route('admin.faq_categories.index','ar') }}" class="nav-link">
+                                <a href="{{ route('admin.faq_categories.index', 'ar') }}" class="nav-link">
                                     <i class="nav-icon fa  fa-clone"></i>
                                     <p>
                                         Faq Categories
@@ -336,7 +347,7 @@
 
                             {{-- faq --}}
                             <li class="nav-item">
-                                <a href="{{route('admin.faq.index','ar')}}" class="nav-link">
+                                <a href="{{ route('admin.faq.index', 'ar') }}" class="nav-link">
                                     <i class="nav-icon fa  fa-file-text-o"></i>
                                     <p>
                                         All Faq
