@@ -17,4 +17,8 @@ class ServiceSubCategory extends Model
     {
         return $this->belongsTo("App\Models\ServiceCategory", "category_id");
     }
+    public function description()
+    {
+        return $this->hasOne("App\Models\ServiceSubcategoryDescription", "subcategory_id");
+    }
 }

@@ -90,6 +90,15 @@
                                         <span class="sr-only">Toggle Dropdown</span>
                                     </button>
                                     <div class="dropdown-menu text-center">
+                                        @if ($subcategory->description == null)
+                                            <a class="btn btn-primary"
+                                                href="{{ route('admin.services.subcategory.description.create', $subcategory->id) }}">Make
+                                                Descriptions</a>
+                                        @else
+                                            <a class="btn btn-primary"
+                                                href="{{ route('admin.services.subcategory.description.edit', $subcategory->description) }}">update
+                                                Descriptions</a>
+                                        @endif
                                         {{-- button for removing subcategory --}}
                                         <form action="{{ route('admin.services.subcategory.destroy', $subcategory) }}"
                                             method="post">

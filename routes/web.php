@@ -16,6 +16,7 @@ use App\Http\Controllers\Admin\AdminIndexStaticController;
 use App\Http\Controllers\Admin\AdminNotificationsController;
 use App\Http\Controllers\Admin\AdminServiceCategoryController;
 use App\Http\Controllers\Admin\AdminServiceSubCategoryController;
+use App\Http\Controllers\Admin\AdminSubCategoryServiceDescriptionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -168,6 +169,12 @@ route::prefix("admin")->middleware(['auth:sanctum', 'verified', "admin"])->group
                 route::post("/popular_category/{subcategory}", "popular")->name("admin.services.subcategory.popular");
                 route::post("/hate_category/{subcategory}", "hate")->name("admin.services.subcategory.hate");
             });
+            route::controller(AdminSubCategoryServiceDescriptionController::class)->group(function () {
+                route::get("/create/{id}", "create")->name("admin.services.subcategory.description.create");
+                route::get("/editdescription/{desc}", "edit")->name("admin.services.subcategory.description.edit");
+                route::post("/description", "store")->name("admin.services.subcategory.description.store");
+                route::post("/updatedescription/{desc}", "update")->name("admin.services.subcategory.description.update");
+            });
         });
     });
 
@@ -206,8 +213,8 @@ route::prefix("admin")->middleware(['auth:sanctum', 'verified', "admin"])->group
         Route::controller(AdminFaqController::class)->group(function () {
             Route::get("/{lang}", "index")->name('admin.faq.index');
             Route::post("/store", "store")->name('admin.faq.store');
-            Route::post("/update/{id}","update")->name('admin.faq.update');
-            Route::delete("/destroy/{id}","destroy")->name('admin.faq.delete');
+            Route::post("/update/{id}", "update")->name('admin.faq.update');
+            Route::delete("/destroy/{id}", "destroy")->name('admin.faq.delete');
         });
     });
 });
