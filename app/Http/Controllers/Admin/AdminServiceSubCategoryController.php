@@ -129,4 +129,20 @@ class AdminServiceSubCategoryController extends Controller
         $subcategory->save();
         return redirect()->back()->with("success", "Service Subcategory Deactivated");
     }
+
+    // method for popularing subcategory
+    public function popular(ServiceSubCategory $subcategory)
+    {
+        $subcategory->popular = 1;
+        $subcategory->save();
+        return redirect()->back()->with("success", "Service Subcategory  got popular");
+    }
+
+    // method for hating subcategory
+    public function hate(ServiceSubCategory $subcategory)
+    {
+        $subcategory->popular = 0;
+        $subcategory->save();
+        return redirect()->back()->with("success", "Service Subcategory got normall");
+    }
 }

@@ -23,6 +23,7 @@
                         <th class="text-center">Image Title</th>
                         <th class="text-center">Language</th>
                         <th class="text-center">Status</th>
+                        <th class="text-center">Popular</th>
                         <th class="text-center">Options</th>
                     </tr>
                 </thead>
@@ -60,6 +61,22 @@
                                         method="post">
                                         @csrf
                                         <button class="btn btn-danger" type="submit">Deactive</button>
+                                    </form>
+                                @endif
+                            </td>
+
+                            <td class="text-center">
+                                @if ($subcategory->popular == 1)
+                                    <form action="{{ route('admin.services.subcategory.hate', $subcategory) }}"
+                                        method="post">
+                                        @csrf
+                                        <button class="btn btn-success" type="submit">Popular</button>
+                                    </form>
+                                @else
+                                    <form action="{{ route('admin.services.subcategory.popular', $subcategory) }}"
+                                        method="post">
+                                        @csrf
+                                        <button class="btn btn-danger" type="submit">Not Popular</button>
                                     </form>
                                 @endif
                             </td>
@@ -167,6 +184,7 @@
                         <th class="text-center">Image Title</th>
                         <th class="text-center">Language</th>
                         <th class="text-center">Status</th>
+                        <th class="text-center">Popular</th>
                         <th class="text-center">Options</th>
                     </tr>
                 </tfoot>

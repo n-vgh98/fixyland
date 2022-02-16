@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string("alt");
             $table->string("title");
             $table->tinyInteger("status")->default(1)->comment("0 is deactive and 1 is active");
+            $table->tinyInteger("popular")->default(0)->comment("0 is not popular and 1 is popular");
             $table->timestamps();
         });
     }

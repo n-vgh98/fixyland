@@ -65,6 +65,22 @@
                             </td>
 
                             <td class="text-center">
+                                @if ($subcategory->popular == 1)
+                                    <form action="{{ route('admin.services.subcategory.hate', $subcategory) }}"
+                                        method="post">
+                                        @csrf
+                                        <button class="btn btn-success" type="submit">Popular</button>
+                                    </form>
+                                @else
+                                    <form action="{{ route('admin.services.subcategory.popular', $subcategory) }}"
+                                        method="post">
+                                        @csrf
+                                        <button class="btn btn-danger" type="submit">Not Popular</button>
+                                    </form>
+                                @endif
+                            </td>
+
+                            <td class="text-center">
                                 {{-- button for Options --}}
                                 <div class="btn-group text-center">
                                     <button type="button" class="btn btn-info">Setting</button>

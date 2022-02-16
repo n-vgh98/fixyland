@@ -104,6 +104,8 @@ route::prefix("admin")->middleware(['auth:sanctum', 'verified', "admin"])->group
                 route::post("/update/{subcategory}", "update")->name("admin.services.subcategory.update");
                 route::post("/activate_category/{subcategory}", "activate")->name("admin.services.subcategory.activate");
                 route::post("/deactive_category/{subcategory}", "deactive")->name("admin.services.subcategory.deactive");
+                route::post("/popular_category/{subcategory}", "popular")->name("admin.services.subcategory.popular");
+                route::post("/hate_category/{subcategory}", "hate")->name("admin.services.subcategory.hate");
             });
         });
     });

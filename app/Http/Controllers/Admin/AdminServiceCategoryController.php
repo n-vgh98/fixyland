@@ -16,6 +16,7 @@ class AdminServiceCategoryController extends Controller
      */
     public function index($lang)
     {
+
         $languages = Lang::where([["langable_type", "App\Models\ServiceCategory"], ["name", $lang]])->get();
         return view("admin.services.category.index", compact("languages"));
     }
@@ -110,6 +111,11 @@ class AdminServiceCategoryController extends Controller
     {
         unlink($category->photo_path);
         $category->language->delete();
+        if (count($category->subcategories)) {
+            foreach ($category->subcategories as $subcategory) {
+                unlink($subcategory->photo_path);
+            }
+        }
         $category->delete();
         return redirect()->back()->with("success", "Your Service Category and all of its subcategories removed successfully");
     }
