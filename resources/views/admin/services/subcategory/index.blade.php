@@ -6,12 +6,6 @@
     All Service Categories
 @endsection
 @section('content')
-    <section class="text-center">
-        <div class="btn-group btn-group-toggle">
-            <a href="{{ route('admin.services.category.index', 'ar') }}" class="btn btn-primary">Arabic</a>
-            <a href="{{ route('admin.services.category.index', 'en') }}" class="btn btn-primary">English</a>
-        </div>
-    </section>
     <div class="card mt-4">
         <div class="card-header">
             <h3 class="card-title">All Service Categories Table</h3>
@@ -23,6 +17,7 @@
                     <tr>
                         <th class="text-center">#</th>
                         <th class="text-center">name</th>
+                        <th class="text-center">category name</th>
                         <th class="text-center">Image</th>
                         <th class="text-center">Image Alt</th>
                         <th class="text-center">Image Title</th>
@@ -35,37 +30,33 @@
                     @php
                         $number = 1;
                     @endphp
-                    @foreach ($languages as $language)
-                        @php
-                            $category = $language->langable;
-                        @endphp
-
+                    @foreach ($subcategories as $subcategory)
                         <tr>
                             <td class="text-center">{{ $number }}</td>
+                            <td class="text-center">{{ $subcategory->name }}</td>
+                            <td class="text-center">{{ $subcategory->category->name }}</td>
                             <td class="text-center">
-                                {{ $category->name }}
-                            </td>
-                            <td class="text-center">
-                                <button data-toggle="modal" data-target="#edit{{ $category->id }}">
-                                    <img src="{{ asset($category->photo_path) }}" style="height: 60px; width:60px;"
-                                        class="img-fluid" alt="{{ $category->alt }}"
-                                        title="{{ $category->title }}">
+                                <button data-toggle="modal" data-target="#edit{{ $subcategory->id }}">
+                                    <img src="{{ asset($subcategory->photo_path) }}" style="height: 60px; width:60px;"
+                                        class="img-fluid" alt="{{ $subcategory->alt }}"
+                                        title="{{ $subcategory->title }}">
                                 </button>
                             </td>
-                            <td class="text-center">{{ $category->alt }}</td>
-                            <td class="text-center">{{ $category->title }}</td>
-                            <td class="text-center">{{ $category->language->name == 'en' ? 'English' : 'Arabic' }}
+                            <td class="text-center">{{ $subcategory->alt }}</td>
+                            <td class="text-center">{{ $subcategory->title }}</td>
+                            <td class="text-center">
+                                {{ $subcategory->category->language->name == 'en' ? 'English' : 'Arabic' }}
                             </td>
 
                             <td class="text-center">
-                                @if ($category->status == 1)
-                                    <form action="{{ route('admin.services.category.deactive', $category) }}"
+                                @if ($subcategory->status == 1)
+                                    <form action="{{ route('admin.services.subcategory.deactive', $subcategory) }}"
                                         method="post">
                                         @csrf
                                         <button class="btn btn-success" type="submit">Active</button>
                                     </form>
                                 @else
-                                    <form action="{{ route('admin.services.category.activate', $category) }}"
+                                    <form action="{{ route('admin.services.subcategory.activate', $subcategory) }}"
                                         method="post">
                                         @csrf
                                         <button class="btn btn-danger" type="submit">Deactive</button>
@@ -82,12 +73,12 @@
                                         <span class="sr-only">Toggle Dropdown</span>
                                     </button>
                                     <div class="dropdown-menu text-center">
-                                        {{-- button for removing account --}}
-                                        <form action="{{ route('admin.services.category.destroy', $category) }}"
+                                        {{-- button for removing subcategory --}}
+                                        <form action="{{ route('admin.services.subcategory.destroy', $subcategory) }}"
                                             method="post">
                                             @method("delete")
                                             @csrf
-                                            <button type="submit" class="btn btn-danger ">Delet Advertisment</button>
+                                            <button type="submit" class="btn btn-danger ">Delet subcategory</button>
                                         </form>
                                     </div>
                                 </div>
@@ -97,13 +88,13 @@
                             $number++;
                         @endphp
 
-                        <!-- Modal for editing  ad -->
-                        <div class="modal fade" id="edit{{ $category->id }}" tabindex="-1" role="dialog"
+                        <!-- Modal for editing  subcategory -->
+                        <div class="modal fade" id="edit{{ $subcategory->id }}" tabindex="-1" role="dialog"
                             aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">update Advertisment</h5>
+                                        <h5 class="modal-title" id="exampleModalLabel">update subcategory</h5>
                                         <button type="button" class="close" data-dismiss="modal"
                                             aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
@@ -111,14 +102,27 @@
                                     </div>
                                     <div class="modal-body">
                                         <form class="mt-5" method="post"
-                                            action="{{ route('admin.services.category.update', $category->id) }}"
+                                            action="{{ route('admin.services.subcategory.update', $subcategory->id) }}"
                                             enctype="multipart/form-data">
                                             @csrf
 
                                             <div class="form-group">
-                                                <label for="name">category name</label>
-                                                <input type="text" value="{{ $category->name }}" required name="name"
+                                                <label for="name">subcategory name</label>
+                                                <input type="text" value="{{ $subcategory->name }}" required name="name"
                                                     class="form-control" id="name">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="exampleFormControlSelect1">Category</label>
+                                                <select required name="category_id" class="form-control"
+                                                    id="exampleFormControlSelect1">
+                                                    @foreach ($categories as $category)
+                                                        <option value="{{ $category->id }}"
+                                                            {{ $subcategory->category->name == $category->name ? 'selected' : '' }}>
+                                                            {{ $category->name }}</option>
+                                                    @endforeach
+
+                                                </select>
                                             </div>
 
                                             <div class="form-group">
@@ -129,27 +133,14 @@
 
                                             <div class="form-group">
                                                 <label for="alt">Alt for Image</label>
-                                                <input value="{{ $category->alt }}" type="text" required name="alt"
+                                                <input value="{{ $subcategory->alt }}" type="text" required name="alt"
                                                     class="form-control" id="alt">
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="Titile">Titile for Image</label>
-                                                <input type="text" value="{{ $category->title }}" required name="title"
-                                                    class="form-control" id="Titile">
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label for="exampleFormControlSelect1">Language</label>
-                                                <select required name="language" class="form-control"
-                                                    id="exampleFormControlSelect1">
-                                                    <option value="en"
-                                                        {{ $category->language->name == 'en' ? 'selected' : '' }}>
-                                                        English</option>
-                                                    <option value="ar"
-                                                        {{ $category->language->name == 'ar' ? 'selected' : '' }}>
-                                                        Arabic</option>
-                                                </select>
+                                                <input type="text" value="{{ $subcategory->title }}" required
+                                                    name="title" class="form-control" id="Titile">
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary"
@@ -170,6 +161,7 @@
                     <tr>
                         <th class="text-center">#</th>
                         <th class="text-center">name</th>
+                        <th class="text-center">category name</th>
                         <th class="text-center">Image</th>
                         <th class="text-center">Image Alt</th>
                         <th class="text-center">Image Title</th>
@@ -184,13 +176,13 @@
 
         </div>
     </div>
-    <!-- Button for making new category -->
+    {{-- <!-- Button for making new subcategory -->
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
         Make new Category
     </button>
 
 
-    <!-- Modal for making new category -->
+    <!-- Modal for making new subcategory -->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -202,7 +194,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form class="mt-5" method="post" action="{{ route('admin.services.category.store') }}"
+                    <form class="mt-5" method="post" action="{{ route('admin.services.subcategory.store') }}"
                         enctype="multipart/form-data">
                         @csrf
 
@@ -244,7 +236,7 @@
 
             </div>
         </div>
-    </div>
+    </div> --}}
 @endsection
 @section('script')
     @include('admin.layouts.datatable.script')

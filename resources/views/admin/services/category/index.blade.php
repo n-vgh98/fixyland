@@ -87,7 +87,7 @@
                                             method="post">
                                             @method("delete")
                                             @csrf
-                                            <button type="submit" class="btn btn-danger ">Delet Advertisment</button>
+                                            <button type="submit" class="btn btn-danger ">Delet subcategory</button>
                                         </form>
                                     </div>
                                 </div>
@@ -97,13 +97,13 @@
                             $number++;
                         @endphp
 
-                        <!-- Modal for editing  ad -->
+                        <!-- Modal for editing  subcategory -->
                         <div class="modal fade" id="edit{{ $category->id }}" tabindex="-1" role="dialog"
                             aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">update Advertisment</h5>
+                                        <h5 class="modal-title" id="exampleModalLabel">update subcategory</h5>
                                         <button type="button" class="close" data-dismiss="modal"
                                             aria-label="Close">
                                             <span aria-hidden="true">&times;</span>

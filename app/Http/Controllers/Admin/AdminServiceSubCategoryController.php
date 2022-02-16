@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Lang;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\ServiceCategory;
+use App\Models\ServiceSubCategory;
 
 class AdminServiceSubCategoryController extends Controller
 {
@@ -13,10 +15,11 @@ class AdminServiceSubCategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($lang)
+    public function index()
     {
-        $languages = Lang::where([["langable_type", "App\Models\ServiceSubCategory"], ["name", $lang]])->get();
-        return view("admin.services.subcategory.index", compact("languages"));
+        $categories = ServiceCategory::all();
+        $subcategories = ServiceSubCategory::all();
+        return view("admin.services.subcategory.index", compact("subcategories", "categories"));
     }
 
     /**
@@ -37,7 +40,16 @@ class AdminServiceSubCategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $subcategory = new ServiceSubCategory();
+        $subcategory->category_id = $request->category_id;
+        $imagename = time() . "." . $request->image->extension();
+        $request->image->move(public_path("Images/ServiceSubCategories/"), $imagename);
+        $subcategory->photo_path = "Images/ServiceSubCategories/" . $imagename;
+        $subcategory->alt = $request->alt;
+        $subcategory->title = $request->title;
+        $subcategory->name = $request->name;
+        $subcategory->save();
+        return redirect()->route("admin.services.subcategory.index", $subcategory->category->language->name)->with("success", "Your service subcategory created successfully");
     }
 
     /**
@@ -71,7 +83,20 @@ class AdminServiceSubCategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $subcategory = ServiceSubCategory::find($id);
+        if ($request->image != null) {
+            unlink($subcategory->photo_path);
+            $imagename = time() . "." . $request->image->extension();
+            $request->image->move(public_path("Images/ServiceSubCategories/"), $imagename);
+            $subcategory->photo_path = "Images/ServiceSubCategories/" . $imagename;
+        }
+
+        $subcategory->alt = $request->alt;
+        $subcategory->category_id = $request->category_id;
+        $subcategory->title = $request->title;
+        $subcategory->name = $request->name;
+        $subcategory->save();
+        return redirect()->route("admin.services.subcategory.index", $subcategory->category->language->name)->with("success", "Your service subcategory updated successfully");
     }
 
     /**
@@ -80,8 +105,27 @@ class AdminServiceSubCategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(ServiceSubCategory $subcategory)
     {
-        //
+        unlink($subcategory->photo_path);
+        $subcategory->language->delete();
+        $subcategory->delete();
+        return redirect()->back()->with("success", "Your Service Subcategory removed successfully");
+    }
+
+    // method for activating subcategory
+    public function activate(ServiceSubCategory $subcategory)
+    {
+        $subcategory->status = 1;
+        $subcategory->save();
+        return redirect()->back()->with("success", "Service Subcategory  Activated");
+    }
+
+    // method for deactiving subcategory
+    public function deactive(ServiceSubCategory $subcategory)
+    {
+        $subcategory->status = 0;
+        $subcategory->save();
+        return redirect()->back()->with("success", "Service Subcategory Deactivated");
     }
 }
