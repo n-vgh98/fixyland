@@ -13,6 +13,6 @@ class Article extends Model
     }
 
     public function category(){
-        return $this->hasMany("App\Models\ArticleCategory");
+        return $this->belongsTo("App\Models\ArticleCategory");
     }
 }

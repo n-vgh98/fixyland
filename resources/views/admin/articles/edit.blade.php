@@ -1,104 +1,183 @@
 @extends('admin.layouts.master')
+@section('head')
+    @include("admin.layouts.datatable.head")
+@endsection
+@section('title')
+  Edit Article
+@endsection
 @section('content')
-<div class="content-header bg-white text-right">
-    <div class="container-fluid">
-        <div class="row mb-2">
-            <div class="col-sm-6">
-                <h1 class="m-0 text-dark">ویرایش مقاله {{$article->title}}</h1>
-            </div><!-- /.col -->
-        </div><!-- /.row -->
+   
+    <div class="card mt-4">
+      <!-- Button for making new user -->  
+        <div class="card-header">
+            <h3 class="card-title">Edit Article</h3>
+        </div>
+        <form action="{{ route('admin.articles.update',$article->id) }}" method="POST" enctype="multipart/form-data">
+        @csrf
+        <div class="mb-3 m-3">
+            <label for="title" class="form-label">{{ __('Title:') }}</label>
+            <input type="text" name="title" id="title" required class="form-control" value="{{$article->title}}">
+            @error('title')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+        </div>
+        <div class="mb-3 m-3">
+            <label for="slug" class="form-label">{{ __('Slug:') }}</label>
+            <input type="text" name="slug" id="slug" class="form-control" value="{{$article->slug}}">
+            @error('slug')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+        </div>
+        <div class="mb-3 m-3">
+            <label style="display: inline-block;
+                    max-width: 100%;
+                    margin-bottom: 5px;
+                    font-weight: bold;
+                    ">Category Name:</label>
+            <select class="form-control" name="category">
+                @foreach($categories as $category)
+                <option value="{{$category->id}}">{{$category->title}}</option>
+                @endforeach
+            </select>
+        </div>
+        <div class="mb-3 m-3">
+            <label style="display: inline-block;
+                    max-width: 100%;
+                    margin-bottom: 5px;
+                    font-weight: bold;
+                    ">Status:</label>
+             <div class="radio">
+                <label class="mr-4 ml-4">
+                    <input type="radio" id="0" name="status" value="0" {{ $article->status == "0" ? 'checked' : '' }}>Deactive
+                </label>
+                <label class="mr-4 ml-4">
+                    <input type="radio" id="1" name="status" value="1" {{ $article->status == "1" ? 'checked' : '' }}>Active 
+                </label>
+            </div>
+        </div>
+        <div class="mb-3 m-3">
+            <label for="v_link_1" class="form-label">{{ __('Video Link-1:') }}</label>
+            <input type="text" name="v_link_1" id="v_link_1" required class="form-control" value="{{$article->v_link_1}}">
+            @error('v_link_1')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+        </div>
+        <div class="mb-3 m-3">
+            <label for="v_link_2" class="form-label">{{ __('Video Link-2:') }}</label>
+            <input type="text" name="v_link_2" id="v_link_2" required class="form-control" value="{{$article->v_link_2}}">
+            @error('v_link_2')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+        </div>
+        <div class="mb-3 m-3">
+            <label for="photo_path" class="form-label">{{ __('Photo:') }}</label>
+            <input type="file" name="photo_path" id="photo_path" required class="form-control">
+            @error('photo_path')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+        </div>
+        <div class="mb-3 m-3">
+            <label for="photo_alt" class="form-label">{{ __('Photo Alt:') }}</label>
+            <input type="text" name="photo_alt" id="photo_alt" required class="form-control" value="{{$article->photo_alt}}">
+            @error('photo_alt')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+        </div>
+        <div class="mb-3 m-3">
+            <label for="photo_name" class="form-label">{{ __('Photo Name:') }}</label>
+            <input type="text" name="photo_name" id="photo_name" required class="form-control" value="{{$article->photo_name}}">
+            @error('photo_name')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+        </div>
+        <div class="mb-3 m-3">
+            <label for="meta_keywords" class="form-label">{{ __('Meta Keywords:') }}</label>
+            <textarea class="form-control" id="meta_keywords" rows="3" class="form-control @error('meta_keywords') is-invalid @enderror"
+                name="meta_keywords" value="{{ old('meta_keywords') }}" required autocomplete="meta_keywords" autofocus>
+                {{$article->meta_keywords}}
+            </textarea>
+            @error('meta_keywords')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+        </div>
+        <div class="mb-3 m-3">
+            <label for="meta_description" class="form-label">{{ __('Meta Description:') }}</label>
+            <textarea class="form-control" id="meta_description" rows="3" class="form-control @error('meta_description') is-invalid @enderror"
+                name="meta_description" value="{{ old('meta_description') }}" required autocomplete="meta_description" autofocus>
+                {{$article->meta_description}}
+            </textarea>
+            @error('meta_description')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+        </div>
+        <div class="mb-3 m-3">
+            <label for="text_1" class="form-label">{{ __('Text-1:') }}</label>
+            <textarea class="form-control" id="text_1" rows="3" class="form-control @error('text_1') is-invalid @enderror"
+                name="text_1" value="{{ old('text_1') }}" required autocomplete="text_1" autofocus>
+                {{$article->text_1}}
+            </textarea>
+            @error('text_1')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+        </div>
+        <div class="mb-3 m-3">
+            <label for="text_2" class="form-label">{{ __('Text-2:') }}</label>
+            <textarea class="form-control" id="text_2" rows="3" class="form-control @error('text_2') is-invalid @enderror"
+                name="text_2" value="{{ old('text_2') }}" required autocomplete="text_2" autofocus>
+                {{$article->text_2}}
+            </textarea>
+            @error('text_2')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+        </div>
+        <div class="mb-3 m-3">
+            <label for="text_3" class="form-label">{{ __('Text-3:') }}</label>
+            <textarea class="form-control" id="text_3" rows="3" class="form-control @error('text_3') is-invalid @enderror"
+                name="text_3" value="{{ old('text_3') }}" required autocomplete="text_1" autofocus>
+                {{$article->text_3}}
+            </textarea>
+            @error('text_3')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+        </div>
+        <input type="hidden" name="lang" value="{{$article->language->name}}">
+        <div class="m-3" style="text-align: left;">
+            <button type="submit" class="btn btn-primary">Send</button>
+        </div>
+        </form>
     </div>
+  
 
-    {!! Form::open(['method'=>'PATCH' , 'action'=>['App\Http\Controllers\Admin\AdminArticleController@update',$article->id],'files'=>true]) !!}
-    <div>
-        {!! Form::label('title', 'عنوان:') !!}
-        {!! Form::text('title', $article->title, ['class' => 'form-control']) !!}
-    </div><br>
-    <div>
-        {!! Form::label('slug', 'نام مستعار:') !!}
-        {!! Form::text('slug', $article->slug, ['class' => 'form-control']) !!}
-    </div><br>
-
-    <div>
-        {!! Form::label('status', 'وضعیت:') !!}
-        {!! Form::select('status', ['0' => 'غیرفعال', '1' => 'فعال'], $article->status, ['class' => 'form-control']) !!}
-    </div><br>
-    <div>
-        {!! Form::label('meta_description', 'متا توضیحات:') !!}
-        {!! Form::textarea('meta_description', $article->meta_description, ['class' => 'form-control']) !!}
-    </div><br>
-    <div>
-        {!! Form::label('meta_keywords', 'متا برچسب ها:') !!}
-        {!! Form::textarea('meta_keywords', $article->meta_keywords, ['class' => 'form-control']) !!}
-    </div><br>
-    <div>
-        {!! Form::label('v_link_1', 'لینک ویدئو شماره 1:') !!}
-        {!! Form::text('v_link_1', $article->v_link_1, ['class' => 'form-control']) !!}
-    </div><br>
-    <div>
-        {!! Form::label('v_link_2', 'لینک ویدئو شماره 2:') !!}
-        {!! Form::text('v_link_2', $article->v_link_2, ['class' => 'form-control']) !!}
-    </div><br>
-    <div>
-        {!! Form::label('v_link_3', 'لینک ویدئو شماره 3:') !!}
-        {!! Form::text('v_link_3', $article->v_link_3, ['class' => 'form-control']) !!}
-    </div><br>
-    <div>
-        {!! Form::label('v_link_4', 'لینک ویدئو شماره 4:') !!}
-        {!! Form::text('v_link_4', $article->v_link_4, ['class' => 'form-control']) !!}
-    </div><br>
-    <div>
-        <div>
-            {!! Form::label('text_1', 'متن شماره 1:') !!}
-            <? echo htmlspecialchars($contentFromDB); ?>
-            {!! Form::textarea('text_1', $article->text_1, ['class' => 'form-control', 'id' => 'text_1']) !!}
-        </div><br>
-    </div>
-    <div>
-        <div>
-            {!! Form::label('text_2', 'متن شماره 2:') !!}
-            <? echo htmlspecialchars($contentFromDB); ?>
-            {!! Form::textarea('text_2', $article->text_2, ['class' => 'form-control', 'id' => 'text_2']) !!}
-        </div><br>
-    </div>
-    <div>
-        <div>
-            {!! Form::label('text_3', 'متن شماره 3:') !!}
-            <? echo htmlspecialchars($contentFromDB); ?>
-            {!! Form::textarea('text_3', $article->text_3, ['class' => 'form-control', 'id' => 'text_3']) !!}
-        </div><br>
-    </div>
-    <div>
-        <div>
-            {!! Form::label('text_4', 'متن شماره 4:') !!}
-            <? echo htmlspecialchars($contentFromDB); ?>
-            {!! Form::textarea('text_4', $article->text_4, ['class' => 'form-control', 'id' => 'text_4']) !!}
-        </div><br>
-    </div>
-    <input type="hidden" value="{{$article->lang->name}}" name="lang">
-    </input>
-    <div>
-        {!! Form::submit('ذخیره', ['class' => 'btn btn-primary']) !!}
-    </div>
-    {!! Form::close() !!}
-</div>
 @endsection
 @section('script')
-
-<script src="{{ asset('adminpanel/ckeditor/ckeditor.js') }}"></script>
-<script src="{{ asset('adminpanel/ckeditor/adapters/jquery.js') }}"></script>
-<script>
-    CKEDITOR.replace('text_1', {
-        language: 'fa',
-    });
-    CKEDITOR.replace('text_2', {
-        language: 'fa',
-    });
-    CKEDITOR.replace('text_3', {
-        language: 'fa',
-    });
-    CKEDITOR.replace('text_4', {
-        language: 'fa',
-    });
-</script>
+    <script src="{{ asset('panel/ckeditor/ckeditor.js') }}"></script>
+    <script>
+        CKEDITOR.replace('text_1');
+        CKEDITOR.replace('text_2');
+        CKEDITOR.replace('text_3');
+    </script>
 @endsection

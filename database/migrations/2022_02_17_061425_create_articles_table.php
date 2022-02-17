@@ -29,7 +29,7 @@ return new class extends Migration
             $table->text('meta_keywords');
             $table->integer('views')->default(0);
             $table->tinyinteger('status')->default(1);
-            $table->foreignId("user_id")->constrained("users")->onDelete("cascade");
+            $table->foreignId("user_id")->constrained("users")->onUpdate('cascade');
             $table->foreignId("category_id")->constrained("article_categories")->onDelete("cascade");
             $table->timestamps();
         });
