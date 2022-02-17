@@ -14,6 +14,7 @@ use App\Http\Controllers\Admin\AdminIndexFeatureController;
 use App\Http\Controllers\Admin\AdminAdvertismentsController;
 use App\Http\Controllers\Admin\AdminArticleCategoryController;
 use App\Http\Controllers\Admin\AdminArticleController;
+use App\Http\Controllers\Admin\AdminContactUsController;
 use App\Http\Controllers\Admin\AdminContactUsTextController;
 use App\Http\Controllers\Admin\AdminFormController;
 use App\Http\Controllers\Admin\AdminIndexStaticController;
@@ -273,8 +274,8 @@ route::prefix("admin")->middleware(['auth:sanctum', 'verified', "admin"])->group
                 Route::delete("/destroy/{id}", "destroy")->name('admin.contact_us.texts.delete');
             });
         });
-        Route::controller(AdminArticleController::class)->group(function () {
-            Route::get("/{lang}", "index")->name('admin.contact_us.index');
+        Route::controller(AdminContactUsController::class)->group(function () {
+            Route::get("/", "index")->name('admin.contact_us.index');
         });
     });
 });
