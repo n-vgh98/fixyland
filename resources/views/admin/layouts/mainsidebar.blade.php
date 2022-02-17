@@ -336,6 +336,40 @@
                         </a>
                     </li>
 
+                    <!-- articles link -->
+                    <li class="nav-item has-treeview ">
+                        <a href="#" class="nav-link active">
+                            <i class="nav-icon fa fa-file-text"></i>
+                            <p>
+                                Articles
+                                <i class="right fa fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+
+                            {{-- Articles Categories --}}
+                            <li class="nav-item">
+                                <a href="{{ route('admin.article_categories.index', 'ar') }}" class="nav-link">
+                                    <i class="nav-icon fa  fa-clone"></i>
+                                    <p>
+                                        Articles Categories
+                                    </p>
+                                </a>
+                            </li>
+
+                            {{-- Articles --}}
+                            <li class="nav-item">
+                                <a href="{{ route('admin.articles.index', 'ar') }}"
+                                    class="nav-link">
+                                    <i class="nav-icon fa  fa-file-text"></i>
+                                    <p>
+                                       All Articles
+                                    </p>
+                                </a>
+                            </li>
+
+                        </ul>
+                    </li>
                     <!-- faq links-->
                     <li class="nav-item has-treeview ">
                         <a href="#" class="nav-link bg-info active">

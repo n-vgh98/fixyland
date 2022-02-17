@@ -3,19 +3,19 @@
     @include("admin.layouts.datatable.head")
 @endsection
 @section('title')
-   Faq Categories
+   Article Categories
 @endsection
 @section('content')
     <section class="text-center">
         <div class="btn-group btn-group-toggle">
-            <a href="{{ route('admin.faq_categories.index', 'ar') }}" class="btn btn-primary">Arabic</a>
-            <a href="{{ route('admin.faq_categories.index', 'en') }}" class="btn btn-primary">English</a>
+            <a href="{{ route('admin.article_categories.index', 'ar') }}" class="btn btn-primary">Arabic</a>
+            <a href="{{ route('admin.article_categories.index', 'en') }}" class="btn btn-primary">English</a>
         </div>
     </section>
     <div class="card mt-4">
       <!-- Button for making new user -->  
         <div class="card-header">
-            <h3 class="card-title">Faq Categories</h3>
+            <h3 class="card-title">Article Categories</h3>
         </div>
         <!-- /.card-header -->
         <div class="card-body">
@@ -33,12 +33,12 @@
                     @endphp
                     @foreach ($languages as $language)
                         @php
-                        $faq_category = $language->langable;
+                        $article_category = $language->langable;
                         @endphp
                         <tr>
                             <td class="text-center">{{ $number }}</td>
                             <td class="text-center">
-                                {{$faq_category->title}}
+                                {{$article_category->title}}
                             </td>
                             <td class="text-center">
                                 {{-- button for setting --}}
@@ -51,13 +51,13 @@
                                     <div class="dropdown-menu text-center">
                                         {{-- button for editing categories  --}}
                                         <button type="button" class="btn btn-success" data-toggle="modal"
-                                            data-target="#edit_category{{ $faq_category->id }}">
+                                            data-target="#edit_category{{ $article_category->id }}">
                                             Edit
                                         </button>
 
                                         <div class="dropdown-divider"></div>
                                         {{-- button for removing rules --}}
-                                        <form action="{{ route('admin.faq_categories.delete', $faq_category->id) }}" method="post">
+                                        <form action="{{ route('admin.article_categories.delete', $article_category->id) }}" method="post">
                                             @method("delete")
                                             @csrf
                                             <button type="submit" class="btn btn-danger ">Delete</button>
@@ -67,7 +67,7 @@
                             </td>
                         </tr>
                         <!-- modal for edit category -->
-                        <div class="modal fade mt-5" id="edit_category{{ $faq_category->id }}" tabindex="-1"
+                        <div class="modal fade mt-5" id="edit_category{{ $article_category->id }}" tabindex="-1"
                             role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
@@ -80,27 +80,27 @@
                                     </div>
                                     <div class="modal-body">
                                         <form method="POST"
-                                            action="{{ route('admin.faq_categories.update', $faq_category->id) }}">
+                                            action="{{ route('admin.article_categories.update', $article_category->id) }}">
                                             @csrf
                                             
-                                            <input type="hidden" name="lang" value="{{ $faq_category->language->name }}">
+                                            <input type="hidden" name="lang" value="{{ $article_category->language->name }}">
                                             <div class="form-group">
                                                 <label for="title">Title:</label>
-                                                <input type="text" class="form-control" name="title" value="{{ $faq_category->title }}">
+                                                <input type="text" class="form-control" name="title" value="{{ $article_category->title }}">
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="slug">Slug:</label>
-                                                <input type="text" class="form-control" name="slug" value="{{ $faq_category->slug }}">
+                                                <input type="text" class="form-control" name="slug" value="{{ $article_category->slug }}">
                                             </div>
                                             <div class="form-group">
                                                 <label for="meta_keywords">Meta Keywords</label>
-                                                <textarea class="form-control" name="meta_keywords" rows="3">{{ $faq_category->meta_keywords }}</textarea>
+                                                <textarea class="form-control" name="meta_keywords" rows="3">{{ $article_category->meta_keywords }}</textarea>
                                                     
                                             </div>
                                             <div class="form-group">
                                                 <label for="meta_description">Meta Description</label>
-                                                <textarea class="form-control" name="meta_description" rows="3">{{ $faq_category->meta_description }}</textarea>
+                                                <textarea class="form-control" name="meta_description" rows="3">{{ $article_category->meta_description }}</textarea>
                                             </div>
 
                                             <div class="modal-footer">
@@ -152,7 +152,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form method="post" action="{{ route('admin.faq_categories.store') }}">
+                    <form method="post" action="{{ route('admin.article_categories.store') }}">
                         @csrf
                         <input type="hidden" name="lang" value="{{ $lang }}">
                         <div class="form-group">
