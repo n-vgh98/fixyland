@@ -12,6 +12,8 @@ use App\Http\Controllers\Admin\AdminAboutUsController;
 use App\Http\Controllers\Admin\AdminIndexSliderController;
 use App\Http\Controllers\Admin\AdminIndexFeatureController;
 use App\Http\Controllers\Admin\AdminAdvertismentsController;
+use App\Http\Controllers\Admin\AdminArticleCategoryController;
+use App\Http\Controllers\Admin\AdminArticleController;
 use App\Http\Controllers\Admin\AdminFormController;
 use App\Http\Controllers\Admin\AdminIndexStaticController;
 use App\Http\Controllers\Admin\AdminInputController;
@@ -235,6 +237,26 @@ route::prefix("admin")->middleware(['auth:sanctum', 'verified', "admin"])->group
             Route::post("/store", "store")->name('admin.faq.store');
             Route::post("/update/{id}", "update")->name('admin.faq.update');
             Route::delete("/destroy/{id}", "destroy")->name('admin.faq.delete');
+        });
+    });
+
+    //routes of articles and article category
+    Route::prefix("articles")->group(function () {
+        Route::prefix("categories")->group(function () {
+            Route::controller(AdminArticleCategoryController::class)->group(function () {
+                Route::get("/{lang}", "index")->name('admin.article_categories.index');
+                Route::post("/store", "store")->name('admin.article_categories.store');
+                Route::post("/update/{id}", "update")->name('admin.article_categories.update');
+                Route::delete("/destroy/{id}", "destroy")->name('admin.article_categories.delete');
+            });
+        });
+        Route::controller(AdminArticleController::class)->group(function () {
+            Route::get("/{lang}", "index")->name('admin.articles.index');
+            Route::get("/create/{lang}", "create")->name('admin.articles.create');
+            Route::post("/store", "store")->name('admin.articles.store');
+            Route::get("/edit/{id}", "edit")->name('admin.articles.edit');
+            Route::post("/update/{id}", "update")->name('admin.articles.update');
+            Route::delete("/destroy/{id}", "destroy")->name('admin.articles.delete');
         });
     });
 });
