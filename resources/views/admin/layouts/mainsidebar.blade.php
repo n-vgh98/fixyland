@@ -375,7 +375,7 @@
                         <a href="#" class="nav-link bg-info active">
                             <i class="nav-icon fa  fa-bars"></i>
                             <p>
-                                Frequently Asked Questions
+                                FAQ
                                 <i class="right fa fa-angle-left"></i>
                             </p>
                         </a>
@@ -402,7 +402,38 @@
                             </li>
                         </ul>
                     </li>
+                     <!-- contact us links-->
+                     <li class="nav-item has-treeview ">
+                        <a href="#" class="nav-link bg-info active">
+                            <i class="nav-icon fa  fa-phone-square"></i>
+                            <p>
+                                Contact Us
+                                <i class="right fa fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
 
+                            {{-- contact us texts --}}
+                            <li class="nav-item">
+                                <a href="{{ route('admin.contact_us.texts.index', 'ar') }}" class="nav-link">
+                                    <i class="nav-icon fa  fa-file-text-o"></i>
+                                    <p>
+                                        Texts
+                                    </p>
+                                </a>
+                            </li>
+
+                            {{-- contact us messages --}}
+                            <li class="nav-item">
+                                <a href="{{ route('admin.contact_us.index', 'ar') }}" class="nav-link">
+                                    <i class="nav-icon fa  fa-comments"></i>
+                                    <p>
+                                        All Mesaages
+                                    </p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
 
                     <!-- about us link -->
                     <li class="nav-item has-treeview">
