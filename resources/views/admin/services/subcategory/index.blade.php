@@ -95,11 +95,12 @@
                                             </button>
                                         </form>
 
-                                        {{-- @elseif(count($subcategory->form->questions) == 0)
-                                        <a class="btn btn-success" href="#">
-                                            Make First Question</a> --}}
+                                    @elseif(count($subcategory->form->questions) == 0)
+                                        <a class="btn btn-success"
+                                            href="{{ route('admin.forms.questions.show', $subcategory->form->id) }}">
+                                            Make First Question</a>
                                     @else
-                                        <a class="btn btn-success" href="#">
+                                        <a class="btn btn-success" href="{{ route('admin.forms.questions.show', $subcategory->form->id) }}">
                                             See Questions</a>
                                     @endif
 

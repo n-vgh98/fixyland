@@ -35,6 +35,15 @@
 
                             <td class="text-center">
                                 {{-- button for Options --}}
+
+                                @if (count($form->questions) != 0)
+                                    <a href="{{ route('admin.forms.questions.show', $form->id) }}"
+                                        class="btn btn-success">Show Question</a>
+                                @else
+                                    <a href="{{ route('admin.forms.questions.show', $form->id) }}"
+                                        class="btn btn-warning">Make First Question</a>
+                                @endif
+
                                 <div class="btn-group text-center">
                                     <button type="button" class="btn btn-info">Setting</button>
                                     <button type="button" class="btn btn-info dropdown-toggle dropdown-toggle-split"

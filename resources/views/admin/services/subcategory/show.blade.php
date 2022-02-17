@@ -82,7 +82,30 @@
 
                             <td class="text-center">
                                 {{-- button for Options --}}
+
+
                                 <div class="btn-group text-center">
+
+                                    @if ($subcategory->form == null)
+                                        <form method="post" action="{{ route('admin.forms.store') }}">
+                                            @csrf
+                                            <input type="hidden" name="subcategory_id" value="{{ $subcategory->id }}">
+                                            <button type="submit" class="btn btn-warning" data-toggle="modal"
+                                                data-target="#makeform{{ $subcategory->id }}">
+                                                Make Form
+                                            </button>
+                                        </form>
+
+                                    @elseif(count($subcategory->form->questions) == 0)
+                                        <a class="btn btn-success"
+                                            href="{{ route('admin.forms.questions.show', $subcategory->form->id) }}">
+                                            Make First Question</a>
+                                    @else
+                                        <a class="btn btn-success"
+                                            href="{{ route('admin.forms.questions.show', $subcategory->form->id) }}">
+                                            See Questions</a>
+                                    @endif
+
                                     <button type="button" class="btn btn-info">Setting</button>
                                     <button type="button" class="btn btn-info dropdown-toggle dropdown-toggle-split"
                                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

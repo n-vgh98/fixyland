@@ -113,6 +113,12 @@ route::prefix("admin")->middleware(['auth:sanctum', 'verified', "admin"])->group
         });
         route::prefix("questions")->group(function () {
             route::controller(AdminInputController::class)->group(function () {
+                route::get("/{form}", "show")->name("admin.forms.questions.show");
+                route::post("/store", "store")->name("admin.forms.questions.store");
+                route::post("/update/{question}", "update")->name("admin.forms.questions.update");
+                route::delete("/destroy/{question}", "destroy")->name("admin.forms.questions.destroy");
+                route::post("/activate_question/{question}", "activate")->name("admin.forms.questions.activate");
+                route::post("/deactive_question/{question}", "deactive")->name("admin.forms.questions.deactive");
             });
         });
     });
