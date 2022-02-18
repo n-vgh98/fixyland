@@ -445,6 +445,38 @@
                             </p>
                         </a>
                     </li>
+                     <!-- footer links-->
+                     <li class="nav-item has-treeview ">
+                        <a href="#" class="nav-link bg-info active">
+                            <i class="nav-icon fa  fa-phone-square"></i>
+                            <p>
+                                Footer
+                                <i class="right fa fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+
+                            {{-- Footer Information --}}
+                            <li class="nav-item">
+                                <a href="{{ route('admin.footer_info.index', 'ar') }}" class="nav-link">
+                                    <i class="nav-icon fa  fa-file-text-o"></i>
+                                    <p>
+                                        Information
+                                    </p>
+                                </a>
+                            </li>
+
+                            {{-- Footer useful links --}}
+                            <li class="nav-item">
+                                <a href="{{ route('admin.footer_useful_links.index', 'ar') }}" class="nav-link">
+                                    <i class="nav-icon fa  fa-comments"></i>
+                                    <p>
+                                       Useful Links
+                                    </p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
 
 
                     {{-- link to jetstream --}}
