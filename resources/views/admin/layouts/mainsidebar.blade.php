@@ -228,7 +228,7 @@
 
                     {{-- notifications link --}}
                     <li class="nav-item has-treeview ">
-                        <a href="#" class="nav-link bg-info active">
+                        <a href="#" class="nav-link bg-primary active">
                             <i class="nav-icon fa  fa-bell"></i>
                             <p>
                                 Notifications
@@ -372,7 +372,7 @@
                     </li>
                     <!-- faq links-->
                     <li class="nav-item has-treeview ">
-                        <a href="#" class="nav-link bg-info active">
+                        <a href="#" class="nav-link bg-primary active">
                             <i class="nav-icon fa  fa-bars"></i>
                             <p>
                                 FAQ
@@ -404,7 +404,7 @@
                     </li>
                      <!-- contact us links-->
                      <li class="nav-item has-treeview ">
-                        <a href="#" class="nav-link bg-info active">
+                        <a href="#" class="nav-link bg-primary active">
                             <i class="nav-icon fa  fa-phone-square"></i>
                             <p>
                                 Contact Us
@@ -447,8 +447,8 @@
                     </li>
                      <!-- footer links-->
                      <li class="nav-item has-treeview ">
-                        <a href="#" class="nav-link bg-info active">
-                            <i class="nav-icon fa  fa-phone-square"></i>
+                        <a href="#" class="nav-link bg-primary active">
+                            <i class="nav-icon fa  fa-long-arrow-down"></i>
                             <p>
                                 Footer
                                 <i class="right fa fa-angle-left"></i>
@@ -459,7 +459,7 @@
                             {{-- Footer Information --}}
                             <li class="nav-item">
                                 <a href="{{ route('admin.footer_info.index', 'ar') }}" class="nav-link">
-                                    <i class="nav-icon fa  fa-file-text-o"></i>
+                                    <i class="nav-icon fa  fa-info-circle"></i>
                                     <p>
                                         Information
                                     </p>
@@ -469,7 +469,7 @@
                             {{-- Footer useful links --}}
                             <li class="nav-item">
                                 <a href="{{ route('admin.footer_useful_links.index', 'ar') }}" class="nav-link">
-                                    <i class="nav-icon fa  fa-comments"></i>
+                                    <i class="nav-icon fa  fa-link"></i>
                                     <p>
                                        Useful Links
                                     </p>
