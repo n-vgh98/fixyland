@@ -88,4 +88,9 @@ class FrontHomeController extends Controller
     {
         return view("front.auth.register.register");
     }
+
+    public function login()
+    {
+        return view("front.auth.login");
+    }
 }

@@ -2,9 +2,9 @@
 
 @section('title')
     @if (app()->getLocale() == 'fa' || app()->getLocale() == 'ar')
-        ورود
+        ثبت نام
     @else
-        LogIn
+        Sign Up
     @endif
 @endsection
 @section('content')

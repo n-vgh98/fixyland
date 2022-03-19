@@ -326,6 +326,7 @@ route::prefix("{locale}")->middleware("language")->group(function () {
             route::get("/specialist", [FrontSpecialistController::class, "index"])->name("user.register.signup.specialist");
         });
     });
+    route::get("login", [FrontHomeController::class, "login"])->name("user.login");
 
 
     route::get("/", [FrontHomeController::class, "index"])->name("user.home");

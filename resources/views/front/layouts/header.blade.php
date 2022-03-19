@@ -263,8 +263,9 @@
                     <div class="col-lg-3  order-1 order-lg-3">
                         <div class="row d-flex flex-fill justify-content-center mb-2">
                             <div class="d-flex gap-3 col-10 col-sm-7 col-md-10 col-lg-12">
-                                <a href="login.html" class="btn outline-yellow flex-fill text-decoration-none"
-                                    id="button-menu1"> ورود </a>
+                                <a href="{{ route('user.login') }}"
+                                    class="btn outline-yellow flex-fill text-decoration-none" id="button-menu1"> ورود
+                                </a>
                                 <a href="{{ route('user.register') }}" class="btn flex-fill text-decoration-none"
                                     id="button-menu2">
                                     ثبت نام</a>
@@ -858,8 +859,9 @@
                     <div class="col-lg-3  order-1 order-lg-3">
                         <div class="row d-flex flex-fill justify-content-center mb-2">
                             <div class="d-flex gap-3 col-10 col-sm-7 col-md-10 col-lg-12">
-                                <a href="login.html" class="btn outline-yellow flex-fill text-decoration-none"
-                                    id="button-menu1"> login </a>
+                                <a href="{{ route('user.login') }}"
+                                    class="btn outline-yellow flex-fill text-decoration-none" id="button-menu1"> login
+                                </a>
                                 <a href="{{ route('user.register') }}" class="btn flex-fill text-decoration-none"
                                     id="button-menu2">
                                     sign up </a>
