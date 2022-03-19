@@ -26,6 +26,9 @@ use App\Http\Controllers\Admin\AdminServiceCategoryController;
 use App\Http\Controllers\Admin\AdminServiceSubCategoryController;
 use App\Http\Controllers\Admin\AdminSubCategoryServiceDescriptionController;
 use App\Http\Controllers\Front\FrontHomeController;
+use App\Http\Controllers\Front\FrontSpecialistController;
+use App\Http\Controllers\Front\FrontUserController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -313,8 +316,16 @@ route::get("/", function () {
 });
 
 route::prefix("{locale}")->middleware("language")->group(function () {
-    // authentication routes
-    route::get("register", [FrontHomeController::class, "register"])->name("user.register");
+
+    route::prefix("register")->group(function () {
+        // authentication routes
+        route::get("/", [FrontHomeController::class, "register"])->name("user.register");
+        // route for seprated signup forms
+        route::prefix("sign-up")->group(function () {
+            route::get("/user", [FrontUserController::class, "index"])->name("user.register.signup.user");
+            route::get("/specialist", [FrontSpecialistController::class, "index"])->name("user.register.signup.specialist");
+        });
+    });
 
 
     route::get("/", [FrontHomeController::class, "index"])->name("user.home");

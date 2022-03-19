@@ -13,7 +13,8 @@
 
             <div
                 class="col-12 border border-2 border-dark rounded-3 col-md-6 d-flex flex-column justify-content-center p-5 align-items-center">
-                <a href="signup - specialist.html" class="text-decoration-none btn btn-outline-dark w-50">
+                <a href="{{ route('user.register.signup.specialist') }}"
+                    class="text-decoration-none btn btn-outline-dark w-50">
                     ثبت نام متخصص
                 </a>
                 <img class="w-100 h-auto mt-3"
@@ -22,7 +23,7 @@
 
             <div
                 class="col-12 border border-2 border-dark rounded-3 col-md-6 d-flex flex-column justify-content-center p-5 align-items-center">
-                <a href="signup.html" class="text-decoration-none btn btn-outline-dark w-50">
+                <a href="{{ route('user.register.signup.user') }}" class="text-decoration-none btn btn-outline-dark w-50">
                     ثبت نام مشتری
                 </a>
                 <img class="w-100 h-auto mt-3"
@@ -36,7 +37,8 @@
 
             <div
                 class="col-12 border border-2 border-dark rounded-3 col-md-6 d-flex flex-column justify-content-center p-5 align-items-center">
-                <a href="signup - specialist.html" class="text-decoration-none btn btn-outline-dark w-50">
+                <a href="{{ route('user.register.signup.specialist') }}"
+                    class="text-decoration-none btn btn-outline-dark w-50">
                     specialist sign up
                 </a>
                 <img class="w-100 h-auto mt-3"
@@ -45,7 +47,7 @@
 
             <div
                 class="col-12 border border-2 border-dark rounded-3 col-md-6 d-flex flex-column justify-content-center p-5 align-items-center">
-                <a href="signup.html" class="text-decoration-none btn btn-outline-dark w-50">
+                <a href="{{ route('user.register.signup.user') }}" class="text-decoration-none btn btn-outline-dark w-50">
                     user sign up
                 </a>
                 <img class="w-100 h-auto mt-3"

@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Front;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class FrontHomeController extends Controller
+class FrontSpecialistController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class FrontHomeController extends Controller
      */
     public function index()
     {
-        return view("front.index");
+        return view("front.auth.register.signup.specialist");
     }
 
     /**
@@ -81,11 +81,5 @@ class FrontHomeController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-
-    public function register()
-    {
-        return view("front.auth.register.register");
     }
 }
