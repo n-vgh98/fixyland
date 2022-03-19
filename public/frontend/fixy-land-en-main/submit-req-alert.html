@@ -1,0 +1,1274 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fixy Land</title>
+
+<!-- bootstrap styles -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">	
+
+<!-- font awesome cdn -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" />	
+
+<!-- jquery cdn -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>	
+	
+<!--swiper css cdn-->
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
+	
+<!-- styles -->
+<link href="style/css1.css" rel="stylesheet" type="text/css">
+	
+
+
+</head>
+	
+
+	
+<body class="body overflow-hidden">
+	
+	<header class="fixed-top navbar-expand-lg container-fluid header" id="header">
+		
+		<div class="position-relative pb-0">	
+			
+			<div class="row d-flex justify-content-between">
+				<!-- Hamburger & Xmark icon -->
+				<div class="navbar-toggler col-2 text-center" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar" id="button-toggler-menu">
+					<i class="fa-solid fa-bars text-white" id="i-menu"></i>
+					<i class="fa-solid fa-xmark text-white d-none" id="i-menu2"></i>
+				</div>
+				
+				<!-- fixyLand logo for mobile size -->
+				<div class="navbar-toggler col-4 col-sm-2" >
+					<img class="w-100 " src="image/fixyLandMenuIcon.png" alt=""  id="logo-menu">	
+				</div>
+			</div>
+	
+		
+			
+			<div class="collapse navbar-collapse" id="collapsibleNavbar">
+				<div class="row d-flex justify-content-center pt-2 flex-fill">
+					
+					<!-- header right column -->
+					<div class="col-lg-2 row order-lg-1 order-4">
+						<!-- fixyLand logo for laptop size -->
+						<div class="col-12 justify-content-center d-none d-lg-flex">
+							<img src="image/fixyLandMenuIcon.png" alt="" width="100" height="50">
+						</div>	
+						<!-- language selection -->
+						<div class="col-lg-12 d-flex justify-content-center row mb-2" dir="ltr">
+							<div class="col-lg-12 col-6">
+								<div id="select_lang_div" class="text-center darkYellow-no-hover rounded-3 pt-1 pb-1 position-relative">
+									<p class="m-0">
+										language
+										<i class="fa-solid fa-caret-down"></i>
+									</p>
+									
+									<div id="langs_div" class="d-none rounded-bottom darkYellow-no-hover position-absolute start-0 w-100">
+										<ul class="list_style_type p-0 m-0">
+											<hr class="m-0 mt-2">
+											<li class="rounded-top darkYellow-lang text-center mt-1 mb-1">
+												<a href="#" class="text-decoration-none text-black"> AR </a>
+											</li>
+											<hr class="m-0">
+											<li class="rounded-bottom darkYellow-lang text-center mt-1 mb-1">
+												<a href="#" class="text-decoration-none text-black"> EN </a>
+											</li>
+										</ul>
+									</div>
+									
+								</div>
+							</div>		
+						</div>	
+					</div>
+		
+					
+					<!--header middle column-->
+					<div class=" col-lg-7 d-flex justify-content-center row order-2">
+						<!-- search bar -->
+						<form class="col-10 col-sm-7 col-md-10 col-lg-12 d-flex d-flex-border pe-2 ps-2">
+							<button class="btn " type="submit">
+								<i class="fa-solid fa-magnifying-glass"></i>
+							</button>
+							<input class="form-control" id="form-control" type="search" placeholder="Search" aria-label="Search">
+						</form>
+		
+						<!-- header menu -->
+						<div class="col-12 justify-content-center d-flex row p-0 m-0 mt-3">
+							<div class="col-10 col-sm-7 col-md-10 col-lg-12 m-0 p-0 d-flex align-items-end">
+								<nav class="navbar d-flex flex-fill m-0 p-0">
+									<ul class="navbar-nav d-flex flex-fill justify-content-between m-0 p-0 ">
+									<!-- header menu items: -->
+										 <li class="nav-item pb-2 ">
+												<a class=" nav-link-hover" href="index.html">Home</a>
+										  </li>
+										  <li class="nav-item pb-2">
+												<a class=" nav-link-hover" href="articles.html">Articles</a>
+										  </li>
+										
+										  <!-- daste-bandi-khadamat -->
+										  <li class="nav-item pb-2" id="khadamat">
+												<p class="nav-link-hover d-inline-block p-0 m-0 li-responsive" id="khadamat-p">
+												   Services category
+												  <i class="fa-solid fa-caret-down"></i> 
+												</p>
+
+												<!-- daste-bandi-khadamt submenu for mobile size -->
+												<ul class="sub-menu text-white me-4 d-lg-none d-none" id="sub-menu-responsive">
+													<!-- daste-bandi-khadamat submenu-item1 -->
+												  	<li class="nav-item li-responsive">
+														 <p class="nav-link-click li-responsive-3 snav-link-hover-white p-0 m-0">
+															  nezafat va paziraei
+															  <i class="fa-solid fa-caret-down"></i>
+														 </p>
+
+														<!-- submenu for item1 from daste-bandi-khadamat submenu -->
+														 <div class="text-white me-3 li-responsive-submenu-3 d-none">
+															<ul style="list-style-type: none">
+															  <li class="nav-item">
+																<a class="nav-link-hover-white" href="sub-category-descriptions.html"> nezafat 1  </a>
+															  </li>
+															  <li class="nav-item">
+																<a class="nav-link-hover-white" href="sub-category-descriptions.html">  nezaft 1 </a>
+															  </li>
+															</ul>
+														 </div>
+													 </li>
+													
+													 <!-- daste-bandi-khadamat submenu-item2 -->
+												     <li class="nav-item li-responsive">
+														 <p class="nav-link-click li-responsive-3 nav-link-hover-white p-0 m-0">
+															 dekorasion va bazsazi
+														 	 <i class="fa-solid fa-caret-down"></i>
+														 </p>
+														
+														 <!-- submenu for item2 from daste-bandi-khadamat submenu -->
+														 <div class="text-white me-3 li-responsive-submenu-3 d-none">
+															<ul style="list-style-type: none">
+															  <li class="nav-item">
+																<a class="nav-link-hover-white" href="sub-category-descriptions.html">  nezafat 2 </a>
+															  </li>
+															  <li class="nav-item">
+																<a class="nav-link-hover-white" href="sub-category-descriptions.html"> nezafat 2  </a>
+															  </li>
+															</ul>
+														 </div>
+													  </li>
+													
+													  <!-- daste-bandi-khadamat submenu-item3 -->
+													  <li class="nav-item  nav-link-click li-responsive nav-link-hover-white">
+														 <p class="nav-link-click li-responsive-3  nav-link-hover-white p-0 m-0">
+															 nasb o tamir lavazem khanegi
+														     <i class="fa-solid fa-caret-down"></i> 
+														 </p>
+														  
+														 <!-- submenu for item3 from daste-bandi-khadamat submenu -->
+														 <div class="text-white me-3 li-responsive-submenu-3 d-none">
+															<ul style="list-style-type: none">
+															  <li class="nav-item">
+																<a class="nav-link-hover-white" href="sub-category-descriptions.html">  nezafat 3 </a>
+															  </li>
+															  <li class="nav-item">
+																<a class="nav-link-hover-white" href="sub-category-descriptions.html">  nezafat 3 </a>
+															  </li>
+															</ul>
+														 </div>	
+													  </li>
+													
+													  <!-- daste-bandi-khadamat submenu-item4 -->
+													  <li class="nav-item  nav-link-click li-responsive nav-link-hover-white">
+														  <p class="nav-link-click li-responsive-3  nav-link-hover-white p-0 m-0">
+															 sarmayesh o garmayesh
+												  			 <i class="fa-solid fa-caret-down"></i>
+														 </p>
+													  </li>
+													
+													  <!-- daste-bandi-khadamat submenu-item5 -->
+													  <li class="nav-item  nav-link-click li-responsive nav-link-hover-white">
+														  <p class="nav-link-click li-responsive-3  nav-link-hover-white p-0 m-0">
+															 barbari o jabejaei
+												  			 <i class="fa-solid fa-caret-down"></i>
+														 </p>
+													  </li>
+													
+													  <!-- daste-bandi-khadamat submenu-item6 -->
+													  <li class="nav-item  nav-link-click li-responsive nav-link-hover-white">
+														  <p class="nav-link-click li-responsive-3  nav-link-hover-white p-0 m-0">
+															 barghkari
+												  			 <i class="fa-solid fa-caret-down"></i>
+														 </p>
+													  </li>
+													
+													  <!-- daste-bandi-khadamat submenu-item7 -->
+													  <li class="nav-item  nav-link-click li-responsive nav-link-hover-white">
+														  <p class="nav-link-click li-responsive-3  nav-link-hover-white p-0 m-0">
+															 loolekeshi
+												  			 <i class="fa-solid fa-caret-down"></i>
+														 </p> 
+													  </li>
+													
+													  <!-- daste-bandi-khadamat submenu-item8 -->
+													  <li class="nav-item  nav-link-click li-responsive nav-link-hover-white">
+														  <p class="nav-link-click li-responsive-3  nav-link-hover-white p-0 m-0">
+															 zibaei banovan
+												  			 <i class="fa-solid fa-caret-down"></i>
+														 </p>
+													  </li>
+													
+													  <!-- daste-bandi-khadamat submenu-item9 -->
+													  <li class="nav-item  nav-link-click li-responsive nav-link-hover-white">
+														  <p class="nav-link-click li-responsive-3  nav-link-hover-white p-0 m-0">
+															 tamirat khodro
+												  			 <i class="fa-solid fa-caret-down"></i>
+														 </p>
+													  </li>
+												</ul>
+										  </li>
+	
+		
+										  <li class="nav-item pb-2">
+											<a class=" nav-link-hover" href="contactUs.html">Contact us</a>
+										  </li>
+	
+										  <li class="nav-item pb-2">
+											<a class=" nav-link-hover" href="aboutUs.html">About us</a>
+										  </li>
+									</ul>
+								</nav>
+							</div>
+						</div>
+					</div>
+		
+					
+					<!--header left column-->
+					<div class="col-lg-3  order-1 order-lg-3">	
+						<div class="row d-flex flex-fill justify-content-center mb-2">	
+							<div class="d-flex gap-3 col-10 col-sm-7 col-md-10 col-lg-12">
+								<a href="login.html" class="btn outline-yellow flex-fill text-decoration-none" id="button-menu1">  login </a>
+								<a href="register.html" class="btn flex-fill text-decoration-none" id="button-menu2"> sign up </a>
+							</div>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+		
+		
+			<!-- daste-bandi-khadamt submenu for laptop size -->
+			<div class="position-absolute end-3 w-75 d-none" style="background-color: #f4f2f2" id="second-level-menu">
+				
+				<div class="row ">
+					<div class="col-4 col-lg-3 border p-0 pe-2">
+						<ul class="sub-menu sub-menu-hover p-0 ps-3">
+							<li class="nav-item d-flex sub-menu-1-li border-bottom pb-1">
+								<div>
+									  nezafat va paziraei 
+									<i class="fa-solid fa-arrow-left"></i>
+								</div>
+							</li>
+		  
+							<li class="nav-item d-flex sub-menu-1-li border-bottom pb-1">
+								<div>
+										dekorasion va bazsazi
+									  <i class="fa-solid fa-arrow-left"></i>
+								</div>
+							</li>
+							
+							<li class="nav-item d-flex sub-menu-1-li border-bottom pb-1">
+								<div>
+									nasb o tamir lavazem khanegi
+									<i class="fa-solid fa-arrow-left"></i>
+								</div>
+							</li>
+							
+							<li class="nav-item d-flex sub-menu-1-li border-bottom pb-1">
+								<div>
+									sarmayesh va garmayesh
+									<i class="fa-solid fa-arrow-left"></i>
+								</div>
+							</li>
+							
+							<li class="nav-item d-flex sub-menu-1-li border-bottom pb-1">
+								<div>
+									barbari va jabejaei
+									<i class="fa-solid fa-arrow-left"></i>
+								</div>
+							</li>
+							
+							<li class="nav-item d-flex sub-menu-1-li border-bottom pb-1">
+								<div>
+									barghkari
+									<i class="fa-solid fa-arrow-left"></i>
+								</div>
+							</li>
+							
+							<li class="nav-item d-flex sub-menu-1-li border-bottom pb-1">
+								<div>
+									loole keshi
+									<i class="fa-solid fa-arrow-left"></i>
+								</div>
+							</li>
+							
+							<li class="nav-item d-flex sub-menu-1-li border-bottom pb-1">
+								<div>
+									zibaei banovan 
+									<i class="fa-solid fa-arrow-left"></i>
+								</div>
+							</li>
+							
+							<li class="nav-item d-flex sub-menu-1-li ">
+								<div>
+									tamirat khodro
+									<i class="fa-solid fa-arrow-left"></i>
+								</div>
+							</li>
+						</ul>
+					</div>
+
+      
+					<!--submenu for item1 from daste-bandi-khadamat submenu (laptop size) -->
+					<div class="col-8 col-lg-9 row sub-menu-show d-none">
+						
+						<div class="col-6">
+							<ul class="sub-menu" style="list-style-type: none">
+								<li class="nav-item">
+									<a class="nav-link-hover-black" href="sub-category-descriptions.html">
+										nezafat va paziraei </a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link-hover-black" href="sub-category-descriptions.html">
+										nezafat va paziraei </a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link-hover-black" href="sub-category-descriptions.html">
+										nezafat va paziraei </a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link-hover-black" href="sub-category-descriptions.html">
+										nezafat va paziraei </a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link-hover-black" href="sub-category-descriptions.html">
+										nezafat va paziraei </a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link-hover-black" href="sub-category-descriptions.html">
+										nezafat va paziraei </a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link-hover-black" href="sub-category-descriptions.html">
+										nezafat va paziraei </a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link-hover-black" href="sub-category-descriptions.html">
+										nezafat va paziraei </a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link-hover-black" href="sub-category-descriptions.html">
+										nezafat va paziraei </a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link-hover-black" href="sub-category-descriptions.html">
+										nezafat va paziraei </a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link-hover-black" href="sub-category-descriptions.html">
+										nezafat va paziraei </a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link-hover-black" href="sub-category-descriptions.html">
+										nezafat va paziraei </a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link-hover-black" href="sub-category-descriptions.html">
+										nezafat va paziraei </a>
+								</li>
+							</ul>
+						</div>
+						
+						<div class="col-6">
+							<ul class="sub-menu" style="list-style-type: none">
+								<li class="nav-item">
+									<a class="nav-link-hover-black" href="sub-category-descriptions.html">
+										nezafat va paziraei </a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link-hover-black" href="sub-category-descriptions.html">
+										nezafat va paziraei </a>
+								</li>
+							</ul>
+						</div>
+						
+						
+					</div>
+
+					
+					<!--submenu for item2 from daste-bandi-khadamat submenu (laptop size) -->
+					<div class="col-8 col-lg-9 row sub-menu-show d-none">
+						<div class="col-6">
+							<ul class="sub-menu" style="list-style-type: none">
+								<li class="nav-item">
+									<a class="nav-link-hover-black" href="sub-category-descriptions.html">
+										nezafat va paziraei 2 </a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link-hover-black" href="sub-category-descriptions.html">
+										nezafat va paziraei 2 </a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link-hover-black" href="sub-category-descriptions.html">
+										nezafat va paziraei 2 </a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link-hover-black" href="sub-category-descriptions.html">
+										nezafat va paziraei 2 </a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link-hover-black" href="sub-category-descriptions.html">
+										nezafat va paziraei 2 </a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link-hover-black" href="sub-category-descriptions.html">
+										nezafat va paziraei 2 </a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link-hover-black" href="sub-category-descriptions.html">
+										nezafat va paziraei 2 </a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link-hover-black" href="sub-category-descriptions.html">
+										nezafat va paziraei 2 </a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link-hover-black" href="sub-category-descriptions.html">
+										nezafat va paziraei 2 </a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link-hover-black" href="sub-category-descriptions.html">
+										nezafat va paziraei 2 </a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link-hover-black" href="sub-category-descriptions.html">
+										nezafat va paziraei 2 </a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link-hover-black" href="sub-category-descriptions.html">
+										nezafat va paziraei 2 </a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link-hover-black" href="sub-category-descriptions.html">
+										nezafat va paziraei 2 </a>
+								</li>
+							</ul>
+						</div>
+						
+						<div class="col-6  ">
+							<ul class="sub-menu" style="list-style-type: none">
+								<li class="nav-item">
+									<a class="nav-link-hover-black" href="sub-category-descriptions.html">
+										nezafat va paziraei 2 </a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link-hover-black" href="sub-category-descriptions.html">
+										nezafat va paziraei 2 </a>
+								</li>
+							</ul>
+						</div>
+					</div>
+  
+					<!--submenu for item3 from daste-bandi-khadamat submenu (laptop size) -->
+					<div class="col-8 col-lg-9 row sub-menu-show d-none">
+						<div class="col-6  ">
+							<ul class="sub-menu" style="list-style-type: none">
+							  <li class="nav-item">
+								<a class="nav-link-hover-black" href="sub-category-descriptions.html">
+									nezafat va paziraei 3 </a>
+							  </li>
+							  <li class="nav-item">
+								<a class="nav-link-hover-black" href="sub-category-descriptions.html">
+									nezafat va paziraei 3 </a>
+							  </li>
+							  <li class="nav-item">
+								<a class="nav-link-hover-black" href="sub-category-descriptions.html">
+									nezafat va paziraei 3 </a>
+							  </li>
+								<li class="nav-item">
+								<a class="nav-link-hover-black" href="sub-category-descriptions.html">
+									nezafat va paziraei 3 </a>
+							  </li>
+								<li class="nav-item">
+								<a class="nav-link-hover-black" href="sub-category-descriptions.html">
+									nezafat va paziraei 3 </a>
+							  </li>
+								<li class="nav-item">
+								<a class="nav-link-hover-black" href="sub-category-descriptions.html">
+									nezafat va paziraei 3 </a>
+							  </li>
+								<li class="nav-item">
+								<a class="nav-link-hover-black" href="sub-category-descriptions.html">
+									nezafat va paziraei 3 </a>
+							  </li>
+								<li class="nav-item">
+								<a class="nav-link-hover-black" href="sub-category-descriptions.html">
+									nezafat va paziraei 3 </a>
+							  </li>
+								<li class="nav-item">
+								<a class="nav-link-hover-black" href="sub-category-descriptions.html">
+									nezafat va paziraei 3 </a>
+							  </li>
+								<li class="nav-item">
+								<a class="nav-link-hover-black" href="sub-category-descriptions.html">
+									nezafat va paziraei 3 </a>
+							  </li>
+								<li class="nav-item">
+								<a class="nav-link-hover-black" href="sub-category-descriptions.html">
+									nezafat va paziraei 3 </a>
+							  </li>
+								<li class="nav-item">
+								<a class="nav-link-hover-black" href="sub-category-descriptions.html">
+									nezafat va paziraei 3 </a>
+							  </li>
+								<li class="nav-item">
+								<a class="nav-link-hover-black" href="sub-category-descriptions.html">
+									nezafat va paziraei 3 </a>
+							  </li>
+							</ul>
+						</div>
+						
+						<div class="col-6">
+							<ul class="sub-menu" style="list-style-type: none">
+							  <li class="nav-item">
+								<a class="nav-link-hover-black" href="sub-category-descriptions.html">
+									nezafat va paziraei 3 </a>
+							  </li>
+							  <li class="nav-item">
+								<a class="nav-link-hover-black" href="sub-category-descriptions.html">
+									nezafat va paziraei 3 </a>
+							  </li>
+							</ul>
+						</div>
+					</div>
+					
+				</div>
+			 
+			</div>
+			
+
+		</div>
+			
+	</header>
+<!--end header-->
+
+	
+	
+	
+<!--start main-->
+	<main class="p-3 pt-2 pb-4 pt-md-5 pb-md-5">
+		
+		<!--page content-->
+		<div class="container-fluid">
+			<div class="row gy-5">
+				<!--menu-->
+				<div class="col-12 col-lg-4">
+		
+					<div class="overflow_y_scroll border border-dark rounded-3 p-4">
+						
+						<div class="w-100">
+							<a href="index.html#index-sec3" class="btn searchBar-blue-bg mb-3 w-100"> category </a>
+						</div>
+						
+						<ul class="sub-menu2 p-0">				
+							<li>
+								<form class="d-flex rounded-3 pe-2 ps-2 searchBar-blue-bg">
+
+									<button class="btn" type="submit">
+									   <i class="fa-solid fa-magnifying-glass"></i>
+									</button>
+
+									<input class="form-control border-0 searchBar-blue-bg" id="dsc_serachbar" type="search" placeholder="search..." aria-label="Search">
+
+							   </form>
+							</li>
+
+							<li class="sub-menu-hover2">
+								<div class="d-inline">
+							  		<a href="sub-category-descriptions.html" class="text-decoration-none text-black"> nezafat va paziraei 	</a>
+								</div>
+							</li>
+
+							<li class="sub-menu-hover2">
+								<div class="d-inline">
+									<a href="sub-category-descriptions.html" class="text-decoration-none text-black"> dekorasion va bazsazi	</a>	
+								</div>
+							</li>
+
+							<li class="sub-menu-hover2">
+								<div class="d-inline">
+									<a href="sub-category-descriptions.html" class="text-decoration-none text-black"> nasb o tamir lavazem khanegi </a>				
+								</div>
+							</li>
+
+							<li class="sub-menu-hover2">
+								<div class="d-inline">
+									<a href="sub-category-descriptions.html" class="text-decoration-none text-black"> sarmyesh o garmayesh </a>
+								</div>
+							</li>
+
+							<li class="sub-menu-hover2">
+								<div class="d-inline">
+									<a href="sub-category-descriptions.html" class="text-decoration-none text-black"> barbari o jabejaei </a>
+								</div>
+							</li>
+
+							<li class="sub-menu-hover2">
+								<div class="d-inline">
+									<a href="sub-category-descriptions.html" class="text-decoration-none text-black"> barghkari </a>	
+								</div>
+							</li>
+
+							<li class="sub-menu-hover2">
+								<div class="d-inline">
+									<a href="sub-category-descriptions.html" class="text-decoration-none text-black"> loolekeshi </a>			
+								</div>
+							</li>
+
+							<li class="sub-menu-hover2">
+								<div class="d-inline">
+									<a href="sub-category-descriptions.html" class="text-decoration-none text-black"> zibaei banovan </a> 
+								</div>
+							</li>
+
+							<li class="sub-menu-hover2">
+								<div class="d-inline">
+									<a href="sub-category-descriptions.html" class="text-decoration-none text-black"> tamirat khodro </a>	
+								</div>
+							</li>
+							
+							<li class="sub-menu-hover2">
+								<div class="d-inline">
+									<a href="sub-category-descriptions.html" class="text-decoration-none text-black"> loolekeshi </a>
+								</div>
+							</li>
+
+							<li class="sub-menu-hover2">
+								<div class="d-inline">
+									<a href="sub-category-descriptions.html" class="text-decoration-none text-black"> zibaei banovan </a> 
+								</div>
+							</li>
+
+							<li class="sub-menu-hover2">
+								<div class="d-inline">
+									<a href="sub-category-descriptions.html" class="text-decoration-none text-black">tamirat khodro</a>	
+								</div>
+							</li>
+							
+							<li class="sub-menu-hover2">
+								<div class="d-inline">
+									<a href="sub-category-descriptions.html" class="text-decoration-none text-black">loolekeshi</a>
+								</div>
+							</li>
+							
+							<li class="sub-menu-hover2">
+								<div class="d-inline">
+									<a href="sub-category-descriptions.html" class="text-decoration-none text-black">zibaei banovan</a> 
+								</div>
+							</li>
+
+							<li class="sub-menu-hover2">
+								<div class="d-inline">
+									<a href="sub-category-descriptions.html" class="text-decoration-none text-black">tamirat khodro</a>	
+								</div>
+							</li>
+							
+							<li class="sub-menu-hover2">
+								<div class="d-inline">
+									<a href="sub-category-descriptions.html" class="text-decoration-none text-black"> loole keshi </a>
+								</div>
+							</li>
+							
+						</ul>
+					</div>
+					
+				</div>
+							
+				
+				
+				<div class="col-12 col-lg-8 text-center">
+					<p class="fw-bold font-size24"> form sabte sefaresh </p>
+					
+					<form>
+						
+						<div class="pb-2 border-bottom border-secondary border-2">
+							
+							<!--mobile brand-->
+							<div class="border border-dark rounded-3 text-start mb-5">
+							
+								<div class="searchBar-blue-bg border-bottom border-dark rounded-3 fw-bold p-3"> 
+									mbile brand?
+								</div>
+
+								<div class="p-3 border-bottom border-primary">
+									<input class="form-check-input me-3" type="checkbox" value="" id="samsung">
+									<label class="form-check-label" for="samsung">
+										samsung
+									</label>	
+								</div>
+
+								<div class=" p-3 border-bottom border-primary">
+									<input class="form-check-input me-3" type="checkbox" value="" id="sony">
+									<label class="form-check-label" for="sony">
+										sony
+									</label>	
+								</div>
+
+								<div class=" p-3 border-bottom border-primary">
+									<input class="form-check-input me-3" type="checkbox" value="" id="nokia">
+									<label class="form-check-label" for="nokia">
+										nokia
+									</label>	
+								</div>
+
+								<div class=" p-3 border-bottom border-primary">
+									<input class="form-check-input me-3" type="checkbox" value="" id="blackBerry">
+									<label class="form-check-label" for="blackBerry">
+										blac kberry
+									</label>	
+								</div>
+
+								<div class=" p-3 border-bottom border-primary">
+									<input class="form-check-input me-3" type="checkbox" value="" id="xiaomi">
+									<label class="form-check-label" for="xiaomi">
+										xiaomi
+									</label>	
+								</div>
+
+								<div class=" p-3 border-bottom border-primary">
+									<input class="form-check-input me-3" type="checkbox" value="" id="huawei">
+									<label class="form-check-label" for="huawei">
+										huawei
+									</label>	
+								</div>
+
+								<div class=" p-3">
+									<input class="form-check-input me-3" type="checkbox" value="" id="more-mob-brand">
+									<label class="form-check-label" for="more-mob-brand">
+										other
+									</label>	
+								</div>
+
+							</div>
+						
+							
+							<!--نوع مشکل-->
+							<div class="border border-dark rounded-3 text-start mb-5">
+
+								<div class="searchBar-blue-bg border-bottom border-dark rounded-3 fw-bold p-3"> 
+									problem?
+								</div>
+
+								<div class=" p-3 border-bottom border-primary">
+									<input class="form-check-input me-3" type="checkbox" value="" id="lcd">
+									<label class="form-check-label" for="lcd">
+										LCD
+									</label>	
+								</div>
+
+								<div class=" p-3 border-bottom border-primary">
+									<input class="form-check-input me-3" type="checkbox" value="" id="segments">
+									<label class="form-check-label" for="segments">
+										ghataat
+									</label>	
+								</div>
+
+								<div class=" p-3 border-bottom border-primary">
+									<input class="form-check-input me-3" type="checkbox" value="" id="repair">
+									<label class="form-check-label" for="repair">
+										tamirat
+									</label>	
+								</div>
+
+								<div class=" p-3 border-bottom border-primary">
+									<input class="form-check-input me-3" type="checkbox" value="" id="monitor">
+									<label class="form-check-label" for="monitor">
+										monitor
+									</label>	
+								</div>
+
+								<div class=" p-3 border-bottom border-primary">
+									<input class="form-check-input me-3" type="checkbox" value="" id="touch">
+									<label class="form-check-label" for="touch">
+										touch
+									</label>	
+								</div>
+
+								<div class=" p-3">
+									<input class="form-check-input me-3" type="checkbox" value="" id="more-problem">
+									<label class="form-check-label" for="more-problem">
+										other
+									</label>	
+								</div>
+
+							</div>
+
+							
+							<!--خدمات مورد نیاز-->
+							<div class="border border-dark rounded-3 text-start mb-5">
+
+								<div class="searchBar-blue-bg border-bottom border-dark rounded-3 fw-bold p-3"> 
+									service?
+								</div>
+
+								<div class=" p-3 border-bottom border-primary">
+									<input class="form-check-input me-3" type="checkbox" value="" id="in-person-repair">
+									<label class="form-check-label" for="in-person-repair">
+										tamir hozoori
+									</label>	
+								</div>
+
+								<div class=" p-3 border-bottom border-primary">
+									<input class="form-check-input me-3" type="checkbox" value="" id="buying-equipment">
+									<label class="form-check-label" for="buying-equipment">
+										kharid tajhizat
+									</label>	
+								</div>
+
+								<div class=" p-3 border-bottom border-primary">
+									<input class="form-check-input me-3" type="checkbox" value="" id="buying-mobile">
+									<label class="form-check-label" for="buying-mobile">
+										kharid gooshi
+									</label>	
+								</div>
+
+								<div class=" p-3">
+									<input class="form-check-input me-3" type="checkbox" value="" id="more-services">
+									<label class="form-check-label" for="more-services">
+										other
+									</label>	
+								</div>
+
+							</div>
+							
+						</div>
+						
+						
+						<!--picture upload & problem description-->
+						<div class="mt-3 pb-2">
+							
+							<div class="text-start">
+								<p class="fw-bold"> image upload </p>
+								<p> upload your image here. </p>
+							</div>
+							
+							<!--picture upload-->
+							<div class="mb-4">
+								<label for="upload-problem-pic" class="darkgreen rounded-3 p-4 text-white text-center fw-bold">
+									<i class="fa-solid fa-plus font-size40"></i>
+									<br>
+										upload here
+								</label>
+								<input type="file" id="upload-problem-pic" class="d-none">
+							</div>
+
+							<!--problem description-->
+							<div class="mb-3 text-start">
+								<label for="problem-description" class="form-label fw-bold">problem description: </label>
+								<textarea id="problem-description" class="form-control border-dark" rows="10" placeholder=" ... "></textarea>
+							</div>
+							
+						</div>
+						
+						
+						<!--date and time picker-->
+						<div class="mt-3 pb-2">
+							
+							<div class="text-start">
+								<p class="fw-bold"> time and date picker: </p>
+							</div>
+							
+							<div class="pt-2 pb-2">
+								<!--date picker-->
+								<div class="mb-4">
+									<label for="date-picker" class="fw-bold mb-2">date: </label>
+									<br>
+									<input type="date" id="date-picker" class="p-2 ps-2 pe-2 rounded-3">
+								</div>
+
+								<!--time picker-->
+								<div class="mb-4">
+									<label for="time-picker" class="fw-bold mb-2">time: </label>
+									<br>
+									
+									<div class="d-flex justify-content-center">
+										<select class="form-select aut-time-pick mb-3" aria-label="Default select">
+											<option value="custom" selected>custom</option>
+											<option> 9am to 12pm </option>
+											<option> 12pm to 16pm </option>
+											<option> 16pm to 20pm </option>
+											<option> 20pm to 22pm </option>	
+										</select>
+									</div>
+									
+									<input type="time" id="time-picker" class="p-2 ps-2 pe-2 rounded-3">
+								</div>
+	
+							</div>
+						</div>
+						
+						
+						<!--نمایش اطلاعات کاربر برای متخصص-->
+						<div class="mt-3 pb-2 text-start">
+							<p class="m-0 d-inline-block pe-4 fw-bold"> 
+								etelaate shoma namayesh dade shavad?
+							</p>
+
+							<input type="radio" class="form-check-input me-2" id="yes-checkbox" name="yes-no-radio" />
+							<label class="form-check-label fw-bold" for="yes-checkbox"> yes </label>
+
+							<input type="radio" class="form-check-input ms-4 me-2" id="no-checkbox" name="yes-no-radio"/>
+							<label class="form-check-label fw-bold" for="no-checkbox"> no </label>
+	
+						</div>
+						
+						
+						<!--انتخاب آدرس-->
+						<div class="mt-3 mb-5">
+							
+							<div class="text-start">
+								<p class="fw-bold"> addrs: </p>
+							</div>
+							
+							<div class="ps-4">
+								
+								<!-- آدرس های ذخیره شده-->
+								<div class="text-start saved_addr">
+									<div class="mb-3">
+										<input type="radio" class="form-check-input ms-2" id="addr1" name="addr-radio" />
+										<label class="form-check-label" for="addr1"> 
+											shiraz/jamali
+										</label>
+									</div>
+
+									<div class="mb-3">
+										<input type="radio" class="form-check-input ms-2" id="addr2" name="addr-radio"/>
+										<label class="form-check-label" for="addr2">
+											tehran/azadi
+										</label>
+									</div>
+									
+									<div class="mb-3">
+										<input type="radio" class="form-check-input ms-2" id="custom_addr_selection" name="addr-radio" value="custom"/>
+										<label class="form-check-label" for="custom_addr_selection">
+											add new addr.
+										</label>
+									</div>
+
+								</div>
+								
+								
+								<!--اضافه کردن آدرس جدید-->
+								<div id="add_new_addrs" class="text-end mt-3 w-75 d-none">
+									<textarea class="form-control w-100" placeholder="add ur new addr here ..." rows="5"></textarea> 
+								</div>
+							
+							</div>
+							
+							
+						</div>
+						
+						
+						<!--buttons-->
+						<div class="mt-3">
+							<div class="mb-2 w-100">
+								<button type="submit" class="btn darkYellow w-50"> next </button>
+							</div>
+							<div class="w-100">
+								<a href="sub-category-descriptions.html" class="btn darkYellow-border darkYellowOnHover w-50"> back </a>
+							</div>
+						</div>
+						
+
+					</form>
+					
+
+	
+				</div>
+				
+				
+				
+			</div>
+		</div>
+		
+		
+		<!--floating black div-->
+		<div class="black-div-bg vw-100 h-100 pt-5 pb-5 position-absolute top-0 start-0 d-flex justify-content-center align-items-center">
+			
+			<div class="overflow-auto pt-3 ps-md-5 pe-md-5 pb-3 text-center">
+				<a href="customSpecialist.html" class="btn w-75 text-decoration-none white-background text-black darkYellowOnHover p-2 mb-3"> entekhab motekhases be soorate dasti </a>
+				<a href="automaticSpecialist.html" class="btn w-75 text-decoration-none white-background text-black darkYellowOnHover p-2"> entekhab motekhases tavasot site </a>
+			</div>
+			
+		</div>
+
+		
+	</main>
+	
+
+	
+	<footer class="ps-5 pt-5 pe-5 pb-4">	
+		<div class="container-fluid">
+			<div class="row">
+				
+				<div class="col col-lg-2 col-12 mb-3 p-2">
+					<p class="footer-list-title">
+						servicehaye mahboob
+						<i class="fa-solid fa-angle-down me-1 d-lg-none"></i>
+					</p>
+					<!--services for mobile size-->
+					<ul class="footer-list d-lg-none d-none">
+						<li class="footer-list-item">
+							<a href="sub-category-descriptions.html" class="footer-list-item-link">
+								nezafat va paziraei </a>
+						</li>
+						
+						<li class="footer-list-item">
+							<a href="sub-category-descriptions.html" class="footer-list-item-link">
+								dekorasion va bazsazi </a>
+						</li>
+						
+						<li class="footer-list-item">
+							<a href="sub-category-descriptions.html" class="footer-list-item-link">
+								nasb o tamir lavazem khanegi </a>
+						</li>
+					</ul>
+					
+					
+					<!--services for laptop size-->
+					<ul class="footer-list-lg d-none d-lg-block p-0 ps-2">
+						<li class="footer-list-item">
+							<a href="sub-category-descriptions.html" class="footer-list-item-link">
+								neafat va paziraei </a>
+						</li>
+						
+						<li class="footer-list-item">
+							<a href="sub-category-descriptions.html" class="footer-list-item-link">
+								dekorasion va bazsazi </a>
+						</li>
+						
+						<li class="footer-list-item">
+							<a href="sub-category-descriptions.html" class="footer-list-item-link">
+								nasb o tamir lavazem khanegi </a>
+						</li>
+					</ul>
+					
+				</div>
+				
+				
+				<div class="col col-lg-2 col-12 mb-3 p-2">
+					<p class="footer-list-title">
+						linkhaye mofid
+						<i class="fa-solid fa-angle-down me-1 d-lg-none"></i>
+					</p>
+					
+					<!--links for mobile size-->
+					<ul class="footer-list d-lg-none d-none">
+						<li class="footer-list-item">
+							<a href="index.html#index-sec3" class="footer-list-item-link"> services </a>
+						</li>
+						
+						<li class="footer-list-item">
+							<a href="aboutUs.html" class="footer-list-item-link"> about us </a>
+						</li>
+						
+						<li class="footer-list-item">
+							<a href="articles.html" class="footer-list-item-link"> articles </a>
+						</li>
+						
+						<li class="footer-list-item">
+							<a href="terms.html" class="footer-list-item-link"> terms and services </a>
+						</li>
+						
+						<li class="footer-list-item">
+							<a href="questions.html" class="footer-list-item-link"> questions </a>
+						</li>
+					</ul>
+					
+					
+					<!--links for laptop size-->
+					<ul class="footer-list-lg d-none d-lg-block p-0 ps-2">
+						<li class="footer-list-item">
+							<a href="index.html#index-sec3" class="footer-list-item-link"> services </a>
+						</li>
+						
+						<li class="footer-list-item">
+							<a href="aboutUs.html" class="footer-list-item-link"> about us </a>
+						</li>
+						
+						<li class="footer-list-item">
+							<a href="articles.html" class="footer-list-item-link"> articles </a>
+						</li>
+						
+						<li class="footer-list-item">
+							<a href="terms.html" class="footer-list-item-link"> terms and services </a>
+						</li>
+						
+						<li class="footer-list-item">
+							<a href="questions.html" class="footer-list-item-link"> questions </a>
+						</li>
+					</ul>
+				</div>
+				
+				
+				
+				<div class="col col-lg-2 col-12  mb-3 p-2">
+					<p class="footer-list-title">
+						articles
+						<i class="fa-solid fa-angle-down me-1 d-lg-none"></i>
+					</p>
+					
+					<!--articles for mobile size-->
+					<ul class="footer-list d-lg-none d-none">
+						<li class="footer-list-item">
+							<a href="articleDescription.html" class="footer-list-item-link"> 
+								entekhab behtarin motekhases
+							</a>
+						</li>
+						
+						<li class="footer-list-item">
+							<a href="articleDescription.html" class="footer-list-item-link">
+								moshahede emtiazat </a>
+						</li>
+						
+						<li class="footer-list-item">
+							<a href="articleDescription.html" class="footer-list-item-link">
+								kasbe daramad az takhasos </a>
+						</li>
+						
+					</ul>
+					
+					<!--articles for laptop size-->
+					<ul class="footer-list-lg d-none d-lg-block p-0 ps-2">
+						<li class="footer-list-item">
+							<a href="articleDescription.html" class="footer-list-item-link">
+								entekhab behtarin motekhases </a>
+						</li>
+						
+						<li class="footer-list-item">
+							<a href="articleDescription.html" class="footer-list-item-link">
+								moshahede emtiazat </a>
+						</li>
+						
+						<li class="footer-list-item">
+							<a href="articleDescription.html" class="footer-list-item-link">
+								kasbe daramad az takhasos </a>
+						</li>
+						
+					</ul>
+				</div>
+				
+				
+				
+				<div class="col col-lg-2 col-12 mb-3 p-2">
+					<p class="footer-list-title">
+						contact us
+						<i class="fa-solid fa-angle-down me-1 d-lg-none"></i>
+					</p>
+					
+					<!--contact-us for mobile size-->
+					<ul class="footer-list d-lg-none d-none">
+						<li class="footer-list-item">
+							<a href="#" class="footer-list-item-link"> www.fixyland-fa.com </a>
+						</li>
+						
+						<li class="footer-list-item">
+							<a href="#" class="footer-list-item-link"> info@fixyland-eg.com </a>
+						</li>
+						
+						<li href="#" class="footer-list-item">
+							<a href="#" class="footer-list-item-link"> 0224561600  </a>
+						</li>
+						
+					</ul>
+					
+					<!--contact-us for laptop size-->
+					<ul class="footer-list-lg d-none d-lg-block p-0 ps-2">
+						<li class="footer-list-item">
+							<a href="#" class="footer-list-item-link"> www.fixyland-fa.com </a>
+						</li>
+						
+						<li class="footer-list-item">
+							<a href="#" class="footer-list-item-link"> info@fixyland-eg.com </a>
+						</li>
+						
+						<li class="footer-list-item">
+							 <a href="#" class="footer-list-item-link"> 0224561600  </a>
+						</li>
+						
+					</ul>
+				</div>
+				
+				
+				
+				<div class="col col-lg-4 col-12 text-center p-0 ">
+					<div class="fixy-title d-inline-block text-center ms-1 d-inline-flex flex-column justify-content-end">
+						<p class="fixyland-footer-logo"> Fixy Land </p>
+						<p > az takhasos ta  kasb daramad </p>
+					</div>
+					<img class="d-inline-block ms-3" src="image/logo.png" alt="fixyland-logo" width="100" height="150">
+				</div>
+				
+			</div>
+		</div>
+		
+		
+		<hr>
+		
+		
+		<div class="container-fluid">
+			<div class="row">
+				
+				<div class="col d-none d-md-block col-md-6 order-md-1 p-0">
+					<img class="ms-3 mb-2" src="image/etemad.png" alt="symbol" width="85" height="60">
+					<img class="ms-3 mb-2" src="image/etemad-reza.png" alt="symbol" width="85" height="60">
+					<img class="ms-3 mb-2" src="image/etemad.png" alt="symbol" width="85" height="60">
+				</div>
+				
+				<div class="col col-2 col-md-12 order-md-3 mt-md-5 d-none d-md-flex justify-content-center align-items-center">
+					<p class="copyright-footer"> copyRight:  
+						<a class="text-decoration-none white-text fw-bold" href="https://lordofit.com/fa">lord of it</a>
+					</p>
+				</div>
+				
+				<div class="col col-12 col-md-6 order-md-1 text-center text-md-end social-media-footer">
+					<a href="#"><i class="fa-brands fa-facebook-square  ms-2 me-2 white-text"></i></a>
+					<a href="#"><i class="fa-brands fa-linkedin  ms-2 me-2 white-text"></i></a>
+					<a href="#"><i class="fa-solid fa-envelope  ms-2 me-2 white-text"></i></a>
+					<a href="#"><i class="fa-brands fa-instagram  ms-2 me-2 white-text"></i></a>
+				</div>
+			</div>
+		</div>
+
+	</footer>
+	
+	
+
+
+
+	<!-- bootstrap script -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script> 
+
+	<!--swiper js cdn-->
+	<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+	<!--scripts from script folder	-->
+	<script src="script/main.js" type="text/javascript"></script>
+	
+
+
+</body>
+    
+
+    
+</html>
+
