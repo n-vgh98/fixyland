@@ -37,6 +37,7 @@ use App\Http\Controllers\Admin\AdminSubCategoryServiceDescriptionController;
 |
 */
 
+// admin routing
 route::prefix("admin")->middleware(['auth:sanctum', 'verified', "admin"])->group(function () {
 
     // new way to use a controller for all routes
@@ -296,10 +297,22 @@ route::prefix("admin")->middleware(['auth:sanctum', 'verified', "admin"])->group
             Route::post("/store", "store")->name('admin.footer_useful_links.store');
             Route::post("/update/{id}", "update")->name('admin.footer_useful_links.update');
             Route::delete("/destroy/{id}", "destroy")->name('admin.footer_useful_links.delete');
-    });
+        });
     });
 });
-
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+// end for admin routing
+
+
+// always redirect domain to english site
+route::get("/", function () {
+    return redirect("/en");
+});
+
+route::prefix("{locale}")->middleware("language")->group(function () {
+    route::get("/", function () {
+        return view("front.index");
+    });
+});

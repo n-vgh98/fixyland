@@ -43,11 +43,34 @@
                                         <ul class="list_style_type p-0 m-0">
                                             <hr class="m-0 mt-2">
                                             <li class="rounded-top darkYellow-lang text-center mt-1 mb-1">
-                                                <a href="#" class="text-decoration-none text-black"> AR </a>
+                                                @php
+                                                    $x = substr(Request::getPathInfo(), 3);
+                                                    $lang = substr(Request::getPathInfo(), 1, 2);
+                                                    if ($lang == 'ar') {
+                                                        $lang = 'en';
+                                                        $link = $lang . $x;
+                                                    } else {
+                                                        $lang = 'ar';
+                                                        $link = $lang . $x;
+                                                    }
+                                                @endphp
+                                                <a href="{{ $link }}" class="text-decoration-none text-black">
+                                                    @if ($lang == 'ar')
+                                                        Ar
+                                                    @else
+                                                        En
+                                                    @endif
+                                                </a>
                                             </li>
                                             <hr class="m-0">
                                             <li class="rounded-bottom darkYellow-lang text-center mt-1 mb-1">
-                                                <a href="#" class="text-decoration-none text-black"> EN </a>
+                                                <a href="#" class="text-decoration-none text-black">
+                                                    @if ($lang == 'ar')
+                                                        En
+                                                    @else
+                                                        Ar
+                                                    @endif
+                                                </a>
                                             </li>
                                         </ul>
                                     </div>
@@ -598,11 +621,34 @@
                                         <ul class="list_style_type p-0 m-0">
                                             <hr class="m-0 mt-2">
                                             <li class="rounded-top darkYellow-lang text-center mt-1 mb-1">
-                                                <a href="#" class="text-decoration-none text-black"> AR </a>
+                                                @php
+                                                    $x = substr(Request::getPathInfo(), 3);
+                                                    $lang = substr(Request::getPathInfo(), 1, 2);
+                                                    if ($lang == 'ar') {
+                                                        $lang = 'en';
+                                                        $link = $lang . $x;
+                                                    } else {
+                                                        $lang = 'ar';
+                                                        $link = $lang . $x;
+                                                    }
+                                                @endphp
+                                                <a href="{{ $link }}" class="text-decoration-none text-black">
+                                                    @if ($lang == 'ar')
+                                                        Ar
+                                                    @else
+                                                        En
+                                                    @endif
+                                                </a>
                                             </li>
                                             <hr class="m-0">
                                             <li class="rounded-bottom darkYellow-lang text-center mt-1 mb-1">
-                                                <a href="#" class="text-decoration-none text-black"> EN </a>
+                                                <a href="#" class="text-decoration-none text-black">
+                                                    @if ($lang == 'ar')
+                                                        En
+                                                    @else
+                                                        Ar
+                                                    @endif
+                                                </a>
                                             </li>
                                         </ul>
                                     </div>
