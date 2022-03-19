@@ -25,6 +25,7 @@ use App\Http\Controllers\Admin\AdminNotificationsController;
 use App\Http\Controllers\Admin\AdminServiceCategoryController;
 use App\Http\Controllers\Admin\AdminServiceSubCategoryController;
 use App\Http\Controllers\Admin\AdminSubCategoryServiceDescriptionController;
+use App\Http\Controllers\Front\FrontHomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -312,7 +313,9 @@ route::get("/", function () {
 });
 
 route::prefix("{locale}")->middleware("language")->group(function () {
-    route::get("/", function () {
-        return view("front.index");
-    });
+    // authentication routes
+    route::get("register", [FrontHomeController::class, "register"])->name("user.register");
+
+
+    route::get("/", [FrontHomeController::class, "index"])->name("user.home");
 });

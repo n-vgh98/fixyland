@@ -13,7 +13,9 @@
 
                 <!-- fixyLand logo for mobile size -->
                 <div class="navbar-toggler col-4 col-sm-2">
-                    <img class="w-100 " src="image/fixyLandMenuIcon.png" alt="" id="logo-menu">
+                    <img class="w-100 "
+                        src="{{ asset('frontend/fixy-land-en-main/image/fixyLandMenuIcon.png') }}" alt=""
+                        id="logo-menu">
                 </div>
             </div>
 
@@ -26,7 +28,8 @@
                     <div class="col-lg-2 row order-lg-1 order-4">
                         <!-- fixyLand logo for laptop size -->
                         <div class="col-12 justify-content-center d-none d-lg-flex">
-                            <img src="image/fixyLandMenuIcon.png" alt="" width="100" height="50">
+                            <img src="{{ asset('frontend/fixy-land-en-main/image/fixyLandMenuIcon.png') }}" alt=""
+                                width="100" height="50">
                         </div>
                         <!-- language selection -->
                         <div class="col-lg-12 d-flex justify-content-center row mb-2" dir="ltr">
@@ -54,7 +57,7 @@
                                                         $link = $lang . $x;
                                                     }
                                                 @endphp
-                                                <a href="{{ $link }}" class="text-decoration-none text-black">
+                                                <a href="/{{ $link }}" class="text-decoration-none text-black">
                                                     @if ($lang == 'ar')
                                                         Ar
                                                     @else
@@ -99,7 +102,7 @@
                                     <ul class="navbar-nav d-flex flex-fill justify-content-between m-0 p-0 ">
                                         <!-- header menu items: -->
                                         <li class="nav-item pb-2 ">
-                                            <a class=" nav-link-hover" href="index.html">خانه</a>
+                                            <a class=" nav-link-hover" href="{{ route('user.home') }}">خانه</a>
                                         </li>
                                         <li class="nav-item pb-2">
                                             <a class=" nav-link-hover" href="articles.html">مقالات</a>
@@ -262,7 +265,8 @@
                             <div class="d-flex gap-3 col-10 col-sm-7 col-md-10 col-lg-12">
                                 <a href="login.html" class="btn outline-yellow flex-fill text-decoration-none"
                                     id="button-menu1"> ورود </a>
-                                <a href="register.html" class="btn flex-fill text-decoration-none" id="button-menu2">
+                                <a href="{{ route('user.register') }}" class="btn flex-fill text-decoration-none"
+                                    id="button-menu2">
                                     ثبت نام</a>
                             </div>
                         </div>
@@ -591,7 +595,9 @@
 
                 <!-- fixyLand logo for mobile size -->
                 <div class="navbar-toggler col-4 col-sm-2">
-                    <img class="w-100 " src="image/fixyLandMenuIcon.png" alt="" id="logo-menu">
+                    <img class="w-100 "
+                        src="{{ asset('frontend/fixy-land-en-main/image/fixyLandMenuIcon.png') }}" alt=""
+                        id="logo-menu">
                 </div>
             </div>
 
@@ -604,7 +610,8 @@
                     <div class="col-lg-2 row order-lg-1 order-4">
                         <!-- fixyLand logo for laptop size -->
                         <div class="col-12 justify-content-center d-none d-lg-flex">
-                            <img src="image/fixyLandMenuIcon.png" alt="" width="100" height="50">
+                            <img src="{{ asset('frontend/fixy-land-en-main/image/fixyLandMenuIcon.png') }}" alt=""
+                                width="100" height="50">
                         </div>
                         <!-- language selection -->
                         <div class="col-lg-12 d-flex justify-content-center row mb-2" dir="ltr">
@@ -624,6 +631,7 @@
                                                 @php
                                                     $x = substr(Request::getPathInfo(), 3);
                                                     $lang = substr(Request::getPathInfo(), 1, 2);
+
                                                     if ($lang == 'ar') {
                                                         $lang = 'en';
                                                         $link = $lang . $x;
@@ -632,7 +640,7 @@
                                                         $link = $lang . $x;
                                                     }
                                                 @endphp
-                                                <a href="{{ $link }}" class="text-decoration-none text-black">
+                                                <a href="/{{ $link }}" class="text-decoration-none text-black">
                                                     @if ($lang == 'ar')
                                                         Ar
                                                     @else
@@ -677,7 +685,7 @@
                                     <ul class="navbar-nav d-flex flex-fill justify-content-between m-0 p-0 ">
                                         <!-- header menu items: -->
                                         <li class="nav-item pb-2 ">
-                                            <a class=" nav-link-hover" href="index.html">Home</a>
+                                            <a class=" nav-link-hover" href="{{ route('user.home') }}">Home</a>
                                         </li>
                                         <li class="nav-item pb-2">
                                             <a class=" nav-link-hover" href="articles.html">Articles</a>
@@ -852,7 +860,8 @@
                             <div class="d-flex gap-3 col-10 col-sm-7 col-md-10 col-lg-12">
                                 <a href="login.html" class="btn outline-yellow flex-fill text-decoration-none"
                                     id="button-menu1"> login </a>
-                                <a href="register.html" class="btn flex-fill text-decoration-none" id="button-menu2">
+                                <a href="{{ route('user.register') }}" class="btn flex-fill text-decoration-none"
+                                    id="button-menu2">
                                     sign up </a>
                             </div>
                         </div>
