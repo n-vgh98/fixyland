@@ -228,7 +228,7 @@
 
                     {{-- notifications link --}}
                     <li class="nav-item has-treeview ">
-                        <a href="#" class="nav-link bg-info active">
+                        <a href="#" class="nav-link bg-primary active">
                             <i class="nav-icon fa  fa-bell"></i>
                             <p>
                                 Notifications
@@ -372,10 +372,10 @@
                     </li>
                     <!-- faq links-->
                     <li class="nav-item has-treeview ">
-                        <a href="#" class="nav-link bg-info active">
+                        <a href="#" class="nav-link bg-primary active">
                             <i class="nav-icon fa  fa-bars"></i>
                             <p>
-                                Frequently Asked Questions
+                                FAQ
                                 <i class="right fa fa-angle-left"></i>
                             </p>
                         </a>
@@ -402,7 +402,38 @@
                             </li>
                         </ul>
                     </li>
+                     <!-- contact us links-->
+                     <li class="nav-item has-treeview ">
+                        <a href="#" class="nav-link bg-primary active">
+                            <i class="nav-icon fa  fa-phone-square"></i>
+                            <p>
+                                Contact Us
+                                <i class="right fa fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
 
+                            {{-- contact us texts --}}
+                            <li class="nav-item">
+                                <a href="{{ route('admin.contact_us.texts.index', 'ar') }}" class="nav-link">
+                                    <i class="nav-icon fa  fa-file-text-o"></i>
+                                    <p>
+                                        Texts
+                                    </p>
+                                </a>
+                            </li>
+
+                            {{-- contact us messages --}}
+                            <li class="nav-item">
+                                <a href="{{ route('admin.contact_us.index', 'ar') }}" class="nav-link">
+                                    <i class="nav-icon fa  fa-comments"></i>
+                                    <p>
+                                        All Mesaages
+                                    </p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
 
                     <!-- about us link -->
                     <li class="nav-item has-treeview">
@@ -413,6 +444,38 @@
                                 About Us
                             </p>
                         </a>
+                    </li>
+                     <!-- footer links-->
+                     <li class="nav-item has-treeview ">
+                        <a href="#" class="nav-link bg-primary active">
+                            <i class="nav-icon fa  fa-long-arrow-down"></i>
+                            <p>
+                                Footer
+                                <i class="right fa fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+
+                            {{-- Footer Information --}}
+                            <li class="nav-item">
+                                <a href="{{ route('admin.footer_info.index', 'ar') }}" class="nav-link">
+                                    <i class="nav-icon fa  fa-info-circle"></i>
+                                    <p>
+                                        Information
+                                    </p>
+                                </a>
+                            </li>
+
+                            {{-- Footer useful links --}}
+                            <li class="nav-item">
+                                <a href="{{ route('admin.footer_useful_links.index', 'ar') }}" class="nav-link">
+                                    <i class="nav-icon fa  fa-link"></i>
+                                    <p>
+                                       Useful Links
+                                    </p>
+                                </a>
+                            </li>
+                        </ul>
                     </li>
 
 

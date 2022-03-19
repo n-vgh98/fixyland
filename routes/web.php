@@ -14,6 +14,10 @@ use App\Http\Controllers\Admin\AdminIndexFeatureController;
 use App\Http\Controllers\Admin\AdminAdvertismentsController;
 use App\Http\Controllers\Admin\AdminArticleCategoryController;
 use App\Http\Controllers\Admin\AdminArticleController;
+use App\Http\Controllers\Admin\AdminContactUsController;
+use App\Http\Controllers\Admin\AdminContactUsTextController;
+use App\Http\Controllers\Admin\AdminFooterInfoController;
+use App\Http\Controllers\Admin\AdminFooterUsefulLinkController;
 use App\Http\Controllers\Admin\AdminFormController;
 use App\Http\Controllers\Admin\AdminIndexStaticController;
 use App\Http\Controllers\Admin\AdminInputController;
@@ -254,10 +258,45 @@ route::prefix("admin")->middleware(['auth:sanctum', 'verified', "admin"])->group
             Route::get("/{lang}", "index")->name('admin.articles.index');
             Route::get("/create/{lang}", "create")->name('admin.articles.create');
             Route::post("/store", "store")->name('admin.articles.store');
-            Route::get("/edit/{id}", "edit")->name('admin.articles.edit');
+            Route::get("/edit/{id}/{lang}", "edit")->name('admin.articles.edit');
             Route::post("/update/{id}", "update")->name('admin.articles.update');
             Route::delete("/destroy/{id}", "destroy")->name('admin.articles.delete');
         });
+    });
+
+    //routes for contact_us
+    Route::prefix("contact_us")->group(function () {
+        Route::prefix("texts")->group(function () {
+            Route::controller(AdminContactUsTextController::class)->group(function () {
+                Route::get("/{lang}", "index")->name('admin.contact_us.texts.index');
+                Route::get("/create/{lang}", "create")->name('admin.contact_us.texts.create');
+                Route::post("/store", "store")->name('admin.contact_us.texts.store');
+                Route::get("/edit/{id}/", "edit")->name('admin.contact_us.texts.edit');
+                Route::post("/update/{id}", "update")->name('admin.contact_us.texts.update');
+                Route::delete("/destroy/{id}", "destroy")->name('admin.contact_us.texts.delete');
+            });
+        });
+        Route::controller(AdminContactUsController::class)->group(function () {
+            Route::get("/", "index")->name('admin.contact_us.index');
+        });
+    });
+
+    //routes for footer
+    Route::prefix("footer")->group(function () {
+        Route::prefix("information")->group(function () {
+            Route::controller(AdminFooterInfoController::class)->group(function () {
+                Route::get("/{lang}", "index")->name('admin.footer_info.index');
+                Route::post("/store", "store")->name('admin.footer_info.store');
+                Route::post("/update/{id}", "update")->name('admin.footer_info.update');
+                Route::delete("/destroy/{id}", "destroy")->name('admin.footer_info.delete');
+            });
+        });
+        Route::controller(AdminFooterUsefulLinkController::class)->group(function () {
+            Route::get("/{lang}", "index")->name('admin.footer_useful_links.index');
+            Route::post("/store", "store")->name('admin.footer_useful_links.store');
+            Route::post("/update/{id}", "update")->name('admin.footer_useful_links.update');
+            Route::delete("/destroy/{id}", "destroy")->name('admin.footer_useful_links.delete');
+    });
     });
 });
 

@@ -10,7 +10,7 @@
     <div class="card mt-4">
       <!-- Button for making new user -->  
         <div class="card-header">
-            <h3 class="card-title">Create Rules</h3>
+            <h3 class="card-title">Create About Us</h3>
         </div>
         <form action="{{ route('admin.about_us.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
