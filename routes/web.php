@@ -16,6 +16,8 @@ use App\Http\Controllers\Admin\AdminArticleCategoryController;
 use App\Http\Controllers\Admin\AdminArticleController;
 use App\Http\Controllers\Admin\AdminContactUsController;
 use App\Http\Controllers\Admin\AdminContactUsTextController;
+use App\Http\Controllers\Admin\AdminCoveredAreaCityController;
+use App\Http\Controllers\Admin\AdminCoveredAreaController;
 use App\Http\Controllers\Admin\AdminFooterInfoController;
 use App\Http\Controllers\Admin\AdminFooterUsefulLinkController;
 use App\Http\Controllers\Admin\AdminFormController;
@@ -301,6 +303,26 @@ route::prefix("admin")->middleware(['auth:sanctum', 'verified', "admin"])->group
             Route::post("/store", "store")->name('admin.footer_useful_links.store');
             Route::post("/update/{id}", "update")->name('admin.footer_useful_links.update');
             Route::delete("/destroy/{id}", "destroy")->name('admin.footer_useful_links.delete');
+        });
+    });
+
+    //routes for covered area
+    Route::prefix("covered_area")->group(function () {
+        Route::prefix("states")->group(function () {
+            Route::controller(AdminCoveredAreaController::class)->group(function () {
+                Route::get("/{lang}", "index")->name('admin.covered_state.index');
+                Route::post("/store", "store")->name('admin.covered_state.store');
+                Route::post("/update/{id}", "update")->name('admin.covered_state.update');
+                Route::delete("/destroy/{id}", "destroy")->name('admin.covered_state.delete');
+            });
+        });
+        Route::prefix("cities")->group(function(){
+            Route::controller(AdminCoveredAreaCityController::class)->group(function () {
+                Route::get("/{lang}", "index")->name('admin.covered_city.index');
+                Route::post("/store", "store")->name('admin.covered_city.store');
+                Route::post("/update/{id}", "update")->name('admin.covered_city.update');
+                Route::delete("/destroy/{id}", "destroy")->name('admin.covered_city.delete');
+            });
         });
     });
 });

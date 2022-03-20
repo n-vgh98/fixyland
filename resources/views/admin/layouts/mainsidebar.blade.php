@@ -21,6 +21,7 @@
                 </div>
             </div>
 
+
             <!-- Sidebar Menu -->
             <nav class="mt-2">
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
@@ -219,6 +220,41 @@
                                     <i class="nav-icon fa  fa-gears"></i>
                                     <p>
                                         Service Subcategories
+                                    </p>
+                                </a>
+                            </li>
+
+                        </ul>
+                    </li>
+
+                    {{-- covered area links --}}
+                    <li class="nav-item has-treeview ">
+                        <a href="#" class="nav-link active">
+                            <i class="nav-icon fa fa-gear"></i>
+                            <p>
+                                Covered Area
+                                <i class="right fa fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+
+                            {{-- covered area state --}}
+                            <li class="nav-item">
+                                <a href="{{ route('admin.covered_state.index', 'ar') }}" class="nav-link">
+                                    <i class="nav-icon fa  fa-gears"></i>
+                                    <p>
+                                        States
+                                    </p>
+                                </a>
+                            </li>
+
+                            {{-- covered area city --}}
+                            <li class="nav-item">
+                                <a href="{{ route('admin.covered_city.index', 'ar') }}"
+                                    class="nav-link">
+                                    <i class="nav-icon fa  fa-gears"></i>
+                                    <p>
+                                       Cities
                                     </p>
                                 </a>
                             </li>
