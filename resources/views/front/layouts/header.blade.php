@@ -126,127 +126,29 @@ $categories = App\Models\Lang::where([['name', $catlang], ['langable_type', 'App
                                             <ul class="sub-menu text-white me-4 d-lg-none d-none"
                                                 id="sub-menu-responsive">
                                                 <!-- daste-bandi-khadamat submenu-item1 -->
-                                                <li class="nav-item li-responsive">
-                                                    <p
-                                                        class="nav-link-click li-responsive-3 snav-link-hover-white p-0 m-0">
-                                                        نظافت و پذیرایی
-                                                        <i class="fa-solid fa-caret-down"></i>
-                                                    </p>
+                                                @foreach ($categories as $category)
+                                                    <li class="nav-item li-responsive">
+                                                        <p
+                                                            class="nav-link-click li-responsive-3 snav-link-hover-white p-0 m-0">
+                                                            {{ $category->langable->name }}
+                                                            <i class="fa-solid fa-caret-down"></i>
+                                                        </p>
+                                                        @foreach ($category->langable->subcategories as $service)
+                                                            <!-- submenu for item1 from daste-bandi-khadamat submenu -->
+                                                            <div class="text-white me-3 li-responsive-submenu-3 d-none">
+                                                                <ul style="list-style-type: none">
+                                                                    <li class="nav-item">
+                                                                        <a class="nav-link-hover-white"
+                                                                            href="sub-category-descriptions.html">
+                                                                            {{ $service->name }}
+                                                                        </a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        @endforeach
 
-                                                    <!-- submenu for item1 from daste-bandi-khadamat submenu -->
-                                                    <div class="text-white me-3 li-responsive-submenu-3 d-none">
-                                                        <ul style="list-style-type: none">
-                                                            <li class="nav-item">
-                                                                <a class="nav-link-hover-white"
-                                                                    href="sub-category-descriptions.html"> نظافت 1 </a>
-                                                            </li>
-                                                            <li class="nav-item">
-                                                                <a class="nav-link-hover-white"
-                                                                    href="sub-category-descriptions.html"> نظافت 1 </a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </li>
-
-                                                <!-- daste-bandi-khadamat submenu-item2 -->
-                                                <li class="nav-item li-responsive">
-                                                    <p
-                                                        class="nav-link-click li-responsive-3 nav-link-hover-white p-0 m-0">
-                                                        دکوراسیون و بازسازی
-                                                        <i class="fa-solid fa-caret-down"></i>
-                                                    </p>
-
-                                                    <!-- submenu for item2 from daste-bandi-khadamat submenu -->
-                                                    <div class="text-white me-3 li-responsive-submenu-3 d-none">
-                                                        <ul style="list-style-type: none">
-                                                            <li class="nav-item">
-                                                                <a class="nav-link-hover-white"
-                                                                    href="sub-category-descriptions.html"> نظافت 2 </a>
-                                                            </li>
-                                                            <li class="nav-item">
-                                                                <a class="nav-link-hover-white"
-                                                                    href="sub-category-descriptions.html"> نظافت 2 </a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </li>
-
-                                                <!-- daste-bandi-khadamat submenu-item3 -->
-                                                <li class="nav-item  nav-link-click li-responsive nav-link-hover-white">
-                                                    <p
-                                                        class="nav-link-click li-responsive-3  nav-link-hover-white p-0 m-0">
-                                                        نصب و تعمیر لوازم خانگی
-                                                        <i class="fa-solid fa-caret-down"></i>
-                                                    </p>
-
-                                                    <!-- submenu for item3 from daste-bandi-khadamat submenu -->
-                                                    <div class="text-white me-3 li-responsive-submenu-3 d-none">
-                                                        <ul style="list-style-type: none">
-                                                            <li class="nav-item">
-                                                                <a class="nav-link-hover-white"
-                                                                    href="sub-category-descriptions.html"> نظافت 3 </a>
-                                                            </li>
-                                                            <li class="nav-item">
-                                                                <a class="nav-link-hover-white"
-                                                                    href="sub-category-descriptions.html"> نظافت 3 </a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </li>
-
-                                                <!-- daste-bandi-khadamat submenu-item4 -->
-                                                <li class="nav-item  nav-link-click li-responsive nav-link-hover-white">
-                                                    <p
-                                                        class="nav-link-click li-responsive-3  nav-link-hover-white p-0 m-0">
-                                                        سرمایش و گرمایش
-                                                        <i class="fa-solid fa-caret-down"></i>
-                                                    </p>
-                                                </li>
-
-                                                <!-- daste-bandi-khadamat submenu-item5 -->
-                                                <li class="nav-item  nav-link-click li-responsive nav-link-hover-white">
-                                                    <p
-                                                        class="nav-link-click li-responsive-3  nav-link-hover-white p-0 m-0">
-                                                        باربری و جابه جایی
-                                                        <i class="fa-solid fa-caret-down"></i>
-                                                    </p>
-                                                </li>
-
-                                                <!-- daste-bandi-khadamat submenu-item6 -->
-                                                <li class="nav-item  nav-link-click li-responsive nav-link-hover-white">
-                                                    <p
-                                                        class="nav-link-click li-responsive-3  nav-link-hover-white p-0 m-0">
-                                                        برقکاری
-                                                        <i class="fa-solid fa-caret-down"></i>
-                                                    </p>
-                                                </li>
-
-                                                <!-- daste-bandi-khadamat submenu-item7 -->
-                                                <li class="nav-item  nav-link-click li-responsive nav-link-hover-white">
-                                                    <p
-                                                        class="nav-link-click li-responsive-3  nav-link-hover-white p-0 m-0">
-                                                        لوله کشی
-                                                        <i class="fa-solid fa-caret-down"></i>
-                                                    </p>
-                                                </li>
-
-                                                <!-- daste-bandi-khadamat submenu-item8 -->
-                                                <li class="nav-item  nav-link-click li-responsive nav-link-hover-white">
-                                                    <p
-                                                        class="nav-link-click li-responsive-3  nav-link-hover-white p-0 m-0">
-                                                        زیبایی بانوان
-                                                        <i class="fa-solid fa-caret-down"></i>
-                                                    </p>
-                                                </li>
-
-                                                <!-- daste-bandi-khadamat submenu-item9 -->
-                                                <li class="nav-item  nav-link-click li-responsive nav-link-hover-white">
-                                                    <p
-                                                        class="nav-link-click li-responsive-3  nav-link-hover-white p-0 m-0">
-                                                        تعمیرات خودرو
-                                                        <i class="fa-solid fa-caret-down"></i>
-                                                    </p>
-                                                </li>
+                                                    </li>
+                                                @endforeach
                                             </ul>
                                         </li>
 
@@ -383,8 +285,7 @@ $categories = App\Models\Lang::where([['name', $catlang], ['langable_type', 'App
                                                         $link = $lang . $x;
                                                     }
                                                 @endphp
-                                                <a href="/{{ $link }}"
-                                                    class="text-decoration-none text-black">
+                                                <a href="/{{ $link }}" class="text-decoration-none text-black">
                                                     @if ($lang == 'ar')
                                                         Ar
                                                     @else
@@ -447,139 +348,30 @@ $categories = App\Models\Lang::where([['name', $catlang], ['langable_type', 'App
                                             <ul class="sub-menu text-white me-4 d-lg-none d-none"
                                                 id="sub-menu-responsive">
                                                 <!-- daste-bandi-khadamat submenu-item1 -->
-                                                <li class="nav-item li-responsive">
-                                                    <p
-                                                        class="nav-link-click li-responsive-3 snav-link-hover-white p-0 m-0">
-                                                        nezafat va paziraei
-                                                        <i class="fa-solid fa-caret-down"></i>
-                                                    </p>
+                                                @foreach ($categories as $category)
+                                                    <li class="nav-item li-responsive">
+                                                        <p
+                                                            class="nav-link-click li-responsive-3 snav-link-hover-white p-0 m-0">
+                                                            {{ $category->langable->name }}
+                                                            <i class="fa-solid fa-caret-down"></i>
+                                                        </p>
+                                                        @foreach ($category->langable->subcategories as $service)
+                                                            <!-- submenu for item1 from daste-bandi-khadamat submenu -->
+                                                            <div
+                                                                class="text-white me-3 li-responsive-submenu-3 d-none">
+                                                                <ul style="list-style-type: none">
+                                                                    <li class="nav-item">
+                                                                        <a class="nav-link-hover-white"
+                                                                            href="sub-category-descriptions.html">
+                                                                            {{ $service->name }}
+                                                                        </a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        @endforeach
 
-                                                    <!-- submenu for item1 from daste-bandi-khadamat submenu -->
-                                                    <div class="text-white me-3 li-responsive-submenu-3 d-none">
-                                                        <ul style="list-style-type: none">
-                                                            <li class="nav-item">
-                                                                <a class="nav-link-hover-white"
-                                                                    href="sub-category-descriptions.html"> nezafat 1
-                                                                </a>
-                                                            </li>
-                                                            <li class="nav-item">
-                                                                <a class="nav-link-hover-white"
-                                                                    href="sub-category-descriptions.html"> nezaft 1 </a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </li>
-
-                                                <!-- daste-bandi-khadamat submenu-item2 -->
-                                                <li class="nav-item li-responsive">
-                                                    <p
-                                                        class="nav-link-click li-responsive-3 nav-link-hover-white p-0 m-0">
-                                                        dekorasion va bazsazi
-                                                        <i class="fa-solid fa-caret-down"></i>
-                                                    </p>
-
-                                                    <!-- submenu for item2 from daste-bandi-khadamat submenu -->
-                                                    <div class="text-white me-3 li-responsive-submenu-3 d-none">
-                                                        <ul style="list-style-type: none">
-                                                            <li class="nav-item">
-                                                                <a class="nav-link-hover-white"
-                                                                    href="sub-category-descriptions.html"> nezafat 2
-                                                                </a>
-                                                            </li>
-                                                            <li class="nav-item">
-                                                                <a class="nav-link-hover-white"
-                                                                    href="sub-category-descriptions.html"> nezafat 2
-                                                                </a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </li>
-
-                                                <!-- daste-bandi-khadamat submenu-item3 -->
-                                                <li
-                                                    class="nav-item  nav-link-click li-responsive nav-link-hover-white">
-                                                    <p
-                                                        class="nav-link-click li-responsive-3  nav-link-hover-white p-0 m-0">
-                                                        nasb o tamir lavazem khanegi
-                                                        <i class="fa-solid fa-caret-down"></i>
-                                                    </p>
-
-                                                    <!-- submenu for item3 from daste-bandi-khadamat submenu -->
-                                                    <div class="text-white me-3 li-responsive-submenu-3 d-none">
-                                                        <ul style="list-style-type: none">
-                                                            <li class="nav-item">
-                                                                <a class="nav-link-hover-white"
-                                                                    href="sub-category-descriptions.html"> nezafat 3
-                                                                </a>
-                                                            </li>
-                                                            <li class="nav-item">
-                                                                <a class="nav-link-hover-white"
-                                                                    href="sub-category-descriptions.html"> nezafat 3
-                                                                </a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </li>
-
-                                                <!-- daste-bandi-khadamat submenu-item4 -->
-                                                <li
-                                                    class="nav-item  nav-link-click li-responsive nav-link-hover-white">
-                                                    <p
-                                                        class="nav-link-click li-responsive-3  nav-link-hover-white p-0 m-0">
-                                                        sarmayesh o garmayesh
-                                                        <i class="fa-solid fa-caret-down"></i>
-                                                    </p>
-                                                </li>
-
-                                                <!-- daste-bandi-khadamat submenu-item5 -->
-                                                <li
-                                                    class="nav-item  nav-link-click li-responsive nav-link-hover-white">
-                                                    <p
-                                                        class="nav-link-click li-responsive-3  nav-link-hover-white p-0 m-0">
-                                                        barbari o jabejaei
-                                                        <i class="fa-solid fa-caret-down"></i>
-                                                    </p>
-                                                </li>
-
-                                                <!-- daste-bandi-khadamat submenu-item6 -->
-                                                <li
-                                                    class="nav-item  nav-link-click li-responsive nav-link-hover-white">
-                                                    <p
-                                                        class="nav-link-click li-responsive-3  nav-link-hover-white p-0 m-0">
-                                                        barghkari
-                                                        <i class="fa-solid fa-caret-down"></i>
-                                                    </p>
-                                                </li>
-
-                                                <!-- daste-bandi-khadamat submenu-item7 -->
-                                                <li
-                                                    class="nav-item  nav-link-click li-responsive nav-link-hover-white">
-                                                    <p
-                                                        class="nav-link-click li-responsive-3  nav-link-hover-white p-0 m-0">
-                                                        loolekeshi
-                                                        <i class="fa-solid fa-caret-down"></i>
-                                                    </p>
-                                                </li>
-
-                                                <!-- daste-bandi-khadamat submenu-item8 -->
-                                                <li
-                                                    class="nav-item  nav-link-click li-responsive nav-link-hover-white">
-                                                    <p
-                                                        class="nav-link-click li-responsive-3  nav-link-hover-white p-0 m-0">
-                                                        zibaei banovan
-                                                        <i class="fa-solid fa-caret-down"></i>
-                                                    </p>
-                                                </li>
-
-                                                <!-- daste-bandi-khadamat submenu-item9 -->
-                                                <li
-                                                    class="nav-item  nav-link-click li-responsive nav-link-hover-white">
-                                                    <p
-                                                        class="nav-link-click li-responsive-3  nav-link-hover-white p-0 m-0">
-                                                        tamirat khodro
-                                                        <i class="fa-solid fa-caret-down"></i>
-                                                    </p>
-                                                </li>
+                                                    </li>
+                                                @endforeach
                                             </ul>
                                         </li>
 
@@ -620,296 +412,32 @@ $categories = App\Models\Lang::where([['name', $catlang], ['langable_type', 'App
             <div class="position-absolute end-3 w-75 d-none" style="background-color: #f4f2f2" id="second-level-menu">
 
                 <div class="row ">
-                    <div class="col-4 col-lg-3 border p-0 pe-2">
-                        <ul class="sub-menu sub-menu-hover p-0 ps-3">
-                            <li class="nav-item d-flex sub-menu-1-li border-bottom pb-1">
-                                <div>
-                                    nezafat va paziraei
-                                    <i class="fa-solid fa-arrow-left"></i>
-                                </div>
-                            </li>
+                    @foreach ($categories as $category)
+                        <div class="col-4 col-lg-3 border p-0 pe-2">
+                            <ul class="sub-menu sub-menu-hover p-0 pe-2">
+                                <li class="nav-item d-flex sub-menu-1-li border-bottom pb-1">
+                                    <div>
+                                        {{ $category->langable->name }}
+                                        <i class="fa-solid fa-arrow-left"></i>
+                                    </div>
+                                </li>
 
-                            <li class="nav-item d-flex sub-menu-1-li border-bottom pb-1">
-                                <div>
-                                    dekorasion va bazsazi
-                                    <i class="fa-solid fa-arrow-left"></i>
-                                </div>
-                            </li>
-
-                            <li class="nav-item d-flex sub-menu-1-li border-bottom pb-1">
-                                <div>
-                                    nasb o tamir lavazem khanegi
-                                    <i class="fa-solid fa-arrow-left"></i>
-                                </div>
-                            </li>
-
-                            <li class="nav-item d-flex sub-menu-1-li border-bottom pb-1">
-                                <div>
-                                    sarmayesh va garmayesh
-                                    <i class="fa-solid fa-arrow-left"></i>
-                                </div>
-                            </li>
-
-                            <li class="nav-item d-flex sub-menu-1-li border-bottom pb-1">
-                                <div>
-                                    barbari va jabejaei
-                                    <i class="fa-solid fa-arrow-left"></i>
-                                </div>
-                            </li>
-
-                            <li class="nav-item d-flex sub-menu-1-li border-bottom pb-1">
-                                <div>
-                                    barghkari
-                                    <i class="fa-solid fa-arrow-left"></i>
-                                </div>
-                            </li>
-
-                            <li class="nav-item d-flex sub-menu-1-li border-bottom pb-1">
-                                <div>
-                                    loole keshi
-                                    <i class="fa-solid fa-arrow-left"></i>
-                                </div>
-                            </li>
-
-                            <li class="nav-item d-flex sub-menu-1-li border-bottom pb-1">
-                                <div>
-                                    zibaei banovan
-                                    <i class="fa-solid fa-arrow-left"></i>
-                                </div>
-                            </li>
-
-                            <li class="nav-item d-flex sub-menu-1-li ">
-                                <div>
-                                    tamirat khodro
-                                    <i class="fa-solid fa-arrow-left"></i>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-
-
-                    <!--submenu for item1 from daste-bandi-khadamat submenu (laptop size) -->
-                    <div class="col-8 col-lg-9 row sub-menu-show d-none">
-
-                        <div class="col-6">
-                            <ul class="sub-menu" style="list-style-type: none">
-                                <li class="nav-item">
-                                    <a class="nav-link-hover-black" href="sub-category-descriptions.html">
-                                        nezafat va paziraei </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link-hover-black" href="sub-category-descriptions.html">
-                                        nezafat va paziraei </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link-hover-black" href="sub-category-descriptions.html">
-                                        nezafat va paziraei </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link-hover-black" href="sub-category-descriptions.html">
-                                        nezafat va paziraei </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link-hover-black" href="sub-category-descriptions.html">
-                                        nezafat va paziraei </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link-hover-black" href="sub-category-descriptions.html">
-                                        nezafat va paziraei </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link-hover-black" href="sub-category-descriptions.html">
-                                        nezafat va paziraei </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link-hover-black" href="sub-category-descriptions.html">
-                                        nezafat va paziraei </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link-hover-black" href="sub-category-descriptions.html">
-                                        nezafat va paziraei </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link-hover-black" href="sub-category-descriptions.html">
-                                        nezafat va paziraei </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link-hover-black" href="sub-category-descriptions.html">
-                                        nezafat va paziraei </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link-hover-black" href="sub-category-descriptions.html">
-                                        nezafat va paziraei </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link-hover-black" href="sub-category-descriptions.html">
-                                        nezafat va paziraei </a>
-                                </li>
                             </ul>
                         </div>
-
-                        <div class="col-6">
-                            <ul class="sub-menu" style="list-style-type: none">
-                                <li class="nav-item">
-                                    <a class="nav-link-hover-black" href="sub-category-descriptions.html">
-                                        nezafat va paziraei </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link-hover-black" href="sub-category-descriptions.html">
-                                        nezafat va paziraei </a>
-                                </li>
-                            </ul>
-                        </div>
-
-
-                    </div>
-
-
-                    <!--submenu for item2 from daste-bandi-khadamat submenu (laptop size) -->
-                    <div class="col-8 col-lg-9 row sub-menu-show d-none">
-                        <div class="col-6">
-                            <ul class="sub-menu" style="list-style-type: none">
-                                <li class="nav-item">
-                                    <a class="nav-link-hover-black" href="sub-category-descriptions.html">
-                                        nezafat va paziraei 2 </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link-hover-black" href="sub-category-descriptions.html">
-                                        nezafat va paziraei 2 </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link-hover-black" href="sub-category-descriptions.html">
-                                        nezafat va paziraei 2 </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link-hover-black" href="sub-category-descriptions.html">
-                                        nezafat va paziraei 2 </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link-hover-black" href="sub-category-descriptions.html">
-                                        nezafat va paziraei 2 </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link-hover-black" href="sub-category-descriptions.html">
-                                        nezafat va paziraei 2 </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link-hover-black" href="sub-category-descriptions.html">
-                                        nezafat va paziraei 2 </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link-hover-black" href="sub-category-descriptions.html">
-                                        nezafat va paziraei 2 </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link-hover-black" href="sub-category-descriptions.html">
-                                        nezafat va paziraei 2 </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link-hover-black" href="sub-category-descriptions.html">
-                                        nezafat va paziraei 2 </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link-hover-black" href="sub-category-descriptions.html">
-                                        nezafat va paziraei 2 </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link-hover-black" href="sub-category-descriptions.html">
-                                        nezafat va paziraei 2 </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link-hover-black" href="sub-category-descriptions.html">
-                                        nezafat va paziraei 2 </a>
-                                </li>
-                            </ul>
-                        </div>
-
-                        <div class="col-6  ">
-                            <ul class="sub-menu" style="list-style-type: none">
-                                <li class="nav-item">
-                                    <a class="nav-link-hover-black" href="sub-category-descriptions.html">
-                                        nezafat va paziraei 2 </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link-hover-black" href="sub-category-descriptions.html">
-                                        nezafat va paziraei 2 </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <!--submenu for item3 from daste-bandi-khadamat submenu (laptop size) -->
-                    <div class="col-8 col-lg-9 row sub-menu-show d-none">
-                        <div class="col-6  ">
-                            <ul class="sub-menu" style="list-style-type: none">
-                                <li class="nav-item">
-                                    <a class="nav-link-hover-black" href="sub-category-descriptions.html">
-                                        nezafat va paziraei 3 </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link-hover-black" href="sub-category-descriptions.html">
-                                        nezafat va paziraei 3 </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link-hover-black" href="sub-category-descriptions.html">
-                                        nezafat va paziraei 3 </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link-hover-black" href="sub-category-descriptions.html">
-                                        nezafat va paziraei 3 </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link-hover-black" href="sub-category-descriptions.html">
-                                        nezafat va paziraei 3 </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link-hover-black" href="sub-category-descriptions.html">
-                                        nezafat va paziraei 3 </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link-hover-black" href="sub-category-descriptions.html">
-                                        nezafat va paziraei 3 </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link-hover-black" href="sub-category-descriptions.html">
-                                        nezafat va paziraei 3 </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link-hover-black" href="sub-category-descriptions.html">
-                                        nezafat va paziraei 3 </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link-hover-black" href="sub-category-descriptions.html">
-                                        nezafat va paziraei 3 </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link-hover-black" href="sub-category-descriptions.html">
-                                        nezafat va paziraei 3 </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link-hover-black" href="sub-category-descriptions.html">
-                                        nezafat va paziraei 3 </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link-hover-black" href="sub-category-descriptions.html">
-                                        nezafat va paziraei 3 </a>
-                                </li>
-                            </ul>
-                        </div>
-
-                        <div class="col-6">
-                            <ul class="sub-menu" style="list-style-type: none">
-                                <li class="nav-item">
-                                    <a class="nav-link-hover-black" href="sub-category-descriptions.html">
-                                        nezafat va paziraei 3 </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link-hover-black" href="sub-category-descriptions.html">
-                                        nezafat va paziraei 3 </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+                        @foreach ($category->langable->subcategories as $service)
+                            <!--submenu for item1 from daste-bandi-khadamat submenu (laptop size) -->
+                            <div class="col-8 col-lg-9 row sub-menu-show d-none">
+                                <div class="col-6">
+                                    <ul class="sub-menu" style="list-style-type: none">
+                                        <li class="nav-item">
+                                            <a class="nav-link-hover-black"
+                                                href="sub-category-descriptions.html">{{ $service->name }}</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        @endforeach
+                    @endforeach
 
                 </div>
 
