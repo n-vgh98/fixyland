@@ -127,27 +127,32 @@ $categories = App\Models\Lang::where([['name', $catlang], ['langable_type', 'App
                                                 id="sub-menu-responsive">
                                                 <!-- daste-bandi-khadamat submenu-item1 -->
                                                 @foreach ($categories as $category)
-                                                    <li class="nav-item li-responsive">
-                                                        <p
-                                                            class="nav-link-click li-responsive-3 snav-link-hover-white p-0 m-0">
-                                                            {{ $category->langable->name }}
-                                                            <i class="fa-solid fa-caret-down"></i>
-                                                        </p>
-                                                        @foreach ($category->langable->subcategories as $service)
-                                                            <!-- submenu for item1 from daste-bandi-khadamat submenu -->
-                                                            <div class="text-white me-3 li-responsive-submenu-3 d-none">
-                                                                <ul style="list-style-type: none">
-                                                                    <li class="nav-item">
-                                                                        <a class="nav-link-hover-white"
-                                                                            href="sub-category-descriptions.html">
-                                                                            {{ $service->name }}
-                                                                        </a>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-                                                        @endforeach
+                                                    @if ($category->langable->status == 1)
+                                                        <li class="nav-item li-responsive">
+                                                            <p
+                                                                class="nav-link-click li-responsive-3 snav-link-hover-white p-0 m-0">
+                                                                {{ $category->langable->name }}
+                                                                <i class="fa-solid fa-caret-down"></i>
+                                                            </p>
+                                                            @foreach ($category->langable->subcategories as $service)
+                                                                @if ($service->status == 1)
+                                                                    <!-- submenu for item1 from daste-bandi-khadamat submenu -->
+                                                                    <div
+                                                                        class="text-white me-3 li-responsive-submenu-3 d-none">
+                                                                        <ul style="list-style-type: none">
+                                                                            <li class="nav-item">
+                                                                                <a class="nav-link-hover-white"
+                                                                                    href="sub-category-descriptions.html">
+                                                                                    {{ $service->name }}
+                                                                                </a>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+                                                                @endif
+                                                            @endforeach
 
-                                                    </li>
+                                                        </li>
+                                                    @endif
                                                 @endforeach
                                             </ul>
                                         </li>
@@ -190,30 +195,34 @@ $categories = App\Models\Lang::where([['name', $catlang], ['langable_type', 'App
 
                 <div class="row ">
                     @foreach ($categories as $category)
-                        <div class="col-4 col-lg-3 border p-0 pe-2">
-                            <ul class="sub-menu sub-menu-hover p-0 pe-2">
-                                <li class="nav-item d-flex sub-menu-1-li border-bottom pb-1">
-                                    <div>
-                                        {{ $category->langable->name }}
-                                        <i class="fa-solid fa-arrow-left"></i>
-                                    </div>
-                                </li>
+                        @if ($category->langable->status == 1)
+                            <div class="col-4 col-lg-3 border p-0 pe-2">
+                                <ul class="sub-menu sub-menu-hover p-0 pe-2">
+                                    <li class="nav-item d-flex sub-menu-1-li border-bottom pb-1">
+                                        <div>
+                                            {{ $category->langable->name }}
+                                            <i class="fa-solid fa-arrow-left"></i>
+                                        </div>
+                                    </li>
 
-                            </ul>
-                        </div>
-                        @foreach ($category->langable->subcategories as $service)
-                            <!--submenu for item1 from daste-bandi-khadamat submenu (laptop size) -->
-                            <div class="col-8 col-lg-9 row sub-menu-show d-none">
-                                <div class="col-6">
-                                    <ul class="sub-menu" style="list-style-type: none">
-                                        <li class="nav-item">
-                                            <a class="nav-link-hover-black"
-                                                href="sub-category-descriptions.html">{{ $service->name }}</a>
-                                        </li>
-                                    </ul>
-                                </div>
+                                </ul>
                             </div>
-                        @endforeach
+                            @foreach ($category->langable->subcategories as $service)
+                                @if ($service->status == 1)
+                                    <!--submenu for item1 from daste-bandi-khadamat submenu (laptop size) -->
+                                    <div class="col-8 col-lg-9 row sub-menu-show d-none">
+                                        <div class="col-6">
+                                            <ul class="sub-menu" style="list-style-type: none">
+                                                <li class="nav-item">
+                                                    <a class="nav-link-hover-black"
+                                                        href="sub-category-descriptions.html">{{ $service->name }}</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                @endif
+                            @endforeach
+                        @endif
                     @endforeach
 
                 </div>
@@ -349,28 +358,32 @@ $categories = App\Models\Lang::where([['name', $catlang], ['langable_type', 'App
                                                 id="sub-menu-responsive">
                                                 <!-- daste-bandi-khadamat submenu-item1 -->
                                                 @foreach ($categories as $category)
-                                                    <li class="nav-item li-responsive">
-                                                        <p
-                                                            class="nav-link-click li-responsive-3 snav-link-hover-white p-0 m-0">
-                                                            {{ $category->langable->name }}
-                                                            <i class="fa-solid fa-caret-down"></i>
-                                                        </p>
-                                                        @foreach ($category->langable->subcategories as $service)
-                                                            <!-- submenu for item1 from daste-bandi-khadamat submenu -->
-                                                            <div
-                                                                class="text-white me-3 li-responsive-submenu-3 d-none">
-                                                                <ul style="list-style-type: none">
-                                                                    <li class="nav-item">
-                                                                        <a class="nav-link-hover-white"
-                                                                            href="sub-category-descriptions.html">
-                                                                            {{ $service->name }}
-                                                                        </a>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-                                                        @endforeach
+                                                    @if ($category->langable->status == 1)
+                                                        <li class="nav-item li-responsive">
+                                                            <p
+                                                                class="nav-link-click li-responsive-3 snav-link-hover-white p-0 m-0">
+                                                                {{ $category->langable->name }}
+                                                                <i class="fa-solid fa-caret-down"></i>
+                                                            </p>
+                                                            @foreach ($category->langable->subcategories as $service)
+                                                                @if ($service->status == 1)
+                                                                    <!-- submenu for item1 from daste-bandi-khadamat submenu -->
+                                                                    <div
+                                                                        class="text-white me-3 li-responsive-submenu-3 d-none">
+                                                                        <ul style="list-style-type: none">
+                                                                            <li class="nav-item">
+                                                                                <a class="nav-link-hover-white"
+                                                                                    href="sub-category-descriptions.html">
+                                                                                    {{ $service->name }}
+                                                                                </a>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+                                                                @endif
+                                                            @endforeach
 
-                                                    </li>
+                                                        </li>
+                                                    @endif
                                                 @endforeach
                                             </ul>
                                         </li>
@@ -413,30 +426,34 @@ $categories = App\Models\Lang::where([['name', $catlang], ['langable_type', 'App
 
                 <div class="row ">
                     @foreach ($categories as $category)
-                        <div class="col-4 col-lg-3 border p-0 pe-2">
-                            <ul class="sub-menu sub-menu-hover p-0 pe-2">
-                                <li class="nav-item d-flex sub-menu-1-li border-bottom pb-1">
-                                    <div>
-                                        {{ $category->langable->name }}
-                                        <i class="fa-solid fa-arrow-left"></i>
-                                    </div>
-                                </li>
+                        @if ($category->langable->status == 1)
+                            <div class="col-4 col-lg-3 border p-0 pe-2">
+                                <ul class="sub-menu sub-menu-hover p-0 pe-2">
+                                    <li class="nav-item d-flex sub-menu-1-li border-bottom pb-1">
+                                        <div>
+                                            {{ $category->langable->name }}
+                                            <i class="fa-solid fa-arrow-left"></i>
+                                        </div>
+                                    </li>
 
-                            </ul>
-                        </div>
-                        @foreach ($category->langable->subcategories as $service)
-                            <!--submenu for item1 from daste-bandi-khadamat submenu (laptop size) -->
-                            <div class="col-8 col-lg-9 row sub-menu-show d-none">
-                                <div class="col-6">
-                                    <ul class="sub-menu" style="list-style-type: none">
-                                        <li class="nav-item">
-                                            <a class="nav-link-hover-black"
-                                                href="sub-category-descriptions.html">{{ $service->name }}</a>
-                                        </li>
-                                    </ul>
-                                </div>
+                                </ul>
                             </div>
-                        @endforeach
+                            @foreach ($category->langable->subcategories as $service)
+                                @if ($service->status == 1)
+                                    <!--submenu for item1 from daste-bandi-khadamat submenu (laptop size) -->
+                                    <div class="col-8 col-lg-9 row sub-menu-show d-none">
+                                        <div class="col-6">
+                                            <ul class="sub-menu" style="list-style-type: none">
+                                                <li class="nav-item">
+                                                    <a class="nav-link-hover-black"
+                                                        href="sub-category-descriptions.html">{{ $service->name }}</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                @endif
+                            @endforeach
+                        @endif
                     @endforeach
 
                 </div>
