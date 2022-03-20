@@ -11,9 +11,10 @@ class CoveredArea extends Model
     protected $table = "covered_area";
     public function cities()
     {
-        return $this->hasMany("App\Models\CoveredAreaCity");
+        return $this->hasMany("App\Models\CoveredAreaCity", "state_id");
     }
-    public function language(){
-        return $this->morphOne("App\Models\Lang","langable");
+    public function language()
+    {
+        return $this->morphOne("App\Models\Lang", "langable");
     }
 }
