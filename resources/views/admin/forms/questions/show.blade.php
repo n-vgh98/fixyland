@@ -1,6 +1,6 @@
 @extends('admin.layouts.master')
 @section('head')
-    @include("admin.layouts.datatable.head")
+    @include('admin.layouts.datatable.head')
 @endsection
 @section('title')
     All question for {{ $form->subcategory->name }} service
@@ -129,9 +129,12 @@
                                             </div>
                                             @php
                                                 $x = 1;
-                                                $option = "option_$x";
+
                                             @endphp
                                             @while ($x < 21)
+                                                @php
+                                                    $option = "option_$x";
+                                                @endphp
                                                 <div class="form-group">
                                                     <label for="option_{{ $x }}">Option
                                                         {{ $x }}</label>
@@ -184,17 +187,23 @@
                                                 <label for="exampleFormControlSelect1">Type</label>
                                                 <select disabled required name="input_type" class="form-control"
                                                     id="exampleFormControlSelect1">
-                                                    <option onselect="textfunction()" value="0">{{ 'Text' }}
-                                                    </option>
-                                                    <option onselect="selectfunction()" value="1">{{ 'Select' }}
-                                                    </option>
+                                                    @if ($question->input_type == 0)
+                                                        <option onselect="textfunction()" value="0">{{ 'Text' }}
+                                                        </option>
+                                                    @else
+                                                        <option onselect="selectfunction()" value="1">{{ 'Select' }}
+                                                        </option>
+                                                    @endif
                                                 </select>
                                             </div>
                                             @php
                                                 $x = 1;
-                                                $option = "option_$x";
+
                                             @endphp
                                             @while ($x < 21)
+                                                @php
+                                                    $option = "option_$x";
+                                                @endphp
                                                 <div class="form-group">
                                                     <label for="option_{{ $x }}">Option
                                                         {{ $x }}</label>

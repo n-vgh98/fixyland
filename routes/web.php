@@ -28,6 +28,7 @@ use App\Http\Controllers\Admin\AdminServiceCategoryController;
 use App\Http\Controllers\Admin\AdminServiceSubCategoryController;
 use App\Http\Controllers\Admin\AdminSubCategoryServiceDescriptionController;
 use App\Http\Controllers\Front\FrontHomeController;
+use App\Http\Controllers\Front\FrontServiceController;
 use App\Http\Controllers\Front\FrontSpecialistController;
 use App\Http\Controllers\Front\FrontUserController;
 
@@ -316,7 +317,7 @@ route::prefix("admin")->middleware(['auth:sanctum', 'verified', "admin"])->group
                 Route::delete("/destroy/{id}", "destroy")->name('admin.covered_state.delete');
             });
         });
-        Route::prefix("cities")->group(function(){
+        Route::prefix("cities")->group(function () {
             Route::controller(AdminCoveredAreaCityController::class)->group(function () {
                 Route::get("/{lang}", "index")->name('admin.covered_city.index');
                 Route::post("/store", "store")->name('admin.covered_city.store');
@@ -350,6 +351,10 @@ route::prefix("{locale}")->middleware("language")->group(function () {
     });
     route::get("login", [FrontHomeController::class, "login"])->name("user.login");
 
+    route::prefix("services")->group(function () {
+        route::get("descrition/{id}", [FrontServiceController::class, "description"])->name("user.service.description");
+        route::get("form/{id}", [FrontServiceController::class, "form"])->name("user.service.form");
+    });
 
     route::get("/", [FrontHomeController::class, "index"])->name("user.home");
 });

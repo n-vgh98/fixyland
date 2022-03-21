@@ -142,7 +142,7 @@ $categories = App\Models\Lang::where([['name', $catlang], ['langable_type', 'App
                                                                         <ul style="list-style-type: none">
                                                                             <li class="nav-item">
                                                                                 <a class="nav-link-hover-white"
-                                                                                    href="sub-category-descriptions.html">
+                                                                                    href="{{ route('user.service.description', $service->id) }}">
                                                                                     {{ $service->name }}
                                                                                 </a>
                                                                             </li>
@@ -215,7 +215,7 @@ $categories = App\Models\Lang::where([['name', $catlang], ['langable_type', 'App
                                             <ul class="sub-menu" style="list-style-type: none">
                                                 <li class="nav-item">
                                                     <a class="nav-link-hover-black"
-                                                        href="sub-category-descriptions.html">{{ $service->name }}</a>
+                                                        href="{{ route('user.service.description', $service->id) }}">{{ $service->name }}</a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -373,7 +373,7 @@ $categories = App\Models\Lang::where([['name', $catlang], ['langable_type', 'App
                                                                         <ul style="list-style-type: none">
                                                                             <li class="nav-item">
                                                                                 <a class="nav-link-hover-white"
-                                                                                    href="sub-category-descriptions.html">
+                                                                                    href="{{ route('user.service.description', $service->id) }}">
                                                                                     {{ $service->name }}
                                                                                 </a>
                                                                             </li>
@@ -446,7 +446,7 @@ $categories = App\Models\Lang::where([['name', $catlang], ['langable_type', 'App
                                             <ul class="sub-menu" style="list-style-type: none">
                                                 <li class="nav-item">
                                                     <a class="nav-link-hover-black"
-                                                        href="sub-category-descriptions.html">{{ $service->name }}</a>
+                                                        href="{{ route('user.service.description', $service->id) }}">{{ $service->name }}</a>
                                                 </li>
                                             </ul>
                                         </div>

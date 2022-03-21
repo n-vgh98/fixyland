@@ -48,12 +48,13 @@ class AdminInputController extends Controller
             // for adding options without error
             global $x;
             $x = 1;
-            $option = "option" . $x;
             while ($x < 21) {
+                $option = "option_" . $x;
                 if ($request->$option != null) {
                     $question->$option = $request->$option;
                 }
                 $x++;
+                
             }
             $question->save();
             return redirect()->back()->with("success", "Your question made successfully");
@@ -100,8 +101,8 @@ class AdminInputController extends Controller
             // for adding options without error
             global $x;
             $x = 1;
-            $option = "option" . $x;
             while ($x < 21) {
+                $option = "option_" . $x;
                 if ($request->$option != null) {
                     $question->$option = $request->$option;
                 }
