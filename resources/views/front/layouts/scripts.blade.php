@@ -9,8 +9,6 @@
    @if (app()->getLocale() == 'fa' || app()->getLocale() == 'ar')
        <!--scripts from script folder	-->
        <script src="{{ asset('frontend/fixy-land-fa-main/script/main.js') }}" type="text/javascript"></script>
-       <script src="{{ asset('frontend/fixy-land-fa-main/script/index.js') }}" type="text/javascript"></script>
    @else
        <script src="{{ asset('frontend/fixy-land-en-main/script/main.js') }}" type="text/javascript"></script>
-       <script src="{{ asset('frontend/fixy-land-en-main/script/index.js') }}" type="text/javascript"></script>
    @endif

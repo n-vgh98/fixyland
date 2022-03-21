@@ -57,9 +57,9 @@
                     <div class="mb-3">
                         <label for="state-register-customer" class="form-label"> استان </label>
                         <select class="form-select" id="state-register-customer">
-                            <option value="0" selected>فارس</option>
-                            <option value="1">تهران</option>
-                            <option value="2">اصفهان</option>
+                            <option id="state_0" value="0" selected>فارس</option>
+                            <option id="state_1" value="1">تهران</option>
+                            <option id="state_2" value="2">اصفهان</option>
                         </select>
                     </div>
 
@@ -115,13 +115,19 @@
                     </div>
 
                     <button type="submit" class="w-100 mt-4 darkYellow border-redius-20 font-size32">تایید</button>
+
+                    <div class="border-redius-20 mt-4 p-1">
+                        <a href="#" class="text-decoration-none text-dark d-flex justify-content-center align-items-center">
+                            ثبت نام / ورود با گوگل
+                            <img src="image/icon-google.svg" alt="">
+                        </a>
+                    </div>
                 </form>
 
             </div>
 
             <div class="col-md-4 border-start d-none d-md-block m-0 lightblue">
-                <img src="{{ asset('frontend/fixy-land-fa-main/image/GroupPhoto.png') }}"
-                    class=" pt-2 w-100 h-auto sticky-top " alt="" id="imageSignup">
+                <img src="image/GroupPhoto.png" class=" pt-2 w-100 h-auto sticky-top " alt="" id="imageSignup">
             </div>
 
         </section>
