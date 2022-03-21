@@ -73,7 +73,8 @@
                                         @endphp
                                         @if ($question->$option != null)
                                             <div class=" p-3 border-bottom border-primary">
-                                                <input class="form-check-input ms-3" type="radio" name="mobile-brand"
+                                                <input class="form-check-input ms-3" type="radio"
+                                                    value="{{ $question->$option }}" name="{{ $question->id }}"
                                                     id="{{ $x }}">
                                                 <label class="form-check-label" for="{{ $x }}">
                                                     {{ $question->$option }}
@@ -108,7 +109,7 @@
                                         <br>
                                         عکس خود را اضافه کنید
                                     </label>
-                                    <input type="file" id="upload-problem-pic" class="d-none"
+                                    <input type="file" name="image" id="upload-problem-pic" class="d-none"
                                         onchange="loadFile(event)">
                                 </div>
 
@@ -126,7 +127,7 @@
                             <!--problem description-->
                             <div class="mb-3  text-end">
                                 <label for="problem-description" class="form-label fw-bold">شرح مشکل: </label>
-                                <textarea id="problem-description" class="form-control border-dark" rows="10"
+                                <textarea name="problem-description" id="problem-description" class="form-control border-dark" rows="10"
                                     placeholder="جزئیات بیشتر را بنویسید ..."></textarea>
                             </div>
 
@@ -145,7 +146,7 @@
                                 <div class="mb-4">
                                     <label for="date-picker" class="fw-bold mb-2">انتخاب تاریخ:</label>
                                     <br>
-                                    <input type="date" id="date-picker" class="p-2 ps-2 pe-2 rounded-3">
+                                    <input type="date" name="date" id="date-picker" class="p-2 ps-2 pe-2 rounded-3">
                                 </div>
 
                                 <!--time picker-->
@@ -154,16 +155,17 @@
                                     <br>
 
                                     <div class="d-flex justify-content-center">
-                                        <select class="form-select aut-time-pick mb-3" aria-label="Default select">
+                                        <select name="time" class="form-select aut-time-pick mb-3"
+                                            aria-label="Default select">
                                             <option value="custom" selected>انتخاب ساعت به صورت دستی</option>
-                                            <option>9 صبح تا 12 ظهر</option>
-                                            <option>12 ظهر تا 16 عصر</option>
-                                            <option>16 تا 20 عصر</option>
-                                            <option>20 تا 22 شب</option>
+                                            <option value="1">9 صبح تا 12 ظهر</option>
+                                            <option value="2">12 ظهر تا 16 عصر</option>
+                                            <option value="3">16 تا 20 عصر</option>
+                                            <option value="4">20 تا 22 شب</option>
                                         </select>
                                     </div>
 
-                                    <input type="time" id="time-picker" class="p-2 ps-2 pe-2 rounded-3">
+                                    <input type="time" name="custom_time" id="time-picker" class="p-2 ps-2 pe-2 rounded-3">
                                 </div>
 
                             </div>
@@ -174,16 +176,18 @@
                         <div class="mt-3 pb-2 text-end">
                             <p class="m-0 d-inline-block ps-4 fw-bold"> اطلاعات تماس شما برای متخصص نمایش داده شود؟ </p>
 
-                            <input type="radio" class="form-check-input ms-2" id="yes-checkbox" name="yes-no-radio" />
+                            <input value="1" type="radio" class="form-check-input ms-2" id="yes-checkbox"
+                                name="yes-no-radio" />
                             <label class="form-check-label fw-bold" for="yes-checkbox"> بله </label>
 
-                            <input type="radio" class="form-check-input me-4 ms-2" id="no-checkbox" name="yes-no-radio" />
+                            <input value="0" type="radio" class="form-check-input me-4 ms-2" id="no-checkbox"
+                                name="yes-no-radio" />
                             <label class="form-check-label fw-bold" for="no-checkbox"> خیر </label>
 
                         </div>
 
 
-
+                        {{-- till here --}}
                         <!--انتخاب آدرس-->
                         <div class="mt-3 mb-5">
 
@@ -227,9 +231,9 @@
                                     <div class="mb-3">
                                         <label for="state-register-customer" class="form-label"> استان </label>
                                         <select class="form-select" id="state-register-customer">
-                                            <option value="0" selected>فارس</option>
-                                            <option value="1">تهران</option>
-                                            <option value="2">اصفهان</option>
+                                            <option id="state_0" value="0" selected>فارس</option>
+                                            <option id="state_1" value="1">تهران</option>
+                                            <option id="state_2" value="2">اصفهان</option>
                                         </select>
                                     </div>
 
@@ -369,7 +373,8 @@
                                         @endphp
                                         @if ($question->$option != null)
                                             <div class="p-3 border-bottom border-primary">
-                                                <input class="form-check-input me-3" type="radio" name="mobile-brand"
+                                                <input class="form-check-input ms-3" type="radio"
+                                                    value="{{ $question->$option }}" name="{{ $question->id }}"
                                                     id="{{ $x }}">
                                                 <label class="form-check-label" for="{{ $x }}">
                                                     {{ $question->$option }}
@@ -402,7 +407,7 @@
                                         <br>
                                         upload here
                                     </label>
-                                    <input type="file" id="upload-problem-pic" class="d-none"
+                                    <input type="file" id="upload-problem-pic" name="image" class="d-none"
                                         onchange="loadFile(event)">
                                 </div>
 
@@ -420,7 +425,8 @@
                             <!--problem description-->
                             <div class="mb-3  text-start">
                                 <label for="problem-description" class="form-label fw-bold">problem description: </label>
-                                <textarea id="problem-description" class="form-control border-dark" rows="10" placeholder="..."></textarea>
+                                <textarea name="problem-description" id="problem-description" class="form-control border-dark" rows="10"
+                                    placeholder="..."></textarea>
                             </div>
 
                         </div>
@@ -438,7 +444,7 @@
                                 <div class="mb-4">
                                     <label for="date-picker" class="fw-bold mb-2">date: </label>
                                     <br>
-                                    <input type="date" id="date-picker" class="p-2 ps-2 pe-2 rounded-3">
+                                    <input type="date" name="date" id="date-picker" class="p-2 ps-2 pe-2 rounded-3">
                                 </div>
 
                                 <!--time picker-->
@@ -449,14 +455,14 @@
                                     <div class="d-flex justify-content-center">
                                         <select class="form-select aut-time-pick mb-3" aria-label="Default select">
                                             <option value="custom" selected>custom</option>
-                                            <option> 9am to 12pm </option>
-                                            <option> 12pm to 16pm </option>
-                                            <option> 16pm to 20pm </option>
-                                            <option> 20pm to 22pm </option>
+                                            <option value="1"> 9am to 12pm </option>
+                                            <option value="2"> 12pm to 16pm </option>
+                                            <option value="3"> 16pm to 20pm </option>
+                                            <option value="4"> 20pm to 22pm </option>
                                         </select>
                                     </div>
 
-                                    <input type="time" id="time-picker" class="p-2 ps-2 pe-2 rounded-3">
+                                    <input type="time" name="custom_time" id="time-picker" class="p-2 ps-2 pe-2 rounded-3">
                                 </div>
 
                             </div>
@@ -469,15 +475,16 @@
                                 etelaate shoma namayesh dade shavad?
                             </p>
 
-                            <input type="radio" class="form-check-input me-2" id="yes-checkbox" name="yes-no-radio" />
+                            <input type="radio" class="form-check-input me-2" id="yes-checkbox" value="1"
+                                name="yes-no-radio" />
                             <label class="form-check-label fw-bold" for="yes-checkbox"> yes </label>
 
-                            <input type="radio" class="form-check-input ms-4 me-2" id="no-checkbox" name="yes-no-radio" />
+                            <input type="radio" class="form-check-input ms-4 me-2" id="no-checkbox" value="0"
+                                name="yes-no-radio" />
                             <label class="form-check-label fw-bold" for="no-checkbox"> no </label>
 
                         </div>
-
-
+                        {{-- till here --}}
                         <!--انتخاب آدرس-->
                         <div class="mt-3 mb-5">
 
@@ -592,5 +599,16 @@
 
             </div>
         </div>
+    @endif
+@endsection
+
+
+@section('script')
+    @if (app()->getLocale() == 'fa' || app()->getLocale() == 'ar')
+        <script src="{{ asset('frontend/fixy-land-fa-main/script/submit-a-req.js') }}" type="text/javascript"></script>
+        <script src="{{ asset('frontend/fixy-land-fa-main/script/user-addrs.js') }}" type="text/javascript"></script>
+    @else
+        <script src="{{ asset('frontend/fixy-land-en-main/script/submit-a-req.js') }}" type="text/javascript"></script>
+        <script src="{{ asset('frontend/fixy-land-en-main/script/user-addrs.js') }}" type="text/javascript"></script>
     @endif
 @endsection
