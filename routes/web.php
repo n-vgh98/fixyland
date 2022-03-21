@@ -338,6 +338,10 @@ route::get("/", function () {
     return redirect("/en");
 });
 
+// route::get("login", function () {
+//     return redirect()->route("user.login", "ar");
+// });
+
 route::prefix("{locale}")->middleware("language")->group(function () {
 
     route::prefix("register")->group(function () {
