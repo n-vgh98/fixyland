@@ -120,9 +120,9 @@
                     <div class="mb-3">
                         <label for="state-register-specialist" class="form-label"> استان محل سکونت</label>
                         <select class="form-select" id="state-register-specialist">
-                            <option value="0" selected>فارس</option>
-                            <option value="1">تهران</option>
-                            <option value="2">اصفهان</option>
+                            <option id="state_0" value="0" selected>فارس</option>
+                            <option id="state_1" value="1">تهران</option>
+                            <option id="state_2" value="2">اصفهان</option>
                         </select>
                     </div>
 
@@ -180,9 +180,9 @@
                     <div class="mb-3">
                         <label for="work_state-register-specialist" class="form-label"> استان محل خدمت</label>
                         <select class="form-select" id="work_state-register-specialist">
-                            <option value="0" selected>فارس</option>
-                            <option value="1">تهران</option>
-                            <option value="2">اصفهان</option>
+                            <option id="work_state_0" value="0" selected>فارس</option>
+                            <option id="work_state_1" value="1">تهران</option>
+                            <option id="work_state_2" value="2">اصفهان</option>
                         </select>
                     </div>
 
@@ -428,19 +428,11 @@
                         </div>
 
                     </div>
-
-
-
                 </form>
-
-
-
-
             </div>
 
             <div class="col-md-4 border-start d-none d-md-block m-0 lightblue">
-                <img src="{{ asset('frontend/fixy-land-fa-main/image/GroupPhoto.png') }}"
-                    class=" pt-2 w-100 h-auto sticky-top" alt="">
+                <img src="image/GroupPhoto.png" class=" pt-2 w-100 h-auto sticky-top" alt="">
             </div>
 
         </section>
@@ -546,9 +538,9 @@
                     <div class="mb-3">
                         <label for="state-register-specialist" class="form-label"> mahale sokoonat(ostan)</label>
                         <select class="form-select" id="state-register-specialist">
-                            <option value="0" selected>fars</option>
-                            <option value="1">tehran</option>
-                            <option value="2">esfahan</option>
+                            <option id="state_0" value="0" selected>fars</option>
+                            <option id="state_1" value="1">tehran</option>
+                            <option id="state_2" value="2">esfahan</option>
                         </select>
                     </div>
 
@@ -606,9 +598,9 @@
                     <div class="mb-3">
                         <label for="work_state-register-specialist" class="form-label"> mahale khedmat(ostan) </label>
                         <select class="form-select" id="work_state-register-specialist">
-                            <option value="0" selected>fars</option>
-                            <option value="1">tehran</option>
-                            <option value="2">esfahan</option>
+                            <option id="state_0" value="0" selected>fars</option>
+                            <option id="state_1" value="1">tehran</option>
+                            <option id="state_2" value="2">esfahan</option>
                         </select>
                     </div>
 

@@ -169,9 +169,9 @@
                     <div class="mb-3">
                         <label for="state-register-customer" class="form-label"> province</label>
                         <select class="form-select" id="state-register-customer">
-                            <option value="0" selected>fars</option>
-                            <option value="1">tehran</option>
-                            <option value="2">esfahan</option>
+                            <option id="state_0" value="0" selected>fars</option>
+                            <option id="state_1" value="1">tehran</option>
+                            <option id="state_2" value="2">esfahan</option>
                         </select>
                     </div>
 
