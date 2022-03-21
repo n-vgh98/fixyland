@@ -54,7 +54,8 @@
                 <h1>welcome</h1>
                 <p>log in to ur account</p>
 
-                <form class="w-75">
+                <form class="w-75" action="{{ route('login') }}" method="POST">
+                    @csrf
                     <div class="mb-3">
                         <label for="mobile-number-register-cutomer" class="form-label">mobile</label>
                         <input name="phone" type="text" class="form-control" id="mobile-number-register-cutomer">

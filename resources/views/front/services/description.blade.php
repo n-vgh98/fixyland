@@ -54,8 +54,8 @@
 
                         <div class="form-bg-color border border-2 border-dark p-4 text_justify mb-3">
                             <p>
-                                @if ($service->description->text1 != null)
-                                    {!! $service->description->text1 !!}
+                                @if ($service->description->text_1 != null)
+                                    {!! $service->description->text_1 !!}
                                 @endif
                             </p>
                         </div>
@@ -63,8 +63,8 @@
 
                         <div class="form-bg-color border border-2 border-dark p-4 text_justify mb-3">
                             <p>
-                                @if ($service->description->text2 != null)
-                                    {!! $service->description->text2 !!}
+                                @if ($service->description->text_2 != null)
+                                    {!! $service->description->text_2 !!}
                                 @endif
                             </p>
                         </div>
@@ -72,8 +72,8 @@
 
                         <div class="form-bg-color border border-2 border-dark p-4 text_justify mb-3">
                             <p>
-                                @if ($service->description->text3 != null)
-                                    {!! $service->description->text3 !!}
+                                @if ($service->description->text_3 != null)
+                                    {!! $service->description->text_3 !!}
                                 @endif
                             </p>
                         </div>
