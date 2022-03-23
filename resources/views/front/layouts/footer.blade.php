@@ -1,3 +1,10 @@
+@php
+    $path = request()->getPathInfo();
+    $lang = substr($path, 1, 2);
+    $footersinfo = App\Models\Lang::where([['name', $lang], ['langable_type', 'App\Models\FooterInfo']])->get();
+    $footerlinks = App\Models\Lang::where([['name', $lang], ['langable_type', 'App\Models\FooterLink']])->get();
+    $articles = App\Models\Lang::where([["name",$lang],["langable_type","App\Models\Article"]])->orderBy("created_at","DESC")->get()->take(3);
+@endphp
 @if (app()->getLocale() == 'fa' || app()->getLocale() == 'ar')
     <footer class="ps-5 pt-5 pe-5 pb-4">
         <div class="container-fluid">
@@ -55,49 +62,28 @@
 
                     <!--links for mobile size-->
                     <ul class="footer-list d-lg-none d-none">
+                        @foreach($footerlinks as $footerlink)
+                        @php 
+                            $link = $footerlink->langable;
+                        @endphp
                         <li class="footer-list-item">
-                            <a href="index.html#index-sec3" class="footer-list-item-link"> خدمات </a>
+                            <a href="{{$link->url}}" class="footer-list-item-link"> {{$link->name}} </a>
                         </li>
-
-                        <li class="footer-list-item">
-                            <a href="aboutUs.html" class="footer-list-item-link"> درباره ما </a>
-                        </li>
-
-                        <li class="footer-list-item">
-                            <a href="articles.html" class="footer-list-item-link"> مقالات </a>
-                        </li>
-
-                        <li class="footer-list-item">
-                            <a href="terms.html" class="footer-list-item-link"> قوانین و مقررات </a>
-                        </li>
-
-                        <li class="footer-list-item">
-                            <a href="questions.html" class="footer-list-item-link"> سوالات متداول </a>
-                        </li>
+                        @endforeach
                     </ul>
 
 
                     <!--links for laptop size-->
                     <ul class="footer-list-lg d-none d-lg-block">
+                        @foreach($footerlinks as $footerlink)
+                        @php 
+                            $link = $footerlink->langable;
+                        @endphp
                         <li class="footer-list-item">
-                            <a href="index.html#index-sec3" class="footer-list-item-link"> خدمات </a>
+                            <a href="{{$link->url}}" class="footer-list-item-link">  {{$link->name}} </a>
                         </li>
-
-                        <li class="footer-list-item">
-                            <a href="aboutUs.html" class="footer-list-item-link"> درباره ما </a>
-                        </li>
-
-                        <li class="footer-list-item">
-                            <a href="articles.html" class="footer-list-item-link"> مقالات </a>
-                        </li>
-
-                        <li class="footer-list-item">
-                            <a href="terms.html" class="footer-list-item-link"> قوانین و مقررات </a>
-                        </li>
-
-                        <li class="footer-list-item">
-                            <a href="questions.html" class="footer-list-item-link"> سوالات متداول </a>
-                        </li>
+                        @endforeach
+                       
                     </ul>
                 </div>
 
@@ -288,49 +274,27 @@
 
                     <!--links for mobile size-->
                     <ul class="footer-list d-lg-none d-none">
+                        @foreach($footerlinks as $footerlink)
+                        @php 
+                            $link = $footerlink->langable;
+                        @endphp
                         <li class="footer-list-item">
-                            <a href="index.html#index-sec3" class="footer-list-item-link"> services </a>
+                            <a href="{{$link->url}}" class="footer-list-item-link"> {{$link->name}} </a>
                         </li>
-
-                        <li class="footer-list-item">
-                            <a href="aboutUs.html" class="footer-list-item-link"> about us </a>
-                        </li>
-
-                        <li class="footer-list-item">
-                            <a href="articles.html" class="footer-list-item-link"> articles </a>
-                        </li>
-
-                        <li class="footer-list-item">
-                            <a href="terms.html" class="footer-list-item-link"> terms and services </a>
-                        </li>
-
-                        <li class="footer-list-item">
-                            <a href="questions.html" class="footer-list-item-link"> questions </a>
-                        </li>
+                        @endforeach
                     </ul>
 
 
                     <!--links for laptop size-->
                     <ul class="footer-list-lg d-none d-lg-block p-0 ps-2">
+                        @foreach($footerlinks as $footerlink)
+                        @php 
+                            $link = $footerlink->langable;
+                        @endphp
                         <li class="footer-list-item">
-                            <a href="index.html#index-sec3" class="footer-list-item-link"> services </a>
+                            <a href="{{$link->url}}" class="footer-list-item-link"> {{$link->name}} </a>
                         </li>
-
-                        <li class="footer-list-item">
-                            <a href="aboutUs.html" class="footer-list-item-link"> about us </a>
-                        </li>
-
-                        <li class="footer-list-item">
-                            <a href="articles.html" class="footer-list-item-link"> articles </a>
-                        </li>
-
-                        <li class="footer-list-item">
-                            <a href="terms.html" class="footer-list-item-link"> terms and services </a>
-                        </li>
-
-                        <li class="footer-list-item">
-                            <a href="questions.html" class="footer-list-item-link"> questions </a>
-                        </li>
+                        @endforeach
                     </ul>
                 </div>
 
