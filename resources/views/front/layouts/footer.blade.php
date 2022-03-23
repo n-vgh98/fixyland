@@ -1,7 +1,8 @@
 @php
     $path = request()->getPathInfo();
     $lang = substr($path, 1, 2);
-    $footersinfo = App\Models\Lang::where([['name', $lang], ['langable_type', 'App\Models\FooterInfo']])->get();
+    $footersinfo = App\Models\Lang::where([['name', $lang], ['langable_type', 'App\Models\FooterInfo']])->first();
+    $info = $footersinfo->langable;
     $footerlinks = App\Models\Lang::where([['name', $lang], ['langable_type', 'App\Models\FooterLink']])->get();
     $articles = App\Models\Lang::where([["name",$lang],["langable_type","App\Models\Article"]])->orderBy("created_at","DESC")->get()->take(3);
 @endphp
@@ -138,16 +139,25 @@
 
                     <!--contact-us for mobile size-->
                     <ul class="footer-list d-lg-none d-none">
+                        @php 
+                            $info = $footersinfo->langable;
+                        @endphp
                         <li class="footer-list-item">
-                            <a href="#" class="footer-list-item-link"> www.fixyland-fa.com </a>
+                            <a href="#" class="footer-list-item-link"> 
+                                {{$info->address}}    
+                            </a>
                         </li>
 
                         <li class="footer-list-item">
-                            <a href="#" class="footer-list-item-link"> info@fixyland-eg.com </a>
+                            <a href="#" class="footer-list-item-link"> 
+                                {{$info->phone_number}}
+                            </a>
                         </li>
 
                         <li href="#" class="footer-list-item">
-                            <a href="#" class="footer-list-item-link"> 0224561600 </a>
+                            <a href="#" class="footer-list-item-link"> 
+                                {{$info->mobile_number}}
+                            </a>
                         </li>
 
                     </ul>
@@ -155,15 +165,21 @@
                     <!--contact-us for laptop size-->
                     <ul class="footer-list-lg d-none d-lg-block">
                         <li class="footer-list-item">
-                            <a href="#" class="footer-list-item-link"> www.fixyland-fa.com </a>
+                            <a href="#" class="footer-list-item-link"> 
+                                {{$info->address}}  
+                            </a>
                         </li>
 
                         <li class="footer-list-item">
-                            <a href="#" class="footer-list-item-link"> info@fixyland-eg.com </a>
+                            <a href="#" class="footer-list-item-link"> 
+                                {{$info->phone_number}} 
+                            </a>
                         </li>
 
                         <li class="footer-list-item">
-                            <a href="#" class="footer-list-item-link"> 0224561600 </a>
+                            <a href="#" class="footer-list-item-link"> 
+                                {{$info->mobile_number}} 
+                            </a>
                         </li>
 
                     </ul>
@@ -201,10 +217,10 @@
                 </div>
 
                 <div class="col col-12 col-md-6 order-md-1 text-center text-md-start social-media-footer">
-                    <a href="#"><i class="fa-brands fa-facebook-square  ms-2 me-2 white-text"></i></a>
-                    <a href="#"><i class="fa-brands fa-linkedin  ms-2 me-2 white-text"></i></a>
-                    <a href="#"><i class="fa-solid fa-envelope  ms-2 me-2 white-text"></i></a>
-                    <a href="#"><i class="fa-brands fa-instagram  ms-2 me-2 white-text"></i></a>
+                    <a href="{{$info->facebook_link}}"><i class="fa-brands fa-facebook-square  ms-2 me-2 white-text"></i></a>
+                    <a href="{{$info->linkedin_link}}"><i class="fa-brands fa-linkedin  ms-2 me-2 white-text"></i></a>
+                    <a href="{{$info->email_link}}"><i class="fa-solid fa-envelope  ms-2 me-2 white-text"></i></a>
+                    <a href="{{$info->instagram_link}}"><i class="fa-brands fa-instagram  ms-2 me-2 white-text"></i></a>
                 </div>
             </div>
         </div>
@@ -344,15 +360,21 @@
                     <!--contact-us for mobile size-->
                     <ul class="footer-list d-lg-none d-none">
                         <li class="footer-list-item">
-                            <a href="#" class="footer-list-item-link"> www.fixyland-fa.com </a>
+                            <a href="#" class="footer-list-item-link"> 
+                                {{$info->address}}    
+                            </a>
                         </li>
 
                         <li class="footer-list-item">
-                            <a href="#" class="footer-list-item-link"> info@fixyland-eg.com </a>
+                            <a href="#" class="footer-list-item-link">
+                                {{$info->phone_number}}
+                            </a>
                         </li>
 
                         <li href="#" class="footer-list-item">
-                            <a href="#" class="footer-list-item-link"> 0224561600 </a>
+                            <a href="#" class="footer-list-item-link"> 
+                                {{$info->mobile_number}}
+                            </a>
                         </li>
 
                     </ul>
@@ -360,15 +382,21 @@
                     <!--contact-us for laptop size-->
                     <ul class="footer-list-lg d-none d-lg-block p-0 ps-2">
                         <li class="footer-list-item">
-                            <a href="#" class="footer-list-item-link"> www.fixyland-fa.com </a>
+                            <a href="#" class="footer-list-item-link">
+                                {{$info->address}}  
+                            </a>
                         </li>
 
                         <li class="footer-list-item">
-                            <a href="#" class="footer-list-item-link"> info@fixyland-eg.com </a>
+                            <a href="#" class="footer-list-item-link">
+                                {{$info->phone_number}}     
+                            </a>
                         </li>
 
                         <li class="footer-list-item">
-                            <a href="#" class="footer-list-item-link"> 0224561600 </a>
+                            <a href="#" class="footer-list-item-link"> 
+                                {{$info->mobile_number}}     
+                            </a>
                         </li>
 
                     </ul>
@@ -410,10 +438,10 @@
                 </div>
 
                 <div class="col col-12 col-md-6 order-md-1 text-center text-md-end social-media-footer">
-                    <a href="#"><i class="fa-brands fa-facebook-square  ms-2 me-2 white-text"></i></a>
-                    <a href="#"><i class="fa-brands fa-linkedin  ms-2 me-2 white-text"></i></a>
-                    <a href="#"><i class="fa-solid fa-envelope  ms-2 me-2 white-text"></i></a>
-                    <a href="#"><i class="fa-brands fa-instagram  ms-2 me-2 white-text"></i></a>
+                    <a href="{{$info->facebook_link}}"><i class="fa-brands fa-facebook-square  ms-2 me-2 white-text"></i></a>
+                    <a href="{{$info->linkedin_link}}"><i class="fa-brands fa-linkedin  ms-2 me-2 white-text"></i></a>
+                    <a href="{{$info->email_link}}"><i class="fa-solid fa-envelope  ms-2 me-2 white-text"></i></a>
+                    <a href="{{$info->instagram_link}}"><i class="fa-brands fa-instagram  ms-2 me-2 white-text"></i></a>
                 </div>
             </div>
         </div>
