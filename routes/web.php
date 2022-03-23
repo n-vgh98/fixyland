@@ -27,6 +27,7 @@ use App\Http\Controllers\Admin\AdminNotificationsController;
 use App\Http\Controllers\Admin\AdminServiceCategoryController;
 use App\Http\Controllers\Admin\AdminServiceSubCategoryController;
 use App\Http\Controllers\Admin\AdminSubCategoryServiceDescriptionController;
+use App\Http\Controllers\Front\FrontAboutUsController;
 use App\Http\Controllers\Front\FrontArticleController;
 use App\Http\Controllers\Front\FrontHomeController;
 use App\Http\Controllers\Front\FrontServiceController;
@@ -368,4 +369,5 @@ route::prefix("{locale}")->middleware("language")->group(function () {
             Route::get("/{id}/{slug}","show")->name("front.article.show");
         });
     });
+    Route::get("/about_us",[FrontAboutUsController::class,"index"])->name("front.about_us");
 });
