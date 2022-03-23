@@ -97,40 +97,34 @@
 
                     <!--articles for mobile size-->
                     <ul class="footer-list d-lg-none d-none">
+                        @foreach($articles as $article)
+                        @php 
+                            $last_article = $article->langable;
+                        @endphp
+                        @if ($last_article->status == 1)
                         <li class="footer-list-item">
-                            <a href="articleDescription.html" class="footer-list-item-link"> انتخاب بهترین متخصص شهر
+                            <a href="{{ route('front.article.show',[$last_article->id,$last_article->slug]) }}" class="footer-list-item-link">
+                                   {{$last_article->title}}
                             </a>
                         </li>
-
-                        <li class="footer-list-item">
-                            <a href="articleDescription.html" class="footer-list-item-link"> مشاهده امتیازات متخصصین
-                            </a>
-                        </li>
-
-                        <li class="footer-list-item">
-                            <a href="articleDescription.html" class="footer-list-item-link"> از تخصص خود کسب درآمد کنید
-                            </a>
-                        </li>
-
+                        @endif
+                        @endforeach
                     </ul>
 
                     <!--articles for laptop size-->
                     <ul class="footer-list-lg d-none d-lg-block">
+                        @foreach($articles as $article)
+                        @php 
+                            $last_article = $article->langable;
+                        @endphp
+                        @if ($last_article->status == 1)
                         <li class="footer-list-item">
-                            <a href="articleDescription.html" class="footer-list-item-link"> انتخاب بهترین متخصص شهر
+                            <a href="{{ route('front.article.show',[$last_article->id,$last_article->slug]) }}" class="footer-list-item-link"> 
+                                 {{$last_article->title}}
                             </a>
                         </li>
-
-                        <li class="footer-list-item">
-                            <a href="articleDescription.html" class="footer-list-item-link"> مشاهده امتیازات متخصصین
-                            </a>
-                        </li>
-
-                        <li class="footer-list-item">
-                            <a href="articleDescription.html" class="footer-list-item-link"> از تخصص خود کسب درآمد کنید
-                            </a>
-                        </li>
-
+                        @endif
+                        @endforeach
                     </ul>
                 </div>
 
@@ -308,41 +302,34 @@
 
                     <!--articles for mobile size-->
                     <ul class="footer-list d-lg-none d-none">
+                        @foreach($articles as $article)
+                        @php 
+                            $last_article = $article->langable;
+                        @endphp
+                        @if ($last_article->status == 1)
                         <li class="footer-list-item">
-                            <a href="articleDescription.html" class="footer-list-item-link">
-                                entekhab behtarin motekhases
+                            <a href="{{ route('front.article.show',[$last_article->id,$last_article->slug]) }}" class="footer-list-item-link">
+                                {{$last_article->title}}
                             </a>
                         </li>
-
-                        <li class="footer-list-item">
-                            <a href="articleDescription.html" class="footer-list-item-link">
-                                moshahede emtiazat </a>
-                        </li>
-
-                        <li class="footer-list-item">
-                            <a href="articleDescription.html" class="footer-list-item-link">
-                                kasbe daramad az takhasos </a>
-                        </li>
-
+                        @endif
+                        @endforeach
                     </ul>
 
                     <!--articles for laptop size-->
                     <ul class="footer-list-lg d-none d-lg-block p-0 ps-2">
+                        @foreach($articles as $article)
+                        @php 
+                            $last_article = $article->langable;
+                        @endphp
+                        @if ($last_article->status == 1)
                         <li class="footer-list-item">
-                            <a href="articleDescription.html" class="footer-list-item-link">
-                                entekhab behtarin motekhases </a>
+                            <a href="{{ route('front.article.show',[$last_article->id,$last_article->slug]) }}" class="footer-list-item-link">
+                                {{$last_article->title}}
+                             </a>
                         </li>
-
-                        <li class="footer-list-item">
-                            <a href="articleDescription.html" class="footer-list-item-link">
-                                moshahede emtiazat </a>
-                        </li>
-
-                        <li class="footer-list-item">
-                            <a href="articleDescription.html" class="footer-list-item-link">
-                                kasbe daramad az takhasos </a>
-                        </li>
-
+                        @endif
+                        @endforeach
                     </ul>
                 </div>
 
