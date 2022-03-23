@@ -350,6 +350,7 @@ route::prefix("{locale}")->middleware("language")->group(function () {
         // route for seprated signup forms
         route::prefix("sign-up")->group(function () {
             route::get("/user", [FrontUserController::class, "index"])->name("user.register.signup.user");
+            route::post("/getcity", [FrontUserController::class, "getcity"])->name("user.register.get.city");
             route::get("/specialist", [FrontSpecialistController::class, "index"])->name("user.register.signup.specialist");
         });
     });

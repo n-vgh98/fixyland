@@ -21,6 +21,7 @@
                 <h1 class="mb-4">ثبت نام مشتری</h1>
 
                 <form>
+                    @csrf
                     <div class="row mb-2">
                         <div class="col-md-6 col-12 mb-3">
                             <label for="name-register-cutomer" class="form-label">نام</label>
@@ -139,7 +140,7 @@
                 <h1 class="mb-4"> user sign-up </h1>
 
                 <form>
-
+                    @csrf
                     <div class="row mb-2">
                         <div class="col-6 mb-3">
                             <label for="name-register-cutomer" class="form-label"> fname </label>
@@ -175,9 +176,15 @@
                     <div class="mb-3">
                         <label for="state-register-customer" class="form-label"> province</label>
                         <select class="form-select" id="state-register-customer">
-                            <option id="state_0" value="0" selected>fars</option>
-                            <option id="state_1" value="1">tehran</option>
-                            <option id="state_2" value="2">esfahan</option>
+                            @foreach ($states as $state)
+                                @php
+                                    $number = 0;
+                                @endphp
+                                <option id="state_{{ $number }}" value="0" selected>fars</option>
+                                @php
+                                    $number++;
+                                @endphp
+                            @endforeach
                         </select>
                     </div>
 
@@ -209,6 +216,16 @@
                             <option value="shiraz">esfahan</option>
                             <option value="tehran">esfahan</option>
                             <option value="esfahan">esfahan</option>
+                        </select>
+                    </div>
+
+                    <!--qom-->
+                    <div class="cities mb-3 d-none">
+                        <label for="city-register-customer-esfahan" class="form-label">city </label>
+                        <select class="form-select" id="city-register-customer-esfahan">
+                            <option value="shiraz">dsa</option>
+                            <option value="tehran">zc</option>
+                            <option value="esfahan">vcx</option>
                         </select>
                     </div>
                     <!--شهرهای مرتبط به هر استان   --  end -->
@@ -258,4 +275,25 @@
         </script>
         <script src="{{ asset('frontend/fixy-land-en-main/script/user-addrs.js') }}" type="text/javascript"></script>
     @endif
+
+    <script>
+        $(document).ready(function() {
+            function getcity(cityid) {
+                var cityid1 = cityid
+                var _token = $("input[name='_token']").val();
+                $.ajax({
+                    url: "{{ route('user.register.get.city') }}",
+                    type: 'POST',
+                    data: {
+                        _token: _token,
+                        city_id: cityid1
+                    },
+                    success: function(data) {
+                        console.log(data)
+                    }
+                });
+            }
+            getcity(1)
+        });
+    </script>
 @endsection

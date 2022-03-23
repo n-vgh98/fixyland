@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Front;
 use App\Models\Lang;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\CoveredArea;
 
 class FrontUserController extends Controller
 {
@@ -83,5 +84,12 @@ class FrontUserController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function getcity(Request $request)
+    {
+        $state = CoveredArea::find($request->city_id);
+        $cities = $state->cities;
+        return response()->json(['cities' => $cities]);
     }
 }
