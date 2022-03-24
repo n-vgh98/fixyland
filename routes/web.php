@@ -32,6 +32,7 @@ use App\Http\Controllers\Front\FrontArticleController;
 use App\Http\Controllers\Front\FrontContactUsController;
 use App\Http\Controllers\Front\FrontFaqController;
 use App\Http\Controllers\Front\FrontHomeController;
+use App\Http\Controllers\Front\FrontRuleController;
 use App\Http\Controllers\Front\FrontServiceController;
 use App\Http\Controllers\Front\FrontSpecialistController;
 use App\Http\Controllers\Front\FrontUserController;
@@ -381,4 +382,5 @@ route::prefix("{locale}")->middleware("language")->group(function () {
         });
     });
     Route::get("/faq",[FrontFaqController::class, "index"])->name("front.faq.index");
+    Route::get("/rules-terms",[FrontRuleController::class, "index"])->name("front.rules.index");
 });
