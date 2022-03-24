@@ -29,6 +29,7 @@ use App\Http\Controllers\Admin\AdminServiceSubCategoryController;
 use App\Http\Controllers\Admin\AdminSubCategoryServiceDescriptionController;
 use App\Http\Controllers\Front\FrontAboutUsController;
 use App\Http\Controllers\Front\FrontArticleController;
+use App\Http\Controllers\Front\FrontContactUsController;
 use App\Http\Controllers\Front\FrontHomeController;
 use App\Http\Controllers\Front\FrontServiceController;
 use App\Http\Controllers\Front\FrontSpecialistController;
@@ -372,4 +373,10 @@ route::prefix("{locale}")->middleware("language")->group(function () {
         });
     });
     Route::get("/about_us",[FrontAboutUsController::class,"index"])->name("front.about_us");
+    Route::prefix("Contact_us")->group(function(){
+        Route::controller(FrontContactUsController::class)->group(function(){
+            Route::get("/","index")->name("front.contact_us");
+            Route::post("/store","store")->name("front.contact_us.store");
+        });
+    });
 });
