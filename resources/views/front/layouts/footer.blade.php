@@ -1,3 +1,11 @@
+@php
+    $path = request()->getPathInfo();
+    $lang = substr($path, 1, 2);
+    $footersinfo = App\Models\Lang::where([['name', $lang], ['langable_type', 'App\Models\FooterInfo']])->first();
+    $info = $footersinfo->langable;
+    $footerlinks = App\Models\Lang::where([['name', $lang], ['langable_type', 'App\Models\FooterLink']])->get();
+    $articles = App\Models\Lang::where([["name",$lang],["langable_type","App\Models\Article"]])->orderBy("created_at","DESC")->get()->take(3);
+@endphp
 @if (app()->getLocale() == 'fa' || app()->getLocale() == 'ar')
     <footer class="ps-5 pt-5 pe-5 pb-4">
         <div class="container-fluid">
@@ -55,49 +63,28 @@
 
                     <!--links for mobile size-->
                     <ul class="footer-list d-lg-none d-none">
+                        @foreach($footerlinks as $footerlink)
+                        @php 
+                            $link = $footerlink->langable;
+                        @endphp
                         <li class="footer-list-item">
-                            <a href="index.html#index-sec3" class="footer-list-item-link"> خدمات </a>
+                            <a href="{{$link->url}}" class="footer-list-item-link"> {{$link->name}} </a>
                         </li>
-
-                        <li class="footer-list-item">
-                            <a href="aboutUs.html" class="footer-list-item-link"> درباره ما </a>
-                        </li>
-
-                        <li class="footer-list-item">
-                            <a href="articles.html" class="footer-list-item-link"> مقالات </a>
-                        </li>
-
-                        <li class="footer-list-item">
-                            <a href="terms.html" class="footer-list-item-link"> قوانین و مقررات </a>
-                        </li>
-
-                        <li class="footer-list-item">
-                            <a href="questions.html" class="footer-list-item-link"> سوالات متداول </a>
-                        </li>
+                        @endforeach
                     </ul>
 
 
                     <!--links for laptop size-->
                     <ul class="footer-list-lg d-none d-lg-block">
+                        @foreach($footerlinks as $footerlink)
+                        @php 
+                            $link = $footerlink->langable;
+                        @endphp
                         <li class="footer-list-item">
-                            <a href="index.html#index-sec3" class="footer-list-item-link"> خدمات </a>
+                            <a href="{{$link->url}}" class="footer-list-item-link">  {{$link->name}} </a>
                         </li>
-
-                        <li class="footer-list-item">
-                            <a href="aboutUs.html" class="footer-list-item-link"> درباره ما </a>
-                        </li>
-
-                        <li class="footer-list-item">
-                            <a href="articles.html" class="footer-list-item-link"> مقالات </a>
-                        </li>
-
-                        <li class="footer-list-item">
-                            <a href="terms.html" class="footer-list-item-link"> قوانین و مقررات </a>
-                        </li>
-
-                        <li class="footer-list-item">
-                            <a href="questions.html" class="footer-list-item-link"> سوالات متداول </a>
-                        </li>
+                        @endforeach
+                       
                     </ul>
                 </div>
 
@@ -111,40 +98,34 @@
 
                     <!--articles for mobile size-->
                     <ul class="footer-list d-lg-none d-none">
+                        @foreach($articles as $article)
+                        @php 
+                            $last_article = $article->langable;
+                        @endphp
+                        @if ($last_article->status == 1)
                         <li class="footer-list-item">
-                            <a href="articleDescription.html" class="footer-list-item-link"> انتخاب بهترین متخصص شهر
+                            <a href="{{ route('front.article.show',[$last_article->id,$last_article->slug]) }}" class="footer-list-item-link">
+                                   {{$last_article->title}}
                             </a>
                         </li>
-
-                        <li class="footer-list-item">
-                            <a href="articleDescription.html" class="footer-list-item-link"> مشاهده امتیازات متخصصین
-                            </a>
-                        </li>
-
-                        <li class="footer-list-item">
-                            <a href="articleDescription.html" class="footer-list-item-link"> از تخصص خود کسب درآمد کنید
-                            </a>
-                        </li>
-
+                        @endif
+                        @endforeach
                     </ul>
 
                     <!--articles for laptop size-->
                     <ul class="footer-list-lg d-none d-lg-block">
+                        @foreach($articles as $article)
+                        @php 
+                            $last_article = $article->langable;
+                        @endphp
+                        @if ($last_article->status == 1)
                         <li class="footer-list-item">
-                            <a href="articleDescription.html" class="footer-list-item-link"> انتخاب بهترین متخصص شهر
+                            <a href="{{ route('front.article.show',[$last_article->id,$last_article->slug]) }}" class="footer-list-item-link"> 
+                                 {{$last_article->title}}
                             </a>
                         </li>
-
-                        <li class="footer-list-item">
-                            <a href="articleDescription.html" class="footer-list-item-link"> مشاهده امتیازات متخصصین
-                            </a>
-                        </li>
-
-                        <li class="footer-list-item">
-                            <a href="articleDescription.html" class="footer-list-item-link"> از تخصص خود کسب درآمد کنید
-                            </a>
-                        </li>
-
+                        @endif
+                        @endforeach
                     </ul>
                 </div>
 
@@ -158,16 +139,25 @@
 
                     <!--contact-us for mobile size-->
                     <ul class="footer-list d-lg-none d-none">
+                        @php 
+                            $info = $footersinfo->langable;
+                        @endphp
                         <li class="footer-list-item">
-                            <a href="#" class="footer-list-item-link"> www.fixyland-fa.com </a>
+                            <a href="#" class="footer-list-item-link"> 
+                                {{$info->address}}    
+                            </a>
                         </li>
 
                         <li class="footer-list-item">
-                            <a href="#" class="footer-list-item-link"> info@fixyland-eg.com </a>
+                            <a href="#" class="footer-list-item-link"> 
+                                {{$info->phone_number}}
+                            </a>
                         </li>
 
                         <li href="#" class="footer-list-item">
-                            <a href="#" class="footer-list-item-link"> 0224561600 </a>
+                            <a href="#" class="footer-list-item-link"> 
+                                {{$info->mobile_number}}
+                            </a>
                         </li>
 
                     </ul>
@@ -175,15 +165,21 @@
                     <!--contact-us for laptop size-->
                     <ul class="footer-list-lg d-none d-lg-block">
                         <li class="footer-list-item">
-                            <a href="#" class="footer-list-item-link"> www.fixyland-fa.com </a>
+                            <a href="#" class="footer-list-item-link"> 
+                                {{$info->address}}  
+                            </a>
                         </li>
 
                         <li class="footer-list-item">
-                            <a href="#" class="footer-list-item-link"> info@fixyland-eg.com </a>
+                            <a href="#" class="footer-list-item-link"> 
+                                {{$info->phone_number}} 
+                            </a>
                         </li>
 
                         <li class="footer-list-item">
-                            <a href="#" class="footer-list-item-link"> 0224561600 </a>
+                            <a href="#" class="footer-list-item-link"> 
+                                {{$info->mobile_number}} 
+                            </a>
                         </li>
 
                     </ul>
@@ -221,10 +217,10 @@
                 </div>
 
                 <div class="col col-12 col-md-6 order-md-1 text-center text-md-start social-media-footer">
-                    <a href="#"><i class="fa-brands fa-facebook-square  ms-2 me-2 white-text"></i></a>
-                    <a href="#"><i class="fa-brands fa-linkedin  ms-2 me-2 white-text"></i></a>
-                    <a href="#"><i class="fa-solid fa-envelope  ms-2 me-2 white-text"></i></a>
-                    <a href="#"><i class="fa-brands fa-instagram  ms-2 me-2 white-text"></i></a>
+                    <a href="{{$info->facebook_link}}"><i class="fa-brands fa-facebook-square  ms-2 me-2 white-text"></i></a>
+                    <a href="{{$info->linkedin_link}}"><i class="fa-brands fa-linkedin  ms-2 me-2 white-text"></i></a>
+                    <a href="{{$info->email_link}}"><i class="fa-solid fa-envelope  ms-2 me-2 white-text"></i></a>
+                    <a href="{{$info->instagram_link}}"><i class="fa-brands fa-instagram  ms-2 me-2 white-text"></i></a>
                 </div>
             </div>
         </div>
@@ -288,49 +284,27 @@
 
                     <!--links for mobile size-->
                     <ul class="footer-list d-lg-none d-none">
+                        @foreach($footerlinks as $footerlink)
+                        @php 
+                            $link = $footerlink->langable;
+                        @endphp
                         <li class="footer-list-item">
-                            <a href="index.html#index-sec3" class="footer-list-item-link"> services </a>
+                            <a href="{{$link->url}}" class="footer-list-item-link"> {{$link->name}} </a>
                         </li>
-
-                        <li class="footer-list-item">
-                            <a href="aboutUs.html" class="footer-list-item-link"> about us </a>
-                        </li>
-
-                        <li class="footer-list-item">
-                            <a href="articles.html" class="footer-list-item-link"> articles </a>
-                        </li>
-
-                        <li class="footer-list-item">
-                            <a href="terms.html" class="footer-list-item-link"> terms and services </a>
-                        </li>
-
-                        <li class="footer-list-item">
-                            <a href="questions.html" class="footer-list-item-link"> questions </a>
-                        </li>
+                        @endforeach
                     </ul>
 
 
                     <!--links for laptop size-->
                     <ul class="footer-list-lg d-none d-lg-block p-0 ps-2">
+                        @foreach($footerlinks as $footerlink)
+                        @php 
+                            $link = $footerlink->langable;
+                        @endphp
                         <li class="footer-list-item">
-                            <a href="index.html#index-sec3" class="footer-list-item-link"> services </a>
+                            <a href="{{$link->url}}" class="footer-list-item-link"> {{$link->name}} </a>
                         </li>
-
-                        <li class="footer-list-item">
-                            <a href="aboutUs.html" class="footer-list-item-link"> about us </a>
-                        </li>
-
-                        <li class="footer-list-item">
-                            <a href="articles.html" class="footer-list-item-link"> articles </a>
-                        </li>
-
-                        <li class="footer-list-item">
-                            <a href="terms.html" class="footer-list-item-link"> terms and services </a>
-                        </li>
-
-                        <li class="footer-list-item">
-                            <a href="questions.html" class="footer-list-item-link"> questions </a>
-                        </li>
+                        @endforeach
                     </ul>
                 </div>
 
@@ -344,41 +318,34 @@
 
                     <!--articles for mobile size-->
                     <ul class="footer-list d-lg-none d-none">
+                        @foreach($articles as $article)
+                        @php 
+                            $last_article = $article->langable;
+                        @endphp
+                        @if ($last_article->status == 1)
                         <li class="footer-list-item">
-                            <a href="articleDescription.html" class="footer-list-item-link">
-                                entekhab behtarin motekhases
+                            <a href="{{ route('front.article.show',[$last_article->id,$last_article->slug]) }}" class="footer-list-item-link">
+                                {{$last_article->title}}
                             </a>
                         </li>
-
-                        <li class="footer-list-item">
-                            <a href="articleDescription.html" class="footer-list-item-link">
-                                moshahede emtiazat </a>
-                        </li>
-
-                        <li class="footer-list-item">
-                            <a href="articleDescription.html" class="footer-list-item-link">
-                                kasbe daramad az takhasos </a>
-                        </li>
-
+                        @endif
+                        @endforeach
                     </ul>
 
                     <!--articles for laptop size-->
                     <ul class="footer-list-lg d-none d-lg-block p-0 ps-2">
+                        @foreach($articles as $article)
+                        @php 
+                            $last_article = $article->langable;
+                        @endphp
+                        @if ($last_article->status == 1)
                         <li class="footer-list-item">
-                            <a href="articleDescription.html" class="footer-list-item-link">
-                                entekhab behtarin motekhases </a>
+                            <a href="{{ route('front.article.show',[$last_article->id,$last_article->slug]) }}" class="footer-list-item-link">
+                                {{$last_article->title}}
+                             </a>
                         </li>
-
-                        <li class="footer-list-item">
-                            <a href="articleDescription.html" class="footer-list-item-link">
-                                moshahede emtiazat </a>
-                        </li>
-
-                        <li class="footer-list-item">
-                            <a href="articleDescription.html" class="footer-list-item-link">
-                                kasbe daramad az takhasos </a>
-                        </li>
-
+                        @endif
+                        @endforeach
                     </ul>
                 </div>
 
@@ -393,15 +360,21 @@
                     <!--contact-us for mobile size-->
                     <ul class="footer-list d-lg-none d-none">
                         <li class="footer-list-item">
-                            <a href="#" class="footer-list-item-link"> www.fixyland-fa.com </a>
+                            <a href="#" class="footer-list-item-link"> 
+                                {{$info->address}}    
+                            </a>
                         </li>
 
                         <li class="footer-list-item">
-                            <a href="#" class="footer-list-item-link"> info@fixyland-eg.com </a>
+                            <a href="#" class="footer-list-item-link">
+                                {{$info->phone_number}}
+                            </a>
                         </li>
 
                         <li href="#" class="footer-list-item">
-                            <a href="#" class="footer-list-item-link"> 0224561600 </a>
+                            <a href="#" class="footer-list-item-link"> 
+                                {{$info->mobile_number}}
+                            </a>
                         </li>
 
                     </ul>
@@ -409,15 +382,21 @@
                     <!--contact-us for laptop size-->
                     <ul class="footer-list-lg d-none d-lg-block p-0 ps-2">
                         <li class="footer-list-item">
-                            <a href="#" class="footer-list-item-link"> www.fixyland-fa.com </a>
+                            <a href="#" class="footer-list-item-link">
+                                {{$info->address}}  
+                            </a>
                         </li>
 
                         <li class="footer-list-item">
-                            <a href="#" class="footer-list-item-link"> info@fixyland-eg.com </a>
+                            <a href="#" class="footer-list-item-link">
+                                {{$info->phone_number}}     
+                            </a>
                         </li>
 
                         <li class="footer-list-item">
-                            <a href="#" class="footer-list-item-link"> 0224561600 </a>
+                            <a href="#" class="footer-list-item-link"> 
+                                {{$info->mobile_number}}     
+                            </a>
                         </li>
 
                     </ul>
@@ -459,10 +438,10 @@
                 </div>
 
                 <div class="col col-12 col-md-6 order-md-1 text-center text-md-end social-media-footer">
-                    <a href="#"><i class="fa-brands fa-facebook-square  ms-2 me-2 white-text"></i></a>
-                    <a href="#"><i class="fa-brands fa-linkedin  ms-2 me-2 white-text"></i></a>
-                    <a href="#"><i class="fa-solid fa-envelope  ms-2 me-2 white-text"></i></a>
-                    <a href="#"><i class="fa-brands fa-instagram  ms-2 me-2 white-text"></i></a>
+                    <a href="{{$info->facebook_link}}"><i class="fa-brands fa-facebook-square  ms-2 me-2 white-text"></i></a>
+                    <a href="{{$info->linkedin_link}}"><i class="fa-brands fa-linkedin  ms-2 me-2 white-text"></i></a>
+                    <a href="{{$info->email_link}}"><i class="fa-solid fa-envelope  ms-2 me-2 white-text"></i></a>
+                    <a href="{{$info->instagram_link}}"><i class="fa-brands fa-instagram  ms-2 me-2 white-text"></i></a>
                 </div>
             </div>
         </div>

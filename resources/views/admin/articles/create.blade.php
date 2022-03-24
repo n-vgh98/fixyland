@@ -61,7 +61,7 @@
         </div>
         <div class="mb-3 m-3">
             <label for="v_link_1" class="form-label">{{ __('Video Link-1:') }}</label>
-            <input type="text" name="v_link_1" id="v_link_1" required class="form-control">
+            <input type="text" name="v_link_1" id="v_link_1"  class="form-control">
             @error('v_link_1')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
@@ -70,7 +70,7 @@
         </div>
         <div class="mb-3 m-3">
             <label for="v_link_2" class="form-label">{{ __('Video Link-2:') }}</label>
-            <input type="text" name="v_link_2" id="v_link_2" required class="form-control">
+            <input type="text" name="v_link_2" id="v_link_2"  class="form-control">
             @error('v_link_2')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
