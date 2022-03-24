@@ -3,7 +3,7 @@
     @if (app()->getLocale() == 'fa' || app()->getLocale() == 'ar')
        تماس با ما
     @else
-        Articles
+        Contact Us
     @endif
 @endsection
 @section('head')
@@ -26,7 +26,7 @@
 							{!! $contact_us->text_1 !!} 
 						</p>
 						<div class="text-center mt-5 mb-3">
-							<a href="questions.html" class="text-decoration-none btn darkYellow p-4 pt-1 pb-2"> سوالات متداول </a>
+							<a href="{{ route('front.faq.index') }}" class="text-decoration-none btn darkYellow p-4 pt-1 pb-2"> سوالات متداول </a>
 						</div>
 					</div>
 
@@ -100,7 +100,7 @@
 							{!! $contact_us->text_1 !!} 		
 						</p>
 						<div class="text-center mt-5 mb-3">
-							<a href="questions.html" class="text-decoration-none btn darkYellow p-4 pt-1 pb-2"> Questions </a>
+							<a href="{{ route('front.faq.index') }}" class="text-decoration-none btn darkYellow p-4 pt-1 pb-2"> Questions </a>
 						</div>
 					</div>
 
