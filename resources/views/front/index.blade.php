@@ -656,49 +656,34 @@
          </section>
 
 
-
-         <div class="text-center mt-5">
-             <h3>
-                 آمار
-             </h3>
-         </div>
+         @if (count($staticlanguages) > 0)
+             <div class="text-center mt-5">
+                 <h3>
+                     آمار
+                 </h3>
+             </div>
+         @endif
 
 
          <!--sec4-amar-->
          <section id="index-sec4" class="">
              <div class="container-fluid">
                  <div class="row d-flex justify-content-center gap-5 ">
-                     <div class="ps-1 pe-1 col-lg-2 col-md-4 col-6">
-                         <div
-                             class="statistics-box rounded-circle d-flex flex-column justify-content-center align-items-center text-center">
-                             <p class="p-2"> 570 </p>
-                             <p class="p-2"> تعداد متخصص </p>
-                         </div>
-                     </div>
+                     @foreach ($staticlanguages as $staticlanguage)
+                         @php
+                             $static = $staticlanguage->langable;
+                         @endphp
+                         @if ($static->status == 1)
+                             <div class="ps-1 pe-1 col-lg-2 col-md-4 col-6">
+                                 <div
+                                     class="statistics-box rounded-circle d-flex flex-column justify-content-center align-items-center text-center">
+                                     <p class="p-2"> {{ $static->value }} </p>
+                                     <p class="p-2"> {{ $static->title }} </p>
+                                 </div>
+                             </div>
+                         @endif
+                     @endforeach
 
-                     <div class="ps-1 pe-1 col-lg-2 col-md-4 col-6">
-                         <div
-                             class="statistics-box rounded-circle d-flex flex-column justify-content-center align-items-center text-center">
-                             <p class="p-2"> 1929 </p>
-                             <p class="p-2"> تعداد کاربران </p>
-                         </div>
-                     </div>
-
-                     <div class="ps-1 pe-1 col-lg-2 col-md-4 col-6">
-                         <div
-                             class="statistics-box rounded-circle  d-flex flex-column justify-content-center align-items-center text-center">
-                             <p class="p-2"> 3435 </p>
-                             <p class="p-2"> تعداد پروژه های انجام شده </p>
-                         </div>
-                     </div>
-
-                     <div class="ps-1 pe-1 col-lg-2 col-md-4 col-6">
-                         <div
-                             class="statistics-box rounded-circle d-flex flex-column justify-content-center align-items-center text-center">
-                             <p class="p-2"> 98% </p>
-                             <p class="p-2"> مشتری های راضی </p>
-                         </div>
-                     </div>
                  </div>
              </div>
 
@@ -782,31 +767,21 @@
          <!--sec6-tablighat-->
          <section id="index-sec6" class="alert alert-dismissible fade show" role="alert">
              <div class="container">
-                 <div class="row">
-                     <div class="col-md-4 col-12 d-flex justify-content-center">
-                         <div class="border border-dark d-flex flex-column align-items-center mb-2 p-0 rounded-2">
-                             <img src="image/washing-machine.jpg" alt="ads" width="100%" height="200">
-                             <p class="ps-2 pt-3 pe-4 pb-2"> قهوه ای اصیل که دارای کافئین ، خامه و غلظت بالایی می باشد.
-                                 می توان به جرئت یکی از پرطرفدارتربن قهوه های ربوستا در دنیا نامید. </p>
-                         </div>
-                     </div>
+                 @foreach ($adlanguages as $adlanguage)
+                     <div class="row">
+                         @php
+                             $advertisment = $adlanguage->langable;
+                         @endphp
+                         <div class="col-md-4 col-12 d-flex justify-content-center">
+                             <div class="border border-dark d-flex flex-column align-items-center mb-2 p-0 rounded-2">
+                                 <img src="{{ asset($advertisment->photo_path) }}" alt="{{ $advertisment->alt }}"
+                                     name="{{ $advertisment->title }}" width="100%" height="200">
 
-                     <div class="col-md-4 col-12 d-flex justify-content-center">
-                         <div class="border border-dark d-flex flex-column align-items-center mb-2 p-0 rounded-2">
-                             <img src="image/tamir.png" alt="ads" width="100%" height="200">
-                             <p class="ps-2 pt-3 pe-4 pb-2"> قهوه ای اصیل که دارای کافئین ، خامه و غلظت بالایی می باشد.
-                                 می توان به جرئت یکی از پرطرفدارتربن قهوه های ربوستا در دنیا نامید. </p>
+                             </div>
                          </div>
-                     </div>
+                 @endforeach
 
-                     <div class="col-md-4 col-12 d-flex justify-content-center">
-                         <div class="border border-dark d-flex flex-column align-items-center mb-2 p-0 rounded-2">
-                             <img src="image/washing-machine.jpg" alt="ads" width="100%" height="200">
-                             <p class="ps-2 pt-3 pe-4 pb-2"> قهوه ای اصیل که دارای کافئین ، خامه و غلظت بالایی می باشد.
-                                 می توان به جرئت یکی از پرطرفدارتربن قهوه های ربوستا در دنیا نامید. </p>
-                         </div>
-                     </div>
-                 </div>
+             </div>
              </div>
 
              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -1490,37 +1465,21 @@
          <section id="index-sec4" class="">
              <div class="container-fluid">
                  <div class="row d-flex justify-content-center gap-5 ">
-                     <div class="ps-1 pe-1 col-lg-2 col-md-4 col-6">
-                         <div
-                             class="statistics-box rounded-circle d-flex flex-column justify-content-center align-items-center text-center">
-                             <p class="p-2"> 570 </p>
-                             <p class="p-2"> num of specialists </p>
-                         </div>
-                     </div>
+                     @foreach ($staticlanguages as $staticlanguage)
+                         @php
+                             $static = $staticlanguage->langable;
+                         @endphp
+                         @if ($static->status == 1)
+                             <div class="ps-1 pe-1 col-lg-2 col-md-4 col-6">
+                                 <div
+                                     class="statistics-box rounded-circle d-flex flex-column justify-content-center align-items-center text-center">
+                                     <p class="p-2"> {{ $static->value }} </p>
+                                     <p class="p-2"> {{ $static->title }} </p>
+                                 </div>
+                             </div>
+                         @endif
+                     @endforeach
 
-                     <div class="ps-1 pe-1 col-lg-2 col-md-4 col-6">
-                         <div
-                             class="statistics-box rounded-circle d-flex flex-column justify-content-center align-items-center text-center">
-                             <p class="p-2"> 1929 </p>
-                             <p class="p-2"> num of users </p>
-                         </div>
-                     </div>
-
-                     <div class="ps-1 pe-1 col-lg-2 col-md-4 col-6">
-                         <div
-                             class="statistics-box rounded-circle  d-flex flex-column justify-content-center align-items-center text-center">
-                             <p class="p-2"> 3435 </p>
-                             <p class="p-2"> num of projects </p>
-                         </div>
-                     </div>
-
-                     <div class="ps-1 pe-1 col-lg-2 col-md-4 col-6">
-                         <div
-                             class="statistics-box rounded-circle d-flex flex-column justify-content-center align-items-center text-center">
-                             <p class="p-2"> 98% </p>
-                             <p class="p-2"> customers </p>
-                         </div>
-                     </div>
                  </div>
              </div>
 
@@ -1615,35 +1574,19 @@
          <section id="index-sec6" class="alert alert-dismissible fade show" role="alert">
              <div class="container">
                  <div class="row">
-                     <div class="col-md-4 col-12 d-flex justify-content-center">
-                         <div class="border border-dark d-flex flex-column align-items-center mb-2 p-0 rounded-2">
-                             <img src="image/washing-machine.jpg" alt="ads" width="100%" height="200">
-                             <p class="ps-2 pt-3 pe-2 pb-2 text_justify"> Lorem ipsum dolor sit amet, consectetur
-                                 adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                                 enim
-                                 ad minim veniam. </p>
+                     @foreach ($adlanguages as $adlanguage)
+                         @php
+                             $advertisment = $adlanguage->langable;
+                         @endphp
+                         <div class="col-md-4 col-12 d-flex justify-content-center">
+                             <div class="border border-dark d-flex flex-column align-items-center mb-2 p-0 rounded-2">
+                                 <img src="{{ asset($advertisment->photo_path) }}" alt="{{ $advertisment->alt }}"
+                                     name="{{ $advertisment->title }}" width="100%" height="200">
+                             </div>
                          </div>
-                     </div>
+                     @endforeach
 
-                     <div class="col-md-4 col-12 d-flex justify-content-center">
-                         <div class="border border-dark d-flex flex-column align-items-center mb-2 p-0 rounded-2">
-                             <img src="image/tamir.png" alt="ads" width="100%" height="200">
-                             <p class="ps-2 pt-3 pe-2 pb-2 text_justify"> Lorem ipsum dolor sit amet, consectetur
-                                 adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                                 enim
-                                 ad minim veniam. </p>
-                         </div>
-                     </div>
 
-                     <div class="col-md-4 col-12 d-flex justify-content-center">
-                         <div class="border border-dark d-flex flex-column align-items-center mb-2 p-0 rounded-2">
-                             <img src="image/washing-machine.jpg" alt="ads" width="100%" height="200">
-                             <p class="ps-2 pt-3 pe-2 pb-2 text_justify"> Lorem ipsum dolor sit amet, consectetur
-                                 adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                                 enim
-                                 ad minim veniam. </p>
-                         </div>
-                     </div>
                  </div>
              </div>
 

@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\Front;
 
-use App\Http\Controllers\Controller;
+use App\Models\Lang;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class FrontHomeController extends Controller
 {
@@ -12,9 +13,11 @@ class FrontHomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($lang)
     {
-        return view("front.index");
+        $adlanguages = Lang::where([["name", $lang], ["langable_type", "App\Models\Advertisment"]])->get();
+        $staticlanguages = Lang::where([["name", $lang], ["langable_type", "App\Models\IndexStatic"]])->get();
+        return view("front.index", compact("adlanguages", "staticlanguages"));
     }
 
     /**

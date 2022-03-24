@@ -20,16 +20,16 @@
 
                 <h1 class="mb-4">ثبت نام مشتری</h1>
 
-                <form>
+                <form action="{{ route('user.register.store') }}" method="post">
                     @csrf
                     <div class="row mb-2">
                         <div class="col-md-6 col-12 mb-3">
                             <label for="name-register-cutomer" class="form-label">نام</label>
-                            <input type="text" class="form-control" id="name-register-cutomer">
+                            <input type="text" class="form-control" name="first_name" id="name-register-cutomer">
                         </div>
                         <div class="col-md-6 col-12 mb-3">
                             <label for="fname-register-cutomer" class="form-label">نام خانوادگی</label>
-                            <input type="text" class="form-control" id="fname-register-cutomer">
+                            <input type="text" class="form-control" name="last_name" id="fname-register-cutomer">
                         </div>
                     </div>
 
@@ -45,90 +45,77 @@
 
                     <div class="mb-3">
                         <label for="email-register-cutomer" class="form-label">ایمیل</label>
-                        <input type="email" class="form-control" id="email-register-cutomer">
+                        <input type="email" name="email" class="form-control" id="email-register-cutomer">
                     </div>
 
                     <div class="mb-3">
                         <label for="password-register-cutomer" class="form-label">رمز</label>
-                        <input type="password" class="form-control" id="password-register-cutomer">
+                        <input type="password" name="password" class="form-control" id="password-register-cutomer">
                     </div>
 
 
                     <!--استان-->
                     <div class="mb-3">
                         <label for="state-register-customer" class="form-label"> استان </label>
-                        <select class="form-select" id="state-register-customer">
-                            <option id="state_0" value="0" selected>فارس</option>
-                            <option id="state_1" value="1">تهران</option>
-                            <option id="state_2" value="2">اصفهان</option>
+                        <select class="form-select" name="state_id" id="state-register-customer">
+                            <option selected id="state_0">لطفا استان خود را انتخاب کنید</option>
+                            @foreach ($languages as $language)
+                                @php
+                                    $state = $language->langable;
+                                    $number = 1;
+                                @endphp
+                                <option name="state_id" id="state_{{ $number }}" value="{{ $state->id }}">
+                                    {{ $state->name }}</option>
+                                @php
+                                    $number++;
+                                @endphp
+                            @endforeach
+
                         </select>
                     </div>
 
-                    <!--شهرهای مرتبط به هر استان   --  start -->
-                    <!--فارس-->
                     <div class="cities mb-3">
-                        <label for="city-register-customer-fars" class="form-label">شهر </label>
-                        <select class="form-select" id="city-register-customer-fars">
-                            <option value="shiraz">شیراز</option>
-                            <option value="tehran">فسا</option>
-                            <option value="esfahan">اقلید</option>
+                        <label for="city-register-customer-nothing" class="form-label">شهر </label>
+                        <select class="form-select" id="city-register-customer-nothing">
+                            <option selected>ابتدا استان خود را انتخاب کنید</option>
                         </select>
                     </div>
 
-                    <!--تهران-->
-                    <div class="cities mb-3 d-none">
-                        <label for="city-register-customer-tehran" class="form-label">شهر </label>
-                        <select class="form-select" id="city-register-customer-tehran">
-                            <option value="shiraz">تهران</option>
-                            <option value="tehran">تهران</option>
-                            <option value="esfahan">تهران</option>
-                        </select>
-                    </div>
 
-                    <!--اصفهان-->
-                    <div class="cities mb-3 d-none">
-                        <label for="city-register-customer-esfahan" class="form-label">شهر </label>
-                        <select class="form-select" id="city-register-customer-esfahan">
-                            <option value="shiraz">اصفهان</option>
-                            <option value="tehran">اصفهان</option>
-                            <option value="esfahan">اصفهان</option>
-                        </select>
+                    <div class="cities mb-3" id="maincitydiv">
+
                     </div>
-                    <!--شهرهای مرتبط به هر استان   --  end -->
 
 
                     <div class="mb-3">
                         <label for="address-register-cutomer" class="form-label">آدرس</label>
-                        <textarea class="form-control" id="address-register-cutomer"></textarea>
+                        <textarea class="form-control" name="address" id="address-register-cutomer"></textarea>
                     </div>
 
 
                     <div class="mb-3 ">
-                        <input type="checkbox" required="required" class="form-check-input" id="check-register-cutomer">
+                        <input type="checkbox" required="required" name="ghavanin" class="form-check-input"
+                            id="check-register-cutomer">
                         <label class="form-check-label" for="check-register-cutomer">قوانین و مقررات را مطالعه و قبول دارم.
                         </label>
                     </div>
 
                     <div class="mb-3 ">
-                        <label for="identifierCode-register-cutomer" class="form-label">کد معرف</label>
-                        <input class="form-control" id="identifierCode-register-cutomer" type="text"
+                        <label for="identifierCode-register-cutomer" class="form-label">کد
+                            معرف</label>
+                        <input class="form-control" name="moaref_code" id="identifierCode-register-cutomer" type="text"
                             placeholder="در صورت داشتن کد معرف آن را وارد نمایید.">
                     </div>
 
                     <button type="submit" class="w-100 mt-4 darkYellow border-redius-20 font-size32">تایید</button>
-
-                    <div class="border-redius-20 mt-4 p-1">
-                        <a href="#" class="text-decoration-none text-dark d-flex justify-content-center align-items-center">
-                            ثبت نام / ورود با گوگل
-                            <img src="image/icon-google.svg" alt="">
-                        </a>
-                    </div>
+                    <input type="hidden" name="city_id" value="" id="city_id">
                 </form>
 
             </div>
 
             <div class="col-md-4 border-start d-none d-md-block m-0 lightblue">
-                <img src="image/GroupPhoto.png" class=" pt-2 w-100 h-auto sticky-top " alt="" id="imageSignup">
+                <img src="{{ asset('frontend/fixy-land-fa-main/image/GroupPhoto.png') }}"
+                    class=" pt-2 w-100 h-auto sticky-top " alt="" id="imageSignup">
             </div>
 
         </section>
@@ -139,16 +126,16 @@
 
                 <h1 class="mb-4"> user sign-up </h1>
 
-                <form>
+                <form action="{{ route('user.register.store') }}" method="post">
                     @csrf
                     <div class="row mb-2">
                         <div class="col-6 mb-3">
                             <label for="name-register-cutomer" class="form-label"> fname </label>
-                            <input type="text" class="form-control" id="name-register-cutomer">
+                            <input type="text" name="first_name" class="form-control" id="name-register-cutomer">
                         </div>
                         <div class="col-6 mb-3">
                             <label for="fname-register-cutomer" class="form-label"> lname </label>
-                            <input type="text" class="form-control" id="fname-register-cutomer">
+                            <input type="text" class="form-control" name="last_name" id="fname-register-cutomer">
                         </div>
                     </div>
 
@@ -164,23 +151,26 @@
 
                     <div class="mb-3">
                         <label for="email-register-cutomer" class="form-label">email</label>
-                        <input type="email" class="form-control" id="email-register-cutomer">
+                        <input type="email" name="email" class="form-control" id="email-register-cutomer">
                     </div>
 
                     <div class="mb-3">
                         <label for="password-register-cutomer" class="form-label"> password </label>
-                        <input type="password" class="form-control" id="password-register-cutomer">
+                        <input type="password" name="password" class="form-control" id="password-register-cutomer">
                     </div>
 
                     <!--استان محل سکونت-->
                     <div class="mb-3">
                         <label for="state-register-customer" class="form-label"> province</label>
-                        <select class="form-select" id="state-register-customer">
-                            @foreach ($states as $state)
+                        <select class="form-select" name="state_id" id="state-register-customer">
+                            <option selected id="state_0">please choose your city</option>
+                            @foreach ($languages as $language)
                                 @php
-                                    $number = 0;
+                                    $state = $language->langable;
+                                    $number = 1;
                                 @endphp
-                                <option id="state_{{ $number }}" value="0" selected>fars</option>
+                                <option id="state_{{ $number }}" value="{{ $state->id }}">
+                                    {{ $state->name }}</option>
                                 @php
                                     $number++;
                                 @endphp
@@ -188,70 +178,41 @@
                         </select>
                     </div>
 
-                    <!--شهرهای مرتبط به هر استان   --  start -->
-                    <!--فارس-->
                     <div class="cities mb-3">
-                        <label for="city-register-customer-fars" class="form-label">city </label>
-                        <select class="form-select" id="city-register-customer-fars">
-                            <option value="shiraz">shiraz</option>
-                            <option value="tehran">fasa</option>
-                            <option value="esfahan">eghlid</option>
+                        <label for="city-register-customer-nothing" class="form-label">city </label>
+                        <select class="form-select" id="city-register-customer-nothing">
+                            <option selected>please choose state first</option>
                         </select>
                     </div>
 
-                    <!--تهران-->
-                    <div class="cities mb-3 d-none">
-                        <label for="city-register-customer-tehran" class="form-label">city</label>
-                        <select class="form-select" id="city-register-customer-tehran">
-                            <option value="shiraz">tehran</option>
-                            <option value="tehran">rey</option>
-                            <option value="esfahan">golpayegan</option>
-                        </select>
+                    <div class="cities mb-3" id="maincitydiv">
+
                     </div>
 
-                    <!--اصفهان-->
-                    <div class="cities mb-3 d-none">
-                        <label for="city-register-customer-esfahan" class="form-label">city </label>
-                        <select class="form-select" id="city-register-customer-esfahan">
-                            <option value="shiraz">esfahan</option>
-                            <option value="tehran">esfahan</option>
-                            <option value="esfahan">esfahan</option>
-                        </select>
-                    </div>
-
-                    <!--qom-->
-                    <div class="cities mb-3 d-none">
-                        <label for="city-register-customer-esfahan" class="form-label">city </label>
-                        <select class="form-select" id="city-register-customer-esfahan">
-                            <option value="shiraz">dsa</option>
-                            <option value="tehran">zc</option>
-                            <option value="esfahan">vcx</option>
-                        </select>
-                    </div>
-                    <!--شهرهای مرتبط به هر استان   --  end -->
 
 
 
                     <div class="mb-3">
                         <label for="address-register-cutomer" class="form-label"> addr. </label>
-                        <textarea class="form-control" id="address-register-cutomer"></textarea>
+                        <textarea class="form-control" name="address" id="address-register-cutomer"></textarea>
                     </div>
 
 
                     <div class="mb-3">
-                        <input type="checkbox" required="required" class="form-check-input" id="check-register-cutomer">
+                        <input type="checkbox" name="ghavanin" required="required" class="form-check-input"
+                            id="check-register-cutomer">
                         <label class="form-check-label ms-1" for="check-register-cutomer">Ghavanin ra ghabool daram.
                         </label>
                     </div>
 
                     <div class="mb-3 ">
                         <label for="identifierCode-register-cutomer" class="form-label">code moaref:</label>
-                        <input class="form-control" id="identifierCode-register-cutomer" type="text"
+                        <input class="form-control" name="moaref_code" id="identifierCode-register-cutomer" type="text"
                             placeholder="add code">
                     </div>
 
                     <button type="submit" class="w-100 mt-4 darkYellow border-redius-20 font-size32"> submit </button>
-
+                    <input type="hidden" name="city_id" value="" id="city_id">
                 </form>
 
             </div>
@@ -289,11 +250,46 @@
                         city_id: cityid1
                     },
                     success: function(data) {
-                        console.log(data)
+                        var maindiv = $("#maincitydiv")
+                        maindiv.html(" ")
+
+                        // making label for select options
+                        var label = document.createElement("label")
+                        label.classList.add("form-label")
+                        @if (app()->getLocale() == 'fa' || app()->getLocale() == 'ar')
+                            var labeltext = document.createTextNode("شهر")
+                        @else
+                            var labeltext = document.createTextNode("city")
+                        @endif
+
+                        label.append(labeltext)
+                        maindiv.append(label)
+
+                        // making select
+                        var select = document.createElement("select")
+                        select.classList.add("form-select")
+                        maindiv.append(select)
+
+
+                        // making option for select
+                        data.cities.forEach(city => {
+                            var option = document.createElement("option")
+                            var optioncttext = document.createTextNode(city.name)
+                            option.append(optioncttext)
+                            select.append(option)
+                        });
+
+
                     }
                 });
             }
-            getcity(1)
+
+            $("#state-register-customer").change(function() {
+                var input = $("#state-register-customer")
+                getcity(input.val())
+                $("#city_id").attr("value", input.val());
+
+            });
         });
     </script>
 @endsection

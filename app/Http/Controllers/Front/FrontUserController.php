@@ -3,9 +3,12 @@
 namespace App\Http\Controllers\Front;
 
 use App\Models\Lang;
+use App\Models\User;
+use App\Models\CoveredArea;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\CoveredArea;
+use App\Models\Address;
+use Illuminate\Support\Facades\Hash;
 
 class FrontUserController extends Controller
 {
@@ -16,8 +19,8 @@ class FrontUserController extends Controller
      */
     public function index($lang)
     {
-        $states = Lang::where([["name", $lang], ["langable_type", "App\Models\CoveredArea"]])->get();
-        return view("front.auth.register.signup.user", compact("states"));
+        $languages = Lang::where([["name", $lang], ["langable_type", "App\Models\CoveredArea"]])->get();
+        return view("front.auth.register.signup.user", compact("languages", "adlanguages"));
     }
 
     /**
@@ -38,7 +41,22 @@ class FrontUserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $user = new User();
+        $user->firstname = $request->first_name;
+        $user->lastname = $request->last_name;
+        $user->email = $request->email;
+        $user->phone = $request->phone;
+        $user->role_name = "user";
+        $user->password = Hash::make($request->password);
+        $user->code = Hash::make($request->email);
+        $user->save();
+        $address = new Address();
+        $address->user_id = $user->id;
+        $address->city_id = $request->city_id;
+        $address->state_id = $request->state_id;
+        $address->save();
+        return redirect()->route("user.login");
     }
 
     /**
