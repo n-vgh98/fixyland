@@ -8,6 +8,7 @@ use App\Models\CoveredArea;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Address;
+use App\Models\CoveredAreaCity;
 use Illuminate\Support\Facades\Hash;
 
 class FrontUserController extends Controller
@@ -20,7 +21,7 @@ class FrontUserController extends Controller
     public function index($lang)
     {
         $languages = Lang::where([["name", $lang], ["langable_type", "App\Models\CoveredArea"]])->get();
-        return view("front.auth.register.signup.user", compact("languages", "adlanguages"));
+        return view("front.auth.register.signup.user", compact("languages"));
     }
 
     /**
@@ -53,7 +54,8 @@ class FrontUserController extends Controller
         $user->save();
         $address = new Address();
         $address->user_id = $user->id;
-        $address->city_id = $request->city_id;
+        $city = CoveredAreaCity::where("name", $request->city_id)->first();
+        $address->city_id = $city->id;
         $address->state_id = $request->state_id;
         $address->save();
         return redirect()->route("user.login");

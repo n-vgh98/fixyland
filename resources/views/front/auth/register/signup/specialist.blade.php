@@ -22,7 +22,7 @@
                 <h1 class="mb-4">ثبت نام متخصص</h1>
 
                 <form class="col-12">
-
+                    @csrf
                     <div class="row">
                         <div class="col-md-6 col-12 mb-3">
                             <label for="name-register-specialist" class="form-label">نام</label>
@@ -118,45 +118,40 @@
 
                     <!--استان محل سکونت-->
                     <div class="mb-3">
-                        <label for="state-register-specialist" class="form-label"> استان محل سکونت</label>
-                        <select class="form-select" id="state-register-specialist">
-                            <option id="state_0" value="0" selected>فارس</option>
-                            <option id="state_1" value="1">تهران</option>
-                            <option id="state_2" value="2">اصفهان</option>
+                        <label for="state-register-specialist" class="form-label"> استان </label>
+                        <select class="form-select" name="state_id" id="state-register-specialist">
+                            <option selected id="state_0">لطفا استان خود را انتخاب کنید</option>
+                            @foreach ($languages as $language)
+                                @php
+                                    $state = $language->langable;
+                                    $number = 1;
+                                @endphp
+                                <option name="state_id" id="state_{{ $number }}" value="{{ $state->id }}">
+                                    {{ $state->name }}</option>
+                                @php
+                                    $number++;
+                                @endphp
+                            @endforeach
+
                         </select>
                     </div>
 
                     <!--شهرهای مرتبط به هر استان   --  start -->
-                    <!--فارس-->
-                    <div class="cities mb-3">
-                        <label for="city-register-specialist-fars" class="form-label">شهر محل سکونت </label>
-                        <select class="form-select" id="city-register-specialist-fars">
-                            <option value="shiraz">شیراز</option>
-                            <option value="tehran">فسا</option>
-                            <option value="esfahan">اقلید</option>
+                    <div class="cities mb-3" id="maincitydiv">
+                        <label for="city-register-specialist-nothing" class="form-label">شهر </label>
+                        <select class="form-select" id="city-register-specialist-nothing">
+                            <option selected>ابتدا استان خود را انتخاب کنید</option>
                         </select>
                     </div>
 
-                    <!--تهران-->
-                    <div class="cities mb-3 d-none">
-                        <label for="city-register-specialist-tehran" class="form-label">شهر محل سکونت</label>
-                        <select class="form-select" id="city-register-specialist-tehran">
-                            <option value="shiraz">تهران</option>
-                            <option value="tehran">تهران</option>
-                            <option value="esfahan">تهران</option>
+
+                    <div class="cities mb-3" id="maincitydiv">
+                        <label for="city-register-specialist-nothing1" class="form-label">شهر </label>
+                        <select class="form-select" id="select-city">
+
                         </select>
                     </div>
 
-                    <!--اصفهان-->
-                    <div class="cities mb-3 d-none">
-                        <label for="city-register-specialis-esfahan" class="form-label">شهر محل سکونت</label>
-                        <select class="form-select" id="city-register-specialist-esfahan">
-                            <option value="shiraz">اصفهان</option>
-                            <option value="tehran">اصفهان</option>
-                            <option value="esfahan">اصفهان</option>
-                        </select>
-                    </div>
-                    <!--شهرهای مرتبط به هر استان   --  end -->
 
 
 
@@ -178,45 +173,37 @@
 
                     <!--استان محل خدمت-->
                     <div class="mb-3">
-                        <label for="work_state-register-specialist" class="form-label"> استان محل خدمت</label>
-                        <select class="form-select" id="work_state-register-specialist">
-                            <option id="work_state_0" value="0" selected>فارس</option>
-                            <option id="work_state_1" value="1">تهران</option>
-                            <option id="work_state_2" value="2">اصفهان</option>
+                        <label for="state-register-specialist-expert" class="form-label"> استان </label>
+                        <select class="form-select" name="state_id" id="state-register-specialist-expert">
+                            <option selected id="state_0">لطفا استان خود را انتخاب کنید</option>
+                            @foreach ($languages as $language)
+                                @php
+                                    $state = $language->langable;
+                                    $number = 1;
+                                @endphp
+                                <option name="state_id" id="state_{{ $number }}" value="{{ $state->id }}">
+                                    {{ $state->name }}</option>
+                                @php
+                                    $number++;
+                                @endphp
+                            @endforeach
+
                         </select>
                     </div>
 
                     <!--شهرهای مرتبط به هر استان   --  start -->
-                    <!--فارس-->
-                    <div class="work_cities mb-3">
-                        <label for="work_city-register-specialist-fars" class="form-label">شهر محل خدمت </label>
-                        <select class="form-select" id="work_city-register-specialist-fars">
-                            <option value="shiraz">شیراز</option>
-                            <option value="tehran">فسا</option>
-                            <option value="esfahan">اقلید</option>
-                        </select>
-                    </div>
 
-                    <!--تهران-->
-                    <div class="work_cities mb-3 d-none">
-                        <label for="work_city-register-specialist-tehran" class="form-label">شهر محل خدمت</label>
-                        <select class="form-select" id="work_city-register-specialist-tehran">
-                            <option value="shiraz">تهران</option>
-                            <option value="tehran">تهران</option>
-                            <option value="esfahan">تهران</option>
-                        </select>
-                    </div>
 
-                    <!--اصفهان-->
-                    <div class="work_cities mb-3 d-none">
-                        <label for="work_city-register-specialis-esfahan" class="form-label">شهر محل خدمت</label>
-                        <select class="form-select" id="work_city-register-specialist-esfahan">
-                            <option value="shiraz">اصفهان</option>
-                            <option value="tehran">اصفهان</option>
-                            <option value="esfahan">اصفهان</option>
+                    <!--شهرهای مرتبط به هر استان   --  start -->
+                    <div class="cities mb-3">
+                        <label for="city-register-specialist-nothing" class="form-label">شهر </label>
+                        <select class="form-select" id="city-register-specialist-nothing">
+                            <option selected>ابتدا استان خود را انتخاب کنید</option>
                         </select>
                     </div>
-                    <!--شهرهای مرتبط به هر استان   --  end -->
+                    <div class="cities mb-3" id="maincitydivexpert">
+
+                    </div>
 
 
 
@@ -428,6 +415,8 @@
                         </div>
 
                     </div>
+                    <input type="hidden" name="city_id" value="" id="city_id">
+                    <input type="hidden" name="city_id_expert" value="" id="city_id_expert">
 
 
 
@@ -451,7 +440,7 @@
                 <h1 class="mb-4"> specialist sign-up </h1>
 
                 <form class="col-12">
-
+                    @csrf
                     <div class="row">
                         <div class="col-md-6 col-12 mb-3">
                             <label for="name-register-specialist" class="form-label">fname</label>
@@ -542,47 +531,28 @@
 
 
 
-                    <!--استان محل سکونت-->
                     <div class="mb-3">
-                        <label for="state-register-specialist" class="form-label"> mahale sokoonat(ostan)</label>
-                        <select class="form-select" id="state-register-specialist">
-                            <option id="state_0" value="0" selected>fars</option>
-                            <option id="state_1" value="1">tehran</option>
-                            <option id="state_2" value="2">esfahan</option>
+                        <label for="state-register-specialist" class="form-label"> province</label>
+                        <select class="form-select" name="state_id" id="state-register-specialist">
+                            <option selected id="state_0">please choose your city</option>
+                            @foreach ($languages as $language)
+                                @php
+                                    $state = $language->langable;
+                                    $number = 1;
+                                @endphp
+                                <option id="state_{{ $number }}" value="{{ $state->id }}">
+                                    {{ $state->name }}</option>
+                                @php
+                                    $number++;
+                                @endphp
+                            @endforeach
                         </select>
                     </div>
 
-                    <!--شهرهای مرتبط به هر استان   --  start -->
-                    <!--فارس-->
-                    <div class="cities mb-3">
-                        <label for="city-register-specialist-fars" class="form-label">mahale sokoonat(shahr) </label>
-                        <select class="form-select" id="city-register-specialist-fars">
-                            <option value="shiraz">shiraz</option>
-                            <option value="tehran">fasa</option>
-                            <option value="esfahan">eghlid</option>
-                        </select>
-                    </div>
 
-                    <!--تهران-->
-                    <div class="cities mb-3 d-none">
-                        <label for="city-register-specialist-tehran" class="form-label">mahale sokoonat(shahr) </label>
-                        <select class="form-select" id="city-register-specialist-tehran">
-                            <option value="shiraz">tehran</option>
-                            <option value="tehran">rey</option>
-                            <option value="esfahan">golpayegan</option>
-                        </select>
-                    </div>
+                    <div class="cities mb-3" id="maincitydiv">
 
-                    <!--اصفهان-->
-                    <div class="cities mb-3 d-none">
-                        <label for="city-register-specialis-esfahan" class="form-label">mahale sokoonat(shahr) </label>
-                        <select class="form-select" id="city-register-specialist-esfahan">
-                            <option value="shiraz">esfahan</option>
-                            <option value="tehran">esfahan</option>
-                            <option value="esfahan">esfahan</option>
-                        </select>
                     </div>
-                    <!--شهرهای مرتبط به هر استان   --  end -->
 
 
 
@@ -604,52 +574,37 @@
 
                     <!--استان محل خدمت-->
                     <div class="mb-3">
-                        <label for="work_state-register-specialist" class="form-label"> mahale khedmat(ostan) </label>
-                        <select class="form-select" id="work_state-register-specialist">
-                            <option id="work_state_0" value="0" selected>fars</option>
-                            <option id="work_state_1" value="1">tehran</option>
-                            <option id="work_state_2" value="2">esfahan</option>
+                        <label for="state-register-specialist-expert" class="form-label"> province</label>
+                        <select class="form-select" name="state_id" id="state-register-specialist-expert">
+                            <option selected id="state_0">please choose your city</option>
+                            @foreach ($languages as $language)
+                                @php
+                                    $state = $language->langable;
+                                    $number = 1;
+                                @endphp
+                                <option id="state_{{ $number }}" value="{{ $state->id }}">
+                                    {{ $state->name }}</option>
+                                @php
+                                    $number++;
+                                @endphp
+                            @endforeach
                         </select>
                     </div>
 
-                    <!--شهرهای مرتبط به هر استان   --  start -->
-                    <!--فارس-->
-                    <div class="work_cities mb-3">
-                        <label for="work_city-register-specialist-fars" class="form-label"> mahale khedmat(shahr)
-                        </label>
-                        <select class="form-select" id="work_city-register-specialist-fars">
-                            <option value="shiraz">shiraz</option>
-                            <option value="tehran">fasa</option>
-                            <option value="esfahan">eghlid</option>
+                    <div class="cities mb-3">
+                        <label for="city-register-specialist-nothing" class="form-label">city </label>
+                        <select class="form-select" id="city-register-specialist-nothing">
+                            <option selected>please choose state first</option>
                         </select>
                     </div>
 
-                    <!--تهران-->
-                    <div class="work_cities mb-3 d-none">
-                        <label for="work_city-register-specialist-tehran" class="form-label">mahale
-                            khedmat(shahr)</label>
-                        <select class="form-select" id="work_city-register-specialist-tehran">
-                            <option value="shiraz">tehran</option>
-                            <option value="tehran">rey</option>
-                            <option value="esfahan">golpayegan</option>
-                        </select>
+                    <div class="cities mb-3" id="maincitydivexpert">
+
                     </div>
 
-                    <!--اصفهان-->
-                    <div class="work_cities mb-3 d-none">
-                        <label for="work_city-register-specialis-esfahan" class="form-label"> mahale
-                            khedmat(shahr)</label>
-                        <select class="form-select" id="work_city-register-specialist-esfahan">
-                            <option value="shiraz">esfahan</option>
-                            <option value="tehran">esfahan</option>
-                            <option value="esfahan">esfahan</option>
-                        </select>
-                    </div>
-                    <!--شهرهای مرتبط به هر استان   --  end -->
 
 
-
-                    <h2> entekhabe maharat </h2>
+                    <h2> ente abe maharat </h2>
                     <div class=" d-flex pe-2 ps-2 flex-row lightblue border">
                         <button class="btn" type="submit"> <i class="fa-solid fa-magnifying-glass"></i>
                         </button>
@@ -860,7 +815,8 @@
                     </div>
 
 
-
+                    <input type="hidden" name="city_id" value="" id="city_id">
+                    <input type="hidden" name="city_id_expert" value="" id="city_id_expert">
                 </form>
 
 
@@ -888,4 +844,121 @@
         <script src="{{ asset('frontend/fixy-land-en-main/script/country_code.js') }}" type="text/javascript">
         </script>
     @endif
+    <script>
+        $(document).ready(function() {
+            function getcityforsignup(cityid) {
+                var cityid1 = cityid
+                var _token = $("input[name='_token']").val();
+                $.ajax({
+                    url: "{{ route('user.register.get.city') }}",
+                    type: 'POST',
+                    data: {
+                        _token: _token,
+                        city_id: cityid1
+                    },
+                    success: function(data) {
+                        var maindiv = $("#maincitydiv")
+                        maindiv.html(" ")
+
+                        // making label for select options
+                        var label = document.createElement("label")
+                        label.classList.add("form-label")
+                        @if (app()->getLocale() == 'fa' || app()->getLocale() == 'ar')
+                            var labeltext = document.createTextNode("شهر")
+                        @else
+                            var labeltext = document.createTextNode("city")
+                        @endif
+
+                        label.append(labeltext)
+                        maindiv.append(label)
+
+                        // making select
+                        var select = $("#select-city")
+                        select.html(" ")
+
+
+                        // making option for select
+                        data.cities.forEach(city => {
+                            var option = document.createElement("option")
+                            var optioncttext = document.createTextNode(city.name)
+                            option.append(optioncttext)
+                            select.append(option)
+                        });
+
+
+                    }
+                });
+            }
+
+
+            $("#state-register-specialist").change(function() {
+                var input = $("#state-register-specialist")
+                getcityforsignup(input.val())
+                var expertdiv = $("#maincitydivexpert")
+                expertdiv.removeClass("d-none")
+            });
+            $("#select-city").change(function() {
+                var value = $("#select-city").val();
+                $("#city_id").attr("value", value);
+            });
+        });
+    </script>
+    {{-- <script>
+        $(document).ready(function() {
+            function getcityforservice(cityid) {
+                var cityid1 = cityid
+                var _token = $("input[name='_token']").val();
+                $.ajax({
+                    url: "{{ route('user.register.get.city') }}",
+                    type: 'POST',
+                    data: {
+                        _token: _token,
+                        city_id: cityid1
+                    },
+                    success: function(data) {
+                        var maindiv = $("#maincitydivexpert")
+                        maindiv.html(" ")
+
+                        // making label for select options
+                        var label = document.createElement("label")
+                        label.classList.add("form-label")
+                        @if (app()->getLocale() == 'fa' || app()->getLocale() == 'ar')
+                            var labeltext = document.createTextNode("شهر")
+                        @else
+                            var labeltext = document.createTextNode("city")
+                        @endif
+
+                        label.append(labeltext)
+                        maindiv.append(label)
+
+                        // making select
+                        var select = document.createElement("select")
+                        select.classList.add("form-select")
+                        maindiv.append(select)
+
+
+                        // making option for select
+                        data.cities.forEach(city => {
+                            var option = document.createElement("option")
+                            var optioncttext = document.createTextNode(city.name)
+                            option.append(optioncttext)
+                            select.append(option)
+                        });
+
+
+                    }
+                });
+            }
+
+            $("#state-register-specialist-expert").change(function() {
+
+                var input = $("#state-register-specialist-expert")
+                getcityforservice(input.val())
+                var maindiv = $("#maincitydivexpert")
+                maindiv.removeClass("d-none")
+                $("#city_id_expert").attr("value", input.val());
+
+            });
+        });
+    </script> --}}
 @endsection

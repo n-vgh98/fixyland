@@ -54,10 +54,11 @@
                     </div>
 
 
-                    <!--استان-->
+
+                    <!--استان محل سکونت-->
                     <div class="mb-3">
-                        <label for="state-register-customer" class="form-label"> استان </label>
-                        <select class="form-select" name="state_id" id="state-register-customer">
+                        <label for="state-register-specialist" class="form-label"> استان </label>
+                        <select class="form-select" name="state_id" id="state-register-specialist">
                             <option selected id="state_0">لطفا استان خود را انتخاب کنید</option>
                             @foreach ($languages as $language)
                                 @php
@@ -74,17 +75,21 @@
                         </select>
                     </div>
 
-                    <div class="cities mb-3">
-                        <label for="city-register-customer-nothing" class="form-label">شهر </label>
-                        <select class="form-select" id="city-register-customer-nothing">
+                    <!--شهرهای مرتبط به هر استان   --  start -->
+                    <div class="cities mb-3" id="maincitydiv">
+                        <label for="city-register-specialist-nothing" class="form-label">شهر </label>
+                        <select class="form-select" id="city-register-specialist-nothing">
                             <option selected>ابتدا استان خود را انتخاب کنید</option>
                         </select>
                     </div>
 
 
                     <div class="cities mb-3" id="maincitydiv">
+                        <select class="form-select" id="select-city">
 
+                        </select>
                     </div>
+
 
 
                     <div class="mb-3">
@@ -239,7 +244,7 @@
 
     <script>
         $(document).ready(function() {
-            function getcity(cityid) {
+            function getcityforsignup(cityid) {
                 var cityid1 = cityid
                 var _token = $("input[name='_token']").val();
                 $.ajax({
@@ -266,9 +271,8 @@
                         maindiv.append(label)
 
                         // making select
-                        var select = document.createElement("select")
-                        select.classList.add("form-select")
-                        maindiv.append(select)
+                        var select = $("#select-city")
+                        select.html(" ")
 
 
                         // making option for select
@@ -284,11 +288,15 @@
                 });
             }
 
-            $("#state-register-customer").change(function() {
-                var input = $("#state-register-customer")
-                getcity(input.val())
-                $("#city_id").attr("value", input.val());
 
+            $("#state-register-specialist").change(function() {
+                var input = $("#state-register-specialist")
+                getcityforsignup(input.val())
+            });
+
+            $("#select-city").change(function() {
+                var value = $("#select-city").val();
+                $("#city_id").attr("value", value);
             });
         });
     </script>

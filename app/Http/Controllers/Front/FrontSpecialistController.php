@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\Front;
 
-use App\Http\Controllers\Controller;
+use App\Models\Lang;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class FrontSpecialistController extends Controller
 {
@@ -12,9 +13,10 @@ class FrontSpecialistController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($lang)
     {
-        return view("front.auth.register.signup.specialist");
+        $languages = Lang::where([["name", $lang], ["langable_type", "App\Models\CoveredArea"]])->get();
+        return view("front.auth.register.signup.specialist", compact("languages"));
     }
 
     /**
