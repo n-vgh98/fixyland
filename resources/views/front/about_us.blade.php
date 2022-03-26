@@ -3,7 +3,7 @@
     @if (app()->getLocale() == 'fa' || app()->getLocale() == 'ar')
        درباره ما
     @else
-        Articles
+        About Us
     @endif
 @endsection
 @section('content')

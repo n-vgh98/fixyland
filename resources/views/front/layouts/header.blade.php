@@ -159,7 +159,7 @@ $categories = App\Models\Lang::where([['name', $catlang], ['langable_type', 'App
 
 
                                         <li class="nav-item pb-2">
-                                            <a class=" nav-link-hover" href="contactUs.html">تماس با ما</a>
+                                            <a class=" nav-link-hover" href="{{ route('front.contact_us') }}">تماس با ما</a>
                                         </li>
 
                                         <li class="nav-item pb-2">
@@ -390,7 +390,7 @@ $categories = App\Models\Lang::where([['name', $catlang], ['langable_type', 'App
 
 
                                         <li class="nav-item pb-2">
-                                            <a class=" nav-link-hover" href="contactUs.html">Contact us</a>
+                                            <a class=" nav-link-hover" href="{{ route('front.contact_us') }}">Contact us</a>
                                         </li>
 
                                         <li class="nav-item pb-2">
