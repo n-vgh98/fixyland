@@ -172,8 +172,9 @@
 
 
                     <!--استان محل خدمت-->
+
                     <div class="mb-3">
-                        <label for="state-register-specialist-expert" class="form-label"> استان </label>
+                        <label for="state-register-specialist" class="form-label"> استان </label>
                         <select class="form-select" name="state_id" id="state-register-specialist-expert">
                             <option selected id="state_0">لطفا استان خود را انتخاب کنید</option>
                             @foreach ($languages as $language)
@@ -191,18 +192,18 @@
                         </select>
                     </div>
 
-                    <!--شهرهای مرتبط به هر استان   --  start -->
-
 
                     <!--شهرهای مرتبط به هر استان   --  start -->
-                    <div class="cities mb-3">
+                    <div class="cities mb-3" id="maincitydivexpert">
                         <label for="city-register-specialist-nothing" class="form-label">شهر </label>
                         <select class="form-select" id="city-register-specialist-nothing">
                             <option selected>ابتدا استان خود را انتخاب کنید</option>
                         </select>
                     </div>
-                    <div class="cities mb-3" id="maincitydivexpert">
 
+                    <div class="cities mb-3 mi2" id="maincitydivexpert">
+                        <select class="form-select" id="city-expert">
+                        </select>
                     </div>
 
 
@@ -532,26 +533,38 @@
 
 
                     <div class="mb-3">
-                        <label for="state-register-specialist" class="form-label"> province</label>
+                        <label for="state-register-specialist" class="form-label"> استان </label>
                         <select class="form-select" name="state_id" id="state-register-specialist">
-                            <option selected id="state_0">please choose your city</option>
+                            <option selected id="state_0">لطفا استان خود را انتخاب کنید</option>
                             @foreach ($languages as $language)
                                 @php
                                     $state = $language->langable;
                                     $number = 1;
                                 @endphp
-                                <option id="state_{{ $number }}" value="{{ $state->id }}">
+                                <option name="state_id" id="state_{{ $number }}" value="{{ $state->id }}">
                                     {{ $state->name }}</option>
                                 @php
                                     $number++;
                                 @endphp
                             @endforeach
+
+                        </select>
+                    </div>
+
+                    <!--شهرهای مرتبط به هر استان   --  start -->
+                    <div class="cities mb-3" id="maincitydiv">
+                        <label for="city-register-specialist-nothing" class="form-label">شهر </label>
+                        <select class="form-select" id="city-register-specialist-nothing">
+                            <option selected>ابتدا استان خود را انتخاب کنید</option>
                         </select>
                     </div>
 
 
                     <div class="cities mb-3" id="maincitydiv">
+                        <label for="city-register-specialist-nothing1" class="form-label">شهر </label>
+                        <select class="form-select" id="select-city">
 
+                        </select>
                     </div>
 
 
@@ -574,32 +587,36 @@
 
                     <!--استان محل خدمت-->
                     <div class="mb-3">
-                        <label for="state-register-specialist-expert" class="form-label"> province</label>
+                        <label for="state-register-specialist" class="form-label"> استان </label>
                         <select class="form-select" name="state_id" id="state-register-specialist-expert">
-                            <option selected id="state_0">please choose your city</option>
+                            <option selected id="state_0">لطفا استان خود را انتخاب کنید</option>
                             @foreach ($languages as $language)
                                 @php
                                     $state = $language->langable;
                                     $number = 1;
                                 @endphp
-                                <option id="state_{{ $number }}" value="{{ $state->id }}">
+                                <option name="state_id" id="state_{{ $number }}" value="{{ $state->id }}">
                                     {{ $state->name }}</option>
                                 @php
                                     $number++;
                                 @endphp
                             @endforeach
+
                         </select>
                     </div>
 
-                    <div class="cities mb-3">
-                        <label for="city-register-specialist-nothing" class="form-label">city </label>
-                        <select class="form-select" id="city-register-specialist-nothing">
-                            <option selected>please choose state first</option>
-                        </select>
-                    </div>
 
+                    <!--شهرهای مرتبط به هر استان   --  start -->
                     <div class="cities mb-3" id="maincitydivexpert">
+                        <label for="city-register-specialist-nothing" class="form-label">شهر </label>
+                        <select class="form-select" id="city-register-specialist-nothing">
+                            <option selected>ابتدا استان خود را انتخاب کنید</option>
+                        </select>
+                    </div>
 
+                    <div class="cities mb-3 mi2" id="maincitydivexpert">
+                        <select class="form-select" id="city-expert">
+                        </select>
                     </div>
 
 
@@ -903,7 +920,7 @@
             });
         });
     </script>
-    {{-- <script>
+    <script>
         $(document).ready(function() {
             function getcityforservice(cityid) {
                 var cityid1 = cityid
@@ -932,10 +949,8 @@
                         maindiv.append(label)
 
                         // making select
-                        var select = document.createElement("select")
-                        select.classList.add("form-select")
-                        maindiv.append(select)
-
+                        var select = $("#city-expert")
+                        select.html(" ")
 
                         // making option for select
                         data.cities.forEach(city => {
@@ -951,14 +966,18 @@
             }
 
             $("#state-register-specialist-expert").change(function() {
-
                 var input = $("#state-register-specialist-expert")
                 getcityforservice(input.val())
-                var maindiv = $("#maincitydivexpert")
+                var maindiv = $(".mi2")
                 maindiv.removeClass("d-none")
                 $("#city_id_expert").attr("value", input.val());
+            });
 
+
+            $("#city-expert").change(function() {
+                var value = $("#city-expert").val();
+                $("#city_id_expert").attr("value", value);
             });
         });
-    </script> --}}
+    </script>
 @endsection

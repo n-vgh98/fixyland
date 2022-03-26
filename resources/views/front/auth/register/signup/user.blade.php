@@ -166,32 +166,37 @@
 
                     <!--استان محل سکونت-->
                     <div class="mb-3">
-                        <label for="state-register-customer" class="form-label"> province</label>
-                        <select class="form-select" name="state_id" id="state-register-customer">
-                            <option selected id="state_0">please choose your city</option>
+                        <label for="state-register-specialist" class="form-label"> استان </label>
+                        <select class="form-select" name="state_id" id="state-register-specialist">
+                            <option selected id="state_0">لطفا استان خود را انتخاب کنید</option>
                             @foreach ($languages as $language)
                                 @php
                                     $state = $language->langable;
                                     $number = 1;
                                 @endphp
-                                <option id="state_{{ $number }}" value="{{ $state->id }}">
+                                <option name="state_id" id="state_{{ $number }}" value="{{ $state->id }}">
                                     {{ $state->name }}</option>
                                 @php
                                     $number++;
                                 @endphp
                             @endforeach
+
                         </select>
                     </div>
 
-                    <div class="cities mb-3">
-                        <label for="city-register-customer-nothing" class="form-label">city </label>
-                        <select class="form-select" id="city-register-customer-nothing">
-                            <option selected>please choose state first</option>
+                    <!--شهرهای مرتبط به هر استان   --  start -->
+                    <div class="cities mb-3" id="maincitydiv">
+                        <label for="city-register-specialist-nothing" class="form-label">شهر </label>
+                        <select class="form-select" id="city-register-specialist-nothing">
+                            <option selected>ابتدا استان خود را انتخاب کنید</option>
                         </select>
                     </div>
+
 
                     <div class="cities mb-3" id="maincitydiv">
+                        <select class="form-select" id="select-city">
 
+                        </select>
                     </div>
 
 
