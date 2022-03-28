@@ -21,22 +21,23 @@
                 class="col-12 col-md-8 border border-2 border-dark rounded-3 d-flex flex-column justify-content-center p-5 align-items-center">
                 <h1 class="mb-4">ثبت نام متخصص</h1>
 
-                <form class="col-12">
+                <form class="col-12" action="{{ route('user.register.signup.specialist.store') }}" method="post"
+                    enctype="multipart/form-data">
                     @csrf
                     <div class="row">
                         <div class="col-md-6 col-12 mb-3">
                             <label for="name-register-specialist" class="form-label">نام</label>
-                            <input type="text" class="form-control" id="name-register-specialist">
+                            <input type="text" class="form-control" name="firstname" id="name-register-specialist">
                         </div>
                         <div class="col-md-6 col-12 mb-3">
                             <label for="fname-register-specialist" class="form-label">نام خانوادگی</label>
-                            <input type="text" class="form-control" id="fname-register-specialist">
+                            <input type="text" class="form-control" name="lastname" id="fname-register-specialist">
                         </div>
                     </div>
 
                     <div class="mb-3">
                         <label for="email-register-specialist" class="form-label">ایمیل</label>
-                        <input type="email" class="form-control" id="email-register-specialist">
+                        <input type="email" class="form-control" name="email" id="email-register-specialist">
                     </div>
 
 
@@ -48,23 +49,23 @@
                                 <label for="gender-register-specialist" class="form-label">جنسیت</label>
                                 <div class="border border-1 rounded-3 pt-1 ps-3 pe-3 text-center">
                                     <label for="men-register-specialist" class="form-label">مرد</label>
-                                    <input type="radio" class="" id="men-register-specialist"
-                                        name="gender-register-specialist">
-                                    <label for="woman-register-specialist " class="form-label me-5">زن</label>
-                                    <input type="radio" class="" id="woman-register-specialist"
-                                        name="gender-register-specialist">
+                                    <input type="radio" name="gender[]" value="0" class=""
+                                        id="men-register-specialist">
+                                    <label for="woman-register-specialist" class="form-label me-5">زن</label>
+                                    <input type="radio" class="" value="1" name="gender[]"
+                                        id="woman-register-specialist">
                                 </div>
                             </div>
 
                             <div class="col-xl-4 col-md-6 col-12">
                                 <label for="date-register-specialist" class="form-label w-50">تاریخ تولد</label>
-                                <input type="date" class="form-control" id="date-register-specialist">
+                                <input type="date" class="form-control" name="birth" id="date-register-specialist">
                             </div>
 
                             <div class="col-xl-4 col-md-6 col-12">
                                 <label for="phone" class="form-label">شماره موبایل</label><br>
                                 <div class="w-100">
-                                    <input name="phone" type="text" id="phone"
+                                    <input name="phone" type="text" name="phone" id="phone"
                                         class="border-gray border-1 rounded-3 pt-2 pb-1 w-100" />
                                 </div>
                             </div>
@@ -81,37 +82,40 @@
                     <div class="mb-3 d-flex justify-content-around flex-column flex-md-row">
                         <div>
                             <label for="healthy-register-specialist" class="form-label">سالم هستم</label>
-                            <input type="radio" class="" id="healthy-register-specialist"
-                                name="healthy-patient">
+                            <input type="radio" class="" name="health[]" value="yes"
+                                id="healthy-register-specialist">
                         </div>
                         <div>
                             <label for="patient-register-specialist" class="form-label">بیمار هستم</label>
-                            <input type="radio" class="" id="patient-register-specialist"
-                                name="healthy-patient">
+                            <input type="radio" class="" name="health[]" value="no"
+                                id="patient-register-specialist">
                         </div>
                     </div>
 
                     <div class="mb-3">
                         <label for="about-register-specialist" class="form-label">در صورتی که بیماری یا معلولیت خاصی
                             دارید وارد نمایید.</label>
-                        <textarea class="form-control form-bg-color bg-white" id="about-register-specialist" placeholder="توضیحات"></textarea>
+                        <textarea name="health_description" class="form-control form-bg-color bg-white" id="about-register-specialist"
+                            placeholder="توضیحات"></textarea>
                     </div>
 
                     <div class="mb-3">
                         <label for="identificationCard-register-specialist" class="form-label">آپلود تصویر کارت
                             شناسایی</label>
-                        <input type="file" class="form-control" id="identificationCard-register-specialist"
-                            placeholder="اضافه کردن نمونه کار">
+                        <input type="file" name="idenity_photo" class="form-control"
+                            id="identificationCard-register-specialist" placeholder="اضافه کردن نمونه کار">
                     </div>
 
                     <div class="mb-3">
                         <label for="citizenshipCode-register-specialist" class="form-label">کد شهروندی</label>
-                        <input type="text" class="form-control" id="citizenshipCode-register-specialist">
+                        <input type="text" name="citizen_code" class="form-control"
+                            id="citizenshipCode-register-specialist">
                     </div>
 
                     <div class="mb-3">
                         <label for="date-register-doc" class="form-label">تصویر گوایی مهارت خود را وارد کنید.</label>
-                        <input type="file" class="form-control" id="date-register-doc" placeholder="اضافه کردن نمونه کار">
+                        <input type="file" name="govahi_photo" class="form-control" id="date-register-doc"
+                            placeholder="اضافه کردن نمونه کار">
                     </div>
 
 
@@ -162,12 +166,13 @@
 
                     <div class="mb-3">
                         <label for="houseNumber-register-specialist" class="form-label">پلاک</label>
-                        <input type="text" class="form-control" id="houseNumber-register-specialist">
+                        <input type="text" class="form-control" name="pelak" id="houseNumber-register-specialist">
                     </div>
 
                     <div class="mb-3">
                         <label for="houseNumberCode-register-specialist" class="form-label">کد پستی</label>
-                        <input type="text" class="form-control" id="houseNumberCode-register-specialist">
+                        <input type="text" name="postal_code" class="form-control"
+                            id="houseNumberCode-register-specialist">
                     </div>
 
 
@@ -175,7 +180,7 @@
 
                     <div class="mb-3">
                         <label for="state-register-specialist" class="form-label"> استان </label>
-                        <select class="form-select" name="state_id" id="state-register-specialist-expert">
+                        <select class="form-select" name="state_id_expert" id="state-register-specialist-expert">
                             <option selected id="state_0">لطفا استان خود را انتخاب کنید</option>
                             @foreach ($languages as $language)
                                 @php
@@ -210,185 +215,53 @@
 
 
                     <h2>انتخاب مهارت</h2>
-                    <div class=" d-flex pe-2 ps-2 flex-row lightblue border">
-                        <button class="btn" type="submit"> <i class="fa-solid fa-magnifying-glass"></i> </button>
-                        <input class="form-control" id="form-control-register-specialist" type="search"
-                            placeholder="Search" aria-label="Search">
-                    </div>
 
 
                     <div class="mt-2 form-control-register-specialist-div ">
+
                         <div class="row d-flex gap-2 justify-content-center mb-2  ">
-                            <div class="col-3 border-redius-20 border-darkgreen border-4 p-3">لوازم خانگی نصب و تعمیر</div>
-                            <div class="col-3 border-redius-20 border-darkgreen border-4 p-3">لوازم خانگی نصب و تعمیر</div>
-                            <div class="col-3 border-redius-20 border-darkgreen border-4 p-3">لوازم خانگی نصب و تعمیر</div>
-                        </div>
-                        <div class="row d-flex gap-2 justify-content-center mb-2 ">
-                            <div class="col-3 border-redius-20 border-darkgreen border-4 p-3">لوازم خانگی نصب و تعمیر</div>
-                            <div class="col-3 border-redius-20 border-darkgreen border-4 p-3">لوازم خانگی نصب و تعمیر</div>
-                            <div class="col-3 border-redius-20 border-darkgreen border-4 p-3">لوازم خانگی نصب و تعمیر</div>
-                        </div>
-                        <div class="row d-flex gap-2 justify-content-center mb-2 ">
-                            <div class="col-3 border-redius-20 border-darkgreen border-4 p-3">لوازم خانگی نصب و تعمیر</div>
-                            <div class="col-3 border-redius-20 border-darkgreen border-4 p-3">لوازم خانگی نصب و تعمیر</div>
-                            <div class="col-3 border-redius-20 border-darkgreen border-4 p-3">لوازم خانگی نصب و تعمیر</div>
-                        </div>
-                        <div class="row d-flex gap-2 justify-content-center mb-2 ">
-                            <div class="col-3 border-redius-20 border-darkgreen border-4 p-3">لوازم خانگی نصب و تعمیر</div>
-                            <div class="col-3 border-redius-20 border-darkgreen border-4 p-3">لوازم خانگی نصب و تعمیر</div>
-                            <div class="col-3 border-redius-20 border-darkgreen border-4 p-3">لوازم خانگی نصب و تعمیر</div>
-                        </div>
-                        <div class="row d-flex gap-2 justify-content-center mb-2 ">
-                            <div class="col-3 border-redius-20 border-darkgreen border-4 p-3">لوازم خانگی نصب و تعمیر</div>
-                            <div class="col-3 border-redius-20 border-darkgreen border-4 p-3">لوازم خانگی نصب و تعمیر</div>
-                            <div class="col-3 border-redius-20 border-darkgreen border-4 p-3">لوازم خانگی نصب و تعمیر</div>
-                        </div>
-                        <div class="row d-flex gap-2 justify-content-center mb-2 ">
-                            <div class="col-3 border-redius-20 border-darkgreen border-4 p-3">لوازم خانگی نصب و تعمیر</div>
-                            <div class="col-3 border-redius-20 border-darkgreen border-4 p-3">لوازم خانگی نصب و تعمیر</div>
-                            <div class="col-3 border-redius-20 border-darkgreen border-4 p-3">لوازم خانگی نصب و تعمیر</div>
-                        </div>
-                        <div class="row d-flex gap-2 justify-content-center mb-2 ">
-                            <div class="col-3 border-redius-20 border-darkgreen border-4 p-3">لوازم خانگی نصب و تعمیر</div>
-                            <div class="col-3 border-redius-20 border-darkgreen border-4 p-3">لوازم خانگی نصب و تعمیر</div>
-                            <div class="col-3 border-redius-20 border-darkgreen border-4 p-3">لوازم خانگی نصب و تعمیر</div>
-                        </div>
-                        <div class="row d-flex gap-2 justify-content-center mb-2 ">
-                            <div class="col-3 border-redius-20 border-darkgreen border-4 p-3">لوازم خانگی نصب و تعمیر</div>
-                            <div class="col-3 border-redius-20 border-darkgreen border-4 p-3">لوازم خانگی نصب و تعمیر</div>
-                            <div class="col-3 border-redius-20 border-darkgreen border-4 p-3">لوازم خانگی نصب و تعمیر</div>
+                            @foreach ($categorylangs as $categorylang)
+                                @php
+                                    $category = $categorylang->langable;
+                                @endphp
+                                <div class="col-3 border-redius-20 border-darkgreen border-4 p-3">{{ $category->name }}
+                                </div>
+                            @endforeach
+
                         </div>
 
                     </div>
 
-                    <div class="mt-2 form-control-register-specialist-div2 d-none">
+                    @foreach ($categorylangs as $categorylang)
+                        @php
+                            $category = $categorylang->langable;
+                        @endphp
 
-                        <div class="d-flex justify-content-between lightgray align-items-center p-2 mb-2">
+                        <div class="mt-2 form-control-register-specialist-div2 d-none">
 
-                            <p>باربری و جابجایی</p>
+                            <div class="d-flex justify-content-between lightgray align-items-center p-2 mb-2">
 
-                            <button class="link-dark text-decoration-none  pe-3 ps-3 rounded lightblue darkYellowOnHover"
-                                onClick="backToCategories()">بازگشت به دسته</button>
+                                <p>{{ $category->name }}</p>
 
+                                <button
+                                    class="link-dark text-decoration-none  pe-3 ps-3 rounded lightblue darkYellowOnHover"
+                                    onClick="backToCategories()">بازگشت به دسته</button>
+
+                            </div>
+
+
+                            <div class="mb-3 row">
+                                @foreach ($category->subcategories as $subcategory)
+                                    <div class="col-4">
+                                        <label for="idSkill{{ $subcategory->id }}"
+                                            class="form-label">{{ $subcategory->name }}</label>
+                                        <input name="skill_id[]" value="{{ $subcategory->id }}" type="checkbox"
+                                            class="checkclass" id="idSkill{{ $subcategory->id }}">
+                                    </div>
+                                @endforeach
+                            </div>
                         </div>
-
-
-
-
-                        <div class="mb-3 d-flex justify-content-around">
-
-
-
-                            <div><label for="idSkill1" class="form-label">پمپ و منبع آب1</label>
-                                <input type="checkbox" class="" id="idSkill1">
-                            </div>
-
-                            <div>
-                                <label for="idSkill2 " class="form-label me-5">1نصب روشویی</label>
-                                <input type="checkbox" class="" id="idSkill2 ">
-                            </div>
-
-
-                            <div>
-                                <label for="idSkill3" class="form-label me-5">تعمییر</label>
-                                <input type="checkbox" class="" id="idSkill3">
-                            </div>
-
-
-                        </div>
-
-                        <div class="mb-3 d-flex justify-content-around">
-
-
-
-                            <div><label for="idSkill4" class="form-label">پمپ و منبع آب1</label>
-                                <input type="checkbox" class="" id="idSkill4">
-                            </div>
-
-                            <div>
-                                <label for="idSkill5 " class="form-label me-5">1نصب روشویی</label>
-                                <input type="checkbox" class="" id="idSkill5 ">
-                            </div>
-
-
-                            <div>
-                                <label for="idSkill6" class="form-label me-5">تعمییر</label>
-                                <input type="checkbox" class="" id="idSkill6">
-                            </div>
-
-
-
-
-                        </div>
-
-
-                    </div>
-
-                    <div class="mt-2  form-control-register-specialist-div2 d-none">
-
-                        <div class="d-flex justify-content-between lightgray align-items-center p-2 mb-2">
-
-                            <p>باربری و جابجایی</p>
-
-                            <button class="link-dark text-decoration-none  pe-3 ps-3 rounded lightblue darkYellowOnHover"
-                                onClick="backToCategories()">بازگشت به دسته</button>
-
-                        </div>
-
-
-
-
-                        <div class="mb-3 d-flex justify-content-around">
-
-
-
-                            <div><label for="idSkill7" class="form-label">پمپ و منبع آب2</label>
-                                <input type="checkbox" class="" id="idSkill7">
-                            </div>
-
-                            <div>
-                                <label for="idSkill8 " class="form-label me-5">2نصب روشویی</label>
-                                <input type="checkbox" class="" id="idSkill8 ">
-                            </div>
-
-
-                            <div>
-                                <label for="idSkill9" class="form-label me-5">تعمییر</label>
-                                <input type="checkbox" class="" id="idSkill9">
-                            </div>
-
-
-                        </div>
-
-                        <div class="mb-3 d-flex justify-content-around">
-
-
-
-                            <div><label for="idSkill10" class="form-label">پمپ و منبع آب1</label>
-                                <input type="checkbox" class="" id="idSkill10">
-                            </div>
-
-                            <div>
-                                <label for="idSkill11 " class="form-label me-5">1نصب روشویی</label>
-                                <input type="checkbox" class="" id="idSkill11 ">
-                            </div>
-
-
-                            <div>
-                                <label for="idSkill12" class="form-label me-5">تعمییر</label>
-                                <input type="checkbox" class="" id="idSkill12">
-                            </div>
-
-
-
-
-                        </div>
-
-
-                    </div>
-
-
-
+                    @endforeach
 
                     <div class="w-100 mt-5">
                         <div class="mb-3">
@@ -418,9 +291,6 @@
                     </div>
                     <input type="hidden" name="city_id" value="" id="city_id">
                     <input type="hidden" name="city_id_expert" value="" id="city_id_expert">
-
-
-
                 </form>
 
 
@@ -498,13 +368,11 @@
                     <div class="mb-3 d-flex justify-content-around flex-column flex-md-row">
                         <div>
                             <label for="healthy-register-specialist" class="form-label"> salem hastam! </label>
-                            <input type="radio" class="" id="healthy-register-specialist"
-                                name="healthy-patient">
+                            <input type="radio" class="" id="healthy-register-specialist">
                         </div>
                         <div>
                             <label for="patient-register-specialist" class="form-label"> bimar hastam! </label>
-                            <input type="radio" class="" id="patient-register-specialist"
-                                name="healthy-patient">
+                            <input type="radio" class="" id="patient-register-specialist">
                         </div>
                     </div>
 
@@ -893,6 +761,11 @@
                         var select = $("#select-city")
                         select.html(" ")
 
+                        // making a fake option
+                        var option = document.createElement("option")
+                        var optioncttext = document.createTextNode("لطفا شهر خود را انتخاب کنید")
+                        option.append(optioncttext)
+                        select.append(option)
 
                         // making option for select
                         data.cities.forEach(city => {
@@ -951,6 +824,12 @@
                         // making select
                         var select = $("#city-expert")
                         select.html(" ")
+
+                        // making a fake option
+                        var option = document.createElement("option")
+                        var optioncttext = document.createTextNode("لطفا شهر خود را انتخاب کنید")
+                        option.append(optioncttext)
+                        select.append(option)
 
                         // making option for select
                         data.cities.forEach(city => {

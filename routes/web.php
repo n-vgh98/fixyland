@@ -358,6 +358,7 @@ route::prefix("{locale}")->middleware("language")->group(function () {
             route::post("/getcity", [FrontUserController::class, "getcity"])->name("user.register.get.city");
             route::post("/registeruser", [FrontUserController::class, "store"])->name("user.register.store");
             route::get("/specialist", [FrontSpecialistController::class, "index"])->name("user.register.signup.specialist");
+            route::post("/specialiststore", [FrontSpecialistController::class, "store"])->name("user.register.signup.specialist.store");
         });
     });
     route::get("login", [FrontHomeController::class, "login"])->name("user.login");
@@ -368,19 +369,19 @@ route::prefix("{locale}")->middleware("language")->group(function () {
     });
 
     route::get("/", [FrontHomeController::class, "index"])->name("user.home");
-    Route::prefix("articles")->group(function(){
-        Route::controller(FrontArticleController::class)->group(function(){
-            Route::get("/","index")->name("front.articles.index");
-            Route::get("/{id}/{slug}","show")->name("front.article.show");
+    Route::prefix("articles")->group(function () {
+        Route::controller(FrontArticleController::class)->group(function () {
+            Route::get("/", "index")->name("front.articles.index");
+            Route::get("/{id}/{slug}", "show")->name("front.article.show");
         });
     });
-    Route::get("/about_us",[FrontAboutUsController::class,"index"])->name("front.about_us");
-    Route::prefix("Contact_us")->group(function(){
-        Route::controller(FrontContactUsController::class)->group(function(){
-            Route::get("/","index")->name("front.contact_us");
-            Route::post("/store","store")->name("front.contact_us.store");
+    Route::get("/about_us", [FrontAboutUsController::class, "index"])->name("front.about_us");
+    Route::prefix("Contact_us")->group(function () {
+        Route::controller(FrontContactUsController::class)->group(function () {
+            Route::get("/", "index")->name("front.contact_us");
+            Route::post("/store", "store")->name("front.contact_us.store");
         });
     });
-    Route::get("/faq",[FrontFaqController::class, "index"])->name("front.faq.index");
-    Route::get("/rules-terms",[FrontRuleController::class, "index"])->name("front.rules.index");
+    Route::get("/faq", [FrontFaqController::class, "index"])->name("front.faq.index");
+    Route::get("/rules-terms", [FrontRuleController::class, "index"])->name("front.rules.index");
 });

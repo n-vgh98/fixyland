@@ -278,6 +278,11 @@
                         // making select
                         var select = $("#select-city")
                         select.html(" ")
+                        // making a fake option
+                        var option = document.createElement("option")
+                        var optioncttext = document.createTextNode("لطفا شهر خود را انتخاب کنید")
+                        option.append(optioncttext)
+                        select.append(option)
 
 
                         // making option for select
