@@ -35,6 +35,7 @@ use App\Http\Controllers\Front\FrontHomeController;
 use App\Http\Controllers\Front\FrontRuleController;
 use App\Http\Controllers\Front\FrontServiceController;
 use App\Http\Controllers\Front\FrontSpecialistController;
+use App\Http\Controllers\Front\FrontSpecialistPanelController;
 use App\Http\Controllers\Front\FrontUserController;
 use GuzzleHttp\Middleware;
 
@@ -365,11 +366,18 @@ route::prefix("{locale}")->middleware("language")->group(function () {
 
 
     // route for geting service
-    route::prefix("services")->Middleware(['auth:sanctum', 'verified', "user"])->group(function () {
+    route::prefix("services")->middleware(['auth:sanctum', 'verified', "user"])->group(function () {
         route::get("descrition/{id}", [FrontServiceController::class, "description"])->name("user.service.description");
         route::get("form/{id}", [FrontServiceController::class, "form"])->name("user.service.form");
     });
 
+
+    // routes for  technician panel
+    route::prefix("technicianpanel")->middleware(['auth:sanctum', 'verified', "technician"])->group(function () {
+        route::controller(FrontSpecialistPanelController::class)->group(function () {
+            route::get("/", "index")->name("front.technician.panel.show");
+        });
+    });
 
 
 

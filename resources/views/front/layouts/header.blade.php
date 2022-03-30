@@ -182,7 +182,8 @@ $categories = App\Models\Lang::where([['name', $catlang], ['langable_type', 'App
 
                                 @if (auth()->check())
                                     @if (auth()->user()->role_name == 'technician')
-                                        <a href="#" class="btn flex-fill text-decoration-none" id="button-menu2">
+                                        <a href="{{ route('front.technician.panel.show') }}"
+                                            class="btn flex-fill text-decoration-none" id="button-menu2">
                                             پنل</a>
                                     @elseif (auth()->user()->role_name == 'user')
                                         <a href="#" class="btn flex-fill text-decoration-none" id="button-menu2">
