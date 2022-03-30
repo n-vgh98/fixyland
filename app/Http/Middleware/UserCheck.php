@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 
-class AdminCheck
+class UserCheck
 {
     /**
      * Handle an incoming request.
@@ -16,7 +16,7 @@ class AdminCheck
      */
     public function handle(Request $request, Closure $next)
     {
-        if (auth()->user()->role_name == "superadmin" or auth()->user()->role_name == "SUPERADMIN") {
+        if (auth()->user()->role_name == "user" or auth()->user()->role_name == "User") {
 
             return $next($request);
         } else {

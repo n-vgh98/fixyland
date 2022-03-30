@@ -36,7 +36,7 @@ use App\Http\Controllers\Front\FrontRuleController;
 use App\Http\Controllers\Front\FrontServiceController;
 use App\Http\Controllers\Front\FrontSpecialistController;
 use App\Http\Controllers\Front\FrontUserController;
-
+use GuzzleHttp\Middleware;
 
 /*
 |--------------------------------------------------------------------------
@@ -363,10 +363,16 @@ route::prefix("{locale}")->middleware("language")->group(function () {
     });
     route::get("login", [FrontHomeController::class, "login"])->name("user.login");
 
-    route::prefix("services")->group(function () {
+
+    // route for geting service
+    route::prefix("services")->Middleware(['auth:sanctum', 'verified', "user"])->group(function () {
         route::get("descrition/{id}", [FrontServiceController::class, "description"])->name("user.service.description");
         route::get("form/{id}", [FrontServiceController::class, "form"])->name("user.service.form");
     });
+
+
+
+
 
     route::get("/", [FrontHomeController::class, "index"])->name("user.home");
     Route::prefix("articles")->group(function () {
