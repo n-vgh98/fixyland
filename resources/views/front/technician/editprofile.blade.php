@@ -1462,101 +1462,26 @@
 
                                             <div class="col-12 col-md-8  ">
 
-                                                <form class=" d-flex pe-2 ps-2 flex-row lightblue border">
-                                                    <button class="btn" type="submit"> <i
-                                                            class="fa-solid fa-magnifying-glass"></i> </button>
-                                                    <input class="form-control" id="form-control-register-specialist"
-                                                        type="search" placeholder="Search" aria-label="Search">
-                                                </form>
-
-
                                                 <!--باکس مهارت ها-->
                                                 <div class="mt-2 vh-100 form-control-register-specialist-div">
                                                     <div class="row d-flex gap-2 justify-content-center mb-2  ">
-                                                        <div
-                                                            class="col-3 border-redius-20 border-darkgreen border-4 p-3 text-center">
-                                                            nasb o tamir lavazem khanegi
-                                                        </div>
-                                                        <div
-                                                            class="col-3 border-redius-20 border-darkgreen border-4 p-3 text-center">
-                                                            nasb o tamir lavazem khanegi
-                                                        </div>
-                                                        <div
-                                                            class="col-3 border-redius-20 border-darkgreen border-4 p-3 text-center">
-                                                            nasb o tamir lavazem khanegi
-                                                        </div>
-                                                    </div>
+                                                        @if (count(auth()->user()->skills) > 0)
+                                                            <div
+                                                                class="col-3 border-redius-20 border-darkgreen border-4 p-3">
+                                                                {{ auth()->user()->skills[0]->category->name }}
+                                                            </div>
+                                                        @else
+                                                            @foreach ($categorylangs as $categorylang)
+                                                                @php
+                                                                    $category = $categorylang->langable;
+                                                                @endphp
+                                                                <div
+                                                                    class="col-3 border-redius-20 border-darkgreen border-4 p-3">
+                                                                    {{ $category->name }}
+                                                                </div>
+                                                            @endforeach
+                                                        @endif
 
-                                                    <div class="row d-flex gap-2 justify-content-center mb-2 ">
-                                                        <div
-                                                            class="col-3 border-redius-20 border-darkgreen border-4 p-3 text-center">
-                                                            nasb o tamir lavazem khanegi</div>
-                                                        <div
-                                                            class="col-3 border-redius-20 border-darkgreen border-4 p-3 text-center">
-                                                            nasb o tamir lavazem khanegi</div>
-                                                        <div
-                                                            class="col-3 border-redius-20 border-darkgreen border-4 p-3 text-center">
-                                                            nasb o tamir lavazem khanegi</div>
-                                                    </div>
-
-                                                    <div class="row d-flex gap-2 justify-content-center mb-2 ">
-                                                        <div
-                                                            class="col-3 border-redius-20 border-darkgreen border-4 p-3 text-center">
-                                                            nasb o tamir lavazem khanegi</div>
-                                                        <div
-                                                            class="col-3 border-redius-20 border-darkgreen border-4 p-3 text-center">
-                                                            nasb o tamir lavazem khanegi</div>
-                                                        <div
-                                                            class="col-3 border-redius-20 border-darkgreen border-4 p-3 text-center">
-                                                            nasb o tamir lavazem khanegi</div>
-                                                    </div>
-
-                                                    <div class="row d-flex gap-2 justify-content-center mb-2 ">
-                                                        <div
-                                                            class="col-3 border-redius-20 border-darkgreen border-4 p-3 text-center">
-                                                            nasb o tamir lavazem khanegi</div>
-                                                        <div
-                                                            class="col-3 border-redius-20 border-darkgreen border-4 p-3 text-center">
-                                                            nasb o tamir lavazem khanegi</div>
-                                                        <div
-                                                            class="col-3 border-redius-20 border-darkgreen border-4 p-3 text-center">
-                                                            nasb o tamir lavazem khanegi</div>
-                                                    </div>
-
-                                                    <div class="row d-flex gap-2 justify-content-center mb-2 ">
-                                                        <div
-                                                            class="col-3 border-redius-20 border-darkgreen border-4 p-3 text-center">
-                                                            nasb o tamir lavazem khanegi</div>
-                                                        <div
-                                                            class="col-3 border-redius-20 border-darkgreen border-4 p-3 text-center">
-                                                            nasb o tamir lavazem khanegi</div>
-                                                        <div
-                                                            class="col-3 border-redius-20 border-darkgreen border-4 p-3 text-center">
-                                                            nasb o tamir lavazem khanegi</div>
-                                                    </div>
-
-                                                    <div class="row d-flex gap-2 justify-content-center mb-2 ">
-                                                        <div
-                                                            class="col-3 border-redius-20 border-darkgreen border-4 p-3 text-center">
-                                                            nasb o tamir lavazem khanegi</div>
-                                                        <div
-                                                            class="col-3 border-redius-20 border-darkgreen border-4 p-3 text-center">
-                                                            nasb o tamir lavazem khanegi</div>
-                                                        <div
-                                                            class="col-3 border-redius-20 border-darkgreen border-4 p-3 text-center">
-                                                            nasb o tamir lavazem khanegi</div>
-                                                    </div>
-
-                                                    <div class="row d-flex gap-2 justify-content-center mb-2 ">
-                                                        <div
-                                                            class="col-3 border-redius-20 border-darkgreen border-4 p-3 text-center">
-                                                            nasb o tamir lavazem khanegi</div>
-                                                        <div
-                                                            class="col-3 border-redius-20 border-darkgreen border-4 p-3 text-center">
-                                                            nasb o tamir lavazem khanegi</div>
-                                                        <div
-                                                            class="col-3 border-redius-20 border-darkgreen border-4 p-3 text-center">
-                                                            nasb o tamir lavazem khanegi</div>
                                                     </div>
 
                                                     <!--پیشنهاد تخصص جدید-->
@@ -1566,7 +1491,7 @@
                                                             <a href="spc-new-req-form.html"
                                                                 class="text-decoration-none text-black">
                                                                 <i class="fa-solid fa-plus"></i>
-                                                                pishnahad takhasos jadid
+                                                                Ask for Skill
                                                             </a>
                                                         </div>
                                                     </div>
@@ -1576,115 +1501,92 @@
 
 
 
-                                                <div class="mt-2 vh-100 form-control-register-specialist-div2 d-none">
 
-                                                    <div
-                                                        class="d-flex justify-content-between lightgray align-items-center p-2 mb-2">
+                                                @if (count(auth()->user()->skills) > 0)
+                                                    @php
+                                                        $category = auth()->user()->skills[0]->category;
+                                                    @endphp
+                                                    <div class="mt-2 vh-100 form-control-register-specialist-div2 d-none">
 
-                                                        <p> barbari o jabejaei </p>
+                                                        <div
+                                                            class="d-flex justify-content-between lightgray align-items-center p-2 mb-2">
 
-                                                        <button
-                                                            class="link-dark text-decoration-none  pe-3 ps-3 rounded lightblue darkYellowOnHover"
-                                                            onClick="backToCategories()"> back to category </button>
+                                                            <p>{{ $category->name }}</p>
 
-                                                    </div>
+                                                            <button
+                                                                class="link-dark text-decoration-none  pe-3 ps-3 rounded lightblue darkYellowOnHover"
+                                                                onClick="backToCategories()">Back To Categories</button>
 
-                                                    <div>
-
-
-                                                        <div class="mb-3 d-flex justify-content-around">
-                                                            <form>
-                                                                <button type="submit"
-                                                                    class="mt-4 darkYellow border-0 lightgray p-2 rounded-3">
-                                                                    pomp ab 1
-                                                                </button>
-                                                            </form>
-
-                                                            <form>
-                                                                <button type="submit"
-                                                                    class="mt-4 border-0 darkgreen p-2 rounded-3 text-light">
-                                                                    nasb 1
-                                                                </button>
-                                                            </form>
                                                         </div>
 
-                                                        <div class="mb-3 d-flex justify-content-around">
-                                                            <form>
-                                                                <button type="submit"
-                                                                    class="mt-4 darkYellow border-0 lightgray p-2 rounded-3">
-                                                                    pomp ab 1
-                                                                </button>
-                                                            </form>
+                                                        <div>
+                                                            <div class="mb-3 row">
+                                                                @php
+                                                                    // get all skills
+                                                                    $allskills = [];
+                                                                    foreach (auth()->user()->skills as $sk) {
+                                                                        array_push($allskills, $sk->service_sub_categoy_id);
+                                                                    }
+                                                                @endphp
 
-                                                            <form>
-                                                                <button type="submit"
-                                                                    class="mt-4 darkYellow border-0 lightgray p-2 rounded-3">
-                                                                    nasb 1
-                                                                </button>
-                                                            </form>
+                                                                @foreach ($category->subcategories as $subcategory)
+                                                                    <form class="col-6" method="post"
+                                                                        action="{{ route('front.technician.panel.update.skill', $subcategory->id) }}">
+                                                                        @csrf
+                                                                        @if (in_array($subcategory->id, $allskills))
+                                                                            <button type="submit"
+                                                                                class="mt-4 border-0 darkgreen p-2 rounded-3 text-light">{{ $subcategory->name }}</button>
+                                                                        @else
+                                                                            <button type="submit"
+                                                                                class="mt-4 darkYellow border-0 lightgray p-2 rounded-3">{{ $subcategory->name }}</button>
+                                                                        @endif
+                                                                    </form>
+                                                                @endforeach
+                                                            </div>
                                                         </div>
 
 
-
                                                     </div>
-                                                </div>
+                                                @else
+                                                    @foreach ($categorylangs as $categorylang)
+                                                        @php
+                                                            $category = $categorylang->langable;
+                                                        @endphp
+                                                        <div
+                                                            class="mt-2 vh-100 form-control-register-specialist-div2 d-none">
 
+                                                            <div
+                                                                class="d-flex justify-content-between lightgray align-items-center p-2 mb-2">
 
+                                                                <p>{{ $category->name }}</p>
 
-                                                <div class="mt-2 vh-100 form-control-register-specialist-div2 d-none">
+                                                                <button
+                                                                    class="link-dark text-decoration-none  pe-3 ps-3 rounded lightblue darkYellowOnHover"
+                                                                    onClick="backToCategories()">Back TO Categories</button>
 
-                                                    <div
-                                                        class="d-flex justify-content-between lightgray align-items-center p-2 mb-2">
+                                                            </div>
 
-                                                        <p> barbari o jabejaei </p>
+                                                            <div>
+                                                                <div class="mb-3 row">
+                                                                    @foreach ($category->subcategories as $subcategory)
+                                                                        <form method="post" class="col-6"
+                                                                            action="{{ route('front.technician.panel.update.skill', $subcategory->id) }}">
+                                                                            @csrf
 
-                                                        <button
-                                                            class="link-dark text-decoration-none  pe-3 ps-3 rounded lightblue darkYellowOnHover"
-                                                            onClick="backToCategories()"> back to category </button>
+                                                                            <button type="submit"
+                                                                                class="mt-4 darkYellow border-0 lightgray p-2 rounded-3">{{ $subcategory->name }}</button>
 
-                                                    </div>
+                                                                        </form>
+                                                                    @endforeach
+                                                                </div>
 
-                                                    <div>
-
-
-                                                        <div class="mb-3 d-flex justify-content-around">
-                                                            <form>
-                                                                <button type="submit"
-                                                                    class="mt-4 darkYellow border-0 lightgray p-2 rounded-3">
-                                                                    pomp ab 2
-                                                                </button>
-                                                            </form>
-
-                                                            <form>
-                                                                <button type="submit"
-                                                                    class="mt-4 darkYellow border-0 lightgray p-2 rounded-3">
-                                                                    nasb 2
-                                                                </button>
-                                                            </form>
+                                                            </div>
                                                         </div>
-
-                                                        <div class="mb-3 d-flex justify-content-around">
-                                                            <form>
-                                                                <button type="submit"
-                                                                    class="mt-4 darkYellow border-0 lightgray p-2 rounded-3">
-                                                                    pomp ab 2
-                                                                </button>
-                                                            </form>
-
-                                                            <form>
-                                                                <button type="submit"
-                                                                    class="mt-4 border-0 darkgreen p-2 rounded-3 text-light">
-                                                                    nasb 2
-                                                                </button>
-                                                            </form>
-                                                        </div>
+                                                    @endforeach
+                                                @endif
 
 
 
-                                                    </div>
-
-
-                                                </div>
 
                                             </div>
 
@@ -1693,40 +1595,31 @@
                                             <div class="col-12 col-md-4 ">
 
                                                 <div class="lightblue text-center">
-                                                    <p>takhsos haei ke netekhab kardeid.</p>
+                                                    <p>Your Skilss.</p>
                                                 </div>
                                                 <div
                                                     class="border border-dark d-flex flex-column align-content-between  overflow-auto">
 
                                                     <ul class="list-group form-control-register-specialist-ul">
                                                         <li class="list-group-item ">
-                                                            <form class="d-flex justify-content-between">
-                                                                <p>First item</p><button type="submit"
-                                                                    class="border-0 bg-white"><i
-                                                                        class="fa-solid fa-trash-can"></i></button>
-                                                            </form>
-                                                        </li>
-                                                        <li class="list-group-item ">
-                                                            <form class="d-flex justify-content-between">
-                                                                <p>Second item</p><button type="submit"
-                                                                    class="border-0 bg-white"><i
-                                                                        class="fa-solid fa-trash-can"></i></button>
-                                                            </form>
-                                                        </li>
-                                                        <li class="list-group-item ">
-                                                            <form class="d-flex justify-content-between">
-                                                                <p>Third item</p><button type="submit"
-                                                                    class="border-0 bg-white"><i
-                                                                        class="fa-solid fa-trash-can"></i></button>
-                                                            </form>
+                                                            @foreach (auth()->user()->skills as $skill)
+                                                                <form class="d-flex justify-content-between" method="post"
+                                                                    action="{{ route('front.technician.panel.update.skill', $skill->subcategory->id) }}">
+                                                                    @csrf
+                                                                    <p>{{ $skill->subcategory->name }}</p><button
+                                                                        type=" submit" class="border-0 bg-white"><i
+                                                                            class="fa-solid fa-trash-can"></i></button>
+                                                                </form>
+                                                            @endforeach
+
                                                         </li>
 
                                                     </ul>
 
-
-                                                    <p class="text-center text-danger ">dar hale hazer maharati entekhab
-                                                        nashode</p>
-
+                                                    @if (count(auth()->user()->skills) == 0)
+                                                        <p class="text-center text-danger ">Nothing To show
+                                                        </p>
+                                                    @endif
 
 
                                                 </div>
