@@ -1415,132 +1415,120 @@
 
                                 <!--آدرس-->
                                 <div class="row dastrasi-sari-grid d-flex gap-1 gy-1 m-0 justify-content-evenly d-none ">
-                                    <form class="col-12 col-md-6">
-
+                                    <form class="col-12 col-md-6"
+                                        action="{{ route('front.technician.panel.update.address') }}" method="post">
+                                        @csrf
+                                        <!----------------------------------------------------->
                                         <!--استان محل سکونت-->
                                         <div class="mb-3">
-                                            <label for="state-register-specialist" class="form-label"> mahale
-                                                sokoonat(ostan)</label>
-                                            <select class="form-select form-bg-color" id="state-register-specialist">
-                                                <option id="state_0" value="0" selected>fars</option>
-                                                <option id="state_1" value="1">tehran</option>
-                                                <option id="state_2" value="2">esfahan</option>
+                                            <label for="state-register-specialist" class="form-label"> State </label>
+                                            <select class="form-select" name="state_id" id="state-register-specialist">
+                                                <option value="{{ auth()->user()->address->state->id }}" selected>
+                                                    {{ auth()->user()->address->state->name }}
+                                                </option>
+                                                @foreach ($languages as $language)
+                                                    @php
+                                                        $state = $language->langable;
+                                                        $number = 1;
+                                                    @endphp
+                                                    <option name="state_id" id="state_{{ $number }}"
+                                                        value="{{ $state->id }}">
+                                                        {{ $state->name }}</option>
+                                                    @php
+                                                        $number++;
+                                                    @endphp
+                                                @endforeach
+
                                             </select>
                                         </div>
 
                                         <!--شهرهای مرتبط به هر استان   --  start -->
-                                        <!--فارس-->
-                                        <div class="cities mb-3">
-                                            <label for="city-register-specialist-fars" class="form-label">mahale
-                                                sokoonat(shahr) </label>
-                                            <select class="form-select form-bg-color" id="city-register-specialist-fars">
-                                                <option value="shiraz">shiraz</option>
-                                                <option value="tehran">fasa</option>
-                                                <option value="esfahan">eghlid</option>
+                                        <div class="cities mb-3" id="maincitydiv">
+                                            <label for="city-register-specialist-nothing" class="form-label">City
+                                            </label>
+                                            <select class="form-select" id="city-register-specialist-nothing">
+                                                <option value="{{ auth()->user()->address->city->id }}" selected>
+                                                    {{ auth()->user()->address->city->name }}
+                                                </option>
                                             </select>
                                         </div>
 
-                                        <!--تهران-->
-                                        <div class="cities mb-3 d-none">
-                                            <label for="city-register-specialist-tehran" class="form-label">mahale
-                                                sokoonat(shahr) </label>
-                                            <select class="form-select form-bg-color" id="city-register-specialist-tehran">
-                                                <option value="shiraz">tehran</option>
-                                                <option value="tehran">rey</option>
-                                                <option value="esfahan">golpayegan</option>
+
+                                        <div class="cities mb-3" id="maincitydiv">
+                                            <label for="city-register-specialist-nothing1" class="form-label">City
+                                            </label>
+                                            <select class="form-select" id="select-city">
+
                                             </select>
                                         </div>
 
-                                        <!--اصفهان-->
-                                        <div class="cities mb-3 d-none">
-                                            <label for="city-register-specialis-esfahan" class="form-label">mahale
-                                                sokoonat(shahr) </label>
-                                            <select class="form-select form-bg-color"
-                                                id="city-register-specialist-esfahan">
-                                                <option value="shiraz">esfahan</option>
-                                                <option value="tehran">esfahan</option>
-                                                <option value="esfahan">esfahan</option>
-                                            </select>
-                                        </div>
-                                        <!--شهرهای مرتبط به هر استان   --  end -->
 
-
-
-                                        <!--استان محل خدمت-->
+                                        <!----------------------------------------------------->
+                                        Service Place
                                         <div class="mb-3">
-                                            <label for="work_state-register-specialist" class="form-label"> mahale
-                                                khedmat(ostan) </label>
-                                            <select class="form-select form-bg-color" id="work_state-register-specialist">
-                                                <option id="work_state_0" value="0" selected>fars</option>
-                                                <option id="work_state_1" value="1">tehran</option>
-                                                <option id="work_state_2" value="2">esfahan</option>
+                                            <label for="state-register-specialist" class="form-label"> State </label>
+                                            <select class="form-select" name="state_id_expert"
+                                                id="state-register-specialist-expert">
+                                                <option value="{{ auth()->user()->techinfo->servicestate->id }}"
+                                                    selected>
+                                                    {{ auth()->user()->techinfo->servicestate->name }}
+                                                </option>
+                                                @foreach ($languages as $language)
+                                                    @php
+                                                        $state = $language->langable;
+                                                        $number = 1;
+                                                    @endphp
+                                                    <option name="state_id" id="state_{{ $number }}"
+                                                        value="{{ $state->id }}">
+                                                        {{ $state->name }}</option>
+                                                    @php
+                                                        $number++;
+                                                    @endphp
+                                                @endforeach
+
                                             </select>
                                         </div>
+
 
                                         <!--شهرهای مرتبط به هر استان   --  start -->
-                                        <!--فارس-->
-                                        <div class="work_cities mb-3">
-                                            <label for="work_city-register-specialist-fars" class="form-label"> mahale
-                                                khedmat(shahr) </label>
-                                            <select class="form-select form-bg-color"
-                                                id="work_city-register-specialist-fars">
-                                                <option value="shiraz">shiraz</option>
-                                                <option value="tehran">fasa</option>
-                                                <option value="esfahan">eghlid</option>
+                                        <div class="cities mb-3" id="maincitydivexpert">
+                                            <label for="city-register-specialist-nothing" class="form-label">City
+                                            </label>
+                                            <select class="form-select" id="city-register-specialist-nothing">
+                                                <option value="{{ auth()->user()->techinfo->servicecity->id }}" selected>
+                                                    {{ auth()->user()->techinfo->servicecity->name }}
+                                                </option>
                                             </select>
                                         </div>
 
-                                        <!--تهران-->
-                                        <div class="work_cities mb-3 d-none">
-                                            <label for="work_city-register-specialist-tehran" class="form-label">mahale
-                                                khedmat(shahr)</label>
-                                            <select class="form-select form-bg-color"
-                                                id="work_city-register-specialist-tehran">
-                                                <option value="shiraz">tehran</option>
-                                                <option value="tehran">rey</option>
-                                                <option value="esfahan">golpayegan</option>
+                                        <div class="cities mb-3 mi2" id="maincitydivexpert">
+                                            <select class="form-select" id="city-expert">
                                             </select>
                                         </div>
-
-                                        <!--اصفهان-->
-                                        <div class="work_cities mb-3 d-none">
-                                            <label for="work_city-register-specialis-esfahan" class="form-label">
-                                                mahale khedmat(shahr)</label>
-                                            <select class="form-select form-bg-color"
-                                                id="work_city-register-specialist-esfahan">
-                                                <option value="shiraz">esfahan</option>
-                                                <option value="tehran">esfahan</option>
-                                                <option value="esfahan">esfahan</option>
-                                            </select>
-                                        </div>
-                                        <!--شهرهای مرتبط به هر استان   --  end -->
-
+                                        <!----------------------------------------------------->
 
                                         <div class="mb-3">
-                                            <label for="address-register-specialist" class="form-label">addrs</label>
-                                            <textarea class="form-control form-bg-color" id="address-register-specialist" placeholder="addr"></textarea>
+                                            <label for="address-register-specialist" class="form-label">Address</label>
+                                            <textarea class="form-control form-bg-color" id="address-register-specialist" name="address_description"
+                                                placeholder="Adress">{{ auth()->user()->address->description }}</textarea>
                                         </div>
-
                                         <div class="mb-3">
-                                            <label for="houseNumber-register-specialist"
-                                                class="form-label">pelak</label>
-                                            <input type="text" class="form-control" id="houseNumber-register-specialist">
+                                            <label for="houseNumberCode-register-specialist" class="form-label">house
+                                                number</label>
+                                            <input value="{{ auth()->user()->techinfo->pelak }}" type="text"
+                                                class="form-control" id="houseNumberCode-register-specialist">
                                         </div>
-
-                                        <div class="mb-3">
-                                            <label for="houseNumberCode-register-specialist" class="form-label">code
-                                                posti</label>
-                                            <input type="text" class="form-control"
-                                                id="houseNumberCode-register-specialist">
-                                        </div>
-
                                         <div class="d-flex mb-3 gap-3">
                                             <button type="reset"
-                                                class="w-100 mt-4 border-redius-20 font-size20 pt-2 pb-2">cancel</button>
+                                                class="w-100 mt-4 border-redius-20 font-size32">cansel</button>
                                             <button type="submit"
-                                                class=" w-100  mt-4 darkYellow border-redius-20 font-size20 pt-2 pb-2">submit</button>
+                                                class=" w-100  mt-4 darkYellow border-redius-20 font-size32">confirm</button>
                                         </div>
-
+                                        <input type="hidden" name="city_id"
+                                            value="{{ auth()->user()->address->city->name }}" id="city_id">
+                                        <input type="hidden" name="city_id_expert"
+                                            value="{{ auth()->user()->techinfo->servicecity->name }}"
+                                            id="city_id_expert">
                                     </form>
                                 </div>
 
