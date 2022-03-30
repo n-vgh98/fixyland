@@ -378,6 +378,7 @@ route::prefix("{locale}")->middleware("language")->group(function () {
             route::get("/", "index")->name("front.technician.panel.show");
             route::get("/edit", "edit")->name("front.technician.panel.edit");
             route::post("/updateprofile", "updateprofile")->name("front.technician.panel.update.profile");
+            route::post("/updateadress", "updateadress")->name("front.technician.panel.update.address");
         });
     });
 

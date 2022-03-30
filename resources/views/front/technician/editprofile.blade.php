@@ -409,122 +409,108 @@
 
                                 <!--آدرس-->
                                 <div class="row dastrasi-sari-grid d-flex gap-1 gy-1 m-0 justify-content-evenly d-none ">
-                                    <form class="col-12 col-md-6">
-
+                                    <form class="col-12 col-md-6"
+                                        action="{{ route('front.technician.panel.update.address') }}" method="post">
+                                        @csrf
                                         <!----------------------------------------------------->
                                         <!--استان محل سکونت-->
                                         <div class="mb-3">
-                                            <label for="state-register-specialist" class="form-label"> استان محل
-                                                سکونت</label>
-                                            <select class="form-select form-bg-color" id="state-register-specialist">
-                                                <option id="state_0" value="0" selected>فارس</option>
-                                                <option id="state_1" value="1">تهران</option>
-                                                <option id="state_2" value="2">اصفهان</option>
+                                            <label for="state-register-specialist" class="form-label"> استان </label>
+                                            <select class="form-select" name="state_id" id="state-register-specialist">
+                                                <option value="{{ auth()->user()->address->state->id }}" selected>
+                                                    {{ auth()->user()->address->state->name }}
+                                                </option>
+                                                @foreach ($languages as $language)
+                                                    @php
+                                                        $state = $language->langable;
+                                                        $number = 1;
+                                                    @endphp
+                                                    <option name="state_id" id="state_{{ $number }}"
+                                                        value="{{ $state->id }}">
+                                                        {{ $state->name }}</option>
+                                                    @php
+                                                        $number++;
+                                                    @endphp
+                                                @endforeach
+
                                             </select>
                                         </div>
 
                                         <!--شهرهای مرتبط به هر استان   --  start -->
-                                        <!--فارس-->
-                                        <div class="cities mb-3">
-                                            <label for="city-register-specialist-fars" class="form-label">شهر محل سکونت
+                                        <div class="cities mb-3" id="maincitydiv">
+                                            <label for="city-register-specialist-nothing" class="form-label">شهر
                                             </label>
-                                            <select class="form-select form-bg-color" id="city-register-specialist-fars">
-                                                <option value="shiraz">شیراز</option>
-                                                <option value="tehran">فسا</option>
-                                                <option value="esfahan">اقلید</option>
+                                            <select class="form-select" id="city-register-specialist-nothing">
+                                                <option value="{{ auth()->user()->address->city->id }}" selected>
+                                                    {{ auth()->user()->address->city->name }}
+                                                </option>
                                             </select>
                                         </div>
 
-                                        <!--تهران-->
-                                        <div class="cities mb-3 d-none">
-                                            <label for="city-register-specialist-tehran" class="form-label">شهر محل
-                                                سکونت</label>
-                                            <select class="form-select form-bg-color" id="city-register-specialist-tehran">
-                                                <option value="shiraz">تهران</option>
-                                                <option value="tehran">تهران</option>
-                                                <option value="esfahan">تهران</option>
+
+                                        <div class="cities mb-3" id="maincitydiv">
+                                            <label for="city-register-specialist-nothing1" class="form-label">شهر
+                                            </label>
+                                            <select class="form-select" id="select-city">
+
                                             </select>
                                         </div>
 
-                                        <!--اصفهان-->
-                                        <div class="cities mb-3 d-none">
-                                            <label for="city-register-specialis-esfahan" class="form-label">شهر محل
-                                                سکونت</label>
-                                            <select class="form-select form-bg-color"
-                                                id="city-register-specialist-esfahan">
-                                                <option value="shiraz">اصفهان</option>
-                                                <option value="tehran">اصفهان</option>
-                                                <option value="esfahan">اصفهان</option>
-                                            </select>
-                                        </div>
-                                        <!--شهرهای مرتبط به هر استان   --  end -->
 
                                         <!----------------------------------------------------->
-
-                                        <!--استان محل خدمت-->
+                                        محل خدمت
                                         <div class="mb-3">
-                                            <label for="work_state-register-specialist" class="form-label"> استان محل
-                                                خدمت</label>
-                                            <select class="form-select form-bg-color" id="work_state-register-specialist">
-                                                <option id="work_state_0" value="0" selected>فارس</option>
-                                                <option id="work_state_1" value="1">تهران</option>
-                                                <option id="work_state_2" value="2">اصفهان</option>
+                                            <label for="state-register-specialist" class="form-label"> استان </label>
+                                            <select class="form-select" name="state_id_expert"
+                                                id="state-register-specialist-expert">
+                                                <option value="{{ auth()->user()->techinfo->servicestate->id }}"
+                                                    selected>
+                                                    {{ auth()->user()->techinfo->servicestate->name }}
+                                                </option>
+                                                @foreach ($languages as $language)
+                                                    @php
+                                                        $state = $language->langable;
+                                                        $number = 1;
+                                                    @endphp
+                                                    <option name="state_id" id="state_{{ $number }}"
+                                                        value="{{ $state->id }}">
+                                                        {{ $state->name }}</option>
+                                                    @php
+                                                        $number++;
+                                                    @endphp
+                                                @endforeach
+
                                             </select>
                                         </div>
+
 
                                         <!--شهرهای مرتبط به هر استان   --  start -->
-                                        <!--فارس-->
-                                        <div class="work_cities mb-3">
-                                            <label for="work_city-register-specialist-fars" class="form-label">شهر محل
-                                                خدمت </label>
-                                            <select class="form-select form-bg-color"
-                                                id="work_city-register-specialist-fars">
-                                                <option value="shiraz">شیراز</option>
-                                                <option value="tehran">فسا</option>
-                                                <option value="esfahan">اقلید</option>
+                                        <div class="cities mb-3" id="maincitydivexpert">
+                                            <label for="city-register-specialist-nothing" class="form-label">شهر
+                                            </label>
+                                            <select class="form-select" id="city-register-specialist-nothing">
+                                                <option value="{{ auth()->user()->techinfo->servicecity->id }}" selected>
+                                                    {{ auth()->user()->techinfo->servicecity->name }}
+                                                </option>
                                             </select>
                                         </div>
 
-                                        <!--تهران-->
-                                        <div class="work_cities mb-3 d-none">
-                                            <label for="work_city-register-specialist-tehran" class="form-label">شهر
-                                                محل خدمت</label>
-                                            <select class="form-select form-bg-color"
-                                                id="work_city-register-specialist-tehran">
-                                                <option value="shiraz">تهران</option>
-                                                <option value="tehran">تهران</option>
-                                                <option value="esfahan">تهران</option>
+                                        <div class="cities mb-3 mi2" id="maincitydivexpert">
+                                            <select class="form-select" id="city-expert">
                                             </select>
                                         </div>
-
-                                        <!--اصفهان-->
-                                        <div class="work_cities mb-3 d-none">
-                                            <label for="work_city-register-specialis-esfahan" class="form-label">شهر
-                                                محل خدمت</label>
-                                            <select class="form-select form-bg-color"
-                                                id="work_city-register-specialist-esfahan">
-                                                <option value="shiraz">اصفهان</option>
-                                                <option value="tehran">اصفهان</option>
-                                                <option value="esfahan">اصفهان</option>
-                                            </select>
-                                        </div>
-                                        <!--شهرهای مرتبط به هر استان   --  end -->
                                         <!----------------------------------------------------->
 
                                         <div class="mb-3">
                                             <label for="address-register-specialist" class="form-label">آدرس</label>
-                                            <textarea class="form-control form-bg-color" id="address-register-specialist" placeholder="آدرس"></textarea>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="houseNumber-register-specialist"
-                                                class="form-label">پلاک</label>
-                                            <input type="text" class="form-control" id="houseNumber-register-specialist">
+                                            <textarea class="form-control form-bg-color" id="address-register-specialist" name="address_description"
+                                                placeholder="آدرس">{{ auth()->user()->address->description }}</textarea>
                                         </div>
                                         <div class="mb-3">
                                             <label for="houseNumberCode-register-specialist"
                                                 class="form-label">پلاک</label>
-                                            <input type="text" class="form-control"
-                                                id="houseNumberCode-register-specialist">
+                                            <input value="{{ auth()->user()->techinfo->pelak }}" type="text"
+                                                class="form-control" id="houseNumberCode-register-specialist">
                                         </div>
                                         <div class="d-flex mb-3 gap-3">
                                             <button type="reset"
@@ -532,6 +518,11 @@
                                             <button type="submit"
                                                 class=" w-100  mt-4 darkYellow border-redius-20 font-size32">تایید</button>
                                         </div>
+                                        <input type="hidden" name="city_id"
+                                            value="{{ auth()->user()->address->city->name }}" id="city_id">
+                                        <input type="hidden" name="city_id_expert"
+                                            value="{{ auth()->user()->techinfo->servicecity->name }}"
+                                            id="city_id_expert">
                                     </form>
                                 </div>
 
@@ -2087,4 +2078,134 @@
         <script src="{{ asset('frontend/fixy-land-en-main/script/country_code.js') }}" type="text/javascript"></script>
         <script src="{{ asset('frontend/fixy-land-en-main/script/signup_specialist.js') }}" type="text/javascript"></script>
     @endif
+    <script>
+        $(document).ready(function() {
+            function getcityforsignup(cityid) {
+                var cityid1 = cityid
+                var _token = $("input[name='_token']").val();
+                $.ajax({
+                    url: "{{ route('user.register.get.city') }}",
+                    type: 'POST',
+                    data: {
+                        _token: _token,
+                        city_id: cityid1
+                    },
+                    success: function(data) {
+                        var maindiv = $("#maincitydiv")
+                        maindiv.html(" ")
+
+                        // making label for select options
+                        var label = document.createElement("label")
+                        label.classList.add("form-label")
+                        @if (app()->getLocale() == 'fa' || app()->getLocale() == 'ar')
+                            var labeltext = document.createTextNode("شهر")
+                        @else
+                            var labeltext = document.createTextNode("city")
+                        @endif
+
+                        label.append(labeltext)
+                        maindiv.append(label)
+
+                        // making select
+                        var select = $("#select-city")
+                        select.html(" ")
+
+                        // making a fake option
+                        var option = document.createElement("option")
+                        var optioncttext = document.createTextNode("لطفا شهر خود را انتخاب کنید")
+                        option.append(optioncttext)
+                        select.append(option)
+
+                        // making option for select
+                        data.cities.forEach(city => {
+                            var option = document.createElement("option")
+                            var optioncttext = document.createTextNode(city.name)
+                            option.append(optioncttext)
+                            select.append(option)
+                        });
+
+
+                    }
+                });
+            }
+
+
+            $("#state-register-specialist").change(function() {
+                var input = $("#state-register-specialist")
+                getcityforsignup(input.val())
+                var expertdiv = $("#maincitydivexpert")
+                expertdiv.removeClass("d-none")
+            });
+            $("#select-city").change(function() {
+                var value = $("#select-city").val();
+                $("#city_id").attr("value", value);
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function() {
+            function getcityforservice(cityid) {
+                var cityid1 = cityid
+                var _token = $("input[name='_token']").val();
+                $.ajax({
+                    url: "{{ route('user.register.get.city') }}",
+                    type: 'POST',
+                    data: {
+                        _token: _token,
+                        city_id: cityid1
+                    },
+                    success: function(data) {
+                        var maindiv = $("#maincitydivexpert")
+                        maindiv.html(" ")
+
+                        // making label for select options
+                        var label = document.createElement("label")
+                        label.classList.add("form-label")
+                        @if (app()->getLocale() == 'fa' || app()->getLocale() == 'ar')
+                            var labeltext = document.createTextNode("شهر")
+                        @else
+                            var labeltext = document.createTextNode("city")
+                        @endif
+
+                        label.append(labeltext)
+                        maindiv.append(label)
+
+                        // making select
+                        var select = $("#city-expert")
+                        select.html(" ")
+
+                        // making a fake option
+                        var option = document.createElement("option")
+                        var optioncttext = document.createTextNode("لطفا شهر خود را انتخاب کنید")
+                        option.append(optioncttext)
+                        select.append(option)
+
+                        // making option for select
+                        data.cities.forEach(city => {
+                            var option = document.createElement("option")
+                            var optioncttext = document.createTextNode(city.name)
+                            option.append(optioncttext)
+                            select.append(option)
+                        });
+
+
+                    }
+                });
+            }
+
+            $("#state-register-specialist-expert").change(function() {
+                var input = $("#state-register-specialist-expert")
+                getcityforservice(input.val())
+                var maindiv = $(".mi2")
+                maindiv.removeClass("d-none")
+                $("#city_id_expert").attr("value", input.val());
+            });
+
+
+            $("#city-expert").change(function() {
+                var value = $("#city-expert").val();
+                $("#city_id_expert").attr("value", value);
+            });
+        });
+    </script>
 @endsection

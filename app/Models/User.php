@@ -62,7 +62,7 @@ class User extends Authenticatable
 
     public function address()
     {
-        return $this->belongsTo("App\Models\Address", "user_id");
+        return $this->hasOne("App\Models\Address", "user_id");
     }
 
     public function techinfo()

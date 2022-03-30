@@ -70,6 +70,7 @@ class FrontSpecialistController extends Controller
                 $city = CoveredAreaCity::where("name", $request->city_id)->first();
                 $address->city_id = $city->id;
                 $address->state_id = $request->state_id;
+                $address->description = $request->address_description;
                 $address->save();
 
 

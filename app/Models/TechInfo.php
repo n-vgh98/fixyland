@@ -13,4 +13,14 @@ class TechInfo extends Model
     {
         return $this->belongsTo("App\Models\Users", "user_id");
     }
+
+    public function servicestate()
+    {
+        return $this->belongsTo("App\Models\CoveredArea", "covered_state_id");
+    }
+
+    public function servicecity()
+    {
+        return $this->belongsTo("App\Models\CoveredAreaCity", "covered_city_id");
+    }
 }

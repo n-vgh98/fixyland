@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers\Front;
 
+use App\Models\Lang;
 use App\Models\User;
+use App\Models\Address;
+use App\Models\TechInfo;
 use Illuminate\Http\Request;
+use App\Models\CoveredAreaCity;
 use App\Http\Controllers\Controller;
 
 class FrontSpecialistPanelController extends Controller
@@ -13,8 +17,9 @@ class FrontSpecialistPanelController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($lang)
     {
+
         return view("front.technician.panel");
     }
 
@@ -56,9 +61,11 @@ class FrontSpecialistPanelController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit()
+    public function edit($lang)
     {
-        return view("front.technician.editprofile");
+        $languages = Lang::where([["name", $lang], ["langable_type", "App\Models\CoveredArea"]])->get();
+        $categorylangs = Lang::where([["name", $lang], ["langable_type", "App\Models\ServiceCategory"]])->get();
+        return view("front.technician.editprofile", compact("languages", "categorylangs"));
     }
 
     /**
@@ -90,5 +97,25 @@ class FrontSpecialistPanelController extends Controller
         $user->email = $request->email;
         $user->save();
         return redirect()->back()->with("success", "ایمیل شما باموفقیت تغییر کرد");
+    }
+
+
+    public function updateadress(Request $request)
+    {
+        $address = Address::find(auth()->user()->address->id);
+        $address->user_id = auth()->user()->id;
+        $city = CoveredAreaCity::where("name", $request->city_id)->first();
+        $address->city_id = $city->id;
+        $address->state_id = $request->state_id;
+        $address->description = $request->address_description;
+        $address->save();
+
+
+        $techinfo = TechInfo::find(auth()->user()->techinfo->id);
+        $techinfo->covered_state_id = $request->state_id_expert;
+        $city2 = CoveredAreaCity::where("name", $request->city_id_expert)->first();
+        $techinfo->covered_city_id = $city2->id;
+        $techinfo->save();
+        return redirect()->back()->with("success", "ادرس شما باموفقیت تغییر کرد");
     }
 }
