@@ -64,4 +64,9 @@ class User extends Authenticatable
     {
         return $this->belongsTo("App\Models\Address", "user_id");
     }
+
+    public function techinfo()
+    {
+        return $this->hasOne("App\Models\TechInfo");
+    }
 }

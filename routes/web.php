@@ -376,6 +376,8 @@ route::prefix("{locale}")->middleware("language")->group(function () {
     route::prefix("technicianpanel")->middleware(['auth:sanctum', 'verified', "technician"])->group(function () {
         route::controller(FrontSpecialistPanelController::class)->group(function () {
             route::get("/", "index")->name("front.technician.panel.show");
+            route::get("/edit", "edit")->name("front.technician.panel.edit");
+            route::post("/updateprofile", "updateprofile")->name("front.technician.panel.update.profile");
         });
     });
 

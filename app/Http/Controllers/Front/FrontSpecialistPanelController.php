@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\Front;
 
-use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class FrontSpecialistPanelController extends Controller
 {
@@ -55,9 +56,9 @@ class FrontSpecialistPanelController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit()
     {
-        //
+        return view("front.technician.editprofile");
     }
 
     /**
@@ -81,5 +82,13 @@ class FrontSpecialistPanelController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function updateprofile(Request $request)
+    {
+        $user = User::find(auth()->user()->id);
+        $user->email = $request->email;
+        $user->save();
+        return redirect()->back()->with("success", "ایمیل شما باموفقیت تغییر کرد");
     }
 }

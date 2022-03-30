@@ -101,7 +101,7 @@
 
                     <div class="d-flex p-2 ps-3 pe-3 w-100">
                         <i class="fa-solid fa-pen-to-square ms-3 mt-1"></i>
-                        <a href="spc-edit-profile.html"
+                        <a href="{{ route('front.technician.panel.edit') }}"
                             class="text-decoration-none darkYellow-text_onHover text-black-no-hover"> ویرایش پروفایل </a>
                     </div>
 
@@ -406,7 +406,7 @@
 
                     <div class="d-flex p-2 ps-3 pe-3 w-100">
                         <i class="fa-solid fa-pen-to-square me-3 mt-1"></i>
-                        <a href="spc-edit-profile.html"
+                        <a href="{{ route('front.technician.panel.edit') }}"
                             class="text-decoration-none darkYellow-text_onHover text-black-no-hover"> edit profile </a>
                     </div>
 
