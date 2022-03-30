@@ -53,7 +53,6 @@ class FrontSpecialistController extends Controller
             $selecteduser = User::where("phone", $request->phone)->first();
             if ($selecteduser == null) {
 
-
                 $user = new User();
                 $users =  User::all();
                 $user->firstname = $request->firstname;

@@ -332,15 +332,15 @@ route::prefix("admin")->middleware(['auth:sanctum', 'verified', "admin"])->group
         });
     });
 });
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
+// Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+//     return view('dashboard');
+// })->name('dashboard');
 // end for admin routing
 
 
 // always redirect domain to english site
 route::get("/", function () {
-    return redirect("/en");
+    return redirect("/ar");
 });
 
 // route::get("login", function () {

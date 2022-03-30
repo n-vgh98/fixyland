@@ -111,7 +111,8 @@ $categories = App\Models\Lang::where([['name', $catlang], ['langable_type', 'App
                                             <a class=" nav-link-hover" href="{{ route('user.home') }}">خانه</a>
                                         </li>
                                         <li class="nav-item pb-2">
-                                            <a class=" nav-link-hover" href="{{ route('front.articles.index')}}">مقالات</a>
+                                            <a class=" nav-link-hover"
+                                                href="{{ route('front.articles.index') }}">مقالات</a>
                                         </li>
 
                                         <!-- daste-bandi-khadamat -->
@@ -159,11 +160,13 @@ $categories = App\Models\Lang::where([['name', $catlang], ['langable_type', 'App
 
 
                                         <li class="nav-item pb-2">
-                                            <a class=" nav-link-hover" href="{{ route('front.contact_us') }}">تماس با ما</a>
+                                            <a class=" nav-link-hover" href="{{ route('front.contact_us') }}">تماس با
+                                                ما</a>
                                         </li>
 
                                         <li class="nav-item pb-2">
-                                            <a class=" nav-link-hover" href="{{ route('front.about_us') }}">درباره ما</a>
+                                            <a class=" nav-link-hover" href="{{ route('front.about_us') }}">درباره
+                                                ما</a>
                                         </li>
                                     </ul>
                                 </nav>
@@ -182,6 +185,17 @@ $categories = App\Models\Lang::where([['name', $catlang], ['langable_type', 'App
                                 <a href="{{ route('user.register') }}" class="btn flex-fill text-decoration-none"
                                     id="button-menu2">
                                     ثبت نام</a>
+                                @auth
+                                    @if (auth()->user()->role_name == 'technician')
+                                        <a href="#" class="btn flex-fill text-decoration-none" id="button-menu2">
+                                            پنل</a>
+                                    @elseif (auth()->user()->role_name == 'user')
+                                        <a href="#" class="btn flex-fill text-decoration-none" id="button-menu2">
+                                            پنل</a>
+                                    @endif
+
+                                @endauth
+
                             </div>
                         </div>
                     </div>
@@ -342,7 +356,8 @@ $categories = App\Models\Lang::where([['name', $catlang], ['langable_type', 'App
                                             <a class=" nav-link-hover" href="{{ route('user.home') }}">Home</a>
                                         </li>
                                         <li class="nav-item pb-2">
-                                            <a class=" nav-link-hover" href="{{ route('front.articles.index')}}">Articles</a>
+                                            <a class=" nav-link-hover"
+                                                href="{{ route('front.articles.index') }}">Articles</a>
                                         </li>
 
                                         <!-- daste-bandi-khadamat -->
@@ -390,11 +405,13 @@ $categories = App\Models\Lang::where([['name', $catlang], ['langable_type', 'App
 
 
                                         <li class="nav-item pb-2">
-                                            <a class=" nav-link-hover" href="{{ route('front.contact_us') }}">Contact us</a>
+                                            <a class=" nav-link-hover"
+                                                href="{{ route('front.contact_us') }}">Contact us</a>
                                         </li>
 
                                         <li class="nav-item pb-2">
-                                            <a class=" nav-link-hover" href="{{ route('front.about_us') }}">About us</a>
+                                            <a class=" nav-link-hover" href="{{ route('front.about_us') }}">About
+                                                us</a>
                                         </li>
                                     </ul>
                                 </nav>

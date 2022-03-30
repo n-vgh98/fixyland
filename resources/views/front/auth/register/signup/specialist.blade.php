@@ -76,7 +76,7 @@
 
                     <div class="mb-4">
                         <label for="pass-register-specialist" class="form-label">رمز عبور</label>
-                        <input type="password" class="form-control" id="pass-register-specialist">
+                        <input type="password" name="password" class="form-control" id="pass-register-specialist">
                     </div>
 
                     <div class="mb-3 d-flex justify-content-around flex-column flex-md-row">
@@ -365,7 +365,7 @@
 
                     <div class="mb-4">
                         <label for="pass-register-specialist" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="pass-register-specialist">
+                        <input type="password" name="password" class="form-control" id="pass-register-specialist">
                     </div>
 
                     <div class="mb-3 d-flex justify-content-around flex-column flex-md-row">

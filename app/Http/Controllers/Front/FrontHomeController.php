@@ -15,6 +15,7 @@ class FrontHomeController extends Controller
      */
     public function index($lang)
     {
+
         $adlanguages = Lang::where([["name", $lang], ["langable_type", "App\Models\Advertisment"]])->get();
         $staticlanguages = Lang::where([["name", $lang], ["langable_type", "App\Models\IndexStatic"]])->get();
         return view("front.index", compact("adlanguages", "staticlanguages"));
@@ -89,11 +90,19 @@ class FrontHomeController extends Controller
 
     public function register()
     {
-        return view("front.auth.register.register");
+        if (auth()->check()) {
+            return redirect()->route("user.home");
+        } else {
+            return view("front.auth.register.register");
+        }
     }
 
     public function login()
     {
-        return view("front.auth.login");
+        if (auth()->check()) {
+            return redirect()->route("user.home");
+        } else {
+            return view("front.auth.login");
+        }
     }
 }
