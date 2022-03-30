@@ -380,6 +380,9 @@ route::prefix("{locale}")->middleware("language")->group(function () {
             route::post("/updateprofile", "updateprofile")->name("front.technician.panel.update.profile");
             route::post("/updateadress", "updateadress")->name("front.technician.panel.update.address");
             route::post("/updateskill/{skill_id}", "updateskill")->name("front.technician.panel.update.skill");
+            route::post("/updatebankinfo", "updatebankinfo")->name("front.technician.panel.update.bankinfo");
+            route::post("/deleteporfolio/{pid}", "deleteporfolio")->name("front.technician.panel.delete.portfolio");
+            route::post("/addporfolio", "addporfolio")->name("front.technician.panel.add.portfolio");
         });
     });
 

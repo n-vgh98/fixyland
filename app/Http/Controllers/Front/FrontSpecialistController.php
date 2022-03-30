@@ -8,6 +8,7 @@ use App\Models\Address;
 use Illuminate\Http\Request;
 use App\Models\CoveredAreaCity;
 use App\Http\Controllers\Controller;
+use App\Models\BankInfo;
 use App\Models\InformationPhoto;
 use App\Models\ServiceSubCategory;
 use App\Models\SkillUser;
@@ -137,6 +138,14 @@ class FrontSpecialistController extends Controller
                     $expertskill->service_sub_categoy_id = $skill;
                     $expertskill->save();
                 }
+
+                // saving bank accounts
+                $bank = new BankInfo();
+                $bank->user_id = auth()->user()->id;
+                $bank->account_number = $request->account_number;
+                $bank->credit_card = $request->credit_card;
+                $bank->save();
+
 
                 return redirect()->route("user.login");
             } else {

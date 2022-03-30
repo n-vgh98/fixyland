@@ -266,11 +266,11 @@
                     <div class="w-100 mt-5">
                         <div class="mb-3">
                             <label for="bank-account-number" class="form-label">شماره حساب</label>
-                            <input type="text" class="form-control" id="bank-account-number">
+                            <input type="text" class="form-control" name="account_number" id="bank-account-number">
                         </div>
                         <div class="mb-3">
                             <label for="credit-card" class="form-label">کارت اعتباری</label>
-                            <input type="text" class="form-control" id="credit-card">
+                            <input type="text" class="form-control" name="credit_card" id="credit-card">
                         </div>
 
                         <div class="mb-3 ">
@@ -555,11 +555,11 @@
                     <div class="w-100 mt-5">
                         <div class="mb-3">
                             <label for="bank-account-number" class="form-label">Bank Account Number</label>
-                            <input type="text" class="form-control" id="bank-account-number">
+                            <input type="text" class="form-control" name="account_number" id="bank-account-number">
                         </div>
                         <div class="mb-3">
                             <label for="credit-card" class="form-label">Credit Card</label>
-                            <input type="text" class="form-control" id="credit-card">
+                            <input type="text" class="form-control" name="credit_card" id="credit-card">
                         </div>
 
                         <div class="mb-3 ">

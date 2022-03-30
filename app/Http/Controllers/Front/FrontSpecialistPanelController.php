@@ -5,12 +5,14 @@ namespace App\Http\Controllers\Front;
 use App\Models\Lang;
 use App\Models\User;
 use App\Models\Address;
+use App\Models\BankInfo;
 use App\Models\TechInfo;
 use App\Models\SkillUser;
 use Illuminate\Http\Request;
 use App\Models\CoveredAreaCity;
 use App\Models\ServiceSubCategory;
 use App\Http\Controllers\Controller;
+use App\Models\TechnicianPortfolio;
 
 class FrontSpecialistPanelController extends Controller
 {
@@ -120,6 +122,9 @@ class FrontSpecialistPanelController extends Controller
         $techinfo->save();
         return redirect()->back()->with("success", "ادرس شما باموفقیت تغییر کرد");
     }
+
+
+
     public function updateskill(Request $request)
     {
         if (count(auth()->user()->skills) > 0) {
@@ -151,5 +156,40 @@ class FrontSpecialistPanelController extends Controller
             $expertskill->save();
             return redirect()->back()->with("success", "اضافه شد");
         }
+    }
+
+    public function updatebankinfo(Request $request)
+    {
+        // saving bank accounts
+        $bank = BankInfo::find(auth()->user()->bankinfo->id);
+        $bank->user_id = auth()->user()->id;
+        $bank->account_number = $request->account_number;
+        $bank->credit_card = $request->credit_card;
+        $bank->save();
+        return redirect()->back()->with("success", "بانک شما باموفقیت تغییر کرد");
+    }
+
+    public function deleteporfolio(Request $request,)
+    {
+        // saving bank accounts
+        $port = TechnicianPortfolio::find($request->pid);
+        unlink($port->path);
+        $port->delete();
+        return redirect()->back()->with("success", "نمونه کار شما باموفقیت حذف شد");
+    }
+
+    public function addporfolio(Request $request,)
+    {
+        // saving bank accounts
+        $port = new TechnicianPortfolio();
+        $port->user_id = auth()->user()->id;
+        $port->name = "نمونه کار";
+        $port->alt = "نمونه کار";
+        $port->description = $request->description;
+        $imagename = time() . "." . $request->image->extension();
+        $request->image->move(public_path("Images/portfolios/"), $imagename);
+        $port->path = "Images/portfolios/" . $imagename;
+        $port->save();
+        return redirect()->back()->with("success", "نمونه کار شما باموفقیت اضافه شد");
     }
 }

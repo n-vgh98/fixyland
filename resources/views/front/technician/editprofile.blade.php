@@ -713,14 +713,20 @@
 
                                 <!--اطلاعات بانکی-->
                                 <div class="row dastrasi-sari-grid d-flex gap-1 gy-1 m-0 justify-content-evenly  d-none">
-                                    <form class="col-12 col-md-6">
+                                    <form class="col-12 col-md-6"
+                                        action="{{ route('front.technician.panel.update.bankinfo') }}" method="post">
+                                        @csrf
                                         <div class="mb-3">
                                             <label for="bank-account-number" class="form-label">شماره حساب</label>
-                                            <input type="text" class="form-control" id="bank-account-number">
+                                            <input type="text" class="form-control"
+                                                value="{{ auth()->user()->bankinfo->account_number }}"
+                                                name="account_number" id="bank-account-number">
                                         </div>
                                         <div class="mb-3">
                                             <label for="credit-card" class="form-label">کارت اعتباری</label>
-                                            <input type="text" class="form-control" id="credit-card">
+                                            <input type="text" class="form-control"
+                                                value="{{ auth()->user()->bankinfo->credit_card }}" name="credit_card"
+                                                id="credit-card">
                                         </div>
                                         <div class="d-flex mb-3 gap-3">
                                             <button type="reset"
@@ -741,80 +747,47 @@
                                                 onClick="goInputDemo()">
                                                 <p>اضافه کردن نمونه کار+</p>
                                             </div>
-                                            <div class="col-5 col-md-3 lightblue p-2 rounded">
-                                                <div>
-                                                    <i class="fa-solid fa-xmark"></i>
+
+                                            @foreach (auth()->user()->portfolios as $portfolio)
+                                                <div class="col-5 col-md-3 lightblue p-2 rounded">
+                                                    <div>
+                                                        <form
+                                                            action="{{ route('front.technician.panel.delete.portfolio', $portfolio->id) }}"
+                                                            method="post">
+                                                            @csrf
+                                                            <button class="btn" type="submit">
+                                                                <i class="fa-solid fa-xmark"></i>
+                                                            </button>
+                                                        </form>
+                                                    </div>
+                                                    <div>
+                                                        <img src="{{ asset($portfolio->path) }}" class="w-100 h-auto"
+                                                            alt="{{ $portfolio->alt }}"
+                                                            title="{{ $portfolio->name }}">
+                                                    </div>
                                                 </div>
-                                                <div>
-                                                    <img src="image/portfolio1.png" class="w-100 h-auto" alt="">
-                                                </div>
-                                            </div>
-                                            <div class="col-5 col-md-3 lightblue p-2 rounded">
-                                                <div>
-                                                    <i class="fa-solid fa-xmark"></i>
-                                                </div>
-                                                <div>
-                                                    <img src="image/portfolio2.png" class="w-100 h-auto" alt="">
-                                                </div>
-                                            </div>
-                                            <div class="col-5 col-md-3 lightblue p-2 rounded">
-                                                <div>
-                                                    <i class="fa-solid fa-xmark"></i>
-                                                </div>
-                                                <div>
-                                                    <img src="image/portfolio2.png" class="w-100 h-auto" alt="">
-                                                </div>
-                                            </div>
-                                            <div class="col-5 col-md-3 lightblue p-2 rounded">
-                                                <div>
-                                                    <i class="fa-solid fa-xmark"></i>
-                                                </div>
-                                                <div>
-                                                    <img src="image/portfolio2.png" class="w-100 h-auto" alt="">
-                                                </div>
-                                            </div>
-                                            <div class="col-5 col-md-3 lightblue p-2 rounded">
-                                                <div>
-                                                    <i class="fa-solid fa-xmark"></i>
-                                                </div>
-                                                <div>
-                                                    <img src="image/portfolio2.png" class="w-100 h-auto" alt="">
-                                                </div>
-                                            </div>
-                                            <div class="col-5 col-md-3 lightblue p-2 rounded">
-                                                <div>
-                                                    <i class="fa-solid fa-xmark"></i>
-                                                </div>
-                                                <div>
-                                                    <img src="image/portfolio2.png" class="w-100 h-auto" alt="">
-                                                </div>
-                                            </div>
+                                            @endforeach
+
                                         </div>
 
 
 
                                         <div class="row d-flex justify-content-center gy-2  gap-2 d-none" id="input-demo2">
-                                            <form class="">
-
+                                            <form class=""
+                                                action="{{ route('front.technician.panel.add.portfolio') }}"
+                                                method="post" enctype="multipart/form-data">
+                                                @csrf
                                                 <div class="mb-3">
                                                     <label for="date-register-demo" class="form-label">اضافه کردن نمونه
                                                         کار</label>
-                                                    <input type="file" id="date-register-demo" class="form-control">
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label for="date-register-demo-title"
-                                                        class="form-label">عنوان</label>
-                                                    <input type="text" class="form-control"
-                                                        id="date-register-demo-title">
+                                                    <input type="file" name="image" id="date-register-demo"
+                                                        class="form-control">
                                                 </div>
 
                                                 <div class="mb-3">
                                                     <label for="date-register-demo-text"
                                                         class="form-label">توضیحات</label>
-                                                    <textarea id="date-register-demo-text" class="form-control">
-
-
-                                        </textarea>
+                                                    <textarea id="date-register-demo-text" name="description" class="form-control"></textarea>
                                                 </div>
 
                                                 <div class="d-flex mb-3 gap-3">
@@ -1640,20 +1613,26 @@
 
                                 <!--اطلاعات بانکی-->
                                 <div class="row dastrasi-sari-grid d-flex gap-1 gy-1 m-0 justify-content-evenly  d-none">
-                                    <form class="col-12 col-md-6">
+                                    <form class="col-12 col-md-6"
+                                        action="{{ route('front.technician.panel.update.bankinfo') }}" method="post">
+                                        @csrf
                                         <div class="mb-3">
-                                            <label for="bank-account-number" class="form-label">shomare hesab</label>
-                                            <input type="text" class="form-control" id="bank-account-number">
+                                            <label for="bank-account-number" class="form-label">Account Number</label>
+                                            <input type="text" class="form-control"
+                                                value="{{ auth()->user()->bankinfo->account_number }}"
+                                                name="account_number" id="bank-account-number">
                                         </div>
                                         <div class="mb-3">
-                                            <label for="credit-card" class="form-label">kart etebari</label>
-                                            <input type="text" class="form-control" id="credit-card">
+                                            <label for="credit-card" class="form-label">Credit Card</label>
+                                            <input type="text" class="form-control"
+                                                value="{{ auth()->user()->bankinfo->credit_card }}" name="credit_card"
+                                                id="credit-card">
                                         </div>
                                         <div class="d-flex mb-3 gap-3">
                                             <button type="reset"
-                                                class="w-100 mt-4 border-redius-20 font-size20 pt-2 pb-2">cancel</button>
+                                                class="w-100 mt-4 border-redius-20 font-size32">لغو</button>
                                             <button type="submit"
-                                                class=" w-100  mt-4 darkYellow border-redius-20 font-size20 pt-2 pb-2">submit</button>
+                                                class=" w-100  mt-4 darkYellow border-redius-20 font-size32">تایید</button>
                                         </div>
                                     </form>
                                 </div>
@@ -1667,88 +1646,56 @@
                                         <div class="row d-flex justify-content-evenly gy-2  gap-2" id="input-demo1">
                                             <div class="col-5 col-md-3 d-flex lightblue text-center rounded align-items-center"
                                                 onClick="goInputDemo()">
-                                                <p> + add portfolio</p>
+                                                <p>اضافه کردن نمونه کار+</p>
                                             </div>
-                                            <div class="col-5 col-md-3 lightblue p-2 rounded">
-                                                <div>
-                                                    <i class="fa-solid fa-xmark"></i>
+
+                                            @foreach (auth()->user()->portfolios as $portfolio)
+                                                <div class="col-5 col-md-3 lightblue p-2 rounded">
+                                                    <div>
+                                                        <form
+                                                            action="{{ route('front.technician.panel.delete.portfolio', $portfolio->id) }}"
+                                                            method="post">
+                                                            @csrf
+                                                            <button class="btn" type="submit">
+                                                                <i class="fa-solid fa-xmark"></i>
+                                                            </button>
+                                                        </form>
+                                                    </div>
+                                                    <div>
+                                                        <img src="{{ asset($portfolio->path) }}" class="w-100 h-auto"
+                                                            alt="{{ $portfolio->alt }}"
+                                                            title="{{ $portfolio->name }}">
+                                                    </div>
                                                 </div>
-                                                <div>
-                                                    <img src="image/portfolio1.png" class="w-100 h-auto" alt="">
-                                                </div>
-                                            </div>
-                                            <div class="col-5 col-md-3 lightblue p-2 rounded">
-                                                <div>
-                                                    <i class="fa-solid fa-xmark"></i>
-                                                </div>
-                                                <div>
-                                                    <img src="image/portfolio2.png" class="w-100 h-auto" alt="">
-                                                </div>
-                                            </div>
-                                            <div class="col-5 col-md-3 lightblue p-2 rounded">
-                                                <div>
-                                                    <i class="fa-solid fa-xmark"></i>
-                                                </div>
-                                                <div>
-                                                    <img src="image/portfolio2.png" class="w-100 h-auto" alt="">
-                                                </div>
-                                            </div>
-                                            <div class="col-5 col-md-3 lightblue p-2 rounded">
-                                                <div>
-                                                    <i class="fa-solid fa-xmark"></i>
-                                                </div>
-                                                <div>
-                                                    <img src="image/portfolio2.png" class="w-100 h-auto" alt="">
-                                                </div>
-                                            </div>
-                                            <div class="col-5 col-md-3 lightblue p-2 rounded">
-                                                <div>
-                                                    <i class="fa-solid fa-xmark"></i>
-                                                </div>
-                                                <div>
-                                                    <img src="image/portfolio2.png" class="w-100 h-auto" alt="">
-                                                </div>
-                                            </div>
-                                            <div class="col-5 col-md-3 lightblue p-2 rounded">
-                                                <div>
-                                                    <i class="fa-solid fa-xmark"></i>
-                                                </div>
-                                                <div>
-                                                    <img src="image/portfolio2.png" class="w-100 h-auto" alt="">
-                                                </div>
-                                            </div>
+                                            @endforeach
+
                                         </div>
 
 
 
-                                        <!-- input demo-->
                                         <div class="row d-flex justify-content-center gy-2  gap-2 d-none" id="input-demo2">
-                                            <form class="">
-
+                                            <form class=""
+                                                action="{{ route('front.technician.panel.add.portfolio') }}"
+                                                method="post" enctype="multipart/form-data">
+                                                @csrf
                                                 <div class="mb-3">
-                                                    <label for="date-register-demo" class="form-label">add
-                                                        portfolio</label>
-                                                    <input type="file" id="date-register-demo" class="form-control">
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label for="date-register-demo-title"
-                                                        class="form-label">title</label>
-                                                    <input type="text" class="form-control"
-                                                        id="date-register-demo-title">
+                                                    <label for="date-register-demo" class="form-label">اضافه کردن نمونه
+                                                        کار</label>
+                                                    <input type="file" name="image" id="date-register-demo"
+                                                        class="form-control">
                                                 </div>
 
                                                 <div class="mb-3">
                                                     <label for="date-register-demo-text"
-                                                        class="form-label">description</label>
-                                                    <textarea id="date-register-demo-text" class="form-control"></textarea>
+                                                        class="form-label">توضیحات</label>
+                                                    <textarea id="date-register-demo-text" name="description" class="form-control"></textarea>
                                                 </div>
 
                                                 <div class="d-flex mb-3 gap-3">
-                                                    <button type="reset"
-                                                        class="w-100 mt-4 border-redius-20 font-size20 pt-2 pb-2"
-                                                        onClick="goInputDemo()">cancel</button>
+                                                    <button type="reset" class="w-100 mt-4 border-redius-20 font-size32"
+                                                        onClick="goInputDemo()">لغو</button>
                                                     <button type="submit"
-                                                        class=" w-100  mt-4 darkYellow border-redius-20 font-size20 pt-2 pb-2">submit</button>
+                                                        class=" w-100  mt-4 darkYellow border-redius-20 font-size32">تایید</button>
                                                 </div>
 
                                             </form>

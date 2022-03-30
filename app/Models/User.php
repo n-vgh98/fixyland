@@ -74,4 +74,14 @@ class User extends Authenticatable
     {
         return $this->hasMany("App\Models\SkillUser");
     }
+
+    public function bankinfo()
+    {
+        return $this->hasOne("App\Models\bankInfo");
+    }
+
+    public function portfolios()
+    {
+        return $this->hasMany("App\Models\TechnicianPortfolio");
+    }
 }
