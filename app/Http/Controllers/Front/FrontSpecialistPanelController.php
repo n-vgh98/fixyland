@@ -6,8 +6,10 @@ use App\Models\Lang;
 use App\Models\User;
 use App\Models\Address;
 use App\Models\TechInfo;
+use App\Models\SkillUser;
 use Illuminate\Http\Request;
 use App\Models\CoveredAreaCity;
+use App\Models\ServiceSubCategory;
 use App\Http\Controllers\Controller;
 
 class FrontSpecialistPanelController extends Controller
@@ -117,5 +119,37 @@ class FrontSpecialistPanelController extends Controller
         $techinfo->covered_city_id = $city2->id;
         $techinfo->save();
         return redirect()->back()->with("success", "ادرس شما باموفقیت تغییر کرد");
+    }
+    public function updateskill(Request $request)
+    {
+        if (count(auth()->user()->skills) > 0) {
+            // get all skills
+            $allskills = [];
+            foreach (auth()->user()->skills as $sk) {
+                array_push($allskills, $sk->service_sub_categoy_id);
+            }
+
+            if (in_array($request->skill_id, $allskills)) {
+                $expertskill = SkillUser::where([["user_id", auth()->user()->id], ["service_sub_categoy_id", $request->skill_id]])->first();
+                $expertskill->delete();
+                return redirect()->back()->with("fail", "حذف شد");
+            } else {
+                $expertskill = new SkillUser();
+                $expertskill->user_id = auth()->user()->id;
+                $skillsubcategory = ServiceSubCategory::find($request->skill_id);
+                $expertskill->service_categoy_id = $skillsubcategory->category->id;
+                $expertskill->service_sub_categoy_id = $request->skill_id;
+                $expertskill->save();
+                return redirect()->back()->with("success", "اضافه شد");
+            }
+        } else {
+            $expertskill = new SkillUser();
+            $expertskill->user_id = auth()->user()->id;
+            $skillsubcategory = ServiceSubCategory::find($request->skill_id);
+            $expertskill->service_categoy_id = $skillsubcategory->category->id;
+            $expertskill->service_sub_categoy_id = $request->skill_id;
+            $expertskill->save();
+            return redirect()->back()->with("success", "اضافه شد");
+        }
     }
 }

@@ -535,80 +535,26 @@
 
                                             <div class="col-12 col-md-8  ">
 
-                                                <form class=" d-flex pe-2 ps-2 flex-row lightblue border">
-                                                    <button class="btn" type="submit"> <i
-                                                            class="fa-solid fa-magnifying-glass"></i> </button>
-                                                    <input class="form-control" id="form-control-register-specialist"
-                                                        type="search" placeholder="Search" aria-label="Search">
-                                                </form>
-
-
                                                 <!--باکس مهارت ها-->
                                                 <div class="mt-2 vh-100 form-control-register-specialist-div">
                                                     <div class="row d-flex gap-2 justify-content-center mb-2  ">
-                                                        <div class="col-3 border-redius-20 border-darkgreen border-4 p-3">
-                                                            لوازم خانگی نصب و تعمیر
-                                                        </div>
-                                                        <div class="col-3 border-redius-20 border-darkgreen border-4 p-3">
-                                                            لوازم خانگی نصب و تعمیر
-                                                        </div>
-                                                        <div class="col-3 border-redius-20 border-darkgreen border-4 p-3">
-                                                            لولوازم خانگی نصب و تعمیر
-                                                        </div>
-                                                    </div>
+                                                        @if (count(auth()->user()->skills) > 0)
+                                                            <div
+                                                                class="col-3 border-redius-20 border-darkgreen border-4 p-3">
+                                                                {{ auth()->user()->skills[0]->category->name }}
+                                                            </div>
+                                                        @else
+                                                            @foreach ($categorylangs as $categorylang)
+                                                                @php
+                                                                    $category = $categorylang->langable;
+                                                                @endphp
+                                                                <div
+                                                                    class="col-3 border-redius-20 border-darkgreen border-4 p-3">
+                                                                    {{ $category->name }}
+                                                                </div>
+                                                            @endforeach
+                                                        @endif
 
-                                                    <div class="row d-flex gap-2 justify-content-center mb-2 ">
-                                                        <div class="col-3 border-redius-20 border-darkgreen border-4 p-3">
-                                                            لوازم خانگی نصب و تعمیر</div>
-                                                        <div class="col-3 border-redius-20 border-darkgreen border-4 p-3">
-                                                            لوازم خانگی نصب و تعمیر</div>
-                                                        <div class="col-3 border-redius-20 border-darkgreen border-4 p-3">
-                                                            لوازم خانگی نصب و تعمیر</div>
-                                                    </div>
-
-                                                    <div class="row d-flex gap-2 justify-content-center mb-2 ">
-                                                        <div class="col-3 border-redius-20 border-darkgreen border-4 p-3">
-                                                            لوازم خانگی نصب و تعمیر</div>
-                                                        <div class="col-3 border-redius-20 border-darkgreen border-4 p-3">
-                                                            لوازم خانگی نصب و تعمیر</div>
-                                                        <div class="col-3 border-redius-20 border-darkgreen border-4 p-3">
-                                                            لوازم خانگی نصب و تعمیر</div>
-                                                    </div>
-
-                                                    <div class="row d-flex gap-2 justify-content-center mb-2 ">
-                                                        <div class="col-3 border-redius-20 border-darkgreen border-4 p-3">
-                                                            لوازم خانگی نصب و تعمیر</div>
-                                                        <div class="col-3 border-redius-20 border-darkgreen border-4 p-3">
-                                                            لوازم خانگی نصب و تعمیر</div>
-                                                        <div class="col-3 border-redius-20 border-darkgreen border-4 p-3">
-                                                            لوازم خانگی نصب و تعمیر</div>
-                                                    </div>
-
-                                                    <div class="row d-flex gap-2 justify-content-center mb-2 ">
-                                                        <div class="col-3 border-redius-20 border-darkgreen border-4 p-3">
-                                                            لوازم خانگی نصب و تعمیر</div>
-                                                        <div class="col-3 border-redius-20 border-darkgreen border-4 p-3">
-                                                            لوازم خانگی نصب و تعمیر</div>
-                                                        <div class="col-3 border-redius-20 border-darkgreen border-4 p-3">
-                                                            لوازم خانگی نصب و تعمیر</div>
-                                                    </div>
-
-                                                    <div class="row d-flex gap-2 justify-content-center mb-2 ">
-                                                        <div class="col-3 border-redius-20 border-darkgreen border-4 p-3">
-                                                            لوازم خانگی نصب و تعمیر</div>
-                                                        <div class="col-3 border-redius-20 border-darkgreen border-4 p-3">
-                                                            لوازم خانگی نصب و تعمیر</div>
-                                                        <div class="col-3 border-redius-20 border-darkgreen border-4 p-3">
-                                                            لوازم خانگی نصب و تعمیر</div>
-                                                    </div>
-
-                                                    <div class="row d-flex gap-2 justify-content-center mb-2 ">
-                                                        <div class="col-3 border-redius-20 border-darkgreen border-4 p-3">
-                                                            لوازم خانگی نصب و تعمیر</div>
-                                                        <div class="col-3 border-redius-20 border-darkgreen border-4 p-3">
-                                                            لوازم خانگی نصب و تعمیر</div>
-                                                        <div class="col-3 border-redius-20 border-darkgreen border-4 p-3">
-                                                            لوازم خانگی نصب و تعمیر</div>
                                                     </div>
 
                                                     <!--پیشنهاد تخصص جدید-->
@@ -628,109 +574,92 @@
 
 
 
-                                                <div class="mt-2 vh-100 form-control-register-specialist-div2 d-none">
 
-                                                    <div
-                                                        class="d-flex justify-content-between lightgray align-items-center p-2 mb-2">
+                                                @if (count(auth()->user()->skills) > 0)
+                                                    @php
+                                                        $category = auth()->user()->skills[0]->category;
+                                                    @endphp
+                                                    <div class="mt-2 vh-100 form-control-register-specialist-div2 d-none">
 
-                                                        <p>باربری و جابجایی</p>
+                                                        <div
+                                                            class="d-flex justify-content-between lightgray align-items-center p-2 mb-2">
 
-                                                        <button
-                                                            class="link-dark text-decoration-none  pe-3 ps-3 rounded lightblue darkYellowOnHover"
-                                                            onClick="backToCategories()">بازگشت به دسته</button>
+                                                            <p>{{ $category->name }}</p>
 
-                                                    </div>
+                                                            <button
+                                                                class="link-dark text-decoration-none  pe-3 ps-3 rounded lightblue darkYellowOnHover"
+                                                                onClick="backToCategories()">بازگشت به دسته</button>
 
-                                                    <div>
-
-
-                                                        <div class="mb-3 d-flex justify-content-around">
-                                                            <form>
-                                                                <button type="submit"
-                                                                    class="mt-4 darkYellow border-0 lightgray p-2 rounded-3">پمپ
-                                                                    و منبع آب1</button>
-                                                            </form>
-
-                                                            <form>
-                                                                <button type="submit"
-                                                                    class="mt-4 border-0 darkgreen p-2 rounded-3 text-light">1نصب
-                                                                    روشویی</button>
-                                                            </form>
                                                         </div>
 
-                                                        <div class="mb-3 d-flex justify-content-around">
-                                                            <form>
-                                                                <button type="submit"
-                                                                    class="mt-4 darkYellow border-0 lightgray p-2 rounded-3">پمپ
-                                                                    و منبع آب1</button>
-                                                            </form>
+                                                        <div>
+                                                            <div class="mb-3 row">
+                                                                @php
+                                                                    // get all skills
+                                                                    $allskills = [];
+                                                                    foreach (auth()->user()->skills as $sk) {
+                                                                        array_push($allskills, $sk->service_sub_categoy_id);
+                                                                    }
+                                                                @endphp
 
-                                                            <form>
-                                                                <button type="submit"
-                                                                    class="mt-4 darkYellow border-0 lightgray p-2 rounded-3">1نصب
-                                                                    روشویی</button>
-                                                            </form>
-                                                        </div>
-
-
-
-                                                    </div>
-
-
-                                                </div>
-
-
-
-                                                <div class="mt-2 vh-100 form-control-register-specialist-div2 d-none">
-
-                                                    <div
-                                                        class="d-flex justify-content-between lightgray align-items-center p-2 mb-2">
-
-                                                        <p>باربری و جابجایی</p>
-
-                                                        <button
-                                                            class="link-dark text-decoration-none  pe-3 ps-3 rounded lightblue darkYellowOnHover"
-                                                            onClick="backToCategories()">بازگشت به دسته</button>
-
-                                                    </div>
-
-                                                    <div>
-
-
-                                                        <div class="mb-3 d-flex justify-content-around">
-                                                            <form>
-                                                                <button type="submit"
-                                                                    class="mt-4 darkYellow border-0 lightgray p-2 rounded-3">پمپ
-                                                                    و منبع آب2</button>
-                                                            </form>
-
-                                                            <form>
-                                                                <button type="submit"
-                                                                    class="mt-4 darkYellow border-0 lightgray p-2 rounded-3">2نصب
-                                                                    روشویی</button>
-                                                            </form>
-                                                        </div>
-
-                                                        <div class="mb-3 d-flex justify-content-around">
-                                                            <form>
-                                                                <button type="submit"
-                                                                    class="mt-4 darkYellow border-0 lightgray p-2 rounded-3">پمپ
-                                                                    و منبع آب2</button>
-                                                            </form>
-
-                                                            <form>
-                                                                <button type="submit"
-                                                                    class="mt-4 border-0 darkgreen p-2 rounded-3 text-light">2نصب
-                                                                    روشویی</button>
-                                                            </form>
+                                                                @foreach ($category->subcategories as $subcategory)
+                                                                    <form class="col-6" method="post"
+                                                                        action="{{ route('front.technician.panel.update.skill', $subcategory->id) }}">
+                                                                        @csrf
+                                                                        @if (in_array($subcategory->id, $allskills))
+                                                                            <button type="submit"
+                                                                                class="mt-4 border-0 darkgreen p-2 rounded-3 text-light">{{ $subcategory->name }}</button>
+                                                                        @else
+                                                                            <button type="submit"
+                                                                                class="mt-4 darkYellow border-0 lightgray p-2 rounded-3">{{ $subcategory->name }}</button>
+                                                                        @endif
+                                                                    </form>
+                                                                @endforeach
+                                                            </div>
                                                         </div>
 
 
-
                                                     </div>
+                                                @else
+                                                    @foreach ($categorylangs as $categorylang)
+                                                        @php
+                                                            $category = $categorylang->langable;
+                                                        @endphp
+                                                        <div
+                                                            class="mt-2 vh-100 form-control-register-specialist-div2 d-none">
+
+                                                            <div
+                                                                class="d-flex justify-content-between lightgray align-items-center p-2 mb-2">
+
+                                                                <p>{{ $category->name }}</p>
+
+                                                                <button
+                                                                    class="link-dark text-decoration-none  pe-3 ps-3 rounded lightblue darkYellowOnHover"
+                                                                    onClick="backToCategories()">بازگشت به دسته</button>
+
+                                                            </div>
+
+                                                            <div>
+                                                                <div class="mb-3 row">
+                                                                    @foreach ($category->subcategories as $subcategory)
+                                                                        <form method="post" class="col-6"
+                                                                            action="{{ route('front.technician.panel.update.skill', $subcategory->id) }}">
+                                                                            @csrf
+
+                                                                            <button type="submit"
+                                                                                class="mt-4 darkYellow border-0 lightgray p-2 rounded-3">{{ $subcategory->name }}</button>
+
+                                                                        </form>
+                                                                    @endforeach
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    @endforeach
+                                                @endif
 
 
-                                                </div>
+
 
                                             </div>
 
@@ -746,32 +675,24 @@
 
                                                     <ul class="list-group form-control-register-specialist-ul">
                                                         <li class="list-group-item ">
-                                                            <form class="d-flex justify-content-between">
-                                                                <p>First item</p><button type="submit"
-                                                                    class="border-0 bg-white"><i
-                                                                        class="fa-solid fa-trash-can"></i></button>
-                                                            </form>
-                                                        </li>
-                                                        <li class="list-group-item ">
-                                                            <form class="d-flex justify-content-between">
-                                                                <p>Second item</p><button type="submit"
-                                                                    class="border-0 bg-white"><i
-                                                                        class="fa-solid fa-trash-can"></i></button>
-                                                            </form>
-                                                        </li>
-                                                        <li class="list-group-item ">
-                                                            <form class="d-flex justify-content-between">
-                                                                <p>Third item</p><button type="submit"
-                                                                    class="border-0 bg-white"><i
-                                                                        class="fa-solid fa-trash-can"></i></button>
-                                                            </form>
+                                                            @foreach (auth()->user()->skills as $skill)
+                                                                <form class="d-flex justify-content-between" method="post"
+                                                                    action="{{ route('front.technician.panel.update.skill', $skill->subcategory->id) }}">
+                                                                    @csrf
+                                                                    <p>{{ $skill->subcategory->name }}</p><button
+                                                                        type=" submit" class="border-0 bg-white"><i
+                                                                            class="fa-solid fa-trash-can"></i></button>
+                                                                </form>
+                                                            @endforeach
+
                                                         </li>
 
                                                     </ul>
 
-
-                                                    <p class="text-center text-danger ">در حال حاضر مهارتی انتخاب نشوده</p>
-
+                                                    @if (count(auth()->user()->skills) == 0)
+                                                        <p class="text-center text-danger ">در حال حاضر مهارتی انتخاب نشوده
+                                                        </p>
+                                                    @endif
 
 
                                                 </div>

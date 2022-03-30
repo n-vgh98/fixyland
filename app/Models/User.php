@@ -69,4 +69,9 @@ class User extends Authenticatable
     {
         return $this->hasOne("App\Models\TechInfo");
     }
+
+    public function skills()
+    {
+        return $this->hasMany("App\Models\SkillUser");
+    }
 }

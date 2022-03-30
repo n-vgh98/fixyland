@@ -333,9 +333,9 @@ route::prefix("admin")->middleware(['auth:sanctum', 'verified', "admin"])->group
         });
     });
 });
-// Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-//     return view('dashboard');
-// })->name('dashboard');
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');
 // end for admin routing
 
 
@@ -379,6 +379,7 @@ route::prefix("{locale}")->middleware("language")->group(function () {
             route::get("/edit", "edit")->name("front.technician.panel.edit");
             route::post("/updateprofile", "updateprofile")->name("front.technician.panel.update.profile");
             route::post("/updateadress", "updateadress")->name("front.technician.panel.update.address");
+            route::post("/updateskill/{skill_id}", "updateskill")->name("front.technician.panel.update.skill");
         });
     });
 
