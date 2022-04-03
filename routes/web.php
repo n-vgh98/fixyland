@@ -390,6 +390,12 @@ route::prefix("{locale}")->middleware("language")->group(function () {
     route::prefix("userpanel")->middleware(['auth:sanctum', 'verified'])->group(function () {
         route::controller(FrontUserPanelController::class)->group(function () {
             route::get("/", "index")->name("user.panel.inedx");
+
+
+
+
+
+            // routing for ms vaghefi
         });
     });
 
