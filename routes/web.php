@@ -37,6 +37,7 @@ use App\Http\Controllers\Front\FrontServiceController;
 use App\Http\Controllers\Front\FrontSpecialistController;
 use App\Http\Controllers\Front\FrontSpecialistPanelController;
 use App\Http\Controllers\Front\FrontUserController;
+use App\Http\Controllers\Front\FrontUserPanelController;
 use GuzzleHttp\Middleware;
 
 /*
@@ -381,8 +382,14 @@ route::prefix("{locale}")->middleware("language")->group(function () {
             route::post("/updateadress", "updateadress")->name("front.technician.panel.update.address");
             route::post("/updateskill/{skill_id}", "updateskill")->name("front.technician.panel.update.skill");
             route::post("/updatebankinfo", "updatebankinfo")->name("front.technician.panel.update.bankinfo");
-            route::post("/deleteporfolio/{pid}", "deleteporfolio")->name("front.technician.panel.delete.portfolio");
-            route::post("/addporfolio", "addporfolio")->name("front.technician.panel.add.portfolio");
+            route::post("/deleteportfolio/{pid}", "deleteporfolio")->name("front.technician.panel.delete.portfolio");
+            route::post("/addportfolio", "addporfolio")->name("front.technician.panel.add.portfolio");
+        });
+    });
+
+    route::prefix("userpanel")->middleware(['auth:sanctum', 'verified'])->group(function () {
+        route::controller(FrontUserPanelController::class)->group(function () {
+            route::get("/", "index")->name("user.panel.inedx");
         });
     });
 
