@@ -394,6 +394,8 @@ route::prefix("{locale}")->middleware("language")->group(function () {
             route::get("/passwordchange", "showpasschange")->name("user.panel.passchange.show");
             route::post("/passchange", "passchange")->name("user.panel.passchange.store");
             route::post("/picturechange", "picturechange")->name("user.panel.profile.pic.change");
+            route::get("/editprofile", "editprofile")->name("user.panel.profile.edit");
+            route::post("/updateprofile", "updateprofile")->name("user.panel.profile.update");
 
 
 

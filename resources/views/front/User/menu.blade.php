@@ -96,7 +96,8 @@
 
         <div class="d-flex p-2 ps-3 pe-3 w-100">
             <i class="fa-solid fa-pen-to-square ms-3 mt-1"></i>
-            <a href="user-edit-profile.html" class="text-decoration-none darkYellow-text_onHover text-black-no-hover">
+            <a href="{{ route('user.panel.profile.edit') }}"
+                class="text-decoration-none darkYellow-text_onHover text-black-no-hover">
                 ویرایش پروفایل
             </a>
         </div>
@@ -304,7 +305,8 @@
 
         <div class="d-flex mt-2 p-2 ps-3 pe-3 w-100">
             <i class="fa-solid fa-user me-3 mt-1"></i>
-            <a href="user-panel.html" class="text-decoration-none darkYellow-text_onHover text-black-no-hover">
+            <a href="{{ route('user.panel.profile.edit') }}"
+                class="text-decoration-none darkYellow-text_onHover text-black-no-hover">
                 profile </a>
         </div>
 

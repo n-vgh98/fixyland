@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers\Front;
 
+use App\Models\Lang;
 use App\Models\User;
+use App\Models\Address;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\CoveredAreaCity;
 use Illuminate\Support\Facades\Hash;
 
 class FrontUserPanelController extends Controller
@@ -43,6 +46,31 @@ class FrontUserPanelController extends Controller
         $user->save();
         return redirect()->back();
     }
+
+
+    public function editprofile($lang)
+    {
+        $languages = Lang::where([["name", $lang], ["langable_type", "App\Models\CoveredArea"]])->get();
+        return view("front.User.edit", compact("languages"));
+    }
+
+    public function updateprofile(Request $request)
+    {
+        $user = User::find(auth()->user()->id);
+        $user->firstname = $request->firstname;
+        $user->lastname = $request->lastname;
+        $user->email = $request->email;
+        $user->phone = $request->phone;
+        $user->save();
+        $address = Address::find(auth()->user()->address->id);
+        $address->state_id = $request->state_id;
+        $city = CoveredAreaCity::where("name", $request->city_id)->first();
+        $address->city_id = $city->id;
+        $address->description = $request->description;
+        $address->save();
+        return redirect()->back()->with("success", "اطلاعات شما ویرایش شد");
+    }
+
 
     /**
      * Show the form for creating a new resource.
