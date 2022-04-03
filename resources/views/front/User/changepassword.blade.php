@@ -9,11 +9,6 @@
     @endif
 @endsection
 
-@section('head')
-    <!--croppie styles and scripts cdn (crop image)-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.2/croppie.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.2/croppie.js"></script>
-@endsection
 
 @section('content')
     @if (app()->getLocale() == 'fa' || app()->getLocale() == 'ar')

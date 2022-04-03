@@ -111,7 +111,7 @@
 
         <div class="d-flex p-2 ps-3 pe-3 w-100">
             <i class="fa-solid fa-heart ms-3 mt-1"></i>
-            <a href="user-selected-specialist.html"
+            <a href="{{ route('user.panel.profile.favorittech.show') }}"
                 class="text-decoration-none darkYellow-text_onHover text-black-no-hover"> متخصص منتخب </a>
         </div>
 
@@ -324,7 +324,7 @@
 
         <div class="d-flex p-2 ps-3 pe-3 w-100">
             <i class="fa-solid fa-heart me-3 mt-1"></i>
-            <a href="user-selected-specialist.html"
+            <a href="{{ route('user.panel.profile.favorittech.show') }}"
                 class="text-decoration-none darkYellow-text_onHover text-black-no-hover"> motekhases montakhab
             </a>
         </div>

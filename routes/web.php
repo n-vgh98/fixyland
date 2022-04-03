@@ -396,6 +396,8 @@ route::prefix("{locale}")->middleware("language")->group(function () {
             route::post("/picturechange", "picturechange")->name("user.panel.profile.pic.change");
             route::get("/editprofile", "editprofile")->name("user.panel.profile.edit");
             route::post("/updateprofile", "updateprofile")->name("user.panel.profile.update");
+            route::get("/favoritetechnicians", "favorittech")->name("user.panel.profile.favorittech.show");
+            route::post("/favortech", "favortech")->name("user.panel.profile.favorittech.store");
 
 
 

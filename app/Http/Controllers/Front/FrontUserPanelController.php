@@ -72,6 +72,12 @@ class FrontUserPanelController extends Controller
     }
 
 
+    public function favorittech()
+    {
+        return view("front.User.favorittech");
+    }
+
+
     /**
      * Show the form for creating a new resource.
      *
