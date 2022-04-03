@@ -398,10 +398,6 @@ route::prefix("{locale}")->middleware("language")->group(function () {
             // routing for ms vaghefi
         });
     });
-
-
-
-
     route::get("/", [FrontHomeController::class, "index"])->name("user.home");
     Route::prefix("articles")->group(function () {
         Route::controller(FrontArticleController::class)->group(function () {

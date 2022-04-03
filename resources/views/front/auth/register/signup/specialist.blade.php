@@ -161,7 +161,7 @@
 
                     <div class="mb-3">
                         <label for="address-register-specialist" class="form-label ">آدرس</label>
-                        <textarea class="form-control bg-white" id="address-register-specialist" placeholder="آدرس"></textarea>
+                        <textarea class="form-control bg-white" name="address_description" id="address-register-specialist" placeholder="آدرس"></textarea>
                     </div>
 
                     <div class="mb-3">

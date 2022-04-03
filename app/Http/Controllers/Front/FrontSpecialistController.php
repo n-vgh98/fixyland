@@ -141,7 +141,7 @@ class FrontSpecialistController extends Controller
 
                 // saving bank accounts
                 $bank = new BankInfo();
-                $bank->user_id = auth()->user()->id;
+                $bank->user_id = $user->id;
                 $bank->account_number = $request->account_number;
                 $bank->credit_card = $request->credit_card;
                 $bank->save();
