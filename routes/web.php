@@ -390,6 +390,9 @@ route::prefix("{locale}")->middleware("language")->group(function () {
     route::prefix("userpanel")->middleware(['auth:sanctum', 'verified'])->group(function () {
         route::controller(FrontUserPanelController::class)->group(function () {
             route::get("/", "index")->name("user.panel.inedx");
+            route::get("/passwordchange", "showpasschange")->name("user.panel.passchange.show");
+            route::post("/passchange", "passchange")->name("user.panel.passchange.store");
+            route::post("/picturechange", "picturechange")->name("user.panel.profile.pic.change");
 
 
 

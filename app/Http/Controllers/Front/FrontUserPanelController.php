@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Front;
 
-use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
 
 class FrontUserPanelController extends Controller
 {
@@ -15,6 +17,27 @@ class FrontUserPanelController extends Controller
     public function index()
     {
         return view("front.User.panel");
+    }
+
+    public function showpasschange()
+    {
+        return view("front.User.changepassword");
+    }
+
+    public function passchange(Request $request)
+    {
+        $user = User::find(auth()->user()->id);
+        $user->password = Hash::make($request->password);
+        $user->save();
+        return redirect()->back()->with("success", "پسورد شما با موفقیت تغییر کرد");
+    }
+
+    public function picturechange(Request $request)
+    {
+        $user = User::find(auth()->user()->id);
+        $user->updateProfilePhoto($request->profile_pic);
+        $user->save();
+        return redirect()->back();
     }
 
     /**
