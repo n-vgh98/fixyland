@@ -84,4 +84,9 @@ class User extends Authenticatable
     {
         return $this->hasMany("App\Models\TechnicianPortfolio");
     }
+
+    public function favortechs()
+    {
+        return $this->hasMany("App\Models\FavoritTechnician");
+    }
 }
