@@ -94,7 +94,7 @@
 
                     <div class="mb-3">
                         <label for="address-register-cutomer" class="form-label">آدرس</label>
-                        <textarea class="form-control" name="address" id="address-register-cutomer"></textarea>
+                        <textarea class="form-control" name="description" id="address-register-cutomer"></textarea>
                     </div>
 
 
@@ -204,7 +204,7 @@
 
                     <div class="mb-3">
                         <label for="address-register-cutomer" class="form-label"> addr. </label>
-                        <textarea class="form-control" name="address" id="address-register-cutomer"></textarea>
+                        <textarea class="form-control" name="description" id="address-register-cutomer"></textarea>
                     </div>
 
 

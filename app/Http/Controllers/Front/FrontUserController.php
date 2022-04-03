@@ -55,6 +55,7 @@ class FrontUserController extends Controller
         $address = new Address();
         $address->user_id = $user->id;
         $city = CoveredAreaCity::where("name", $request->city_id)->first();
+        $address->description = $request->description;
         $address->city_id = $city->id;
         $address->state_id = $request->state_id;
         $address->save();
