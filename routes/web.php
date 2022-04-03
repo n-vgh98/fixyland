@@ -405,7 +405,7 @@ route::prefix("{locale}")->middleware("language")->group(function () {
 
 
             // routing for ms vaghefi
-
+            route::get("/notification","notifications")->name("user.panel.notification");
         });
     });
     route::get("/", [FrontHomeController::class, "index"])->name("user.home");

@@ -8,6 +8,8 @@ use App\Models\Address;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\CoveredAreaCity;
+use App\Models\Notification;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class FrontUserPanelController extends Controller
@@ -149,5 +151,12 @@ class FrontUserPanelController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function notifications()
+    {
+       $notifications = Notification::where([["mode", 0],["receivers","Customers"]])->get();
+       $pnotifications = Notification::where([["mode", 1],["receiver_id",Auth::user()->id]])->get();
+       return view("front.User.notification",compact(["notifications","pnotifications"])); 
     }
 }
