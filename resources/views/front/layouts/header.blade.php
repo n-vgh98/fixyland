@@ -188,8 +188,8 @@ $categories = App\Models\Lang::where([['name', $catlang], ['langable_type', 'App
                                                 class="fa-solid fa-user font-size24 p-1"></i>{{ auth()->user()->firstname }}
                                             {{ auth()->user()->lastname }} </a>
                                     @elseif (auth()->user()->role_name == 'user')
-                                        <a href="#" class="mt-1 btn outline-yellow text-decoration-none"
-                                            id="button-menu1"> <i
+                                        <a href="{{ route('user.panel.inedx') }}"
+                                            class="mt-1 btn outline-yellow text-decoration-none" id="button-menu1"> <i
                                                 class="fa-solid fa-user font-size24 p-1"></i>{{ auth()->user()->firstname }}
                                             {{ auth()->user()->lastname }} </a>
                                     @endif
@@ -439,8 +439,8 @@ $categories = App\Models\Lang::where([['name', $catlang], ['langable_type', 'App
                                                 class="fa-solid fa-user font-size24 p-1"></i>{{ auth()->user()->firstname }}
                                             {{ auth()->user()->lastname }}</a>
                                     @elseif (auth()->user()->role_name == 'user')
-                                        <a href="#" class="mt-1 btn outline-yellow text-decoration-none"
-                                            id="button-menu1"> <i
+                                        <a href="{{ route('user.panel.inedx') }}"
+                                            class="mt-1 btn outline-yellow text-decoration-none" id="button-menu1"> <i
                                                 class="fa-solid fa-user font-size24 p-1"></i>{{ auth()->user()->firstname }}
                                             {{ auth()->user()->lastname }}</a>
                                     @endif
