@@ -178,25 +178,27 @@ $categories = App\Models\Lang::where([['name', $catlang], ['langable_type', 'App
                     <!--header left column-->
                     <div class="col-lg-3  order-1 order-lg-3">
                         <div class="row d-flex flex-fill justify-content-center mb-2">
-                            <div class="d-flex gap-3 col-10 col-sm-7 col-md-10 col-lg-12">
+                            <div
+                                class="d-flex gap-3 col-10 col-sm-7 col-md-10 col-lg-12 justify-content-lg-end justify-content-center">
 
                                 @if (auth()->check())
                                     @if (auth()->user()->role_name == 'technician')
                                         <a href="{{ route('front.technician.panel.show') }}"
-                                            class="btn flex-fill text-decoration-none" id="button-menu2">
-                                            پنل</a>
+                                            class="mt-1 btn outline-yellow text-decoration-none" id="button-menu1"> <i
+                                                class="fa-solid fa-user font-size24 p-1"></i>{{ auth()->user()->firstname }}
+                                            {{ auth()->user()->lastname }} </a>
                                     @elseif (auth()->user()->role_name == 'user')
-                                        <a href="#" class="btn flex-fill text-decoration-none" id="button-menu2">
-                                            پنل</a>
+                                        <a href="#" class="mt-1 btn outline-yellow text-decoration-none"
+                                            id="button-menu1"> <i
+                                                class="fa-solid fa-user font-size24 p-1"></i>{{ auth()->user()->firstname }}
+                                            {{ auth()->user()->lastname }} </a>
                                     @endif
                                 @else
                                     <a href="{{ route('user.login') }}"
-                                        class="btn outline-yellow flex-fill text-decoration-none" id="button-menu1">
-                                        ورود
-                                    </a>
+                                        class="btn outline-yellow flex-fill text-decoration-none"
+                                        id="button-menu1">ورود</a>
                                     <a href="{{ route('user.register') }}" class="btn flex-fill text-decoration-none"
-                                        id="button-menu2">
-                                        ثبت نام</a>
+                                        id="button-menu2">ثبت نام</a>
                                 @endif
 
 
@@ -427,13 +429,30 @@ $categories = App\Models\Lang::where([['name', $catlang], ['langable_type', 'App
                     <!--header left column-->
                     <div class="col-lg-3  order-1 order-lg-3">
                         <div class="row d-flex flex-fill justify-content-center mb-2">
-                            <div class="d-flex gap-3 col-10 col-sm-7 col-md-10 col-lg-12">
-                                <a href="{{ route('user.login') }}"
-                                    class="btn outline-yellow flex-fill text-decoration-none" id="button-menu1"> login
-                                </a>
-                                <a href="{{ route('user.register') }}" class="btn flex-fill text-decoration-none"
-                                    id="button-menu2">
-                                    sign up </a>
+                            <div
+                                class="d-flex gap-3 col-10 col-sm-7 col-md-10 col-lg-12 justify-content-lg-end justify-content-center">
+
+                                @if (auth()->check())
+                                    @if (auth()->user()->role_name == 'technician')
+                                        <a href="{{ route('front.technician.panel.show') }}"
+                                            class="mt-1 btn outline-yellow text-decoration-none" id="button-menu1"> <i
+                                                class="fa-solid fa-user font-size24 p-1"></i>{{ auth()->user()->firstname }}
+                                            {{ auth()->user()->lastname }}</a>
+                                    @elseif (auth()->user()->role_name == 'user')
+                                        <a href="#" class="mt-1 btn outline-yellow text-decoration-none"
+                                            id="button-menu1"> <i
+                                                class="fa-solid fa-user font-size24 p-1"></i>{{ auth()->user()->firstname }}
+                                            {{ auth()->user()->lastname }}</a>
+                                    @endif
+                                @else
+                                    <a href="{{ route('user.login') }}"
+                                        class="btn outline-yellow flex-fill text-decoration-none" id="button-menu1">Log
+                                        In</a>
+                                    <a href="{{ route('user.register') }}"
+                                        class="btn flex-fill text-decoration-none" id="button-menu2">Sign Up</a>
+                                @endif
+
+
                             </div>
                         </div>
                     </div>
