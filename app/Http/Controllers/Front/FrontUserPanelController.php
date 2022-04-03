@@ -27,9 +27,13 @@ class FrontUserPanelController extends Controller
     public function passchange(Request $request)
     {
         $user = User::find(auth()->user()->id);
-        $user->password = Hash::make($request->password);
-        $user->save();
-        return redirect()->back()->with("success", "پسورد شما با موفقیت تغییر کرد");
+        if ($request->password == $request->password_confirm) {
+            $user->password = Hash::make($request->password);
+            $user->save();
+            return redirect()->route("user.login");
+        } else {
+            return redirect()->back()->with("success", "رمز عبور شما یکی نیست");
+        }
     }
 
     public function picturechange(Request $request)
