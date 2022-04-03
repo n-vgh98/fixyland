@@ -343,7 +343,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 // always redirect domain to english site
 route::get("/", function () {
     return redirect("/ar");
-});
+})->name("home");
 
 // route::get("login", function () {
 //     return redirect()->route("user.login", "ar");
