@@ -378,6 +378,7 @@ route::prefix("{locale}")->middleware("language")->group(function () {
         route::controller(FrontSpecialistPanelController::class)->group(function () {
             route::get("/", "index")->name("front.technician.panel.show");
             route::get("/edit", "edit")->name("front.technician.panel.edit");
+            route::get("/notifications", "notification")->name("front.technician.panel.notification");
             route::post("/updateprofile", "updateprofile")->name("front.technician.panel.update.profile");
             route::post("/updateadress", "updateadress")->name("front.technician.panel.update.address");
             route::post("/updateskill/{skill_id}", "updateskill")->name("front.technician.panel.update.skill");
@@ -396,6 +397,7 @@ route::prefix("{locale}")->middleware("language")->group(function () {
 
 
             // routing for ms vaghefi
+
         });
     });
     route::get("/", [FrontHomeController::class, "index"])->name("user.home");

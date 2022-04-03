@@ -12,7 +12,9 @@ use Illuminate\Http\Request;
 use App\Models\CoveredAreaCity;
 use App\Models\ServiceSubCategory;
 use App\Http\Controllers\Controller;
+use App\Models\Notification;
 use App\Models\TechnicianPortfolio;
+use Illuminate\Support\Facades\Auth;
 
 class FrontSpecialistPanelController extends Controller
 {
@@ -191,5 +193,12 @@ class FrontSpecialistPanelController extends Controller
         $port->path = "Images/portfolios/" . $imagename;
         $port->save();
         return redirect()->back()->with("success", "نمونه کار شما باموفقیت اضافه شد");
+    }
+
+    public function notification()
+    {
+        $notifications = Notification::Where([["mode", 0] ,["receivers","Technicians"]])->get();
+        $pnotifications =Notification::where("receiver_id",Auth::user()->id)->get();
+        return view("front.technician.notification",compact("notifications","pnotifications"));
     }
 }
