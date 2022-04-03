@@ -139,7 +139,7 @@
 
                     <div class="d-flex p-2 ps-3 pe-3 w-100">
                         <i class="fa-solid fa-newspaper ms-3 mt-1"></i>
-                        <a href="spc-fixy-msgs.html"
+                        <a href="{{ route('front.technician.panel.notification') }}"
                             class="text-decoration-none darkYellow-text_onHover text-black-no-hover"> پیام های فیکسی لند
                         </a>
                     </div>
