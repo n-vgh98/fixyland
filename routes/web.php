@@ -398,6 +398,7 @@ route::prefix("{locale}")->middleware("language")->group(function () {
             route::post("/updateprofile", "updateprofile")->name("user.panel.profile.update");
             route::get("/favoritetechnicians", "favorittech")->name("user.panel.profile.favorittech.show");
             route::post("/favortech", "favortech")->name("user.panel.profile.favorittech.store");
+            route::get("/techinfo/{id}", "techinfo")->name("user.panel.profile.tech.info");
 
 
 

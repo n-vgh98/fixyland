@@ -78,7 +78,7 @@
                                                 می باشد.
                                             </p>
 
-                                            <a href="specialistInfo.html"
+                                            <a href="{{ route('user.panel.profile.tech.info', $tech->technician->id) }}"
                                                 class="text-decoration-none darkYellow-text d-flex justify-content-center justify-content-md-start mb-2 mb-md-0">
                                                 مشاهده اطلاعات بیشتر
                                             </a>
@@ -176,7 +176,7 @@
                                                 incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
                                             </p>
 
-                                            <a href="specialistInfo.html"
+                                            <a href="{{ route('user.panel.profile.tech.info', $tech->technician->id) }}"
                                                 class="text-decoration-none darkYellow-text d-flex justify-content-center justify-content-md-start mb-2 mb-md-0">
                                                 more info.
                                             </a>

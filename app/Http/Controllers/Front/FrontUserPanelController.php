@@ -77,6 +77,13 @@ class FrontUserPanelController extends Controller
         return view("front.User.favorittech");
     }
 
+    public function  techinfo($lang, $id)
+    {
+        $user = User::find($id);
+        return view("front.User.speciinfo", compact("user"));
+    }
+
+
 
     /**
      * Show the form for creating a new resource.
