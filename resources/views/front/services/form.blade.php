@@ -22,17 +22,6 @@
                         </div>
 
                         <ul class="sub-menu2 p-0">
-                            <li>
-                                <form class="d-flex rounded-3 pe-2 ps-2 searchBar-blue-bg">
-                                    <button class="btn" type="submit">
-                                        <i class="fa-solid fa-magnifying-glass"></i>
-                                    </button>
-
-                                    <input class="form-control border-0 searchBar-blue-bg" id="dsc_serachbar" type="search"
-                                        placeholder="جستجو" aria-label="Search">
-
-                                </form>
-                            </li>
                             @foreach ($service->category->subcategories as $subcategory)
                                 <li class="sub-menu-hover2">
                                     <div class="d-inline">
@@ -309,19 +298,6 @@
                         </div>
 
                         <ul class="sub-menu2 p-0">
-                            <li>
-                                <form class="d-flex rounded-3 pe-2 ps-2 searchBar-blue-bg">
-
-                                    <button class="btn" type="submit">
-                                        <i class="fa-solid fa-magnifying-glass"></i>
-                                    </button>
-
-                                    <input class="form-control border-0 searchBar-blue-bg" id="dsc_serachbar" type="search"
-                                        placeholder="search..." aria-label="Search">
-
-                                </form>
-                            </li>
-
                             @foreach ($service->category->subcategories as $subcategory)
                                 <li class="sub-menu-hover2">
                                     <div class="d-inline">
@@ -339,10 +315,11 @@
 
 
                 <div class="col-12 col-lg-8 text-center">
-                    <p class="fw-bold font-size24"> form sabte sefaresh </p>
+                    <p class="fw-bold font-size24"> Service Requset Form </p>
 
-                    <form>
-
+                    <form action="{{ route('user.service.form.result.save') }}" method="post"
+                        enctype="multipart/form-data">
+                        @csrf
                         <div class="pb-2 border-bottom border-secondary border-2">
 
                             @foreach ($service->form->questions as $question)
@@ -430,11 +407,18 @@
                             <div class="pt-2 pb-2">
                                 <!--time picker-->
                                 <div class="mb-4">
+                                    <label for="date-picker" class="fw-bold mb-2">انتخاب تاریخ:</label>
+                                    <br>
+                                    <input type="date" name="date" id="date-picker" class="p-2 ps-2 pe-2 rounded-3">
+                                </div>
+
+                                <div class="mb-4">
                                     <label for="time-picker" class="fw-bold mb-2">time: </label>
                                     <br>
 
                                     <div class="d-flex justify-content-center">
-                                        <select class="form-select aut-time-pick mb-3" aria-label="Default select">
+                                        <select name="time" class="form-select aut-time-pick mb-3"
+                                            aria-label="Default select">
                                             <option value="1"> 9am to 12pm </option>
                                             <option value="2"> 12pm to 16pm </option>
                                             <option value="3"> 16pm to 20pm </option>
@@ -453,12 +437,12 @@
                                 etelaate shoma namayesh dade shavad?
                             </p>
 
-                            <input type="radio" class="form-check-input me-2" id="yes-checkbox" value="1"
-                                name="yes-no-radio" />
+                            <input value="1" type="radio" class="form-check-input me-2" id="yes-checkbox" value="1"
+                                name="show_info" />
                             <label class="form-check-label fw-bold" for="yes-checkbox"> yes </label>
 
-                            <input type="radio" class="form-check-input ms-4 me-2" id="no-checkbox" value="0"
-                                name="yes-no-radio" />
+                            <input value="0" type="radio" class="form-check-input ms-4 me-2" id="no-checkbox" value="0"
+                                name="show_info" />
                             <label class="form-check-label fw-bold" for="no-checkbox"> no </label>
 
                         </div>
@@ -474,80 +458,75 @@
 
                                 <!-- آدرس های ذخیره شده-->
                                 <div class="text-start saved_addr">
-                                    <div class="mb-3">
-                                        <input type="radio" class="form-check-input ms-2" id="addr1" name="addr-radio" />
-                                        <label class="form-check-label" for="addr1">
-                                            shiraz/jamali
-                                        </label>
-                                    </div>
-
-                                    <div class="mb-3">
-                                        <input type="radio" class="form-check-input ms-2" id="addr2" name="addr-radio" />
-                                        <label class="form-check-label" for="addr2">
-                                            tehran/azadi
-                                        </label>
-                                    </div>
-
+                                    @foreach (auth()->user()->orderaddresses as $orderaddress)
+                                        <div class="mb-3">
+                                            <input type="radio" class="form-check-input ms-2"
+                                                id="addr{{ $orderaddress->id }}" value="{{ $orderaddress->id }}"
+                                                name="addr_radio" />
+                                            <label class="form-check-label" for="addr{{ $orderaddress->id }}">
+                                                {{ $orderaddress->state->name }}/{{ $orderaddress->state->name }}/{{ $orderaddress->description }}
+                                            </label>
+                                        </div>
+                                    @endforeach
                                     <div class="mb-3">
                                         <input type="radio" class="form-check-input ms-2" id="custom_addr_selection"
-                                            name="addr-radio" value="custom" />
+                                            name="addr_radio">
                                         <label class="form-check-label" for="custom_addr_selection">
-                                            add new addr.
+                                            اضافه کردن آدرس جدید
                                         </label>
                                     </div>
-
                                 </div>
 
 
                                 <!--اضافه کردن آدرس جدید-->
                                 <div id="add_new_addrs" class="text-end mt-3 w-75 d-none">
 
-                                    <!--استان محل سکونت-->
-                                    <div class="mb-3 text-start">
-                                        <label for="state-register-customer" class="form-label"> province</label>
-                                        <select class="form-select" id="state-register-customer">
-                                            <option id="state_0" value="0" selected>fars</option>
-                                            <option id="state_1" value="1">tehran</option>
-                                            <option id="state_2" value="2">esfahan</option>
+                                    <!--استان-->
+                                    <div class="mb-3">
+                                        <label for="state-register-specialist" class="form-label"> State </label>
+                                        <select class="form-select" name="state_id" id="state-register-specialist">
+                                            <option selected id="state_0">Please Choose Your State</option>
+                                            @foreach ($languages as $language)
+                                                @php
+                                                    $state = $language->langable;
+                                                    $number = 1;
+                                                @endphp
+                                                <option name="state_id" id="state_{{ $number }}"
+                                                    value="{{ $state->id }}">
+                                                    {{ $state->name }}</option>
+                                                @php
+                                                    $number++;
+                                                @endphp
+                                            @endforeach
+
                                         </select>
                                     </div>
 
                                     <!--شهرهای مرتبط به هر استان   --  start -->
-                                    <!--فارس-->
-                                    <div class="cities mb-3 text-start">
-                                        <label for="city-register-customer-fars" class="form-label">city </label>
-                                        <select class="form-select" id="city-register-customer-fars">
-                                            <option value="shiraz">shiraz</option>
-                                            <option value="tehran">fasa</option>
-                                            <option value="esfahan">eghlid</option>
+                                    <div class="cities mb-3" id="maincitydiv">
+                                        <label for="city-register-specialist-nothing" class="form-label">City </label>
+                                        <select class="form-select" id="city-register-specialist-nothing">
+                                            <option selected>Chosse Your State first</option>
                                         </select>
                                     </div>
 
-                                    <!--تهران-->
-                                    <div class="cities mb-3 text-start d-none">
-                                        <label for="city-register-customer-tehran" class="form-label">city</label>
-                                        <select class="form-select" id="city-register-customer-tehran">
-                                            <option value="shiraz">tehran</option>
-                                            <option value="tehran">rey</option>
-                                            <option value="esfahan">golpayegan</option>
-                                        </select>
-                                    </div>
 
-                                    <!--اصفهان-->
-                                    <div class="cities mb-3 text-start d-none">
-                                        <label for="city-register-customer-esfahan" class="form-label">city </label>
-                                        <select class="form-select" id="city-register-customer-esfahan">
-                                            <option value="shiraz">esfahan</option>
-                                            <option value="tehran">esfahan</option>
-                                            <option value="esfahan">esfahan</option>
+                                    <div class="cities mb-3" id="maincitydiv">
+                                        <select class="form-select" id="select-city">
+
                                         </select>
                                     </div>
                                     <!--شهرهای مرتبط به هر استان   --  end -->
 
-                                    <div class="text-start mb-3">
-                                        <label for="customer-addrs" class="form-label">address: </label>
-                                        <textarea id="customer-addrs" class="form-control w-100" placeholder="add ur new addr here ..." rows="5"></textarea>
+
+
+                                    <!--آدرس-->
+                                    <div class="mb-3">
+                                        <label for="customer-addrs" class="form-label">Address </label>
+                                        <textarea id="customer-addrs" name="address_description" class="form-control w-100" placeholder="New Address ..."
+                                            rows="5"></textarea>
                                     </div>
+
                                 </div>
 
                             </div>
@@ -567,7 +546,9 @@
                             </div>
                         </div>
 
-
+                        <input type="hidden" name="city_id" value="" id="city_id">
+                        <input type="hidden" name="form_id" value="{{ $service->form->id }}" id="form_id">
+                        <input type="hidden" name="service_id" value="{{ $service->id }}" id="service_id">
                     </form>
 
 
