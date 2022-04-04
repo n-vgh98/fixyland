@@ -284,6 +284,7 @@
 
                         <input type="hidden" name="city_id" value="" id="city_id">
                         <input type="hidden" name="form_id" value="{{ $service->form->id }}" id="form_id">
+                        <input type="hidden" name="service_id" value="{{ $service->id }}" id="service_id">
 
                     </form>
 

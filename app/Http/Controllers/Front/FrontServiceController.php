@@ -6,6 +6,7 @@ use App\Models\Lang;
 use Illuminate\Http\Request;
 use App\Models\ServiceSubCategory;
 use App\Http\Controllers\Controller;
+use App\Models\CoveredAreaCity;
 use App\Models\Form;
 use App\Models\FormResult;
 use App\Models\Order;
@@ -45,12 +46,11 @@ class FrontServiceController extends Controller
 
     public function resultsave($lang, Request $request)
     {
-        dd($request->all());
-
         if ($request->city_id != null || $request->address_description) {
             $address = new OrderAddress();
             $address->user_id = auth()->user()->id;
-            $address->city_id = $request->city_id;
+            $city = CoveredAreaCity::where("name", $request->city_id)->first();
+            $address->city_id = $city->id;
             $address->state_id = $request->state_id;
             $address->description = $request->address_description;
             $address->save();
@@ -62,6 +62,7 @@ class FrontServiceController extends Controller
             $order->address_id = $request->addr_radio;
         }
         $order->user_id = auth()->user()->id;
+        $order->service_id = $request->service_id;
         $order->description = $request->problem_description;
         $order->date = $request->date;
         $order->time = $request->time;
@@ -74,7 +75,7 @@ class FrontServiceController extends Controller
             $image->order_id = $order->id;
             $imagename = time() . "." . $request->image->extension();
             $request->image->move(public_path("Images/oreders/"), $imagename);
-            $image->path = "Images/techinfo/" . $imagename;
+            $image->photo_path = "Images/techinfo/" . $imagename;
             $image->save();
         }
 
@@ -82,7 +83,15 @@ class FrontServiceController extends Controller
 
         // saving form datas
         $form = Form::find($request->form_id);
-        $result = new FormResult();
+        foreach ($form->questions as $question) {
+            $result = new FormResult();
+            $result->order_id = $order->id;
+            $result->form_id = $request->form_id;
+            $result->label = $question->label;
+            $id = $question->id;
+            $result->value = $request->$id;
+            $result->save();
+        }
     }
 
 
