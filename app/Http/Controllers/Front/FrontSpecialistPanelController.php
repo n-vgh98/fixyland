@@ -207,4 +207,6 @@ class FrontSpecialistPanelController extends Controller
         $pnotifications = Notification::where([["mode", 1], ["receiver_id", Auth::user()->id]])->get();
         return view("front.technician.notification", compact("notifications", "pnotifications"));
     }
+
+    
 }
