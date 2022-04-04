@@ -113,18 +113,18 @@
              <div class="container-fluid">
                  <div class="row">
                      <div class="col-12 col-lg-3 mt-4">
-
                          <!--sec3 tablet and mobile size menu-->
                          <div class="swiper mySwiper d-lg-none">
                              <div class="swiper-wrapper">
-                                 <div class="swiper-slide w-auto darkYellow rounded p-1">نظافت و پذیرایی</div>
-                                 <div class="swiper-slide w-auto rounded p-1">دکوراسیون و بازسازی</div>
-                                 <div class="swiper-slide w-auto rounded p-1">نصب و تعمیر لوازم خانگی</div>
-                                 <div class="swiper-slide w-auto rounded p-1">سرمایش و گرمایش</div>
-                                 <div class="swiper-slide w-auto rounded p-1">باربری و جابه جایی</div>
-                                 <div class="swiper-slide w-auto rounded p-1">لوله کشی</div>
-                                 <div class="swiper-slide w-auto rounded p-1">زیبایی بانوان</div>
-                                 <div class="swiper-slide w-auto rounded p-1">تعمیرات خودرو</div>
+                                 @foreach ($catlanguages as $catlanguage)
+                                     @php
+                                         $category = $catlanguage->langable;
+                                     @endphp
+                                     @if ($category->status == 1)
+                                         <div class="swiper-slide w-auto darkYellow rounded p-1">{{ $category->name }}
+                                         </div>
+                                     @endif
+                                 @endforeach
                              </div>
                          </div>
 
@@ -132,525 +132,70 @@
                          <div class="overflow_y_scroll d-none d-lg-block">
                              <ul class="sub-menu2 d-none d-lg-block">
                                  <li>
-                                     <form class="d-flex dastrasi-sari-form pe-2 ps-2">
-
-                                         <button class="btn " type="submit">
-
-                                             <i class="fa-solid fa-magnifying-glass"></i>
-
-                                         </button>
-                                         <input class="form-control" id="dastrasi-sari-formcontrol" type="search"
-                                             placeholder="جستجو" aria-label="Search">
-
-                                     </form>
-                                 </li>
-
-                                 <li>
                                      <div>
                                          <p class="form-parag"> بقیه خدمات </p>
                                      </div>
                                  </li>
-
-                                 <li class="sub-menu-hover2">
-                                     <div class="d-inline darkYellow">
-                                         نظافت و پذیرایی
-                                         <i class="fa-solid fa-arrow-left"></i>
-                                     </div>
-                                 </li>
-
-                                 <li class="sub-menu-hover2">
-                                     <div class="d-inline">
-                                         دکوراسیون و بازسازی
-                                         <i class="fa-solid fa-arrow-left"></i>
-                                     </div>
-                                 </li>
-
-                                 <li class="sub-menu-hover2">
-                                     <div class="d-inline">
-                                         نصب و تعمیر لوازم خانگی
-                                         <i class="fa-solid fa-arrow-left"></i>
-                                     </div>
-                                 </li>
-
-                                 <li class="sub-menu-hover2">
-                                     <div class="d-inline">
-                                         سرمایش و گرمایش
-                                         <i class="fa-solid fa-arrow-left"></i>
-                                     </div>
-                                 </li>
-
-                                 <li class="sub-menu-hover2">
-                                     <div class="d-inline">
-                                         باربری و جابه جایی
-                                         <i class="fa-solid fa-arrow-left"></i>
-                                     </div>
-                                 </li>
-
-                                 <li class="sub-menu-hover2">
-                                     <div class="d-inline">
-                                         برقکاری
-                                         <i class="fa-solid fa-arrow-left"></i>
-                                     </div>
-                                 </li>
-
-                                 <li class="sub-menu-hover2">
-                                     <div class="d-inline">
-                                         لوله کشی
-                                         <i class="fa-solid fa-arrow-left"></i>
-                                     </div>
-                                 </li>
-
-                                 <li class="sub-menu-hover2">
-                                     <div class="d-inline">
-                                         زیبایی بانوان
-                                         <i class="fa-solid fa-arrow-left"></i>
-                                     </div>
-                                 </li>
-
-                                 <li class="sub-menu-hover2">
-                                     <div class="d-inline">
-                                         تعمیرات خودرو
-                                         <i class="fa-solid fa-arrow-left"></i>
-                                     </div>
-                                 </li>
-
-
-                                 <li class="sub-menu-hover2">
-                                     <div class="d-inline">
-                                         لوله کشی
-                                         <i class="fa-solid fa-arrow-left"></i>
-                                     </div>
-                                 </li>
-
-                                 <li class="sub-menu-hover2">
-                                     <div class="d-inline">
-                                         زیبایی بانوان
-                                         <i class="fa-solid fa-arrow-left"></i>
-                                     </div>
-                                 </li>
-
-                                 <li class="sub-menu-hover2">
-                                     <div class="d-inline">
-                                         تعمیرات خودرو
-                                         <i class="fa-solid fa-arrow-left"></i>
-                                     </div>
-                                 </li>
-                                 <li class="sub-menu-hover2">
-                                     <div class="d-inline">
-                                         لوله کشی
-                                         <i class="fa-solid fa-arrow-left"></i>
-                                     </div>
-                                 </li>
-
-                                 <li class="sub-menu-hover2">
-                                     <div class="d-inline">
-                                         زیبایی بانوان
-                                         <i class="fa-solid fa-arrow-left"></i>
-                                     </div>
-                                 </li>
-
-                                 <li class="sub-menu-hover2">
-                                     <div class="d-inline">
-                                         تعمیرات خودرو
-                                         <i class="fa-solid fa-arrow-left"></i>
-                                     </div>
-                                 </li>
-                                 <li class="sub-menu-hover2">
-                                     <div class="d-inline">
-                                         لوله کشی
-                                         <i class="fa-solid fa-arrow-left"></i>
-                                     </div>
-                                 </li>
-
-                                 <li class="sub-menu-hover2">
-                                     <div class="d-inline">
-                                         زیبایی بانوان
-                                         <i class="fa-solid fa-arrow-left"></i>
-                                     </div>
-                                 </li>
-
-                                 <li class="sub-menu-hover2">
-                                     <div class="d-inline">
-                                         تعمیرات خودرو
-                                         <i class="fa-solid fa-arrow-left"></i>
-                                     </div>
-                                 </li>
-                                 <li class="sub-menu-hover2">
-                                     <div class="d-inline">
-                                         لوله کشی
-                                         <i class="fa-solid fa-arrow-left"></i>
-                                     </div>
-                                 </li>
-
-                                 <li class="sub-menu-hover2">
-                                     <div class="d-inline">
-                                         زیبایی بانوان
-                                         <i class="fa-solid fa-arrow-left"></i>
-                                     </div>
-                                 </li>
-
-                                 <li class="sub-menu-hover2">
-                                     <div class="d-inline">
-                                         تعمیرات خودرو
-                                         <i class="fa-solid fa-arrow-left"></i>
-                                     </div>
-                                 </li>
+                                 @foreach ($catlanguages as $catlanguage)
+                                     @php
+                                         $category = $catlanguage->langable;
+                                     @endphp
+                                     @if ($category->status == 1)
+                                         <li class="sub-menu-hover2">
+                                             <div class="d-inline darkYellow">
+                                                 {{ $category->name }}
+                                                 <i class="fa-solid fa-arrow-left"></i>
+                                             </div>
+                                         </li>
+                                     @endif
+                                 @endforeach
                              </ul>
                          </div>
                      </div>
 
 
                      <!--sec3 submenu-->
-                     <div class="col-12 col-lg-9 ps-0 pe-0">
-                         <!--submenu for item1-->
-                         <div class="container-fluid">
-                             <div class="row w-100 dastrasi-sari-grid d-flex gap-1 gy-1 m-0 justify-content-evenly">
-                                 <div class="col col-xl-3">
-                                     <a href="sub-category-descriptions.html" class="text-decoration-none white-text">
-                                         <img class="pt-3" src="image/Rectangle 6.png" alt="pic" width="200"
-                                             height="150">
-                                         <p class="pt-3">
-                                             ضدعفونی منزل
-                                         </p>
-                                     </a>
-                                 </div>
+                     @php
+                         $i = 1;
+                     @endphp
+                     @foreach ($catlanguages as $catlanguage)
+                         @php
+                             
+                             $category = $catlanguage->langable;
+                         @endphp
+                         @if ($category->status == 1)
+                             <div class="col-12 col-lg-9 ps-0 pe-0 {{ $i == 1 ? '' : 'd-none' }}">
+                                 <!--submenu for item1-->
+                                 @foreach ($category->subcategories as $subcategory)
+                                     @if ($subcategory->status == 1)
+                                         <div class="container-fluid">
+                                             <div
+                                                 class="row w-100 dastrasi-sari-grid d-flex gap-1 gy-1 m-0 justify-content-evenly">
+                                                 <div class="col col-xl-3 ">
+                                                     <a href="{{ route('user.service.description', $subcategory->id) }}"
+                                                         class="text-decoration-none white-text">
+                                                         <img class="mt-3 rounded-3"
+                                                             src="{{ asset($subcategory->photo_path) }}"
+                                                             alt="{{ $subcategory->alt }}"
+                                                             title="{{ $subcategory->title }}" width="200" height="150">
+                                                         <p class="pt-3">
+                                                             {{ $subcategory->name }}
+                                                         </p>
+                                                     </a>
+                                                 </div>
 
-                                 <div class="col col-xl-3">
-                                     <a href="sub-category-descriptions.html" class="text-decoration-none white-text">
-                                         <img class="pt-3" src="image/Rectangle 6.png" alt="pic" width="200"
-                                             height="150">
-                                         <p class="pt-3">
-                                             ضدعفونی منزل
-                                         </p>
-                                     </a>
-                                 </div>
 
-                                 <div class="col col-xl-3">
-                                     <a href="sub-category-descriptions.html" class="text-decoration-none white-text">
-                                         <img class="pt-3" src="image/Rectangle 6.png" alt="pic" width="200"
-                                             height="150">
-                                         <p class="pt-3">
-                                             ضدعفونی منزل
-                                         </p>
-                                     </a>
-                                 </div>
+                                             </div>
+                                         </div>
+                                     @endif
+                                 @endforeach
 
-                                 <div class="col col-xl-3">
-                                     <a href="sub-category-descriptions.html" class="text-decoration-none white-text">
-                                         <img class="pt-3" src="image/Rectangle 6.png" alt="pic" width="200"
-                                             height="150">
-                                         <p class="pt-3">
-                                             ضدعفونی منزل
-                                         </p>
-                                     </a>
-                                 </div>
-
-                                 <div class="col col-xl-3">
-                                     <a href="sub-category-descriptions.html" class="text-decoration-none white-text">
-                                         <img class="pt-3" src="image/Rectangle 6.png" alt="pic" width="200"
-                                             height="150">
-                                         <p class="pt-3">
-                                             ضدعفونی منزل
-                                         </p>
-                                     </a>
-                                 </div>
-
-                                 <div class="col col-xl-3 d-none d-md-block">
-                                     <a href="sub-category-descriptions.html" class="text-decoration-none white-text">
-                                         <img class="pt-3" src="image/Rectangle 6.png" alt="pic" width="200"
-                                             height="150">
-                                         <p class="pt-3">
-                                             ضدعفونی منزل
-                                         </p>
-                                     </a>
-                                 </div>
-
-                                 <div class="col col-xl-3 d-none d-lg-block">
-                                     <a href="sub-category-descriptions.html" class="text-decoration-none white-text">
-                                         <img class="pt-3" src="image/Rectangle 6.png" alt="pic" width="200"
-                                             height="150">
-                                         <p class="pt-3">
-                                             ضدعفونی منزل
-                                         </p>
-                                     </a>
-                                 </div>
-
-                                 <div class="col col-xl-3 d-none d-lg-block">
-                                     <a href="sub-category-descriptions.html" class="text-decoration-none white-text">
-                                         <img class="pt-3" src="image/Rectangle 6.png" alt="pic" width="200"
-                                             height="150">
-                                         <p class="pt-3">
-                                             ضدعفونی منزل
-                                         </p>
-                                     </a>
-                                 </div>
-
-                                 <div class="col col-xl-3 d-none d-lg-block">
-                                     <a href="sub-category-descriptions.html" class="text-decoration-none white-text">
-                                         <img class="pt-3" src="image/Rectangle 6.png" alt="pic" width="200"
-                                             height="150">
-                                         <p class="pt-3">
-                                             ضدعفونی منزل
-                                         </p>
-                                     </a>
-                                 </div>
-
-                                 <div class="col col-xl-3 d-none d-sm-block d-md-none">
-                                     <a href="sub-category-descriptions.html" class="text-decoration-none white-text">
-                                         <img class="pt-3" src="image/Rectangle 6.png" alt="pic" width="200"
-                                             height="150">
-                                         <p class="pt-3">
-                                             ضدعفونی منزل
-                                         </p>
-                                     </a>
-                                 </div>
-
-                                 <div class="col col-xl-3 d-sm-none">
-                                     <a href="sub-category-descriptions.html" class="text-decoration-none white-text">
-                                         <img class="pt-3" src="image/Rectangle 6.png" alt="pic" width="200"
-                                             height="150">
-                                         <p class="pt-3">
-                                             ضدعفونی منزل
-                                         </p>
-                                     </a>
-                                 </div>
                              </div>
-                         </div>
-
-
-                         <!--submenu for item2-->
-                         <div class="container-fluid">
-                             <div class="row w-100 dastrasi-sari-grid d-flex gap-1 gy-1 m-0 justify-content-evenly d-none">
-                                 <div class="col col-xl-3">
-                                     <a href="sub-category-descriptions.html" class="text-decoration-none white-text">
-                                         <img class="pt-3" src="image/Rectangle 35.png" alt="pic" width="200"
-                                             height="150">
-                                         <p class="pt-3">
-                                             خدمات ویژه
-                                         </p>
-                                     </a>
-                                 </div>
-
-                                 <div class="col col-xl-3">
-                                     <a href="sub-category-descriptions.html" class="text-decoration-none white-text">
-                                         <img class="pt-3" src="image/Rectangle 35.png" alt="pic" width="200"
-                                             height="150">
-                                         <p class="pt-3">
-                                             خدمات ویژه
-                                         </p>
-                                     </a>
-                                 </div>
-
-                                 <div class="col col-xl-3">
-                                     <a href="sub-category-descriptions.html" class="text-decoration-none white-text">
-                                         <img class="pt-3" src="image/Rectangle 35.png" alt="pic" width="200"
-                                             height="150">
-                                         <p class="pt-3">
-                                             خدمات ویژه
-                                         </p>
-                                     </a>
-                                 </div>
-
-                                 <div class="col col-xl-3">
-                                     <a href="sub-category-descriptions.html" class="text-decoration-none white-text">
-                                         <img class="pt-3" src="image/Rectangle 35.png" alt="pic" width="200"
-                                             height="150">
-                                         <p class="pt-3">
-                                             خدمات ویژه
-                                         </p>
-                                     </a>
-                                 </div>
-
-                                 <div class="col col-xl-3">
-                                     <a href="sub-category-descriptions.html" class="text-decoration-none white-text">
-                                         <img class="pt-3" src="image/Rectangle 35.png" alt="pic" width="200"
-                                             height="150">
-                                         <p class="pt-3">
-                                             خدمات ویژه
-                                         </p>
-                                     </a>
-                                 </div>
-
-                                 <div class="col col-xl-3 d-none d-md-block">
-                                     <a href="sub-category-descriptions.html" class="text-decoration-none white-text">
-                                         <img class="pt-3" src="image/Rectangle 35.png" alt="pic" width="200"
-                                             height="150">
-                                         <p class="pt-3">
-                                             خدمات ویژه
-                                         </p>
-                                     </a>
-                                 </div>
-
-                                 <div class="col col-xl-3 d-none d-lg-block">
-                                     <a href="sub-category-descriptions.html" class="text-decoration-none white-text">
-                                         <img class="pt-3" src="image/Rectangle 35.png" alt="pic" width="200"
-                                             height="150">
-                                         <p class="pt-3">
-                                             خدمات ویژه
-                                         </p>
-                                     </a>
-                                 </div>
-
-                                 <div class="col col-xl-3 d-none d-lg-block">
-                                     <a href="sub-category-descriptions.html" class="text-decoration-none white-text">
-                                         <img class="pt-3" src="image/Rectangle 35.png" alt="pic" width="200"
-                                             height="150">
-                                         <p class="pt-3">
-                                             خدمات ویژه
-                                         </p>
-                                     </a>
-                                 </div>
-
-                                 <div class="col col-xl-3 d-none d-lg-block">
-                                     <a href="sub-category-descriptions.html" class="text-decoration-none white-text">
-                                         <img class="pt-3" src="image/Rectangle 35.png" alt="pic" width="200"
-                                             height="150">
-                                         <p class="pt-3">
-                                             خدمات ویژه
-                                         </p>
-                                     </a>
-                                 </div>
-
-                                 <div class="col col-xl-3 d-none d-sm-block d-md-none">
-                                     <a href="sub-category-descriptions.html" class="text-decoration-none white-text">
-                                         <img class="pt-3" src="image/Rectangle 35.png" alt="pic" width="200"
-                                             height="150">
-                                         <p class="pt-3">
-                                             خدمات ویژه
-                                         </p>
-                                     </a>
-                                 </div>
-
-                                 <div class="col col-xl-3 d-sm-none">
-                                     <a href="sub-category-descriptions.html" class="text-decoration-none white-text">
-                                         <img class="pt-3" src="image/Rectangle 35.png" alt="pic" width="200"
-                                             height="150">
-                                         <p class="pt-3">
-                                             خدمات ویژه
-                                         </p>
-                                     </a>
-                                 </div>
-                             </div>
-                         </div>
-
-
-                         <!--submenu for item3-->
-                         <div class="container-fluid">
-                             <div class="row w-100 dastrasi-sari-grid d-flex gap-1 gy-1 m-0 justify-content-evenly d-none">
-                                 <div class="col col-xl-3">
-                                     <a href="sub-category-descriptions.html" class="text-decoration-none white-text">
-                                         <img class="pt-3" src="image/Rectangle 19.png" alt="pic" width="200"
-                                             height="150">
-                                         <p class="pt-3">
-                                             سرویس
-                                         </p>
-                                     </a>
-                                 </div>
-
-                                 <div class="col col-xl-3">
-                                     <a href="sub-category-descriptions.html" class="text-decoration-none white-text">
-                                         <img class="pt-3" src="image/Rectangle 19.png" alt="pic" width="200"
-                                             height="150">
-                                         <p class="pt-3">
-                                             سرویس
-                                         </p>
-                                     </a>
-                                 </div>
-
-                                 <div class="col col-xl-3">
-                                     <a href="sub-category-descriptions.html" class="text-decoration-none white-text">
-                                         <img class="pt-3" src="image/Rectangle 19.png" alt="pic" width="200"
-                                             height="150">
-                                         <p class="pt-3">
-                                             سرویس
-                                         </p>
-                                     </a>
-                                 </div>
-
-                                 <div class="col col-xl-3">
-                                     <a href="sub-category-descriptions.html" class="text-decoration-none white-text">
-                                         <img class="pt-3" src="image/Rectangle 19.png" alt="pic" width="200"
-                                             height="150">
-                                         <p class="pt-3">
-                                             سرویس
-                                         </p>
-                                     </a>
-                                 </div>
-
-                                 <div class="col col-xl-3">
-                                     <a href="sub-category-descriptions.html" class="text-decoration-none white-text">
-                                         <img class="pt-3" src="image/Rectangle 19.png" alt="pic" width="200"
-                                             height="150">
-                                         <p class="pt-3">
-                                             سرویس
-                                         </p>
-                                     </a>
-                                 </div>
-
-                                 <div class="col col-xl-3 d-none d-md-block">
-                                     <a href="sub-category-descriptions.html" class="text-decoration-none white-text">
-                                         <img class="pt-3" src="image/Rectangle 19.png" alt="pic" width="200"
-                                             height="150">
-                                         <p class="pt-3">
-                                             سرویس
-                                         </p>
-                                     </a>
-                                 </div>
-
-                                 <div class="col col-xl-3 d-none d-lg-block">
-                                     <a href="sub-category-descriptions.html" class="text-decoration-none white-text">
-                                         <img class="pt-3" src="image/Rectangle 19.png" alt="pic" width="200"
-                                             height="150">
-                                         <p class="pt-3">
-                                             سرویس
-                                         </p>
-                                     </a>
-                                 </div>
-
-                                 <div class="col col-xl-3 d-none d-lg-block">
-                                     <a href="sub-category-descriptions.html" class="text-decoration-none white-text">
-                                         <img class="pt-3" src="image/Rectangle 19.png" alt="pic" width="200"
-                                             height="150">
-                                         <p class="pt-3">
-                                             سرویس
-                                         </p>
-                                     </a>
-                                 </div>
-
-                                 <div class="col col-xl-3 d-none d-lg-block">
-                                     <a href="sub-category-descriptions.html" class="text-decoration-none white-text">
-                                         <img class="pt-3" src="image/Rectangle 19.png" alt="pic" width="200"
-                                             height="150">
-                                         <p class="pt-3">
-                                             سرویس
-                                         </p>
-                                     </a>
-                                 </div>
-
-                                 <div class="col col-xl-3 d-none d-sm-block d-md-none">
-                                     <a href="sub-category-descriptions.html" class="text-decoration-none white-text">
-                                         <img class="pt-3" src="image/Rectangle 19.png" alt="pic" width="200"
-                                             height="150">
-                                         <p class="pt-3">
-                                             سرویس
-                                         </p>
-                                     </a>
-                                 </div>
-
-                                 <div class="col col-xl-3 d-sm-none">
-                                     <a href="sub-category-descriptions.html" class="text-decoration-none white-text">
-                                         <img class="pt-3" src="image/Rectangle 19.png" alt="pic" width="200"
-                                             height="150">
-                                         <p class="pt-3">
-                                             سرویس
-                                         </p>
-                                     </a>
-                                 </div>
-                             </div>
-                         </div>
-
-
-                     </div>
+                         @endif
+                         @php
+                             $i++;
+                         @endphp
+                     @endforeach
                  </div>
              </div>
          </section>
@@ -914,540 +459,84 @@
                          <!--sec3 tablet and mobile size menu-->
                          <div class="swiper mySwiper d-lg-none">
                              <div class="swiper-wrapper">
-                                 <div class="swiper-slide w-auto darkYellow rounded p-1">nezafat o paziraei</div>
-                                 <div class="swiper-slide w-auto rounded p-1">dekorasion o bazsazi</div>
-                                 <div class="swiper-slide w-auto rounded p-1">nasb o tamir lavazem khanegi</div>
-                                 <div class="swiper-slide w-auto rounded p-1">sarmayesh o garmayesh</div>
-                                 <div class="swiper-slide w-auto rounded p-1">barbari o jabejaei</div>
-                                 <div class="swiper-slide w-auto rounded p-1">loolekeshi</div>
-                                 <div class="swiper-slide w-auto rounded p-1">zibaei banovan</div>
-                                 <div class="swiper-slide w-auto rounded p-1">tamirat khodro</div>
+                                 @foreach ($catlanguages as $catlanguage)
+                                     @php
+                                         $category = $catlanguage->langable;
+                                     @endphp
+                                     @if ($category->status == 1)
+                                         <div class="swiper-slide w-auto darkYellow rounded p-1">nezafat o paziraei</div>
+                                     @endif
+                                 @endforeach
                              </div>
                          </div>
 
                          <!--sec3 laptop size menu-->
                          <div class="overflow_y_scroll d-none d-lg-block">
                              <ul class="sub-menu2 d-none d-lg-block p-0 pe-2">
-                                 <li>
-                                     <form class="d-flex dastrasi-sari-form pe-2 ps-2">
-
-                                         <button class="btn " type="submit">
-
-                                             <i class="fa-solid fa-magnifying-glass"></i>
-
-                                         </button>
-                                         <input class="form-control" id="dastrasi-sari-formcontrol" type="search"
-                                             placeholder="search" aria-label="Search">
-
-                                     </form>
-                                 </li>
 
                                  <li>
                                      <div>
-                                         <p class="form-parag"> baghie khadamat </p>
+                                         <p class="form-parag"> Other Services </p>
                                      </div>
                                  </li>
-
-                                 <li class="sub-menu-hover2">
-                                     <div class="d-inline darkYellow">
-                                         nezafat o paziraei
-                                         <i class="fa-solid fa-arrow-left"></i>
-                                     </div>
-                                 </li>
-
-                                 <li class="sub-menu-hover2">
-                                     <div class="d-inline">
-                                         dekorasion o bazsazi
-                                         <i class="fa-solid fa-arrow-left"></i>
-                                     </div>
-                                 </li>
-
-                                 <li class="sub-menu-hover2">
-                                     <div class="d-inline">
-                                         nasb o tamir lavazem khanegi
-                                         <i class="fa-solid fa-arrow-left"></i>
-                                     </div>
-                                 </li>
-
-                                 <li class="sub-menu-hover2">
-                                     <div class="d-inline">
-                                         sarmayesh o garmayesh
-                                         <i class="fa-solid fa-arrow-left"></i>
-                                     </div>
-                                 </li>
-
-                                 <li class="sub-menu-hover2">
-                                     <div class="d-inline">
-                                         barbari o jabejaei
-                                         <i class="fa-solid fa-arrow-left"></i>
-                                     </div>
-                                 </li>
-
-                                 <li class="sub-menu-hover2">
-                                     <div class="d-inline">
-                                         barghkari
-                                         <i class="fa-solid fa-arrow-left"></i>
-                                     </div>
-                                 </li>
-
-                                 <li class="sub-menu-hover2">
-                                     <div class="d-inline">
-                                         loole keshi
-                                         <i class="fa-solid fa-arrow-left"></i>
-                                     </div>
-                                 </li>
-
-                                 <li class="sub-menu-hover2">
-                                     <div class="d-inline">
-                                         zibaei banovan
-                                         <i class="fa-solid fa-arrow-left"></i>
-                                     </div>
-                                 </li>
-
-                                 <li class="sub-menu-hover2">
-                                     <div class="d-inline">
-                                         tamirat khodro
-                                         <i class="fa-solid fa-arrow-left"></i>
-                                     </div>
-                                 </li>
-
-
-                                 <li class="sub-menu-hover2">
-                                     <div class="d-inline">
-                                         loole keshi
-                                         <i class="fa-solid fa-arrow-left"></i>
-                                     </div>
-                                 </li>
-
-                                 <li class="sub-menu-hover2">
-                                     <div class="d-inline">
-                                         zibaei banovan
-                                         <i class="fa-solid fa-arrow-left"></i>
-                                     </div>
-                                 </li>
-
-                                 <li class="sub-menu-hover2">
-                                     <div class="d-inline">
-                                         tamirat khodro
-                                         <i class="fa-solid fa-arrow-left"></i>
-                                     </div>
-                                 </li>
-                                 <li class="sub-menu-hover2">
-                                     <div class="d-inline">
-                                         loole keshi
-                                         <i class="fa-solid fa-arrow-left"></i>
-                                     </div>
-                                 </li>
-
-                                 <li class="sub-menu-hover2">
-                                     <div class="d-inline">
-                                         zibaei banovan
-                                         <i class="fa-solid fa-arrow-left"></i>
-                                     </div>
-                                 </li>
-
-                                 <li class="sub-menu-hover2">
-                                     <div class="d-inline">
-                                         tamirat khodro
-                                         <i class="fa-solid fa-arrow-left"></i>
-                                     </div>
-                                 </li>
-                                 <li class="sub-menu-hover2">
-                                     <div class="d-inline">
-                                         loole keshi
-                                         <i class="fa-solid fa-arrow-left"></i>
-                                     </div>
-                                 </li>
-
-                                 <li class="sub-menu-hover2">
-                                     <div class="d-inline">
-                                         zibaei banovan
-                                         <i class="fa-solid fa-arrow-left"></i>
-                                     </div>
-                                 </li>
-
-                                 <li class="sub-menu-hover2">
-                                     <div class="d-inline">
-                                         tamirat khodro
-                                         <i class="fa-solid fa-arrow-left"></i>
-                                     </div>
-                                 </li>
-                                 <li class="sub-menu-hover2">
-                                     <div class="d-inline">
-                                         loole keshi
-                                         <i class="fa-solid fa-arrow-left"></i>
-                                     </div>
-                                 </li>
-
-                                 <li class="sub-menu-hover2">
-                                     <div class="d-inline">
-                                         zibaei banovan
-                                         <i class="fa-solid fa-arrow-left"></i>
-                                     </div>
-                                 </li>
-
-                                 <li class="sub-menu-hover2">
-                                     <div class="d-inline">
-                                         tamirat khodro
-                                         <i class="fa-solid fa-arrow-left"></i>
-                                     </div>
-                                 </li>
+                                 @foreach ($catlanguages as $catlanguage)
+                                     @php
+                                         $category = $catlanguage->langable;
+                                     @endphp
+                                     @if ($category->status == 1)
+                                         <li class="sub-menu-hover2">
+                                             <div class="d-inline darkYellow">
+                                                 {{ $category->name }}
+                                                 <i class="fa-solid fa-arrow-left"></i>
+                                             </div>
+                                         </li>
+                                     @endif
+                                 @endforeach
                              </ul>
                          </div>
                      </div>
 
 
-                     <!--sec3 submenu-->
-                     <div class="col-12 col-lg-9 ps-0 pe-0">
-                         <!--submenu for item1-->
-                         <div class="container-fluid">
-                             <div class="row w-100 dastrasi-sari-grid d-flex gap-1 gy-1 m-0 justify-content-evenly">
-                                 <div class="col col-xl-3">
-                                     <a href="sub-category-descriptions.html" class="text-decoration-none white-text">
-                                         <img class="pt-3" src="image/Rectangle 6.png" alt="pic" width="200"
-                                             height="150">
-                                         <p class="pt-3">
-                                             zedeofooni manzel
-                                         </p>
-                                     </a>
-                                 </div>
+                     @php
+                         $i = 1;
+                     @endphp
+                     @foreach ($catlanguages as $catlanguage)
+                         @php
+                             
+                             $category = $catlanguage->langable;
+                         @endphp
+                         @if ($category->status == 1)
+                             <!--sec3 submenu-->
+                             <div class="col-12 col-lg-9 ps-0 pe-0">
+                                 <!--submenu for item1-->
+                                 @foreach ($category->subcategories as $subcategory)
+                                     @if ($subcategory->status == 1)
+                                         <div class="container-fluid">
+                                             <div
+                                                 class="row w-100 dastrasi-sari-grid d-flex gap-1 gy-1 m-0 justify-content-evenly">
+                                                 <div class="col col-xl-3 ">
+                                                     <a href="{{ route('user.service.description', $subcategory->id) }}"
+                                                         class="text-decoration-none white-text">
+                                                         <img class="mt-3 rounded-3"
+                                                             src="{{ asset($subcategory->photo_path) }}"
+                                                             alt="{{ $subcategory->alt }}"
+                                                             title="{{ $subcategory->title }}" width="200" height="150">
+                                                         <p class="pt-3">
+                                                             {{ $subcategory->name }}
+                                                         </p>
+                                                     </a>
+                                                 </div>
 
-                                 <div class="col col-xl-3">
-                                     <a href="sub-category-descriptions.html" class="text-decoration-none white-text">
-                                         <img class="pt-3" src="image/Rectangle 6.png" alt="pic" width="200"
-                                             height="150">
-                                         <p class="pt-3">
-                                             zedeofooni manzel
-                                         </p>
-                                     </a>
-                                 </div>
-
-                                 <div class="col col-xl-3">
-                                     <a href="sub-category-descriptions.html" class="text-decoration-none white-text">
-                                         <img class="pt-3" src="image/Rectangle 6.png" alt="pic" width="200"
-                                             height="150">
-                                         <p class="pt-3">
-                                             zedeofooni manzel
-                                         </p>
-                                     </a>
-                                 </div>
-
-                                 <div class="col col-xl-3">
-                                     <a href="sub-category-descriptions.html" class="text-decoration-none white-text">
-                                         <img class="pt-3" src="image/Rectangle 6.png" alt="pic" width="200"
-                                             height="150">
-                                         <p class="pt-3">
-                                             zedeofooni manzel
-                                         </p>
-                                     </a>
-                                 </div>
-
-                                 <div class="col col-xl-3">
-                                     <a href="sub-category-descriptions.html" class="text-decoration-none white-text">
-                                         <img class="pt-3" src="image/Rectangle 6.png" alt="pic" width="200"
-                                             height="150">
-                                         <p class="pt-3">
-                                             zedeofooni manzel
-                                         </p>
-                                     </a>
-                                 </div>
-
-                                 <div class="col col-xl-3 d-none d-md-block">
-                                     <a href="sub-category-descriptions.html" class="text-decoration-none white-text">
-                                         <img class="pt-3" src="image/Rectangle 6.png" alt="pic" width="200"
-                                             height="150">
-                                         <p class="pt-3">
-                                             zedeofooni manzel
-                                         </p>
-                                     </a>
-                                 </div>
-
-                                 <div class="col col-xl-3 d-none d-lg-block">
-                                     <a href="sub-category-descriptions.html" class="text-decoration-none white-text">
-                                         <img class="pt-3" src="image/Rectangle 6.png" alt="pic" width="200"
-                                             height="150">
-                                         <p class="pt-3">
-                                             zedeofooni manzel
-                                         </p>
-                                     </a>
-                                 </div>
-
-                                 <div class="col col-xl-3 d-none d-lg-block">
-                                     <a href="sub-category-descriptions.html" class="text-decoration-none white-text">
-                                         <img class="pt-3" src="image/Rectangle 6.png" alt="pic" width="200"
-                                             height="150">
-                                         <p class="pt-3">
-                                             zedeofooni manzel
-                                         </p>
-                                     </a>
-                                 </div>
-
-                                 <div class="col col-xl-3 d-none d-lg-block">
-                                     <a href="sub-category-descriptions.html" class="text-decoration-none white-text">
-                                         <img class="pt-3" src="image/Rectangle 6.png" alt="pic" width="200"
-                                             height="150">
-                                         <p class="pt-3">
-                                             zedeofooni manzel
-                                         </p>
-                                     </a>
-                                 </div>
-
-                                 <div class="col col-xl-3 d-none d-sm-block d-md-none">
-                                     <a href="sub-category-descriptions.html" class="text-decoration-none white-text">
-                                         <img class="pt-3" src="image/Rectangle 6.png" alt="pic" width="200"
-                                             height="150">
-                                         <p class="pt-3">
-                                             zedeofooni manzel
-                                         </p>
-                                     </a>
-                                 </div>
-
-                                 <div class="col col-xl-3 d-sm-none">
-                                     <a href="sub-category-descriptions.html" class="text-decoration-none white-text">
-                                         <img class="pt-3" src="image/Rectangle 6.png" alt="pic" width="200"
-                                             height="150">
-                                         <p class="pt-3">
-                                             zedeofooni manzel
-                                         </p>
-                                     </a>
-                                 </div>
+                                             </div>
+                                         </div>
+                                     @endif
+                                 @endforeach
                              </div>
-                         </div>
-
-
-                         <!--submenu for item2-->
-                         <div class="container-fluid">
-                             <div class="row w-100 dastrasi-sari-grid d-flex gap-1 gy-1 m-0 justify-content-evenly d-none">
-                                 <div class="col col-xl-3">
-                                     <a href="sub-category-descriptions.html" class="text-decoration-none white-text">
-                                         <img class="pt-3" src="image/Rectangle 35.png" alt="pic" width="200"
-                                             height="150">
-                                         <p class="pt-3">
-                                             khadamat vizhe
-                                         </p>
-                                     </a>
-                                 </div>
-
-                                 <div class="col col-xl-3">
-                                     <a href="sub-category-descriptions.html" class="text-decoration-none white-text">
-                                         <img class="pt-3" src="image/Rectangle 35.png" alt="pic" width="200"
-                                             height="150">
-                                         <p class="pt-3">
-                                             khadamat vizhe
-                                         </p>
-                                     </a>
-                                 </div>
-
-                                 <div class="col col-xl-3">
-                                     <a href="sub-category-descriptions.html" class="text-decoration-none white-text">
-                                         <img class="pt-3" src="image/Rectangle 35.png" alt="pic" width="200"
-                                             height="150">
-                                         <p class="pt-3">
-                                             khadamat vizhe
-                                         </p>
-                                     </a>
-                                 </div>
-
-                                 <div class="col col-xl-3">
-                                     <a href="sub-category-descriptions.html" class="text-decoration-none white-text">
-                                         <img class="pt-3" src="image/Rectangle 35.png" alt="pic" width="200"
-                                             height="150">
-                                         <p class="pt-3">
-                                             khadamat vizhe
-                                         </p>
-                                     </a>
-                                 </div>
-
-                                 <div class="col col-xl-3">
-                                     <a href="sub-category-descriptions.html" class="text-decoration-none white-text">
-                                         <img class="pt-3" src="image/Rectangle 35.png" alt="pic" width="200"
-                                             height="150">
-                                         <p class="pt-3">
-                                             khadamat vizhe
-                                         </p>
-                                     </a>
-                                 </div>
-
-                                 <div class="col col-xl-3 d-none d-md-block">
-                                     <a href="sub-category-descriptions.html" class="text-decoration-none white-text">
-                                         <img class="pt-3" src="image/Rectangle 35.png" alt="pic" width="200"
-                                             height="150">
-                                         <p class="pt-3">
-                                             khadamat vizhe
-                                         </p>
-                                     </a>
-                                 </div>
-
-                                 <div class="col col-xl-3 d-none d-lg-block">
-                                     <a href="sub-category-descriptions.html" class="text-decoration-none white-text">
-                                         <img class="pt-3" src="image/Rectangle 35.png" alt="pic" width="200"
-                                             height="150">
-                                         <p class="pt-3">
-                                             khadamat vizhe
-                                         </p>
-                                     </a>
-                                 </div>
-
-                                 <div class="col col-xl-3 d-none d-lg-block">
-                                     <a href="sub-category-descriptions.html" class="text-decoration-none white-text">
-                                         <img class="pt-3" src="image/Rectangle 35.png" alt="pic" width="200"
-                                             height="150">
-                                         <p class="pt-3">
-                                             khadamat vizhe
-                                         </p>
-                                     </a>
-                                 </div>
-
-                                 <div class="col col-xl-3 d-none d-lg-block">
-                                     <a href="sub-category-descriptions.html" class="text-decoration-none white-text">
-                                         <img class="pt-3" src="image/Rectangle 35.png" alt="pic" width="200"
-                                             height="150">
-                                         <p class="pt-3">
-                                             khadamat vizhe
-                                         </p>
-                                     </a>
-                                 </div>
-
-                                 <div class="col col-xl-3 d-none d-sm-block d-md-none">
-                                     <a href="sub-category-descriptions.html" class="text-decoration-none white-text">
-                                         <img class="pt-3" src="image/Rectangle 35.png" alt="pic" width="200"
-                                             height="150">
-                                         <p class="pt-3">
-                                             khadamat vizhe
-                                         </p>
-                                     </a>
-                                 </div>
-
-                                 <div class="col col-xl-3 d-sm-none">
-                                     <a href="sub-category-descriptions.html" class="text-decoration-none white-text">
-                                         <img class="pt-3" src="image/Rectangle 35.png" alt="pic" width="200"
-                                             height="150">
-                                         <p class="pt-3">
-                                             khadamat vizhe
-                                         </p>
-                                     </a>
-                                 </div>
-                             </div>
-                         </div>
-
-
-                         <!--submenu for item3-->
-                         <div class="container-fluid">
-                             <div class="row w-100 dastrasi-sari-grid d-flex gap-1 gy-1 m-0 justify-content-evenly d-none">
-                                 <div class="col col-xl-3">
-                                     <a href="sub-category-descriptions.html" class="text-decoration-none white-text">
-                                         <img class="pt-3" src="image/Rectangle 19.png" alt="pic" width="200"
-                                             height="150">
-                                         <p class="pt-3">
-                                             service
-                                         </p>
-                                     </a>
-                                 </div>
-
-                                 <div class="col col-xl-3">
-                                     <a href="sub-category-descriptions.html" class="text-decoration-none white-text">
-                                         <img class="pt-3" src="image/Rectangle 19.png" alt="pic" width="200"
-                                             height="150">
-                                         <p class="pt-3">
-                                             service
-                                         </p>
-                                     </a>
-                                 </div>
-
-                                 <div class="col col-xl-3">
-                                     <a href="sub-category-descriptions.html" class="text-decoration-none white-text">
-                                         <img class="pt-3" src="image/Rectangle 19.png" alt="pic" width="200"
-                                             height="150">
-                                         <p class="pt-3">
-                                             service
-                                         </p>
-                                     </a>
-                                 </div>
-
-                                 <div class="col col-xl-3">
-                                     <a href="sub-category-descriptions.html" class="text-decoration-none white-text">
-                                         <img class="pt-3" src="image/Rectangle 19.png" alt="pic" width="200"
-                                             height="150">
-                                         <p class="pt-3">
-                                             service
-                                         </p>
-                                     </a>
-                                 </div>
-
-                                 <div class="col col-xl-3">
-                                     <a href="sub-category-descriptions.html" class="text-decoration-none white-text">
-                                         <img class="pt-3" src="image/Rectangle 19.png" alt="pic" width="200"
-                                             height="150">
-                                         <p class="pt-3">
-                                             service
-                                         </p>
-                                     </a>
-                                 </div>
-
-                                 <div class="col col-xl-3 d-none d-md-block">
-                                     <a href="sub-category-descriptions.html" class="text-decoration-none white-text">
-                                         <img class="pt-3" src="image/Rectangle 19.png" alt="pic" width="200"
-                                             height="150">
-                                         <p class="pt-3">
-                                             service
-                                         </p>
-                                     </a>
-                                 </div>
-
-                                 <div class="col col-xl-3 d-none d-lg-block">
-                                     <a href="sub-category-descriptions.html" class="text-decoration-none white-text">
-                                         <img class="pt-3" src="image/Rectangle 19.png" alt="pic" width="200"
-                                             height="150">
-                                         <p class="pt-3">
-                                             service
-                                         </p>
-                                     </a>
-                                 </div>
-
-                                 <div class="col col-xl-3 d-none d-lg-block">
-                                     <a href="sub-category-descriptions.html" class="text-decoration-none white-text">
-                                         <img class="pt-3" src="image/Rectangle 19.png" alt="pic" width="200"
-                                             height="150">
-                                         <p class="pt-3">
-                                             service
-                                         </p>
-                                     </a>
-                                 </div>
-
-                                 <div class="col col-xl-3 d-none d-lg-block">
-                                     <a href="sub-category-descriptions.html" class="text-decoration-none white-text">
-                                         <img class="pt-3" src="image/Rectangle 19.png" alt="pic" width="200"
-                                             height="150">
-                                         <p class="pt-3">
-                                             service
-                                         </p>
-                                     </a>
-                                 </div>
-
-                                 <div class="col col-xl-3 d-none d-sm-block d-md-none">
-                                     <a href="sub-category-descriptions.html" class="text-decoration-none white-text">
-                                         <img class="pt-3" src="image/Rectangle 19.png" alt="pic" width="200"
-                                             height="150">
-                                         <p class="pt-3">
-                                             service
-                                         </p>
-                                     </a>
-                                 </div>
-
-                                 <div class="col col-xl-3 d-sm-none">
-                                     <a href="sub-category-descriptions.html" class="text-decoration-none white-text">
-                                         <img class="pt-3" src="image/Rectangle 19.png" alt="pic" width="200"
-                                             height="150">
-                                         <p class="pt-3">
-                                             service
-                                         </p>
-                                     </a>
-                                 </div>
-                             </div>
-                         </div>
-
-
-                     </div>
+                         @endif
+                         @php
+                             $i++;
+                         @endphp
+                     @endforeach
                  </div>
              </div>
          </section>
