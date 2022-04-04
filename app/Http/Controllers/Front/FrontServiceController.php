@@ -7,9 +7,11 @@ use Illuminate\Http\Request;
 use App\Models\ServiceSubCategory;
 use App\Http\Controllers\Controller;
 use App\Models\Form;
+use App\Models\FormResult;
 use App\Models\Order;
 use App\Models\OrderAddress;
 use App\Models\OrderImage;
+use Illuminate\Foundation\Http\FormRequest;
 
 class FrontServiceController extends Controller
 {
@@ -80,7 +82,7 @@ class FrontServiceController extends Controller
 
         // saving form datas
         $form = Form::find($request->form_id);
-        
+        $result = new FormResult();
     }
 
 
