@@ -53,7 +53,8 @@
                 <div class="col-12 col-lg-8 text-center">
                     <p class="fw-bold font-size24"> فرم ثبت سفارش </p>
 
-                    <form action="{{ route('user.service.form.result.save') }}" method="post">
+                    <form action="{{ route('user.service.form.result.save') }}" method="post"
+                        enctype="multipart/form-data">
                         @csrf
                         <div class="pb-2 border-bottom border-secondary border-2">
 
@@ -122,8 +123,8 @@
 
                             <!--problem description-->
                             <div class="mb-3  text-end">
-                                <label for="problem-description" class="form-label fw-bold">شرح مشکل: </label>
-                                <textarea name="problem-description" id="problem-description" class="form-control border-dark" rows="10"
+                                <label for="problem_description" class="form-label fw-bold">شرح مشکل: </label>
+                                <textarea name="problem_description" id="problem_description" class="form-control border-dark" rows="10"
                                     placeholder="جزئیات بیشتر را بنویسید ..."></textarea>
                             </div>
 
@@ -153,7 +154,7 @@
                                     <div class="d-flex justify-content-center">
                                         <select name="time" class="form-select aut-time-pick mb-3"
                                             aria-label="Default select">
-                                            <option value="custom" selected>انتخاب ساعت به صورت دستی</option>
+
                                             <option value="1">9 صبح تا 12 ظهر</option>
                                             <option value="2">12 ظهر تا 16 عصر</option>
                                             <option value="3">16 تا 20 عصر</option>
@@ -161,7 +162,7 @@
                                         </select>
                                     </div>
 
-                                    <input type="time" name="custom_time" id="time-picker" class="p-2 ps-2 pe-2 rounded-3">
+
                                 </div>
 
                             </div>
@@ -173,11 +174,11 @@
                             <p class="m-0 d-inline-block ps-4 fw-bold"> اطلاعات تماس شما برای متخصص نمایش داده شود؟ </p>
 
                             <input value="1" type="radio" class="form-check-input ms-2" id="yes-checkbox"
-                                name="yes-no-radio" />
+                                name="show_info" />
                             <label class="form-check-label fw-bold" for="yes-checkbox"> بله </label>
 
                             <input value="0" type="radio" class="form-check-input me-4 ms-2" id="no-checkbox"
-                                name="yes-no-radio" />
+                                name="show_info" />
                             <label class="form-check-label fw-bold" for="no-checkbox"> خیر </label>
 
                         </div>
@@ -198,15 +199,16 @@
                                     @foreach (auth()->user()->orderaddresses as $orderaddress)
                                         <div class="mb-3">
                                             <input type="radio" class="form-check-input ms-2"
-                                                id="addr{{ $orderaddress->id }}" name="addr-radio" />
+                                                id="addr{{ $orderaddress->id }}" value="{{ $orderaddress->id }}"
+                                                name="addr_radio" />
                                             <label class="form-check-label" for="addr{{ $orderaddress->id }}">
-                                                {{ $orderaddress->state->name }}/{{ $orderaddress->state->name }}/{{ $orderaddress->state->description }}
+                                                {{ $orderaddress->state->name }}/{{ $orderaddress->state->name }}/{{ $orderaddress->description }}
                                             </label>
                                         </div>
                                     @endforeach
                                     <div class="mb-3">
                                         <input type="radio" class="form-check-input ms-2" id="custom_addr_selection"
-                                            name="addr-radio">
+                                            name="addr_radio">
                                         <label class="form-check-label" for="custom_addr_selection">
                                             اضافه کردن آدرس جدید
                                         </label>
@@ -281,6 +283,7 @@
                         </div>
 
                         <input type="hidden" name="city_id" value="" id="city_id">
+                        <input type="hidden" name="form_id" value="{{ $service->form->id }}" id="form_id">
 
                     </form>
 
@@ -408,8 +411,8 @@
 
                             <!--problem description-->
                             <div class="mb-3  text-start">
-                                <label for="problem-description" class="form-label fw-bold">problem description: </label>
-                                <textarea name="problem-description" id="problem-description" class="form-control border-dark" rows="10"
+                                <label for="problem_description" class="form-label fw-bold">problem description: </label>
+                                <textarea name="problem_description" id="problem_description" class="form-control border-dark" rows="10"
                                     placeholder="..."></textarea>
                             </div>
 
@@ -424,13 +427,6 @@
                             </div>
 
                             <div class="pt-2 pb-2">
-                                <!--date picker-->
-                                <div class="mb-4">
-                                    <label for="date-picker" class="fw-bold mb-2">date: </label>
-                                    <br>
-                                    <input type="date" name="date" id="date-picker" class="p-2 ps-2 pe-2 rounded-3">
-                                </div>
-
                                 <!--time picker-->
                                 <div class="mb-4">
                                     <label for="time-picker" class="fw-bold mb-2">time: </label>
@@ -438,15 +434,12 @@
 
                                     <div class="d-flex justify-content-center">
                                         <select class="form-select aut-time-pick mb-3" aria-label="Default select">
-                                            <option value="custom" selected>custom</option>
                                             <option value="1"> 9am to 12pm </option>
                                             <option value="2"> 12pm to 16pm </option>
                                             <option value="3"> 16pm to 20pm </option>
                                             <option value="4"> 20pm to 22pm </option>
                                         </select>
                                     </div>
-
-                                    <input type="time" name="custom_time" id="time-picker" class="p-2 ps-2 pe-2 rounded-3">
                                 </div>
 
                             </div>

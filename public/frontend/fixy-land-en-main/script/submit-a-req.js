@@ -34,8 +34,8 @@ $(document).ready(function () {
 
 
     //custom or automatic addrs selection	
-    $(".saved_addr input[name=addr-radio]").change(function () {
-        var selected_option = $('input[name=addr-radio]:checked').attr("id");
+    $(".saved_addr input[name=addr_radio]").change(function () {
+        var selected_option = $('input[name=addr_radio]:checked').attr("id");
         if (selected_option == "custom_addr_selection") {
             $("#add_new_addrs").removeClass("d-none");
         } else { $("#add_new_addrs").addClass("d-none"); }

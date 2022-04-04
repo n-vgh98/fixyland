@@ -21,11 +21,16 @@ class Order extends Model
 
     public function formresults()
     {
-        return $this->hasMany("App\Models\FromResult");
+        return $this->hasMany("App\Models\FormResult");
     }
 
     public function address()
     {
         return $this->belongsTo("App\Models\OrderAddress", "address_id");
+    }
+
+    public function images()
+    {
+        return $this->hasMany("App\Models\OrderImage");
     }
 }
