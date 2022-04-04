@@ -373,6 +373,12 @@ route::prefix("{locale}")->middleware("language")->group(function () {
 
         // route for saving form
         route::post("/resultsave", [FrontServiceController::class, "resultsave"])->name("user.service.form.result.save");
+        route::get("/techfindmethod", [FrontServiceController::class, "findmethod"])->name("user.service.form.find.method");
+
+        // id means order id
+        route::get("/findrequest/{id}", [FrontServiceController::class, "findrequest"])->name("user.service.find.request");
+        route::get("/autofind/{id}", [FrontServiceController::class, "autofind"])->name("user.service.form.find.auto");
+        route::get("/customfind/{id}", [FrontServiceController::class, "customfind"])->name("user.service.form.find.custom");
     });
 
 

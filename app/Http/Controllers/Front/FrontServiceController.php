@@ -12,6 +12,8 @@ use App\Models\FormResult;
 use App\Models\Order;
 use App\Models\OrderAddress;
 use App\Models\OrderImage;
+use App\Models\Process;
+use App\Models\Suggestion;
 use Illuminate\Foundation\Http\FormRequest;
 
 class FrontServiceController extends Controller
@@ -92,6 +94,31 @@ class FrontServiceController extends Controller
             $result->value = $request->$id;
             $result->save();
         }
+        return redirect()->route("user.service.find.request", $order->id);
+    }
+
+
+    public function findrequest($lang, $id)
+    {
+        $order = Order::find($id);
+        return view("front.services.accept", compact("order"));
+    }
+
+
+    public function autofind($lang, $id)
+    {
+        $order = Order::find($id);
+        $process = new Process();
+        $process->order_id = $id;
+        $process->service_id = $order->service_id;
+        $process->save();
+    }
+
+
+    public function customfind($lang, $id)
+    {
+        $order = Order::find($id);
+        return view("front.services.customselect");
     }
 
 
