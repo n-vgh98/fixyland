@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Front;
 
-use App\Http\Controllers\Controller;
-use App\Models\ServiceSubCategory;
+use App\Models\Lang;
 use Illuminate\Http\Request;
+use App\Models\ServiceSubCategory;
+use App\Http\Controllers\Controller;
 
 class FrontServiceController extends Controller
 {
@@ -16,6 +17,7 @@ class FrontServiceController extends Controller
     public function description($lang, $id)
     {
         $service = ServiceSubCategory::find($id);
+
         if ($service->description != null) {
             return view("front.services.description", compact("service"));
         } else {
@@ -25,14 +27,21 @@ class FrontServiceController extends Controller
 
     public function form($lang, $id)
     {
-
+        $languages = Lang::where([["name", $lang], ["langable_type", "App\Models\CoveredArea"]])->get();
         $service = ServiceSubCategory::find($id);
         if ($service->form != null) {
-            return view("front.services.form", compact("service"));
+            return view("front.services.form", compact("service", "languages"));
         } else {
             return redirect()->back();
         }
     }
+
+
+    public function resultsave($lang, Request $request)
+    {
+        $address=
+    }
+
 
     /**
      * Show the form for creating a new resource.

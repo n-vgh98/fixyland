@@ -368,8 +368,11 @@ route::prefix("{locale}")->middleware("language")->group(function () {
 
     // route for geting service
     route::prefix("services")->middleware(['auth:sanctum', 'verified', "user"])->group(function () {
-        route::get("descrition/{id}", [FrontServiceController::class, "description"])->name("user.service.description");
+        route::get("descripion/{id}", [FrontServiceController::class, "description"])->name("user.service.description");
         route::get("form/{id}", [FrontServiceController::class, "form"])->name("user.service.form");
+
+        // route for saving form
+        route::post("/resultsave", [FrontServiceController::class, "resultsave"])->name("user.service.form.result.save");
     });
 
 

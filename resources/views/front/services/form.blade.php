@@ -24,7 +24,6 @@
                         <ul class="sub-menu2 p-0">
                             <li>
                                 <form class="d-flex rounded-3 pe-2 ps-2 searchBar-blue-bg">
-
                                     <button class="btn" type="submit">
                                         <i class="fa-solid fa-magnifying-glass"></i>
                                     </button>
@@ -54,13 +53,12 @@
                 <div class="col-12 col-lg-8 text-center">
                     <p class="fw-bold font-size24"> فرم ثبت سفارش </p>
 
-                    <form>
-
+                    <form action="{{ route('user.service.form.result.save') }}" method="post">
+                        @csrf
                         <div class="pb-2 border-bottom border-secondary border-2">
 
                             @foreach ($service->form->questions as $question)
                                 <div class="border border-dark rounded-3 text-end mb-5">
-
                                     <div class="searchBar-blue-bg border-bottom border-dark rounded-3 fw-bold p-3">
                                         {{ $question->label }}
                                     </div>
@@ -87,8 +85,6 @@
                                     @endwhile
                                 </div>
                             @endforeach
-
-
                         </div>
 
 
@@ -199,72 +195,59 @@
 
                                 <!-- آدرس های ذخیره شده-->
                                 <div class="text-end saved_addr">
-                                    <div class="mb-3">
-                                        <input type="radio" class="form-check-input ms-2" id="addr1" name="addr-radio" />
-                                        <label class="form-check-label" for="addr1">
-                                            شیراز/ملاصدرا/خیابان جمالی
-                                        </label>
-                                    </div>
-
-                                    <div class="mb-3">
-                                        <input type="radio" class="form-check-input ms-2" id="addr2" name="addr-radio" />
-                                        <label class="form-check-label" for="addr2">
-                                            تهران/ملاصدرا/خیابان جمالی
-                                        </label>
-                                    </div>
-
+                                    @foreach (auth()->user()->orderaddresses as $orderaddress)
+                                        <div class="mb-3">
+                                            <input type="radio" class="form-check-input ms-2"
+                                                id="addr{{ $orderaddress->id }}" name="addr-radio" />
+                                            <label class="form-check-label" for="addr{{ $orderaddress->id }}">
+                                                {{ $orderaddress->state->name }}/{{ $orderaddress->state->name }}/{{ $orderaddress->state->description }}
+                                            </label>
+                                        </div>
+                                    @endforeach
                                     <div class="mb-3">
                                         <input type="radio" class="form-check-input ms-2" id="custom_addr_selection"
-                                            name="addr-radio" value="custom" />
+                                            name="addr-radio">
                                         <label class="form-check-label" for="custom_addr_selection">
                                             اضافه کردن آدرس جدید
                                         </label>
                                     </div>
-
                                 </div>
-
-
                                 <!--اضافه کردن آدرس جدید-->
                                 <div id="add_new_addrs" class="text-end mt-3 w-75 d-none">
 
                                     <!--استان-->
                                     <div class="mb-3">
-                                        <label for="state-register-customer" class="form-label"> استان </label>
-                                        <select class="form-select" id="state-register-customer">
-                                            <option id="state_0" value="0" selected>فارس</option>
-                                            <option id="state_1" value="1">تهران</option>
-                                            <option id="state_2" value="2">اصفهان</option>
+                                        <label for="state-register-specialist" class="form-label"> استان </label>
+                                        <select class="form-select" name="state_id" id="state-register-specialist">
+                                            <option selected id="state_0">لطفا استان خود را انتخاب کنید</option>
+                                            @foreach ($languages as $language)
+                                                @php
+                                                    $state = $language->langable;
+                                                    $number = 1;
+                                                @endphp
+                                                <option name="state_id" id="state_{{ $number }}"
+                                                    value="{{ $state->id }}">
+                                                    {{ $state->name }}</option>
+                                                @php
+                                                    $number++;
+                                                @endphp
+                                            @endforeach
+
                                         </select>
                                     </div>
 
                                     <!--شهرهای مرتبط به هر استان   --  start -->
-                                    <!--فارس-->
-                                    <div class="cities mb-3">
-                                        <label for="city-register-customer-fars" class="form-label">شهر </label>
-                                        <select class="form-select" id="city-register-customer-fars">
-                                            <option value="shiraz">شیراز</option>
-                                            <option value="tehran">فسا</option>
-                                            <option value="esfahan">اقلید</option>
+                                    <div class="cities mb-3" id="maincitydiv">
+                                        <label for="city-register-specialist-nothing" class="form-label">شهر </label>
+                                        <select class="form-select" id="city-register-specialist-nothing">
+                                            <option selected>ابتدا استان خود را انتخاب کنید</option>
                                         </select>
                                     </div>
 
-                                    <!--تهران-->
-                                    <div class="cities mb-3 d-none">
-                                        <label for="city-register-customer-tehran" class="form-label">شهر </label>
-                                        <select class="form-select" id="city-register-customer-tehran">
-                                            <option value="shiraz">تهران</option>
-                                            <option value="tehran">تهران</option>
-                                            <option value="esfahan">تهران</option>
-                                        </select>
-                                    </div>
 
-                                    <!--اصفهان-->
-                                    <div class="cities mb-3 d-none">
-                                        <label for="city-register-customer-esfahan" class="form-label">شهر </label>
-                                        <select class="form-select" id="city-register-customer-esfahan">
-                                            <option value="shiraz">اصفهان</option>
-                                            <option value="tehran">اصفهان</option>
-                                            <option value="esfahan">اصفهان</option>
+                                    <div class="cities mb-3" id="maincitydiv">
+                                        <select class="form-select" id="select-city">
+
                                         </select>
                                     </div>
                                     <!--شهرهای مرتبط به هر استان   --  end -->
@@ -274,8 +257,8 @@
                                     <!--آدرس-->
                                     <div class="mb-3">
                                         <label for="customer-addrs" class="form-label">آدرس </label>
-                                        <textarea id="customer-addrs" class="form-control w-100" placeholder="آدرس جدید خود را وارد نمایید ..."
-                                            rows="5"></textarea>
+                                        <textarea id="customer-addrs" name="address_description" class="form-control w-100"
+                                            placeholder="آدرس جدید خود را وارد نمایید ..." rows="5"></textarea>
                                     </div>
 
                                 </div>
@@ -297,6 +280,7 @@
                             </div>
                         </div>
 
+                        <input type="hidden" name="city_id" value="" id="city_id">
 
                     </form>
 
@@ -611,4 +595,69 @@
         <script src="{{ asset('frontend/fixy-land-en-main/script/submit-a-req.js') }}" type="text/javascript"></script>
         <script src="{{ asset('frontend/fixy-land-en-main/script/user-addrs.js') }}" type="text/javascript"></script>
     @endif
+    <script src="{{ asset('frontend/fixy-land-en-main/script/submit-a-req.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('frontend/fixy-land-en-main/script/user-addrs.js') }}" type="text/javascript"></script>
+    <script>
+        $(document).ready(function() {
+            function getcityforsignup(cityid) {
+                var cityid1 = cityid
+                var _token = $("input[name='_token']").val();
+                $.ajax({
+                    url: "{{ route('user.register.get.city') }}",
+                    type: 'POST',
+                    data: {
+                        _token: _token,
+                        city_id: cityid1
+                    },
+                    success: function(data) {
+                        var maindiv = $("#maincitydiv")
+                        maindiv.html(" ")
+
+                        // making label for select options
+                        var label = document.createElement("label")
+                        label.classList.add("form-label")
+                        @if (app()->getLocale() == 'fa' || app()->getLocale() == 'ar')
+                            var labeltext = document.createTextNode("شهر")
+                        @else
+                            var labeltext = document.createTextNode("city")
+                        @endif
+
+                        label.append(labeltext)
+                        maindiv.append(label)
+
+                        // making select
+                        var select = $("#select-city")
+                        select.html(" ")
+                        // making a fake option
+                        var option = document.createElement("option")
+                        var optioncttext = document.createTextNode("لطفا شهر خود را انتخاب کنید")
+                        option.append(optioncttext)
+                        select.append(option)
+
+
+                        // making option for select
+                        data.cities.forEach(city => {
+                            var option = document.createElement("option")
+                            var optioncttext = document.createTextNode(city.name)
+                            option.append(optioncttext)
+                            select.append(option)
+                        });
+
+
+                    }
+                });
+            }
+
+
+            $("#state-register-specialist").change(function() {
+                var input = $("#state-register-specialist")
+                getcityforsignup(input.val())
+            });
+
+            $("#select-city").change(function() {
+                var value = $("#select-city").val();
+                $("#city_id").attr("value", value);
+            });
+        });
+    </script>
 @endsection
