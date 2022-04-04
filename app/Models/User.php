@@ -65,6 +65,11 @@ class User extends Authenticatable
         return $this->hasOne("App\Models\Address", "user_id");
     }
 
+    public function orderaddresses()
+    {
+        return $this->hasMany("App\Models\OrderAddress", "user_id");
+    }
+
     public function techinfo()
     {
         return $this->hasOne("App\Models\TechInfo");
