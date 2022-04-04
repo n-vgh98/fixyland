@@ -379,6 +379,7 @@ route::prefix("{locale}")->middleware("language")->group(function () {
         route::get("/findrequest/{id}", [FrontServiceController::class, "findrequest"])->name("user.service.find.request");
         route::get("/autofind/{id}", [FrontServiceController::class, "autofind"])->name("user.service.form.find.auto");
         route::get("/customfind/{id}", [FrontServiceController::class, "customfind"])->name("user.service.form.find.custom");
+        route::post("/customselect", [FrontServiceController::class, "customselect"])->name("user.service.form.custom.select");
     });
 
 

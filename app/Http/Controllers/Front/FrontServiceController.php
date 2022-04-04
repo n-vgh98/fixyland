@@ -145,10 +145,12 @@ class FrontServiceController extends Controller
 
         $filterids = [];
         foreach ($technicians as $technician) {
+            $plus = 0;
+
             foreach ($technician->techscores as $score) {
-                $plus = 0;
-                $average = ($plus + $score->star_number) / count($technician->techscores);
+                $plus += $score->star_number;
             }
+            $average = ($plus) / count($technician->techscores);
             array_push($filterids, ["tech_id" => $score->tech_id, "score_average" => round($average)]);
         }
 
@@ -197,10 +199,18 @@ class FrontServiceController extends Controller
         // geting teches by order of rankings
         $techs = [];
         foreach ($finalfilter as $filter1) {
-            $user = User::find($filter1["tech_id"])->first();
+            $user = User::find($filter1["tech_id"]);
             array_push($techs, $user);
         }
-        return view("front.services.customselect", compact("techs"));
+        return view("front.services.customselect", compact("techs", "id"));
+    }
+
+    public function customselect(Request $request)
+    {
+        $suggest = new Suggestion();
+        $suggest->tech_id = $request->tech_id;
+        $suggest->order_id = $request->order_id;
+        $suggest->save();
     }
 
 
