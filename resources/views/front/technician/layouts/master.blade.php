@@ -148,7 +148,7 @@
 
                         <div class="d-flex p-2 ps-3 pe-3 w-100">
                             <i class="fa-regular fa-hard-drive ms-3 mt-1"></i>
-                            <a href="spc-desk.html"
+                            <a href="{{ route('front.technician.panel.workdesk') }}"
                                 class="text-decoration-none darkYellow-text_onHover text-black-no-hover"> میزکار </a>
                         </div>
 
@@ -399,7 +399,7 @@
 
                         <div class="d-flex p-2 ps-3 pe-3 w-100">
                             <i class="fa-regular fa-hard-drive me-3 mt-1"></i>
-                            <a href="spc-desk.html"
+                            <a href="{{ route('front.technician.panel.workdesk') }}"
                                 class="text-decoration-none darkYellow-text_onHover text-black-no-hover"> desk </a>
                         </div>
 

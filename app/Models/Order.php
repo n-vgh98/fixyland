@@ -24,9 +24,14 @@ class Order extends Model
         return $this->hasMany("App\Models\FormResult");
     }
 
+    public function order_address()
+    {
+        return $this->belongsTo("App\Models\OrderAddress", "order_address_id");
+    }
+
     public function address()
     {
-        return $this->belongsTo("App\Models\OrderAddress", "address_id");
+        return $this->belongsTo("App\Models\Address", "address_id");
     }
 
     public function images()
