@@ -23,4 +23,6 @@ class Address extends Model
     {
         return $this->belongsTo("App\Models\CoveredAreaCity", "city_id");
     }
+    
+    
 }

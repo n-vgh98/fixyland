@@ -386,6 +386,7 @@ route::prefix("{locale}")->middleware("language")->group(function () {
             route::post("/updatebankinfo", "updatebankinfo")->name("front.technician.panel.update.bankinfo");
             route::post("/deleteportfolio/{pid}", "deleteporfolio")->name("front.technician.panel.delete.portfolio");
             route::post("/addportfolio", "addporfolio")->name("front.technician.panel.add.portfolio");
+            route::get("/workdesk", "offers")->name("front.technician.panel.workdesk");
         });
     });
 

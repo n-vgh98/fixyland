@@ -13,6 +13,8 @@ use App\Models\CoveredAreaCity;
 use App\Models\ServiceSubCategory;
 use App\Http\Controllers\Controller;
 use App\Models\Notification;
+use App\Models\Order;
+use App\Models\Process;
 use App\Models\TechnicianPortfolio;
 use Illuminate\Support\Facades\Auth;
 
@@ -208,5 +210,22 @@ class FrontSpecialistPanelController extends Controller
         return view("front.technician.notification", compact("notifications", "pnotifications"));
     }
 
-    
+    public function offers()
+    {
+        $tec = Auth::user()->id;
+        $tec_skill = SkillUser::where("user_id",$tec)->get();
+        $services = array();
+        foreach($tec_skill as $skill){
+            array_push($service,$skill->service_sub_categoy_id);
+        }
+        $orders_category = Order::whereIn("service_id",[$services->array_values])->get();
+        dd($orders_category); 
+        
+        $tec_info = TechInfo::where("user_id",$tec)->first();
+        $city = $tec_info->covered_city_id;
+        $state = $tec_info->covered_state_id;
+        
+      
+        return view("front.technician.workdesk");
+    }
 }
