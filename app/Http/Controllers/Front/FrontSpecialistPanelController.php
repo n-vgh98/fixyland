@@ -29,6 +29,12 @@ class FrontSpecialistPanelController extends Controller
         return view("front.technician.panel");
     }
 
+    public function changepassword()
+    {
+
+        return view("front.technician.changepassword");
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -197,8 +203,8 @@ class FrontSpecialistPanelController extends Controller
 
     public function notification()
     {
-        $notifications = Notification::Where([["mode", 0] ,["receivers","Technicians"]])->get();
-        $pnotifications =Notification::where([["mode", 1],["receiver_id",Auth::user()->id]])->get();
-        return view("front.technician.notification",compact("notifications","pnotifications"));
+        $notifications = Notification::Where([["mode", 0], ["receivers", "Technicians"]])->get();
+        $pnotifications = Notification::where([["mode", 1], ["receiver_id", Auth::user()->id]])->get();
+        return view("front.technician.notification", compact("notifications", "pnotifications"));
     }
 }
