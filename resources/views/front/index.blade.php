@@ -8,10 +8,6 @@
          Fixy Land
      @endif
  @endsection
-
-
-
-
  @section('content')
      @if (app()->getLocale() == 'fa' || app()->getLocale() == 'ar')
          <!--آیکون ثابت برای منتقل شدن به ابتدای صفحه-->
@@ -20,9 +16,6 @@
                  <i class="fa-solid fa-circle-up fw-bold font-size40 darkYellow-text"></i>
              </a>
          </div>
-
-
-
          <!--sec1-Carousel -->
          <section id="index-sec1" class="container-fluid">
              <div id="demo" class="carousel slide" data-bs-ride="carousel">
@@ -249,58 +242,24 @@
          <section id="index-sec5">
              <div class="container-fluid">
                  <div class="row d-flex justify-content-center">
+                 @foreach($index_articles as $index_article)
+                 @php 
+                    $article = $index_article->langable;
+                 @endphp
+                 @if($article->status == 1)
                      <div class="col-lg-3 col-md-4 col-12 m-1 p-0">
-                         <a href="articleDescription.html" class="text-decoration-none text-black">
+                         <a href="{{ route('front.article.show',[$article->id,$article->slug])}}" class="text-decoration-none text-black">
                              <div class="maghalat-box">
-                                 <img src="image/hand-wash.jpg" alt="maghale" width="100%" height="200px">
+                                 <img src="{{asset($article->photo_path)}}" alt="{{$article->photo_alt}}" width="100%" height="200px">
                                  <div class="maghalat">
-                                     <p> عنوان </p>
-                                     <p> قهوه ای اصیل که دارای کافئین ، خامه و غلظت بالایی می باشد. می توان به جرئت یکی
-                                         از پرطرفدارتربن قهوه های ربوستا در دنیا نامید. </p>
+                                     <p>{{$article->title}} </p>
+                                     <p>{!! Str::limit($article->text_1,30) !!} </p>
                                  </div>
                              </div>
                          </a>
                      </div>
-
-                     <div class="col-lg-3 col-md-4 col-12 m-1 p-0">
-                         <a href="articleDescription.html" class="text-decoration-none text-black">
-                             <div class="maghalat-box">
-                                 <img src="image/rakht.png" alt="maghale" width="100%" height="200px">
-                                 <div class="maghalat">
-                                     <p> عنوان </p>
-                                     <p> قهوه ای اصیل که دارای کافئین ، خامه و غلظت بالایی می باشد. می توان به جرئت یکی
-                                         از پرطرفدارتربن قهوه های ربوستا در دنیا نامید. </p>
-                                 </div>
-                             </div>
-                         </a>
-                     </div>
-
-                     <div class="col-lg-3 col-md-4 col-12 m-1 p-0">
-                         <a href="articleDescription.html" class="text-decoration-none text-black">
-                             <div class="maghalat-box">
-                                 <img src="image/hand-wash.jpg" alt="maghale" width="100%" height="200px">
-                                 <div class="maghalat">
-                                     <p> عنوان </p>
-                                     <p> قهوه ای اصیل که دارای کافئین ، خامه و غلظت بالایی می باشد. می توان به جرئت یکی
-                                         از پرطرفدارتربن قهوه های ربوستا در دنیا نامید. </p>
-                                 </div>
-                             </div>
-                         </a>
-                     </div>
-
-                     <div class="col-lg-3 col-md-4 col-12 m-1 p-0 d-lg-none">
-                         <a href="articleDescription.html" class="text-decoration-none text-black">
-                             <div class="maghalat-box">
-                                 <img src="image/rakht.png" alt="maghale" width="100%" height="200px">
-                                 <div class="maghalat">
-                                     <p> عنوان </p>
-                                     <p> قهوه ای اصیل که دارای کافئین ، خامه و غلظت بالایی می باشد. می توان به جرئت یکی
-                                         از پرطرفدارتربن قهوه های ربوستا در دنیا نامید. </p>
-                                 </div>
-                             </div>
-                         </a>
-                     </div>
-
+                @endif
+                @endforeach
                  </div>
              </div>
          </section>
@@ -346,7 +305,7 @@
              <p class="pb-3"> اگر در بخش های مختلف سوالی دارید، لطفا قبل از تماس با پشتیبانی ابتدا پرسش های
                  متداول را بخوانید. </p>
 
-             <a class="btn ps-3 pe-3 pb-2" href="questions.html"> سوالات متداول </a>
+             <a class="btn ps-3 pe-3 pb-2" href="{{ route('front.faq.index') }}"> سوالات متداول </a>
 
 
 
