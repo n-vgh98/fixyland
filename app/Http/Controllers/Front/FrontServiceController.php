@@ -2,18 +2,20 @@
 
 namespace App\Http\Controllers\Front;
 
+use App\Models\Form;
 use App\Models\Lang;
+use App\Models\User;
+use App\Models\Order;
+use App\Models\Process;
+use App\Models\FormResult;
+use App\Models\OrderImage;
+use App\Models\Suggestion;
+use App\Models\OrderAddress;
 use Illuminate\Http\Request;
+use App\Models\CoveredAreaCity;
 use App\Models\ServiceSubCategory;
 use App\Http\Controllers\Controller;
-use App\Models\CoveredAreaCity;
-use App\Models\Form;
-use App\Models\FormResult;
-use App\Models\Order;
-use App\Models\OrderAddress;
-use App\Models\OrderImage;
-use App\Models\Process;
-use App\Models\Suggestion;
+use App\Models\Address;
 use Illuminate\Foundation\Http\FormRequest;
 
 class FrontServiceController extends Controller
@@ -118,6 +120,31 @@ class FrontServiceController extends Controller
     public function customfind($lang, $id)
     {
         $order = Order::find($id);
+        $techusers = User::where([["role_name", "technician"], ["status", 1]])->get();
+        $technicians = [];
+        // find technicians that have all requirments
+        foreach ($techusers as $techuser) {
+            // finding address
+            if ($order->order_address_id != null) {
+                $address = OrderAddress::find($order->order_address_id);
+            } else {
+                $address = Address::find($order->address_id);
+            }
+
+            // geting tech skills
+            $skills = [];
+            foreach ($techuser->skills as $skill) {
+                array_push($skills, $skill->service_sub_categoy_id);
+            }
+
+
+            if ($techuser->techinfo->covered_state_id == $address->state_id && $techuser->techinfo->covered_city_id == $address->city_id && in_array($order->service_id, $skills)) {
+                array_push($technicians, $techuser);
+            }
+        }
+
+
+
         return view("front.services.customselect");
     }
 
