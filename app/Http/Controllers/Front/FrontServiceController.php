@@ -143,9 +143,64 @@ class FrontServiceController extends Controller
             }
         }
 
+        $filterids = [];
+        foreach ($technicians as $technician) {
+            foreach ($technician->techscores as $score) {
+                $plus = 0;
+                $average = ($plus + $score->star_number) / count($technician->techscores);
+            }
+            array_push($filterids, ["tech_id" => $score->tech_id, "score_average" => round($average)]);
+        }
 
 
-        return view("front.services.customselect");
+        $fives = [];
+        $fours = [];
+        $threes = [];
+        $twos = [];
+        $ones = [];
+        foreach ($filterids as $filter) {
+            if ($filter["score_average"] == 5) {
+                array_push($fives, $filter);
+            } elseif ($filter["score_average"] == 4) {
+                array_push($fours, $filter);
+            } elseif ($filter["score_average"] == 3) {
+                array_push($threes, $filter);
+            } elseif ($filter["score_average"] == 2) {
+                array_push($twos, $filter);
+            } elseif ($filter["score_average"] == 1) {
+                array_push($ones, $filter);
+            }
+        }
+
+        // making them in right way
+        $finalfilter = [];
+        foreach ($fives as $five) {
+            array_push($finalfilter, $five);
+        }
+
+        foreach ($fours as $four) {
+            array_push($finalfilter, $four);
+        }
+
+        foreach ($threes as $three) {
+            array_push($finalfilter, $three);
+        }
+
+        foreach ($twos as $two) {
+            array_push($finalfilter, $two);
+        }
+
+        foreach ($ones as $one) {
+            array_push($finalfilter, $one);
+        }
+
+        // geting teches by order of rankings
+        $techs = [];
+        foreach ($finalfilter as $filter1) {
+            $user = User::find($filter1["tech_id"])->first();
+            array_push($techs, $user);
+        }
+        return view("front.services.customselect", compact("techs"));
     }
 
 

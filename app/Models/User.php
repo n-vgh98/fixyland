@@ -94,4 +94,9 @@ class User extends Authenticatable
     {
         return $this->hasMany("App\Models\FavoritTechnician", "technician_id");
     }
+
+    public function techscores()
+    {
+        return $this->hasMany("App\Models\TechScore", "tech_id");
+    }
 }
