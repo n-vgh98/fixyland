@@ -19,7 +19,8 @@ class FrontHomeController extends Controller
         $adlanguages = Lang::where([["name", $lang], ["langable_type", "App\Models\Advertisment"]])->get();
         $staticlanguages = Lang::where([["name", $lang], ["langable_type", "App\Models\IndexStatic"]])->get();
         $catlanguages = Lang::where([["name", $lang], ["langable_type", "App\Models\ServiceCategory"]])->get();
-        return view("front.index", compact("adlanguages", "staticlanguages", "catlanguages"));
+        $index_articles = Lang::where([["name","$lang"],["langable_type","App\Models\Article"]])->get();
+        return view("front.index", compact("adlanguages", "staticlanguages", "catlanguages","index_articles"));
     }
 
     /**
