@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('from_results', function (Blueprint $table) {
+        Schema::create('form_results', function (Blueprint $table) {
             $table->id();
             $table->foreignId("form_id")->constrained("forms")->onDelete("cascade")->onUpdate("cascade");
             $table->foreignId("order_id")->constrained("orders")->onDelete("cascade")->onUpdate("cascade");
