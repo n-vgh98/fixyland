@@ -161,7 +161,8 @@
 
                     <div class="mb-3">
                         <label for="address-register-specialist" class="form-label ">آدرس</label>
-                        <textarea class="form-control bg-white" name="address_description" id="address-register-specialist" placeholder="آدرس"></textarea>
+                        <textarea class="form-control bg-white" name="address_description" id="address-register-specialist"
+                            placeholder="آدرس"></textarea>
                     </div>
 
                     <div class="mb-3">
@@ -235,7 +236,9 @@
                     @foreach ($categorylangs as $categorylang)
                         @php
                             $category = $categorylang->langable;
+                            $i = 0;
                         @endphp
+
 
                         <div class="mt-2 form-control-register-specialist-div2 d-none">
 
@@ -256,11 +259,15 @@
                                         <label for="idSkill{{ $subcategory->id }}"
                                             class="form-label">{{ $subcategory->name }}</label>
                                         <input name="skill_id[]" value="{{ $subcategory->id }}" type="checkbox"
-                                            class="checkclass" id="idSkill{{ $subcategory->id }}">
+                                            class="checkclass cat{{ $i }}"
+                                            id="idSkill{{ $subcategory->id }}">
                                     </div>
                                 @endforeach
                             </div>
                         </div>
+                        @php
+                            $i++;
+                        @endphp
                     @endforeach
 
                     <div class="w-100 mt-5">
@@ -524,6 +531,7 @@
                     @foreach ($categorylangs as $categorylang)
                         @php
                             $category = $categorylang->langable;
+                            $i = 0;
                         @endphp
 
                         <div class="mt-2 form-control-register-specialist-div2 d-none">
@@ -545,11 +553,15 @@
                                         <label for="idSkill{{ $subcategory->id }}"
                                             class="form-label">{{ $subcategory->name }}</label>
                                         <input name="skill_id[]" value="{{ $subcategory->id }}" type="checkbox"
-                                            class="checkclass" id="idSkill{{ $subcategory->id }}">
+                                            class="checkclass cat{{ $i }}"
+                                            id="idSkill{{ $subcategory->id }}">
                                     </div>
                                 @endforeach
                             </div>
                         </div>
+                        @php
+                            $i++;
+                        @endphp
                     @endforeach
 
                     <div class="w-100 mt-5">
