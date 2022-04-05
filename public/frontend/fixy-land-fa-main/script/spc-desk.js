@@ -41,7 +41,7 @@ $(document).ready(function(){
 //	short & long description 
 	
 	//	more info button
-	let more_inf_btn = $(".more_inf_btn");	
+	let more_inf_btn = $("#more_inf_btn");	
 	//	go back button
 	let back_btn = $(".go-back-btn");
 	

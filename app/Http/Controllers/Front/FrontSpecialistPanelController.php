@@ -12,8 +12,10 @@ use Illuminate\Http\Request;
 use App\Models\CoveredAreaCity;
 use App\Models\ServiceSubCategory;
 use App\Http\Controllers\Controller;
+use App\Models\Archive;
 use App\Models\Notification;
 use App\Models\Order;
+use App\Models\OrderAddress;
 use App\Models\Process;
 use App\Models\TechnicianPortfolio;
 use Illuminate\Support\Facades\Auth;
@@ -213,19 +215,33 @@ class FrontSpecialistPanelController extends Controller
     public function offers()
     {
         $tec = Auth::user()->id;
-        $tec_skill = SkillUser::where("user_id",$tec)->get();
-        $services = array();
-        foreach($tec_skill as $skill){
-            array_push($service,$skill->service_sub_categoy_id);
-        }
-        $orders_category = Order::whereIn("service_id",[$services->array_values])->get();
-        dd($orders_category); 
-        
         $tec_info = TechInfo::where("user_id",$tec)->first();
         $city = $tec_info->covered_city_id;
         $state = $tec_info->covered_state_id;
-        
-      
-        return view("front.technician.workdesk");
+        $tec_skill = SkillUser::where("user_id",$tec)->get();
+        $skills = array();
+        foreach($tec_skill as $skill){
+            array_push($skills,$skill->service_sub_categoy_id);
+        }
+        $orders_services = Order::whereIn("service_id",$skills)->get();
+        $orders = array();
+        foreach($orders_services as $order_service){
+            if($order_service->order_address_id == null){
+                if($order_service->address->city_id == $city && $order_service->address->state_id == $state){
+                    array_push($orders,$order_service->id);
+                }
+            }    
+            if($order_service->address_id == null){
+                if($order_service->order_address->city_id == $city && $order_service->order_address->state_id == $state){
+                    array_push($orders,$order_service);
+                }
+            }     
+        }
+
+        $proccess = Process::whereIn("order_id",$orders)->where([["status",1],["tech_id", null]])->get();
+        $doing_archives = Archive::where([["tech_id",Auth::user()->id],["status", 1]])->get();
+        $past_archives = Archive::where([["tech_id",Auth::user()->id],["status", 2]])->get();
+        $canceled_archives = Archive::where([["tech_id",Auth::user()->id],["status", 0]])->get();
+        return view("front.technician.workdesk",compact(["proccess","doing_archives","past_archives","canceled_archives"]));
     }
 }

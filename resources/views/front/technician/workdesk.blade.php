@@ -25,10 +25,12 @@
 
 							
 					<!--پیشنهادات-->
+					
 					<div class="user-order-list-menu-item w-100 h-100 pb-md-5 mb-5">
-						
+					
 						<!--empty request-->
-						<div class="empty_request w-100 border-gray d-flex justify-content-center d-none">
+						@if($proccess->isEmpty())
+						<div class="empty_request w-100 border-gray d-flex justify-content-center">
 							<div class="empty_request_box form-bg-color p-md-5 pt-md-4 pb-md-4 p-2 mt-5">
 								<p> دوست عزیز
 									<br>
@@ -47,6 +49,7 @@
 							</div>
 								
 						</div>
+						@else 
 						
 						
 						<!--requests-->
@@ -55,6 +58,7 @@
 							<!--requests short description-->
 							<div class="req-short-dsc d-flex flex-column align-items-center gap-3 mb-3">
 								<div class="container-fluid rounded-3 w-75 form-bg-color p-0">
+								@foreach($proccess as $pro)
 									<div class="row m-0">
 										<div class="col-lg-3 col-12 p-0 d-flex justify-content-center mb-2 mb-lg-0">
 											<div class="w-100">
@@ -63,17 +67,18 @@
 										</div>
 										
 										<div class="col-lg-9 col-12 mt-2 mt-sm-0 p-3 d-flex flex-column">
-											<p class="m-0 pb-2 fw-bold"> نام مشتری: محمدرضا امیری </p>
-											<p class="m-0 pb-2 fw-bold" > نوع: تعویض فریم گوشی </p>
-											<p class="m-0 pb-2 fw-bold" > آدرس: شیراز-ملاصدرا-خیابان جمالی </p>
-											<p class="m-0 pb-3 fw-bold" > شرح مشکل: تعویض فریم گوشی </p>
-											<p class="m-0 mb-3 align-self-end"> 1400/10/3 </p>
+											<p class="m-0 pb-2 fw-bold"> نام مشتری: {{$pro->order->user->firstname}} {{$pro->order->user->lastname}}  </p>
+											<p class="m-0 pb-2 fw-bold" > نوع:   {{$pro->service->name}} </p>
+											<p class="m-0 pb-2 fw-bold" > آدرس: {{$pro->order->address->state->name}}-{{$pro->order->address->city->name}}-{{$pro->order->address->description}} </p>
+											<p class="m-0 pb-3 fw-bold" > شرح مشکل:   {{$pro->order->description}} </p>
+											<p class="m-0 mb-3 align-self-end"> {{$pro->created_at->toDateString()}} </p>
 											<div class="align-self-center mt-auto">
-												<button type="button" class="more_inf_btn btn darkYellow"> مشاهده </button>
+												<button type="button" class="more_inf_btn btn darkYellow" id="more_inf_btn"> مشاهده </button>
 											</div>
 
 										</div>
 									</div>
+								@endforeach
 								</div>
 
 	
@@ -126,13 +131,13 @@
 							</div>
 							
 						</div>
-						
+						@endif
 						
 				
 						
 						
 					</div>
-								
+					
 	
 					<!--در دست اجرا-->
 					<div class="user-order-list-menu-item border-gray w-100 h-100 pb-2 pt-1 pb-md-5 mb-5 d-none">
@@ -143,6 +148,7 @@
 							<!--job short description-->
 							<div class="job-short-dsc d-flex flex-column align-items-center gap-3 mb-3">
 								<div class="container-fluid rounded-3 w-75 form-bg-color p-0">
+								@foreach($doing_archives as $doing)
 									<div class="row m-0">
 										<div class="col-lg-3 col-12 p-0 d-flex justify-content-center mb-2 mb-lg-0">
 											<div class="w-100">
@@ -151,13 +157,13 @@
 										</div>
 										
 										<div class="col-lg-9 col-12 mt-2 mt-sm-0 p-3 d-flex flex-column">
-											<p class="m-0 pb-2 fw-bold"> نام مشتری: محمدرضا امیری </p>
-											<p class="m-0 pb-2 fw-bold" > نوع: تعویض فریم گوشی </p>
-											<p class="m-0 pb-2 fw-bold" > آدرس: شیراز-ملاصدرا-خیابان جمالی </p>
-											<p class="m-0 pb-3 fw-bold" > شرح مشکل: تعویض فریم گوشی </p>
+											<p class="m-0 pb-2 fw-bold"> نام مشتری:  {{$doing->order->user->firstname}}{{$doing->order->user->lastname}} </p>
+											<p class="m-0 pb-2 fw-bold" > نوع:  {{$doing->order->service->name}}  </p>
+											<p class="m-0 pb-2 fw-bold" > آدرس: {{$doing->order->address->state->name}}-{{$doing->order->address->city->name}}-{{$doing->order->address->description}}  </p>
+											<p class="m-0 pb-3 fw-bold" > شرح مشکل: {{$doing->order->description}}   </p>
 											<div class="w-100 me-md-3 mb-3 d-flex">
-												<p class="m-0 ms-5"> 21:51 </p>
-												<p class="m-0"> 1400/10/3 </p>
+												<p class="m-0 ms-5"> {{$doing->created_at->toTimeString()}} </p>
+												<p class="m-0"> {{$doing->created_at->toDateString()}} </p>
 											</div>
 												
 											<div class="w-100 align-self-center mt-auto d-flex justify-content-center justify-content-md-end mb-1">
@@ -175,6 +181,7 @@
 											
 										</div>
 									</div>
+								@endforeach
 								</div>
 
 	
@@ -300,6 +307,7 @@
 					<div class="user-order-list-menu-item w-100 h-100 border-gray pt-3 padding-bottom mb-5 d-flex flex-column align-items-center gap-3 d-none">
 						
 						<div class="container-fluid rounded-3 w-75 form-bg-color p-0">
+							@foreach($past_archives as $past)
 							<div class="row m-0">
 								<div class="col-lg-3 col-12 p-0 d-flex justify-content-center mb-2 mb-lg-0">
 									<div class="w-100">
@@ -307,42 +315,19 @@
 									</div>
 								</div>
 								<div class="col-lg-9 col-12 mt-2 mt-sm-0 p-3">
-									<p class="m-0 pb-2 fw-bold"> نام مشتری: محمدرضا امیری </p>
-									<p class="m-0 pb-2 fw-bold" > نوع: تعویض فریم گوشی </p>
-									<p class="m-0 pb-2 fw-bold" > آدرس: شیراز-ملاصدرا-خیابان جمالی </p>
-									<p class="m-0 pb-3 fw-bold" > شرح مشکل: تعویض فریم گوشی </p>
+									<p class="m-0 pb-2 fw-bold"> نام مشتری:  {{$past->order->user->firstname}}{{$past->order->user->lastname}} </p>
+									<p class="m-0 pb-2 fw-bold" > نوع:   {{$past->order->service->name}} </p>
+									<p class="m-0 pb-2 fw-bold" > آدرس: {{$past->order->address->state->name}}-{{$past->order->address->city->name}}-{{$past->order->address->description}}  </p>
+									<p class="m-0 pb-3 fw-bold" > شرح مشکل:  {{$past->order->description}} </p>
 									<div class="w-100 d-flex justify-content-center justify-content-lg-end">
-										<p class="m-0 ms-5"> 21:51 </p>
-										<p class="m-0"> 1400/10/3 </p>
+										<p class="m-0 ms-5"> {{$past->created_at->toTimeString()}} </p>
+										<p class="m-0">{{$past->created_at->toDateString()}} </p>
 									</div>
 								</div>
 							</div>
-
+							@endforeach
 	
-						</div>	
-						
-						<div class="container-fluid rounded-3 w-75 form-bg-color p-0">
-							<div class="row m-0">
-								<div class="col-lg-3 col-12 p-0 d-flex justify-content-center mb-2 mb-lg-0">
-									<div class="w-100">
-										<img class="rounded-3 mw-100 mh-100" src="image/human3.jpg" alt="specialist" height="250px" width="100%">
-									</div>
-								</div>
-								<div class="col-lg-9 col-12 mt-2 mt-sm-0 p-3">
-									<p class="m-0 pb-2 fw-bold"> نام مشتری: محمدرضا امیری </p>
-									<p class="m-0 pb-2 fw-bold" > نوع: تعویض فریم گوشی </p>
-									<p class="m-0 pb-2 fw-bold" > آدرس: شیراز-ملاصدرا-خیابان جمالی </p>
-									<p class="m-0 pb-3 fw-bold" > شرح مشکل: تعویض فریم گوشی </p>
-									<div class="w-100 d-flex justify-content-center justify-content-lg-end">
-										<p class="m-0 ms-5"> 21:51 </p>
-										<p class="m-0"> 1400/10/3 </p>
-									</div>
-								</div>
-							</div>
-
-	
-						</div>
-						
+						</div>		
 					</div>
 									
 					
@@ -350,6 +335,7 @@
 					<div class="user-order-list-menu-item w-100 h-100 border-gray pt-3 padding-bottom mb-5 d-flex flex-column align-items-center gap-3 d-none">
 						
 						<div class="container-fluid rounded-3 w-75 form-bg-color p-0">
+							@foreach($canceled_archives as $canceled)
 							<div class="row m-0">
 								<div class="col-lg-3 col-12 p-0 d-flex justify-content-center mb-2 mb-lg-0">
 									<div class="w-100">
@@ -357,16 +343,17 @@
 									</div>
 								</div>
 								<div class="col-lg-9 col-12 mt-2 mt-sm-0 p-3">
-									<p class="m-0 pb-2 fw-bold"> نام مشتری: امید فتاحی </p>
-									<p class="m-0 pb-2 fw-bold" > نوع: تعویض  </p>
-									<p class="m-0 pb-2 fw-bold" > آدرس: شیراز-ملاصدرا-خیابان جمالی </p>
-									<p class="m-0 pb-3 fw-bold" > شرح مشکل: تعویض فریم گوشی </p>
+									<p class="m-0 pb-2 fw-bold"> نام مشتری:  {{$canceled->order->usr->firstname}} {{$canceled->order->user->lastname}}</p>
+									<p class="m-0 pb-2 fw-bold" > نوع: {{$canceled->order->service->name}}  </p>
+									<p class="m-0 pb-2 fw-bold" > آدرس:  {{$canceled->order->address->state->name}}-{{$canceled->order->address->city->name}}-{{$canceled->order->address->description}}    </p>
+									<p class="m-0 pb-3 fw-bold" > شرح مشکل: {{$canceled->order->description}} </p>
 									<div class="w-100 d-flex justify-content-center justify-content-lg-end">
-										<p class="m-0 ms-5"> 21:51 </p>
-										<p class="m-0"> 1400/10/3 </p>
+										<p class="m-0 ms-5"> {{$canceled->created_at->toTimeString()}} </p>
+										<p class="m-0"> {{$canceled->created_at->toDateString()}} </p>
 									</div>
 								</div>
 							</div>
+							@endforeach
 						</div>	
 						
 					</div>
@@ -394,6 +381,7 @@
 					<div class="user-order-list-menu-item w-100 h-100 pb-md-5 mb-5">
 						
 						<!--empty request-->
+						@if($proccess->isEmpty())
 						<div class="empty_request w-100 border-gray d-flex justify-content-center d-none">
 							<div class="empty_request_box form-bg-color p-md-5 pt-md-4 pb-md-4 p-2 mt-5">
 								<p> dooste aziz
@@ -401,7 +389,7 @@
 									shoma dar hale hzer hich darkhsti nadarid. 
 								</p>
 							</div>
-							
+						@else 	
 							<!--undraw vector mobile size-->		
 							<div class="position-absolute bottom-0 end-0 d-md-none">
 								<img class="pic-width-mobile transform_img" src="image/undraw_click_here_re_y6uq 1.png" alt="user" width="100%">
@@ -421,6 +409,7 @@
 							<!--requests short description-->
 							<div class="req-short-dsc d-flex flex-column align-items-center gap-3 mb-3">
 								<div class="container-fluid rounded-3 w-75 form-bg-color p-0">
+								@foreach($proccess as $pro)
 									<div class="row m-0">
 										<div class="col-lg-3 col-12 p-0 d-flex justify-content-center mb-2 mb-lg-0">
 											<div class="w-100">
@@ -429,17 +418,18 @@
 										</div>
 										
 										<div class="col-lg-9 col-12 mt-1 mt-sm-0 p-2 d-flex flex-column">
-											<p class="m-0 pb-2 fw-bold"> name: mohammad maiiri </p>
-											<p class="m-0 pb-2 fw-bold" > noe: taviz frame </p>
-											<p class="m-0 pb-2 fw-bold" > addr: shiraz-jamali </p>
-											<p class="m-0 pb-3 fw-bold" > sharh: taviz frame gooshi </p>
-											<p class="m-0 mb-3 align-self-end"> 1400/10/3 </p>
+											<p class="m-0 pb-2 fw-bold"> name:  {{$pro->order->user->firstname}} {{$pro->order->user->lastname}}  </p>
+											<p class="m-0 pb-2 fw-bold" > noe: {{$pro->service->name}} rame </p>
+											<p class="m-0 pb-2 fw-bold" > addr: {{$pro->order->address->state->name}}-{{$pro->order->address->city->name}}-{{$pro->order->address->description}} </p>
+											<p class="m-0 pb-3 fw-bold" > sharh: {{$pro->order->description}}    </p>
+											<p class="m-0 mb-3 align-self-end"> {{$pro->created_at->toDateString()}}</p>
 											<div class="align-self-center mt-auto">
 												<button type="button" class="more_inf_btn btn darkYellow"> moshahede </button>
 											</div>
 
 										</div>
 									</div>
+								@endforeach
 								</div>
 
 	
@@ -510,6 +500,7 @@
 							<!--job short description-->
 							<div class="job-short-dsc d-flex flex-column align-items-center gap-3 mb-3">
 								<div class="container-fluid rounded-3 w-75 form-bg-color p-0">
+								@foreach($doing_archives as $doing)
 									<div class="row m-0">
 										<div class="col-lg-3 col-12 p-0 d-flex justify-content-center mb-2 mb-lg-0">
 											<div class="w-100">
@@ -518,13 +509,13 @@
 										</div>
 										
 										<div class="col-lg-9 col-12 mt-2 mt-sm-0 p-3 d-flex flex-column">
-											<p class="m-0 pb-2 fw-bold"> name: mohammad amiri </p>
-											<p class="m-0 pb-2 fw-bold" > noe: taviz frame gooshi </p>
-											<p class="m-0 pb-2 fw-bold" > addrs: shiraz-jamali </p>
-											<p class="m-0 pb-3 fw-bold" > sharhe moshkel: taviz frame gooshi </p>
+											<p class="m-0 pb-2 fw-bold"> name:  {{$doing->order->user->firstname}}{{$doing->order->user->lastname}}  </p>
+											<p class="m-0 pb-2 fw-bold" > noe: {{$doing->order->service->name}}  </p>
+											<p class="m-0 pb-2 fw-bold" > addrs: {{$doing->order->address->state->name}}-{{$doing->order->address->city->name}}-{{$doing->order->address->description}} </p>
+											<p class="m-0 pb-3 fw-bold" > sharhe moshkel: {{$doing->order->description}}  </p>
 											<div class="w-100 ms-md-3 mb-3 d-flex">
-												<p class="m-0 me-5"> 21:51 </p>
-												<p class="m-0"> 1400/10/3 </p>
+												<p class="m-0 me-5"> {{$doing->created_at->toTimeString()}}</p>
+												<p class="m-0"> {{$doing->created_at->toDateString()}}</p>
 											</div>
 												
 											<div class="w-100 align-self-center mt-auto d-flex justify-content-center justify-content-md-end mb-1">
@@ -542,6 +533,7 @@
 											
 										</div>
 									</div>
+								@endforeach
 								</div>
 
 	
@@ -668,6 +660,7 @@
 					<div class="user-order-list-menu-item w-100 h-100 border-gray pt-3 padding-bottom mb-5 d-flex flex-column align-items-center gap-3 d-none">
 						
 						<div class="container-fluid rounded-3 w-75 form-bg-color p-0">
+						@foreach($past_archives as $past)
 							<div class="row m-0">
 								<div class="col-lg-3 col-12 p-0 d-flex justify-content-center mb-2 mb-lg-0">
 									<div class="w-100">
@@ -675,43 +668,17 @@
 									</div>
 								</div>
 								<div class="col-lg-9 col-12 mt-1 mt-sm-0 p-2">
-									<p class="m-0 pb-2 fw-bold"> name: mohammad amiri </p>
-									<p class="m-0 pb-2 fw-bold" > noe: taviz frame gooshi</p>
-									<p class="m-0 pb-2 fw-bold" > addrs: shiraz-jamali </p>
-									<p class="m-0 pb-3 fw-bold" > sharhe moshkel: taviz frame gooshi </p>
+									<p class="m-0 pb-2 fw-bold"> name: {{$past->order->user->firstname}}{{$past->order->user->lastname}} </p>
+									<p class="m-0 pb-2 fw-bold" > noe: {{$past->order->service->name}}  </p>
+									<p class="m-0 pb-2 fw-bold" > addrs: {{$past->order->address->state->name}}-{{$past->order->address->city->name}}-{{$past->order->address->description}} </p>
+									<p class="m-0 pb-3 fw-bold" > sharhe moshkel: {{$past->order->description}} </p>
 									<div class="w-100 d-flex justify-content-center justify-content-lg-start">
-										<p class="m-0 me-5"> 21:51 </p>
-										<p class="m-0"> 1400/10/3 </p>
+										<p class="m-0 me-5"> {{$past->created_at->toTimeString()}} </p>
+										<p class="m-0"> {{$past->created_at->toDateString()}}</p>
 									</div>
 								</div>
-							</div>
-
-	
+						@endforeach
 						</div>
-						
-						
-						<div class="container-fluid rounded-3 w-75 form-bg-color p-0">
-							<div class="row m-0">
-								<div class="col-lg-3 col-12 p-0 d-flex justify-content-center mb-2 mb-lg-0">
-									<div class="w-100">
-										<img class="rounded-3 mw-100 mh-100" src="image/human3.jpg" alt="specialist" height="250px" width="100%">
-									</div>
-								</div>
-								<div class="col-lg-9 col-12 mt-1 mt-sm-0 p-2">
-									<p class="m-0 pb-2 fw-bold"> name: mohammad amiri </p>
-									<p class="m-0 pb-2 fw-bold" > noe: taviz frame gooshi</p>
-									<p class="m-0 pb-2 fw-bold" > addrs: shiraz-jamali </p>
-									<p class="m-0 pb-3 fw-bold" > sharhe moshkel: taviz frame gooshi </p>
-									<div class="w-100 d-flex justify-content-center justify-content-lg-start">
-										<p class="m-0 me-5"> 21:51 </p>
-										<p class="m-0"> 1400/10/3 </p>
-									</div>
-								</div>
-							</div>
-
-	
-						</div>
-						
 					</div>
 					
 					
@@ -720,6 +687,7 @@
 					<div class="user-order-list-menu-item w-100 h-100 border-gray pt-3 padding-bottom mb-5 d-flex flex-column align-items-center gap-3 d-none">
 						
 						<div class="container-fluid rounded-3 w-75 form-bg-color p-0">
+						@foreach($canceled_archives as $canceled)
 							<div class="row m-0">
 								<div class="col-lg-3 col-12 p-0 d-flex justify-content-center mb-2 mb-lg-0">
 									<div class="w-100">
@@ -727,16 +695,17 @@
 									</div>
 								</div>
 								<div class="col-lg-9 col-12 mt-1 mt-sm-0 p-2">
-									<p class="m-0 pb-2 fw-bold"> name: mohammad amiri </p>
-									<p class="m-0 pb-2 fw-bold" > noe: taviz  </p>
-									<p class="m-0 pb-2 fw-bold" > addrs: shiraz-jamali </p>
-									<p class="m-0 pb-3 fw-bold" > sharhe moshkel: taviz frame gooshi </p>
+									<p class="m-0 pb-2 fw-bold"> name: {{$canceled->order->user->firstname}} {{$canceled->order->user->lastname}} </p>
+									<p class="m-0 pb-2 fw-bold" > noe: {{$canceled->order->service->name}}   </p>
+									<p class="m-0 pb-2 fw-bold" > addrs: {{$canceled->order->address->state->name}}-{{$canceled->order->address->city->name}}-{{$canceled->order->address->description}} </p>
+									<p class="m-0 pb-3 fw-bold" > sharhe moshkel: {{$canceled->order->description}} </p>
 									<div class="w-100 d-flex justify-content-center justify-content-lg-start">
-										<p class="m-0 me-5"> 21:51 </p>
-										<p class="m-0"> 1400/10/3 </p>
+										<p class="m-0 me-5"> {{$canceled->created_at->toTimeString()}} </p>
+										<p class="m-0"> {{$canceled->created_at->toDateString()}} </p>
 									</div>
 								</div>
 							</div>
+						@endforeach	
 						</div>	
 						
 					</div>
