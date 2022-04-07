@@ -188,7 +188,7 @@
 													
 													<button type="button" class="job_more_inf_btn btn darkYellow w-100" id="job_more_inf_btn{{$i}}"> مشاهده </button>
 													
-													<form class="w-100 ms-md-2" method="POST" action="#">
+													<form class="w-100 ms-md-2" method="POST" action="{{route('front.technician.panel.workdesk.changeStatus.archive.cancle')}}">
 													@csrf
 													<input type="hidden" value="3" name="status">
 														<button class="w-100 btn btn-outline-dark ms-md-3" id="job_more_inf_btn{{$i}}" type="submit"> لغو </button>
@@ -329,9 +329,9 @@
 				
 					<!--گذشته-->
 					<div class="user-order-list-menu-item w-100 h-100 border-gray pt-3 padding-bottom mb-5 d-flex flex-column align-items-center gap-3 d-none">
-					@foreach($past_archives as $past)
+						
 						<div class="container-fluid rounded-3 w-75 form-bg-color p-0">
-							
+							@foreach($past_archives as $past)
 							<div class="row m-0">
 								<div class="col-lg-3 col-12 p-0 d-flex justify-content-center mb-2 mb-lg-0">
 									<div class="w-100">
@@ -349,15 +349,17 @@
 									</div>
 								</div>
 							</div>
+							@endforeach
+	
 						</div>		
-					@endforeach
 					</div>
 									
 					
 					<!--لغو شده-->
 					<div class="user-order-list-menu-item w-100 h-100 border-gray pt-3 padding-bottom mb-5 d-flex flex-column align-items-center gap-3 d-none">
-					@foreach($canceled_archives as $canceled)
+						
 						<div class="container-fluid rounded-3 w-75 form-bg-color p-0">
+							@foreach($canceled_archives as $canceled)
 							<div class="row m-0">
 								<div class="col-lg-3 col-12 p-0 d-flex justify-content-center mb-2 mb-lg-0">
 									<div class="w-100">
@@ -375,8 +377,9 @@
 									</div>
 								</div>
 							</div>
+							@endforeach
 						</div>	
-					@endforeach
+						
 					</div>
 					
 					
@@ -403,14 +406,13 @@
 						
 						<!--empty request-->
 						@if($proccess->isEmpty())
-						<div class="empty_request w-100 border-gray d-flex justify-content-center d-none">
+						<div class="empty_request w-100 border-gray d-flex justify-content-center">
 							<div class="empty_request_box form-bg-color p-md-5 pt-md-4 pb-md-4 p-2 mt-5">
 								<p> dooste aziz
 									<br>
 									shoma dar hale hzer hich darkhsti nadarid. 
 								</p>
-							</div>
-						@else 	
+							</div>	
 							<!--undraw vector mobile size-->		
 							<div class="position-absolute bottom-0 end-0 d-md-none">
 								<img class="pic-width-mobile transform_img" src="image/undraw_click_here_re_y6uq 1.png" alt="user" width="100%">
@@ -422,18 +424,19 @@
 							</div>
 								
 						</div>
-						
+						@else 
 						
 						<!--requests-->
 						<div class="w-100 h-100 border-gray pt-3 pb-5 mb-5">
 							
 							<!--requests short description-->
 							<div class="req-short-dsc d-flex flex-column align-items-center gap-3 mb-3">
-							@php 
-								$i=0;
-							@endphp
-							@foreach($proccess as $pro)
+								@php 
+									$i=0;
+								@endphp
+								@foreach($proccess as $pro)
 								<div class="container-fluid rounded-3 w-75 form-bg-color p-0">
+								
 									<div class="row m-0">
 										<div class="col-lg-3 col-12 p-0 d-flex justify-content-center mb-2 mb-lg-0">
 											<div class="w-100">
@@ -448,16 +451,18 @@
 											<p class="m-0 pb-3 fw-bold" > sharh: {{$pro->order->description}}    </p>
 											<p class="m-0 mb-3 align-self-end"> {{$pro->created_at->toDateString()}}</p>
 											<div class="align-self-center mt-auto">
-												<button type="button" class="more_inf_btn btn darkYellow"> moshahede </button>
+												<button type="button" class="more_inf_btn{{$i}}"> moshahede </button>
 											</div>
 
 										</div>
 									</div>
 								</div>
-								@php 
-									$i++;
-								@endphp	
-							@endforeach
+									@php 
+										$i++;
+									@endphp
+								@endforeach
+								
+
 	
 						</div>
 							
@@ -476,16 +481,17 @@
 										</div>
 										
 										<div class="col-lg-10 col-md-8 col-12 ps-3 order-md-2 order-1">
-											<p class="m-0 pb-2 fw-bold darkgreen-text"> sharhe moshkel: {{$pro->order->description}} </p>
+											<p class="m-0 pb-2 fw-bold darkgreen-text"> sharhe moshkel:{{$pro->order->description}}  </p>
 											<p class="m-0 pb-2 fw-bold darkgreen-text"> javabe soalat:  </p>
 											@foreach($pro->order->formresults as $result)
-												<p class="m-0 pb-2" > {{$result->label}}: {{$result->value}} </p>
+												<p class="m-0 pb-2" >{{$result->label}}: {{$result->value}} </p>
 											@endforeach
+											
 											<p class="m-0 pb-2 fw-bold darkgreen-text"> zaman anjam kar:  </p>
 											<p class="m-0 pb-3" >{{$pro->order->date}}  {{$pro->order->time}} </p>
 											
 											<p class="m-0 pb-2 fw-bold darkgreen-text"> addrs:   </p>
-											<p class="m-0 pb-2 mb-3" > {{$pro->order->address->state->name}}-{{$pro->order->address->city->name}}-{{$pro->order->address->description}} </p>
+											<p class="m-0 pb-2 mb-3" >{{$pro->order->address->state->name}}-{{$pro->order->address->city->name}}-{{$pro->order->address->description}} </p>
 					
 										</div>
 									</div>
@@ -493,12 +499,12 @@
 									
 									<div class="w-100 d-flex justify-content-center mb-1 mt-5">
 										<div class="w-50 d-flex flex-column align-items-center flex-md-row justify-content-md-center gap-2">
-											<form class="w-100 me-md-2" method="POST" action="{{ route('front.technician.panel.workdesk.post.archive') }}">
-											@csrf
-											<input type="hidden" value="{{auth()->user()->id}}" name="tech_id">
-											<input type="hidden" value="{{$pro->order->id}}" name="order_id">
-											<input type="hidden" value="2" name="process_status">
-												<button class="w-100 btn btn-outline-dark darkYellow me-md-3" type="submit"> accept </button>
+											<form class="w-100 ms-md-2" method="POST" action="{{ route('front.technician.panel.workdesk.post.archive') }}">
+												@csrf
+												<input type="hidden" value="{{auth()->user()->id}}" name="tech_id">
+												<input type="hidden" value="{{$pro->order->id}}" name="order_id">
+												<input type="hidden" value="2" name="process_status">
+													<button class="w-100 btn btn-outline-dark darkYellow ms-md-3" type="submit"> قبول </button>
 											</form>
 											<p class="go-back-btn btn btn-outline-dark w-100 mt-3"> back </p>
 										</div>
@@ -507,10 +513,10 @@
 									
 								</div>	
 							</div>
-							@endforeach
-							@endif
+							
 						</div>
-						
+						@endforeach
+						@endif
 						
 				
 						
@@ -553,7 +559,7 @@
 											<div class="w-100 align-self-center mt-auto d-flex justify-content-center justify-content-md-end mb-1">
 												<div class="w-50 d-flex flex-column align-items-center flex-md-row justify-content-md-center gap-2">
 													
-													<button type="button" class="job_more_inf_btn btn darkYellow w-100 ps-0 pe-0" id="job_more_inf_btn{{$i}}"> moshahede </button>
+													<button type="button" class="job_more_inf_btn btn darkYellow w-100 ps-0 pe-0" id="job_more_inf_btn{{$i}}> moshahede </button>
 													
 													<form class="w-100 me-md-2">
 														<button class="w-100 btn btn-outline-dark me-md-3" type="submit"> cancel </button>
@@ -569,7 +575,7 @@
 								</div>
 								@php 
 									$i++;
-								@endphp	
+								@endphp
 								@endforeach
 	
 						</div>
@@ -598,7 +604,7 @@
 											<p class="m-0 pb-3" > {{$doing->order->date}}  {{$doing->order->time}} </p>
 											
 											<p class="m-0 pb-2 fw-bold darkgreen-text"> addrs:   </p>
-											<p class="m-0 pb-2 mb-3" > {{$doing->order->address->state->name}}-{{$doing->order->address->city->name}}-{{$doing->order->address->description}}  </p>
+											<p class="m-0 pb-2 mb-3" > {{$doing->order->address->state->name}}-{{$doing->order->address->city->name}}-{{$doing->order->address->description}} </p>
 					
 										</div>
 									</div>
@@ -622,7 +628,7 @@
 									
 								</div>	
 							</div>
-							
+							@endforeach
 							
 						</div>
 						
@@ -709,7 +715,7 @@
 									</div>
 								</div>
 						</div>
-					@endforeach
+						@endforeach
 					</div>
 					
 					
@@ -735,6 +741,7 @@
 									</div>
 								</div>
 							</div>
+					
 						</div>	
 						@endforeach	
 					</div>
