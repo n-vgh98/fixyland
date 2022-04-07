@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string("date");
             $table->string("time");
             $table->tinyInteger("show_info")->comment("0 is no and 1 is yes");
+            $table->tinyInteger("status")->default(1)->comment("0 is cancle and 1 is send for process");
             $table->timestamps();
         });
     }

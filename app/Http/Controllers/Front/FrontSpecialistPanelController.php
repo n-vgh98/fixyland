@@ -13,6 +13,7 @@ use App\Models\CoveredAreaCity;
 use App\Models\ServiceSubCategory;
 use App\Http\Controllers\Controller;
 use App\Models\Archive;
+use App\Models\FormResult;
 use App\Models\Notification;
 use App\Models\Order;
 use App\Models\OrderAddress;
@@ -237,11 +238,25 @@ class FrontSpecialistPanelController extends Controller
                 }
             }     
         }
-
         $proccess = Process::whereIn("order_id",$orders)->where([["status",1],["tech_id", null]])->get();
         $doing_archives = Archive::where([["tech_id",Auth::user()->id],["status", 1]])->get();
         $past_archives = Archive::where([["tech_id",Auth::user()->id],["status", 2]])->get();
-        $canceled_archives = Archive::where([["tech_id",Auth::user()->id],["status", 0]])->get();
+        $canceled_archives = Archive::where([["tech_id",Auth::user()->id],["status", 3]])->get();
         return view("front.technician.workdesk",compact(["proccess","doing_archives","past_archives","canceled_archives"]));
     }
+
+    public function createArchives(Request $request)
+    {
+        $archives = new Archive();
+        $archives->tech_id = $request->input("tech_id");
+        $archives->order_id = $request->input("order_id");    
+        $process = Process::where("order_id",$request->order_id)->first();
+        $process->status = 2;
+        $process->tech_id = Auth::user()->id;
+        $process->save();
+        $archives->save();
+        return redirect()->back()->with("success","سفارش تایید شد و به لیست سفارشات شما اضاف شد");
+
+    }
+   
 }

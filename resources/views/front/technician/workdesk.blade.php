@@ -57,8 +57,12 @@
 							
 							<!--requests short description-->
 							<div class="req-short-dsc d-flex flex-column align-items-center gap-3 mb-3">
-								<div class="container-fluid rounded-3 w-75 form-bg-color p-0">
+							@php 
+								$i=0;
+							@endphp
 								@foreach($proccess as $pro)
+								<div class="container-fluid rounded-3 w-75 form-bg-color p-0">
+									
 									<div class="row m-0">
 										<div class="col-lg-3 col-12 p-0 d-flex justify-content-center mb-2 mb-lg-0">
 											<div class="w-100">
@@ -73,24 +77,28 @@
 											<p class="m-0 pb-3 fw-bold" > شرح مشکل:   {{$pro->order->description}} </p>
 											<p class="m-0 mb-3 align-self-end"> {{$pro->created_at->toDateString()}} </p>
 											<div class="align-self-center mt-auto">
-												<button type="button" class="more_inf_btn btn darkYellow" id="more_inf_btn"> مشاهده </button>
+												<button type="button" class="more_inf_btn btn darkYellow" id="more_inf_btn{{$i}}"> مشاهده </button>
 											</div>
 
 										</div>
 									</div>
-								@endforeach
+									
 								</div>
-
-	
+								@php 
+									$i++;
+								@endphp
+								@endforeach
 						</div>
 							
 							
 							<!--requests long description-->
+							@foreach($proccess as $pro)
 							<div class="req-long-dsc d-none">
 								<div class="pe-md-3">
 									<p class="fw-bold pe-3 font-size24"> اطلاعات بیشتر </p>
 									
 									<div class="row m-0">
+										
 										<div class="col-lg-2 col-md-4 col-12 p-0 d-flex justify-content-center mb-2 mb-lg-0 order-md-1 order-2">
 											<div class="w-100 h-100">
 												<img class="rounded-3 mw-100 mh-100" src="image/human3.jpg" alt="specialist" height="auto" width="100%">
@@ -98,30 +106,35 @@
 										</div>
 										
 										<div class="col-lg-10 col-md-8 col-12 pe-3 order-md-2 order-1">
-											<p class="m-0 pb-2 fw-bold darkgreen-text"> شرح مشکل:  </p>
-											<p class="m-0 pb-2 fw-bold" > تعمیر گوشی موبایل </p>
-											<p class="m-0 pb-3" > نیاز مند تعویض قاب گوشی. توی جیب بوه و فریم کج شده </p>
-											
+											<p class="m-0 pb-2 fw-bold darkgreen-text"> شرح مشکل:{{$pro->order->description}}  </p>
 											<p class="m-0 pb-2 fw-bold darkgreen-text"> جواب سوالات:  </p>
-											<p class="m-0 pb-2" > برند گوشی: سامسونگ </p>
-											<p class="m-0 pb-2" > نوع مشکل: قطعات </p>
-											<p class="m-0 pb-3" > خدمت مورد نیاز: خرید تجهیزات </p>
+											@foreach($pro->order->formresults as $result)
+												<p class="m-0 pb-2" >{{$result->label}}: {{$result->value}} </p>
+											@endforeach
 											
 											<p class="m-0 pb-2 fw-bold darkgreen-text"> زمان انجام کار:  </p>
-											<p class="m-0 pb-3" > 1400/10/11 دوشنبه 14:21 </p>
+											<p class="m-0 pb-3" > {{$pro->order->date}}  {{$pro->order->time}}</p>
 											
 											<p class="m-0 pb-2 fw-bold darkgreen-text"> آدرس:   </p>
-											<p class="m-0 pb-2 mb-3" > شیراز-ملاصدرا-خیابان جمالی </p>
+											<p class="m-0 pb-2 mb-3" > {{$pro->order->address->state->name}}-{{$pro->order->address->city->name}}-{{$pro->order->address->description}} </p>
 					
 										</div>
+										
 									</div>
 									
 									
 									<div class="w-100 d-flex justify-content-center mb-1 mt-5">
 										<div class="w-50 d-flex flex-column align-items-center flex-md-row justify-content-md-center gap-2">
-											<form class="w-100 ms-md-2">
+											<form class="w-100 ms-md-2" method="POST" action="{{ route('front.technician.panel.workdesk.post.archive') }}">
+											@csrf
+											<input type="hidden" value="{{auth()->user()->id}}" name="tech_id">
+											<input type="hidden" value="{{$pro->order->id}}" name="order_id">
+											<input type="hidden" value="2" name="process_status">
 												<button class="w-100 btn btn-outline-dark darkYellow ms-md-3" type="submit"> قبول </button>
 											</form>
+		
+
+
 											<p class="go-back-btn btn btn-outline-dark w-100 mt-3"> بازگشت </p>
 										</div>
 									</div>
@@ -129,8 +142,9 @@
 									
 								</div>	
 							</div>
+							@endforeach
 							
-						</div>
+						
 						@endif
 						
 				
@@ -147,8 +161,11 @@
 							
 							<!--job short description-->
 							<div class="job-short-dsc d-flex flex-column align-items-center gap-3 mb-3">
+							@php 
+								$i=0;
+							@endphp
+							@foreach($doing_archives as $doing)
 								<div class="container-fluid rounded-3 w-75 form-bg-color p-0">
-								@foreach($doing_archives as $doing)
 									<div class="row m-0">
 										<div class="col-lg-3 col-12 p-0 d-flex justify-content-center mb-2 mb-lg-0">
 											<div class="w-100">
@@ -157,7 +174,7 @@
 										</div>
 										
 										<div class="col-lg-9 col-12 mt-2 mt-sm-0 p-3 d-flex flex-column">
-											<p class="m-0 pb-2 fw-bold"> نام مشتری:  {{$doing->order->user->firstname}}{{$doing->order->user->lastname}} </p>
+											<p class="m-0 pb-2 fw-bold"> نام مشتری:  {{$doing->order->user->firstname}} {{$doing->order->user->lastname}} </p>
 											<p class="m-0 pb-2 fw-bold" > نوع:  {{$doing->order->service->name}}  </p>
 											<p class="m-0 pb-2 fw-bold" > آدرس: {{$doing->order->address->state->name}}-{{$doing->order->address->city->name}}-{{$doing->order->address->description}}  </p>
 											<p class="m-0 pb-3 fw-bold" > شرح مشکل: {{$doing->order->description}}   </p>
@@ -169,10 +186,12 @@
 											<div class="w-100 align-self-center mt-auto d-flex justify-content-center justify-content-md-end mb-1">
 												<div class="w-50 d-flex flex-column align-items-center flex-md-row justify-content-md-center gap-2">
 													
-													<button type="button" class="job_more_inf_btn btn darkYellow w-100"> مشاهده </button>
+													<button type="button" class="job_more_inf_btn btn darkYellow w-100" id="job_more_inf_btn{{$i}}"> مشاهده </button>
 													
-													<form class="w-100 ms-md-2">
-														<button class="w-100 btn btn-outline-dark ms-md-3" type="submit"> لغو </button>
+													<form class="w-100 ms-md-2" method="POST" action="#">
+													@csrf
+													<input type="hidden" value="3" name="status">
+														<button class="w-100 btn btn-outline-dark ms-md-3" id="job_more_inf_btn{{$i}}" type="submit"> لغو </button>
 													</form>
 													
 												</div>
@@ -181,16 +200,24 @@
 											
 										</div>
 									</div>
-								@endforeach
+								
 								</div>
-
+								@php 
+									$i++;
+								@endphp	
+								@endforeach
+								
 	
 						</div>
 							
 
 							<!--job long description-->
+							@foreach($doing_archives as $doing)
 							<div class="job-long-dsc d-none">
 								<div class="pe-md-3">
+									<div>
+										<button type="button" class="runing-job-back btn p-0 ps-2 pe-2 gray-text font-size24"> <i class="fa-solid fa-xmark"></i> </button>
+									</div>
 									<p class="fw-bold pe-3 font-size24"> اطلاعات بیشتر </p>
 									
 									<div class="row m-0">
@@ -201,20 +228,16 @@
 										</div>
 										
 										<div class="col-lg-10 col-md-8 col-12 pe-3 order-md-2 order-1">
-											<p class="m-0 pb-2 fw-bold darkgreen-text"> شرح مشکل:  </p>
-											<p class="m-0 pb-2 fw-bold" > تعمیر گوشی موبایل </p>
-											<p class="m-0 pb-3" > نیاز مند تعویض قاب گوشی. توی جیب بوه و فریم کج شده </p>
-											
+											<p class="m-0 pb-2 fw-bold darkgreen-text"> شرح مشکل: {{$doing->order->description}} </p>
 											<p class="m-0 pb-2 fw-bold darkgreen-text"> جواب سوالات:  </p>
-											<p class="m-0 pb-2" > برند گوشی: سامسونگ </p>
-											<p class="m-0 pb-2" > نوع مشکل: قطعات </p>
-											<p class="m-0 pb-3" > خدمت مورد نیاز: خرید تجهیزات </p>
-											
+											@foreach($doing->order->formresults as $result)
+												<p class="m-0 pb-2" >{{$result->label}}: {{$result->value}} </p>
+											@endforeach
 											<p class="m-0 pb-2 fw-bold darkgreen-text"> زمان انجام کار:  </p>
-											<p class="m-0 pb-3" > 1400/10/11 دوشنبه 14:21 </p>
+											<p class="m-0 pb-3" > {{$doing->order->date}}  {{$doing->order->time}} </p>
 											
 											<p class="m-0 pb-2 fw-bold darkgreen-text"> آدرس:   </p>
-											<p class="m-0 pb-2 mb-3" > شیراز-ملاصدرا-خیابان جمالی </p>
+											<p class="m-0 pb-2 mb-3" > {{$doing->order->address->state->name}}-{{$doing->order->address->city->name}}-{{$doing->order->address->description}} </p>
 					
 										</div>
 									</div>
@@ -238,7 +261,7 @@
 									
 								</div>	
 							</div>
-							
+							@endforeach
 							
 						</div>
 						
@@ -249,8 +272,9 @@
 								<div class="row w-100 m-0"> 
 									<div class="col-12 col-lg-6 pe-lg-5">
 										<p class="font-size24 fw-bold"> اتمام کار (توسط متخصص) </p>
-										
-										<form class="mt-4">
+										@foreach($doing_archives as $doing)
+										<form class="mt-4" method="POST" >
+										@csrf
 											<div class="mb-4">
 												<label for="wages" class="form-label">
 													دستمزد انجام کار
@@ -284,7 +308,7 @@
 											</button>
 																		
 										</form>
-										
+										@endforeach
 										
 
 										
@@ -305,9 +329,9 @@
 				
 					<!--گذشته-->
 					<div class="user-order-list-menu-item w-100 h-100 border-gray pt-3 padding-bottom mb-5 d-flex flex-column align-items-center gap-3 d-none">
-						
+					@foreach($past_archives as $past)
 						<div class="container-fluid rounded-3 w-75 form-bg-color p-0">
-							@foreach($past_archives as $past)
+							
 							<div class="row m-0">
 								<div class="col-lg-3 col-12 p-0 d-flex justify-content-center mb-2 mb-lg-0">
 									<div class="w-100">
@@ -315,7 +339,7 @@
 									</div>
 								</div>
 								<div class="col-lg-9 col-12 mt-2 mt-sm-0 p-3">
-									<p class="m-0 pb-2 fw-bold"> نام مشتری:  {{$past->order->user->firstname}}{{$past->order->user->lastname}} </p>
+									<p class="m-0 pb-2 fw-bold"> نام مشتری:  {{$past->order->user->firstname}} {{$past->order->user->lastname}} </p>
 									<p class="m-0 pb-2 fw-bold" > نوع:   {{$past->order->service->name}} </p>
 									<p class="m-0 pb-2 fw-bold" > آدرس: {{$past->order->address->state->name}}-{{$past->order->address->city->name}}-{{$past->order->address->description}}  </p>
 									<p class="m-0 pb-3 fw-bold" > شرح مشکل:  {{$past->order->description}} </p>
@@ -325,17 +349,15 @@
 									</div>
 								</div>
 							</div>
-							@endforeach
-	
 						</div>		
+					@endforeach
 					</div>
 									
 					
 					<!--لغو شده-->
 					<div class="user-order-list-menu-item w-100 h-100 border-gray pt-3 padding-bottom mb-5 d-flex flex-column align-items-center gap-3 d-none">
-						
+					@foreach($canceled_archives as $canceled)
 						<div class="container-fluid rounded-3 w-75 form-bg-color p-0">
-							@foreach($canceled_archives as $canceled)
 							<div class="row m-0">
 								<div class="col-lg-3 col-12 p-0 d-flex justify-content-center mb-2 mb-lg-0">
 									<div class="w-100">
@@ -343,7 +365,7 @@
 									</div>
 								</div>
 								<div class="col-lg-9 col-12 mt-2 mt-sm-0 p-3">
-									<p class="m-0 pb-2 fw-bold"> نام مشتری:  {{$canceled->order->usr->firstname}} {{$canceled->order->user->lastname}}</p>
+									<p class="m-0 pb-2 fw-bold"> نام مشتری:  {{$canceled->order->user->firstname}} {{$canceled->order->user->lastname}}</p>
 									<p class="m-0 pb-2 fw-bold" > نوع: {{$canceled->order->service->name}}  </p>
 									<p class="m-0 pb-2 fw-bold" > آدرس:  {{$canceled->order->address->state->name}}-{{$canceled->order->address->city->name}}-{{$canceled->order->address->description}}    </p>
 									<p class="m-0 pb-3 fw-bold" > شرح مشکل: {{$canceled->order->description}} </p>
@@ -353,9 +375,8 @@
 									</div>
 								</div>
 							</div>
-							@endforeach
 						</div>	
-						
+					@endforeach
 					</div>
 					
 					
@@ -408,8 +429,11 @@
 							
 							<!--requests short description-->
 							<div class="req-short-dsc d-flex flex-column align-items-center gap-3 mb-3">
+							@php 
+								$i=0;
+							@endphp
+							@foreach($proccess as $pro)
 								<div class="container-fluid rounded-3 w-75 form-bg-color p-0">
-								@foreach($proccess as $pro)
 									<div class="row m-0">
 										<div class="col-lg-3 col-12 p-0 d-flex justify-content-center mb-2 mb-lg-0">
 											<div class="w-100">
@@ -429,14 +453,17 @@
 
 										</div>
 									</div>
-								@endforeach
 								</div>
-
+								@php 
+									$i++;
+								@endphp	
+							@endforeach
 	
 						</div>
 							
 							
 							<!--requests long description-->
+							@foreach($proccess as $pro)
 							<div class="req-long-dsc d-none">
 								<div class="ps-md-3">
 									<p class="fw-bold ps-3 font-size24"> etelaate bishtar </p>
@@ -449,20 +476,16 @@
 										</div>
 										
 										<div class="col-lg-10 col-md-8 col-12 ps-3 order-md-2 order-1">
-											<p class="m-0 pb-2 fw-bold darkgreen-text"> sharhe moshkel:  </p>
-											<p class="m-0 pb-2 fw-bold" > tamir gooshi mobile </p>
-											<p class="m-0 pb-3" > tooye jib boode frame kaj shode. </p>
-											
+											<p class="m-0 pb-2 fw-bold darkgreen-text"> sharhe moshkel: {{$pro->order->description}} </p>
 											<p class="m-0 pb-2 fw-bold darkgreen-text"> javabe soalat:  </p>
-											<p class="m-0 pb-2" > brand gooshi: samsung </p>
-											<p class="m-0 pb-2" > noe moshkel: ghataat </p>
-											<p class="m-0 pb-3" > khedmat mored niaz: tamir </p>
-											
+											@foreach($pro->order->formresults as $result)
+												<p class="m-0 pb-2" > {{$result->label}}: {{$result->value}} </p>
+											@endforeach
 											<p class="m-0 pb-2 fw-bold darkgreen-text"> zaman anjam kar:  </p>
-											<p class="m-0 pb-3" >monday  12/2/2022  14:21 </p>
+											<p class="m-0 pb-3" >{{$pro->order->date}}  {{$pro->order->time}} </p>
 											
 											<p class="m-0 pb-2 fw-bold darkgreen-text"> addrs:   </p>
-											<p class="m-0 pb-2 mb-3" > shiraz-mollasadra-jamali</p>
+											<p class="m-0 pb-2 mb-3" > {{$pro->order->address->state->name}}-{{$pro->order->address->city->name}}-{{$pro->order->address->description}} </p>
 					
 										</div>
 									</div>
@@ -470,7 +493,11 @@
 									
 									<div class="w-100 d-flex justify-content-center mb-1 mt-5">
 										<div class="w-50 d-flex flex-column align-items-center flex-md-row justify-content-md-center gap-2">
-											<form class="w-100 me-md-2">
+											<form class="w-100 me-md-2" method="POST" action="{{ route('front.technician.panel.workdesk.post.archive') }}">
+											@csrf
+											<input type="hidden" value="{{auth()->user()->id}}" name="tech_id">
+											<input type="hidden" value="{{$pro->order->id}}" name="order_id">
+											<input type="hidden" value="2" name="process_status">
 												<button class="w-100 btn btn-outline-dark darkYellow me-md-3" type="submit"> accept </button>
 											</form>
 											<p class="go-back-btn btn btn-outline-dark w-100 mt-3"> back </p>
@@ -480,7 +507,8 @@
 									
 								</div>	
 							</div>
-							
+							@endforeach
+							@endif
 						</div>
 						
 						
@@ -499,8 +527,12 @@
 							
 							<!--job short description-->
 							<div class="job-short-dsc d-flex flex-column align-items-center gap-3 mb-3">
+							@php 
+								$i=0;
+							@endphp
+							@foreach($doing_archives as $doing)
 								<div class="container-fluid rounded-3 w-75 form-bg-color p-0">
-								@foreach($doing_archives as $doing)
+								
 									<div class="row m-0">
 										<div class="col-lg-3 col-12 p-0 d-flex justify-content-center mb-2 mb-lg-0">
 											<div class="w-100">
@@ -509,7 +541,7 @@
 										</div>
 										
 										<div class="col-lg-9 col-12 mt-2 mt-sm-0 p-3 d-flex flex-column">
-											<p class="m-0 pb-2 fw-bold"> name:  {{$doing->order->user->firstname}}{{$doing->order->user->lastname}}  </p>
+											<p class="m-0 pb-2 fw-bold"> name:  {{$doing->order->user->firstname}} {{$doing->order->user->lastname}}  </p>
 											<p class="m-0 pb-2 fw-bold" > noe: {{$doing->order->service->name}}  </p>
 											<p class="m-0 pb-2 fw-bold" > addrs: {{$doing->order->address->state->name}}-{{$doing->order->address->city->name}}-{{$doing->order->address->description}} </p>
 											<p class="m-0 pb-3 fw-bold" > sharhe moshkel: {{$doing->order->description}}  </p>
@@ -521,7 +553,7 @@
 											<div class="w-100 align-self-center mt-auto d-flex justify-content-center justify-content-md-end mb-1">
 												<div class="w-50 d-flex flex-column align-items-center flex-md-row justify-content-md-center gap-2">
 													
-													<button type="button" class="job_more_inf_btn btn darkYellow w-100 ps-0 pe-0"> moshahede </button>
+													<button type="button" class="job_more_inf_btn btn darkYellow w-100 ps-0 pe-0" id="job_more_inf_btn{{$i}}"> moshahede </button>
 													
 													<form class="w-100 me-md-2">
 														<button class="w-100 btn btn-outline-dark me-md-3" type="submit"> cancel </button>
@@ -533,14 +565,18 @@
 											
 										</div>
 									</div>
-								@endforeach
+							
 								</div>
-
+								@php 
+									$i++;
+								@endphp	
+								@endforeach
 	
 						</div>
 							
 
 							<!--job long description-->
+							@foreach($doing_archives as $doing)
 							<div class="job-long-dsc d-none">
 								<div class="ps-md-3">
 									<p class="fw-bold ps-3 font-size24"> etelaate bishtar </p>
@@ -553,20 +589,16 @@
 										</div>
 										
 										<div class="col-lg-10 col-md-8 col-12 pe-3 order-md-2 order-1">
-											<p class="m-0 pb-2 fw-bold darkgreen-text"> sharhe moshkel:  </p>
-											<p class="m-0 pb-2 fw-bold" > tamir gooshi mobile </p>
-											<p class="m-0 pb-3" > niazmande tavizframe gooshi </p>
-											
+											<p class="m-0 pb-2 fw-bold darkgreen-text"> sharhe moshkel: {{$doing->order->description}} </p>
 											<p class="m-0 pb-2 fw-bold darkgreen-text"> javabe soalat:  </p>
-											<p class="m-0 pb-2" > brand gooshi: samsung </p>
-											<p class="m-0 pb-2" > noe moshkel: ghataat </p>
-											<p class="m-0 pb-3" > khedmat mored niaz: taviz </p>
-											
+											@foreach($doing->order->formresults as $result)
+												<p class="m-0 pb-2" >{{$result->label}}: {{$result->value}} </p>
+											@endforeach
 											<p class="m-0 pb-2 fw-bold darkgreen-text"> zaman anjam kar: </p>
-											<p class="m-0 pb-3" > monday 12/10/2022 14:21 </p>
+											<p class="m-0 pb-3" > {{$doing->order->date}}  {{$doing->order->time}} </p>
 											
 											<p class="m-0 pb-2 fw-bold darkgreen-text"> addrs:   </p>
-											<p class="m-0 pb-2 mb-3" > shiraz-mollasdra </p>
+											<p class="m-0 pb-2 mb-3" > {{$doing->order->address->state->name}}-{{$doing->order->address->city->name}}-{{$doing->order->address->description}}  </p>
 					
 										</div>
 									</div>
@@ -658,9 +690,8 @@
 				
 					<!--گذشته-->
 					<div class="user-order-list-menu-item w-100 h-100 border-gray pt-3 padding-bottom mb-5 d-flex flex-column align-items-center gap-3 d-none">
-						
+					@foreach($past_archives as $past)
 						<div class="container-fluid rounded-3 w-75 form-bg-color p-0">
-						@foreach($past_archives as $past)
 							<div class="row m-0">
 								<div class="col-lg-3 col-12 p-0 d-flex justify-content-center mb-2 mb-lg-0">
 									<div class="w-100">
@@ -668,7 +699,7 @@
 									</div>
 								</div>
 								<div class="col-lg-9 col-12 mt-1 mt-sm-0 p-2">
-									<p class="m-0 pb-2 fw-bold"> name: {{$past->order->user->firstname}}{{$past->order->user->lastname}} </p>
+									<p class="m-0 pb-2 fw-bold"> name: {{$past->order->user->firstname}} {{$past->order->user->lastname}} </p>
 									<p class="m-0 pb-2 fw-bold" > noe: {{$past->order->service->name}}  </p>
 									<p class="m-0 pb-2 fw-bold" > addrs: {{$past->order->address->state->name}}-{{$past->order->address->city->name}}-{{$past->order->address->description}} </p>
 									<p class="m-0 pb-3 fw-bold" > sharhe moshkel: {{$past->order->description}} </p>
@@ -677,17 +708,16 @@
 										<p class="m-0"> {{$past->created_at->toDateString()}}</p>
 									</div>
 								</div>
-						@endforeach
 						</div>
+					@endforeach
 					</div>
 					
 					
 					
 					<!--لغو شده-->
 					<div class="user-order-list-menu-item w-100 h-100 border-gray pt-3 padding-bottom mb-5 d-flex flex-column align-items-center gap-3 d-none">
-						
+					@foreach($canceled_archives as $canceled)
 						<div class="container-fluid rounded-3 w-75 form-bg-color p-0">
-						@foreach($canceled_archives as $canceled)
 							<div class="row m-0">
 								<div class="col-lg-3 col-12 p-0 d-flex justify-content-center mb-2 mb-lg-0">
 									<div class="w-100">
@@ -695,7 +725,7 @@
 									</div>
 								</div>
 								<div class="col-lg-9 col-12 mt-1 mt-sm-0 p-2">
-									<p class="m-0 pb-2 fw-bold"> name: {{$canceled->order->user->firstname}} {{$canceled->order->user->lastname}} </p>
+									<p class="m-0 pb-2 fw-bold"> name: {{$canceled->technician->firstname}} {{$canceled->technician->lastname}} </p>
 									<p class="m-0 pb-2 fw-bold" > noe: {{$canceled->order->service->name}}   </p>
 									<p class="m-0 pb-2 fw-bold" > addrs: {{$canceled->order->address->state->name}}-{{$canceled->order->address->city->name}}-{{$canceled->order->address->description}} </p>
 									<p class="m-0 pb-3 fw-bold" > sharhe moshkel: {{$canceled->order->description}} </p>
@@ -705,9 +735,8 @@
 									</div>
 								</div>
 							</div>
-						@endforeach	
 						</div>	
-						
+						@endforeach	
 					</div>
 					
 					

@@ -14,6 +14,12 @@ class Archive extends Model
         return $this->belongsTo("App\Models\Order", "order_id");
     }
 
+    public function process()
+    {
+        return $this->belongsTo("App\Models\Process");
+    }
+
+
     public function technician()
     {
         return $this->belongsTo("App\Models\User", "tech_id");
