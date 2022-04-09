@@ -48,12 +48,15 @@ $(document).ready(function(){
 	let req_short_dsc = $(".req-short-dsc");
 	let req_long_dsc = $(".req-long-dsc");
 	
-	for(let i=0;i<more_inf_btn.length;i++){
-		$(more_inf_btn[i]).click(function(){
-			$(req_short_dsc[0]).addClass("d-none");
+	for (let i = 0; i < more_inf_btn.length; i++) {
+		let more_inf_btn_id = $("#more_inf_btn" + [i]);
+		$(more_inf_btn_id).click(function () {
+			for (let j = 0; j < req_short_dsc.length; j++) {
+				$(req_short_dsc[j]).addClass("d-none");
+			}
 			$(req_long_dsc[i]).removeClass("d-none");
 		});
-	}
+	};
 	
 	
 	for(let i=0;i<back_btn.length;i++){
@@ -71,12 +74,16 @@ $(document).ready(function(){
 	let job_short_dsc = $(".job-short-dsc");
 	let job_long_dsc = $(".job-long-dsc");
 	
-	for(let i=0; i<job_more_inf_btn.length; i++){
-		$(job_more_inf_btn[i]).click(function(){
-			$(job_short_dsc[0]).addClass("d-none");
+	for (let i = 0; i < job_more_inf_btn.length; i++) {
+		let job_more_inf_btn_id = $("#job_more_inf_btn" + [i]);
+		$(job_more_inf_btn_id).click(function () {
+			for (let j = 0; j < job_short_dsc.length; j++) {
+				$(job_short_dsc[j]).addClass("d-none");
+			}
 			$(job_long_dsc[i]).removeClass("d-none");
 		});
 	}
+
 	
 	
 	
