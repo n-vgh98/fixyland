@@ -76,7 +76,7 @@
                                             @if($pro->order->order_address_id == null)
 											<p class="m-0 pb-2 fw-bold" > آدرس: {{$pro->order->address->state->name}}-{{$pro->order->address->city->name}}-{{$pro->order->address->description}} </p>
                                             @else
-                                            <p class="m-0 pb-2 fw-bold" > آدرس: {{$pro->order->order_address->state->name}}-{{$pro->order->order_address->city->name}}-{{$pro->order->address->description}} </p>
+                                            <p class="m-0 pb-2 fw-bold" > آدرس: {{$pro->order->order_address->state->name}}-{{$pro->order->order_address->city->name}}-{{$pro->order->order_address->description}} </p>
                                             @endif
 											<p class="m-0 pb-3 fw-bold" > شرح مشکل:   {{$pro->order->description}} </p>
 											<p class="m-0 mb-3 align-self-end"> {{$pro->created_at->toDateString()}} </p>
@@ -123,7 +123,7 @@
                                             @if($pro->order->order_address_id == null)
 											<p class="m-0 pb-2 fw-bold" > آدرس: {{$pro->order->address->state->name}}-{{$pro->order->address->city->name}}-{{$pro->order->address->description}} </p>
                                             @else
-                                            <p class="m-0 pb-2 fw-bold" > آدرس: {{$pro->order->order_address->state->name}}-{{$pro->order->order_address->city->name}}-{{$pro->order->address->description}} </p>
+                                            <p class="m-0 pb-2 fw-bold" > آدرس: {{$pro->order->order_address->state->name}}-{{$pro->order->order_address->city->name}}-{{$pro->order->order_address->description}} </p>
                                             @endif					
 										</div>
 										
@@ -186,7 +186,7 @@
                                             @if($doing->order->order_address_id == null)
 											<p class="m-0 pb-2 fw-bold" > آدرس: {{$doing->order->address->state->name}}-{{$doing->order->address->city->name}}-{{$doing->order->address->description}} </p>
                                             @else
-                                            <p class="m-0 pb-2 fw-bold" > آدرس: {{$doing->order->order_address->state->name}}-{{$doing->order->order_address->city->name}}-{{$doing->order->address->description}} </p>
+                                            <p class="m-0 pb-2 fw-bold" > آدرس: {{$doing->order->order_address->state->name}}-{{$doing->order->order_address->city->name}}-{{$doing->order->order_address->description}} </p>
                                             @endif
 											<p class="m-0 pb-3 fw-bold" > شرح مشکل: {{$doing->order->description}}   </p>
 											<div class="w-100 me-md-3 mb-3 d-flex">
@@ -252,7 +252,7 @@
                                             @if($doing->order->order_address_id == null)
 											<p class="m-0 pb-2 fw-bold" > آدرس: {{$doing->order->address->state->name}}-{{$doing->order->address->city->name}}-{{$doing->order->address->description}} </p>
                                             @else
-                                            <p class="m-0 pb-2 fw-bold" > آدرس: {{$doing->order->order_address->state->name}}-{{$doing->order->order_address->city->name}}-{{$doing->order->address->description}} </p>
+                                            <p class="m-0 pb-2 fw-bold" > آدرس: {{$doing->order->order_address->state->name}}-{{$doing->order->order_address->city->name}}-{{$doing->order->order_address->description}} </p>
                                             @endif					
 										</div>
 									</div>
@@ -359,7 +359,7 @@
                                     @if($past->order->order_address_id == null)
                                     <p class="m-0 pb-2 fw-bold" > آدرس: {{$past->order->address->state->name}}-{{$past->order->address->city->name}}-{{$past->order->address->description}} </p>
                                     @else
-                                    <p class="m-0 pb-2 fw-bold" > آدرس: {{$past->order->order_address->state->name}}-{{$past->order->order_address->city->name}}-{{$past->order->address->description}} </p>
+                                    <p class="m-0 pb-2 fw-bold" > آدرس: {{$past->order->order_address->state->name}}-{{$past->order->order_address->city->name}}-{{$past->order->order_address->description}} </p>
                                     @endif
 									<p class="m-0 pb-3 fw-bold" > شرح مشکل:  {{$past->order->description}} </p>
 									<div class="w-100 d-flex justify-content-center justify-content-lg-end">
@@ -392,7 +392,7 @@
                                     @if($canceled->order->order_address_id == null)
                                     <p class="m-0 pb-2 fw-bold" > آدرس: {{$canceled->order->address->state->name}}-{{$canceled->order->address->city->name}}-{{$canceled->order->address->description}} </p>
                                     @else
-                                    <p class="m-0 pb-2 fw-bold" > آدرس: {{$canceled->order->order_address->state->name}}-{{$canceled->order->order_address->city->name}}-{{$canceled->order->address->description}} </p>
+                                    <p class="m-0 pb-2 fw-bold" > آدرس: {{$canceled->order->order_address->state->name}}-{{$canceled->order->order_address->city->name}}-{{$canceled->order->order_address->description}} </p>
                                     @endif
 									<p class="m-0 pb-3 fw-bold" > شرح مشکل: {{$canceled->order->description}} </p>
 									<div class="w-100 d-flex justify-content-center justify-content-lg-end">
@@ -475,7 +475,7 @@
                                             @if($pro->order->order_address_id == null)
 											<p class="m-0 pb-2 fw-bold" > آدرس: {{$pro->order->address->state->name}}-{{$pro->order->address->city->name}}-{{$pro->order->address->description}} </p>
                                             @else
-                                            <p class="m-0 pb-2 fw-bold" > آدرس: {{$pro->order->order_address->state->name}}-{{$pro->order->order_address->city->name}}-{{$pro->order->address->description}} </p>
+                                            <p class="m-0 pb-2 fw-bold" > آدرس: {{$pro->order->order_address->state->name}}-{{$pro->order->order_address->city->name}}-{{$pro->order->order_address->description}} </p>
                                             @endif											<p class="m-0 pb-3 fw-bold" > sharh: {{$pro->order->description}}    </p>
 											<p class="m-0 mb-3 align-self-end"> {{$pro->created_at->toDateString()}}</p>
 											<div class="align-self-center mt-auto">
@@ -522,7 +522,7 @@
                                             @if($pro->order->order_address_id == null)
 											<p class="m-0 pb-2 fw-bold" > آدرس: {{$pro->order->address->state->name}}-{{$pro->order->address->city->name}}-{{$pro->order->address->description}} </p>
                                             @else
-                                            <p class="m-0 pb-2 fw-bold" > آدرس: {{$pro->order->order_address->state->name}}-{{$pro->order->order_address->city->name}}-{{$pro->order->address->description}} </p>
+                                            <p class="m-0 pb-2 fw-bold" > آدرس: {{$pro->order->order_address->state->name}}-{{$pro->order->order_address->city->name}}-{{$pro->order->order_address->description}} </p>
                                             @endif					
 										</div>
 									</div>
@@ -583,7 +583,7 @@
                                             @if($doing->order->order_address_id == null)
 											<p class="m-0 pb-2 fw-bold" > آدرس: {{$doing->order->address->state->name}}-{{$doing->order->address->city->name}}-{{$doing->order->address->description}} </p>
                                             @else
-                                            <p class="m-0 pb-2 fw-bold" > آدرس: {{$doing->order->order_address->state->name}}-{{$doing->order->order_address->city->name}}-{{$doing->order->address->description}} </p>
+                                            <p class="m-0 pb-2 fw-bold" > آدرس: {{$doing->order->order_address->state->name}}-{{$doing->order->order_address->city->name}}-{{$doing->order->order_address->description}} </p>
                                             @endif											<p class="m-0 pb-3 fw-bold" > sharhe moshkel: {{$doing->order->description}}  </p>
 											<div class="w-100 ms-md-3 mb-3 d-flex">
 												<p class="m-0 me-5"> {{$doing->created_at->toTimeString()}}</p>
@@ -641,7 +641,7 @@
                                             @if($doing->order->order_address_id == null)
 											<p class="m-0 pb-2 fw-bold" > آدرس: {{$doing->order->address->state->name}}-{{$doing->order->address->city->name}}-{{$doing->order->address->description}} </p>
                                             @else
-                                            <p class="m-0 pb-2 fw-bold" > آدرس: {{$doing->order->order_address->state->name}}-{{$doing->order->order_address->city->name}}-{{$doing->order->address->description}} </p>
+                                            <p class="m-0 pb-2 fw-bold" > آدرس: {{$doing->order->order_address->state->name}}-{{$doing->order->order_address->city->name}}-{{$doing->order->order_address->description}} </p>
                                             @endif					
 										</div>
 									</div>
@@ -747,7 +747,7 @@
                                     @if($past->order->order_address_id == null)
                                     <p class="m-0 pb-2 fw-bold" > آدرس: {{$past->order->address->state->name}}-{{$past->order->address->city->name}}-{{$past->order->address->description}} </p>
                                     @else
-                                    <p class="m-0 pb-2 fw-bold" > آدرس: {{$past->order->order_address->state->name}}-{{$past->order->order_address->city->name}}-{{$past->order->address->description}} </p>
+                                    <p class="m-0 pb-2 fw-bold" > آدرس: {{$past->order->order_address->state->name}}-{{$past->order->order_address->city->name}}-{{$past->order->order_address->description}} </p>
                                     @endif									<p class="m-0 pb-3 fw-bold" > sharhe moshkel: {{$past->order->description}} </p>
 									<div class="w-100 d-flex justify-content-center justify-content-lg-start">
 										<p class="m-0 me-5"> {{$past->created_at->toTimeString()}} </p>
@@ -776,7 +776,7 @@
                                     @if($canceled->order->order_address_id == null)
                                     <p class="m-0 pb-2 fw-bold" > آدرس: {{$canceled->order->address->state->name}}-{{$canceled->order->address->city->name}}-{{$canceled->order->address->description}} </p>
                                     @else
-                                    <p class="m-0 pb-2 fw-bold" > آدرس: {{$canceled->order->order_address->state->name}}-{{$canceled->order->order_address->city->name}}-{{$canceled->order->address->description}} </p>
+                                    <p class="m-0 pb-2 fw-bold" > آدرس: {{$canceled->order->order_address->state->name}}-{{$canceled->order->order_address->city->name}}-{{$canceled->order->order_address->description}} </p>
                                     @endif									<p class="m-0 pb-3 fw-bold" > sharhe moshkel: {{$canceled->order->description}} </p>
 									<div class="w-100 d-flex justify-content-center justify-content-lg-start">
 										<p class="m-0 me-5"> {{$canceled->created_at->toTimeString()}} </p>
