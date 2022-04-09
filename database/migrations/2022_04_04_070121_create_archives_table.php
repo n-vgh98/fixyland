@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId("tech_id")->nullable()->constrained("users")->onDelete("cascade")->onUpdate("cascade");
             $table->foreignId("order_id")->constrained("orders")->onDelete("cascade")->onUpdate("cascade");
-            $table->tinyInteger("status")->default(0)->comment("0 is  not done yet and 1 is doing 2 is done");
+            $table->tinyInteger("status")->default(1)->comment("0 is  not done yet and 1 is doing 2 is done");
             $table->text("service_cost")->nullable();
             $table->text("stuff_cost")->nullable();
             $table->text("transport_cost")->nullable();

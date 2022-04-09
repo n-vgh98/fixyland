@@ -216,35 +216,36 @@ class FrontSpecialistPanelController extends Controller
     public function offers()
     {
         $tec = Auth::user()->id;
-        $tec_info = TechInfo::where("user_id",$tec)->first();
+        $tec_info = TechInfo::where("user_id", $tec)->first();
         $city = $tec_info->covered_city_id;
         $state = $tec_info->covered_state_id;
-        $tec_skill = SkillUser::where("user_id",$tec)->get();
+        $tec_skill = SkillUser::where("user_id", $tec)->get();
         $skills = array();
-        foreach($tec_skill as $skill){
-            array_push($skills,$skill->service_sub_categoy_id);
+        foreach ($tec_skill as $skill) {
+            array_push($skills, $skill->service_sub_categoy_id);
         }
-        $orders_services = Order::whereIn("service_id",$skills)->get();
+        $orders_services = Order::whereIn("service_id", $skills)->get();
         $orders = array();
-        foreach($orders_services as $order_service){
-            if($order_service->order_address_id == null){
-                if($order_service->address->city_id == $city && $order_service->address->state_id == $state){
-                    array_push($orders,$order_service->id);
+        foreach ($orders_services as $order_service) {
+            if ($order_service->order_address_id == null) {
+                if ($order_service->address->city_id == $city && $order_service->address->state_id == $state) {
+                    array_push($orders, $order_service->id);
                 }
             }
-            if($order_service->address_id == null){
-                if($order_service->order_address->city_id == $city && $order_service->order_address->state_id == $state){
-                    array_push($orders,$order_service->id);
+            if ($order_service->address_id == null) {
+                if ($order_service->order_address->city_id == $city && $order_service->order_address->state_id == $state) {
+                    array_push($orders, $order_service->id);
                 }
             }
         }
         // dd(Process::where([["status",1],["tech_id", null]])->get());
-        $proccess = Process::whereIn("order_id",$orders)->where([["status",1],["tech_id", null]])->get();
+        $proccess = Process::whereIn("order_id", $orders)->where([["status", 1], ["tech_id", null]])->get();
         // dd($proccess);
-        $doing_archives = Archive::where([["tech_id",Auth::user()->id],["status", 1]])->get();
-        $past_archives = Archive::where([["tech_id",Auth::user()->id],["status", 2]])->get();
-        $canceled_archives = Archive::where([["tech_id",Auth::user()->id],["status", 3]])->get();
-        return view("front.technician.workdesk",compact(["proccess","doing_archives","past_archives","canceled_archives"]));
+
+        $doing_archives = Archive::where([["tech_id", Auth::user()->id], ["status", 1]])->get();
+        $past_archives = Archive::where([["tech_id", Auth::user()->id], ["status", 2]])->get();
+        $canceled_archives = Archive::where([["tech_id", Auth::user()->id], ["status", 3]])->get();
+        return view("front.technician.workdesk", compact(["proccess", "doing_archives", "past_archives", "canceled_archives"]));
     }
 
     public function createArchives(Request $request)
@@ -252,16 +253,15 @@ class FrontSpecialistPanelController extends Controller
         $archives = new Archive();
         $archives->tech_id = $request->input("tech_id");
         $archives->order_id = $request->input("order_id");
-        $process = Process::where("order_id",$request->order_id)->first();
+        $process = Process::where("order_id", $request->order_id)->first();
         $process->status = 2;
         $process->tech_id = Auth::user()->id;
         $process->save();
         $archives->save();
-        return redirect()->back()->with("success","سفارش تایید شد و به لیست سفارشات شما اضاف شد");
-
+        return redirect()->back()->with("success", "سفارش تایید شد و به لیست سفارشات شما اضاف شد");
     }
 
-    public function changeStatus(Request $request,$id)
+    public function changeStatus(Request $request, $id)
     {
         $archives = Archive::findOrFail($id);
         $archives->status = $request->status;

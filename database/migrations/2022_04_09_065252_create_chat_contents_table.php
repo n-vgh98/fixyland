@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('chat_contents', function (Blueprint $table) {
             $table->id();
-            $table->foreignId("chat")->constrained("chats")->onUpdate("cascade")->onDelete("cascade");
+            $table->foreignId("chat_id")->constrained("chats")->onUpdate("cascade")->onDelete("cascade");
             $table->foreignId("sender_id")->constrained("users")->onUpdate("cascade")->onDelete("cascade");
             $table->foreignId("receiver_id")->constrained("users")->onUpdate("cascade")->onDelete("cascade");
             $table->text("message");
