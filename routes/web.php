@@ -397,6 +397,7 @@ route::prefix("{locale}")->middleware("language")->group(function () {
             route::post("/deleteportfolio/{pid}", "deleteporfolio")->name("front.technician.panel.delete.portfolio");
             route::post("/addportfolio", "addporfolio")->name("front.technician.panel.add.portfolio");
             route::get("/workdesk", "offers")->name("front.technician.panel.workdesk");
+            route::post("/workdesk","createArchives")->name("front.technician.panel.workdesk.post.archive");
             
             route::post("/workdesk", "changeStatus")->name("front.technician.panel.workdesk.changeStatus.archive.cancle");
             
