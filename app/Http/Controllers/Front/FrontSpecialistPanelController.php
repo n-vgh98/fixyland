@@ -234,7 +234,7 @@ class FrontSpecialistPanelController extends Controller
             }    
             if($order_service->address_id == null){
                 if($order_service->order_address->city_id == $city && $order_service->order_address->state_id == $state){
-                    array_push($orders,$order_service);
+                    array_push($orders,$order_service->id);
                 }
             }     
         }
