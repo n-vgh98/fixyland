@@ -261,10 +261,22 @@ class FrontSpecialistPanelController extends Controller
 
     }
 
-    public function changeStatus(Request $request,$id)
+    public function changeStatus(Request $request,$lang,$id)
     {
         $archives = Archive::findOrFail($id);
         $archives->status = $request->status;
+        $archives->save();
+        return redirect()->back();
+    }
+
+    public function factor(Request $request,$lang,$id)
+    {
+        $archives = Archive::findOrFail($id);
+        $archives->status = $request->status;
+        $archives->service_cost = $request->input("service_cost");
+        $archives->stuff_cost = $request->input("stuff_cost");
+        $archives->transport_cost = $request->input("transport_cost");
+        $archives->final_price = $request->input("final_price");
         $archives->save();
         return redirect()->back();
     }

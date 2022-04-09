@@ -218,8 +218,6 @@
 									$i++;
 								@endphp	
 								@endforeach
-								
-	
 						</div>
 							
 
@@ -269,15 +267,18 @@
 										<div class=" d-flex justify-content-lg-center gap-1 mb-1 flex-column flex-lg-row align-items-center align-items-md-end w-75">
 											<p id="paying_btn" class="btn text-black lightgreen w-50 m-0"> اتمام این کار </p>
 
-											<a href="#" class="btn btn-outline-danger text-decoration-none white text-black w-50"> لغو این کار </a>
+											<form class="w-50" method="POST" action="{{ route('front.technician.panel.workdesk.changeStatus.archive.cancle',$doing->id) }}">
+													@csrf
+													@method('POST')
+													<input type="hidden" name="status" value="3">
+												<button id="cancelJob0" class="btn btn-outline-danger white text-black w-100"> لغو این کار 
+												</button>
+											</form>
 										</div>
 									</div>
-									
-									
 								</div>	
 							</div>
 							@endforeach
-							
 						</div>
 						
 						
@@ -288,34 +289,35 @@
 									<div class="col-12 col-lg-6 pe-lg-5">
 										<p class="font-size24 fw-bold"> اتمام کار (توسط متخصص) </p>
 										@foreach($doing_archives as $doing)
-										<form class="mt-4" method="POST" >
+										<form class="mt-4" method="POST" action="{{ route('front.technician.panel.workdesk.factor',$doing->id) }}">
 										@csrf
+										<input type="hidden" name="status" value="2">
 											<div class="mb-4">
 												<label for="wages" class="form-label">
 													دستمزد انجام کار
 												</label>
-												<input type="text" class="form-control text-center border border-dark p-2" id="wages" placeholder="مطابق توافق طرفین">
+												<input type="text" name="service_cost" class="form-control text-center border border-dark p-2" id="wages" placeholder="مطابق توافق طرفین">
 											</div>
 											
 											<div class="mb-4">
 												<label for="equipment-cost" class="form-label">
 													هزینه وسایل
 												</label>
-												<input id="equipment-cost" type="text" class="form-control text-center border border-dark p-2" placeholder="مطابق فاکتور ارائه شده">
+												<input id="equipment-cost" type="text" name="stuff_cost" class="form-control text-center border border-dark p-2" placeholder="مطابق فاکتور ارائه شده">
 											</div>
 											
 											<div class="mb-4">
-												<label for="transportation-cost" class="form-label">
+												<label for="transportation-cost"  class="form-label">
 													ایاب و ذهاب
 												</label>
-												<input id="transportation-cost" type="text" class="form-control text-center border border-dark p-2">
+												<input id="transportation-cost" type="text" name="transport_cost" class="form-control text-center border border-dark p-2">
 											</div>
 											
 											<div class="mb-4">
 												<label for="total-cost" class="form-label">
 													جمع کل هزینه ها
 												</label>
-												<input id="total-cost" type="text" class="form-control text-center border border-dark lightgreen-text fw-bold p-2">
+												<input id="total-cost" type="text" name="final_price"  class="form-control text-center border border-dark lightgreen-text fw-bold p-2">
 											</div>
 
 											<button type="submit" class="w-100 border-0 rounded-3 darkYellow p-2">

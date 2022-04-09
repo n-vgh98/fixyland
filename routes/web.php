@@ -399,9 +399,9 @@ route::prefix("{locale}")->middleware("language")->group(function () {
             route::get("/workdesk", "offers")->name("front.technician.panel.workdesk");
             route::post("/workdesk","createArchives")->name("front.technician.panel.workdesk.post.archive");
             
-            route::post("/workdesk", "changeStatus")->name("front.technician.panel.workdesk.changeStatus.archive.cancle");
+            route::post("/cancele/{id}", "changeStatus")->name("front.technician.panel.workdesk.changeStatus.archive.cancle");
             
-            // route::post("/workdesk", "factor")->name("front.technician.panel.workdesk.factor");
+            route::post("/factor/{id}", "factor")->name("front.technician.panel.workdesk.factor");
             
         });
     });
