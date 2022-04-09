@@ -764,6 +764,5 @@
         <script src="{{ asset('frontend/fixy-land-en-main/script/spc-panel.js') }}" type="text/javascript"></script>
         <script src="{{ asset('frontend/fixy-land-en-main/script/user-panel.js') }}" type="text/javascript"></script>
         <script src="{{ asset('frontend/fixy-land-en-main/script/spc-desk.js') }}" type="text/javascript"></script>
-
     @endif
 @endsection
