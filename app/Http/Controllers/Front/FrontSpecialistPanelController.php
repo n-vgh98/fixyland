@@ -259,4 +259,11 @@ class FrontSpecialistPanelController extends Controller
 
     }
    
+    public function changeStatus(Request $request,$id)
+    {
+        $archives = Archive::findOrFail($id);
+        $archives->status = $request->status;
+        $archives->save();
+        return redirect()->back();
+    }
 }

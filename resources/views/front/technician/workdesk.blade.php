@@ -188,10 +188,11 @@
 													
 													<button type="button" class="job_more_inf_btn btn darkYellow w-100" id="job_more_inf_btn{{$i}}"> مشاهده </button>
 													
-													<form class="w-100 ms-md-2" method="POST" action="{{route('front.technician.panel.workdesk.changeStatus.archive.cancle')}}">
+													<form class="w-100 ms-md-2" method="POST" action="{{ route('front.technician.panel.workdesk.changeStatus.archive.cancle',$doing->id) }}">
 													@csrf
-													<input type="hidden" value="3" name="status">
-														<button class="w-100 btn btn-outline-dark ms-md-3" id="job_more_inf_btn{{$i}}" type="submit"> لغو </button>
+													@method('POST')
+													<input type="hidden" name="status" value="3">
+														<button class="w-100 btn btn-outline-dark ms-md-3" id="cancle_job_btn{{$i}}" type="submit"> لغو </button>
 													</form>
 													
 												</div>
@@ -329,9 +330,9 @@
 				
 					<!--گذشته-->
 					<div class="user-order-list-menu-item w-100 h-100 border-gray pt-3 padding-bottom mb-5 d-flex flex-column align-items-center gap-3 d-none">
-						
+					@foreach($past_archives as $past)
 						<div class="container-fluid rounded-3 w-75 form-bg-color p-0">
-							@foreach($past_archives as $past)
+						
 							<div class="row m-0">
 								<div class="col-lg-3 col-12 p-0 d-flex justify-content-center mb-2 mb-lg-0">
 									<div class="w-100">
@@ -349,17 +350,18 @@
 									</div>
 								</div>
 							</div>
-							@endforeach
+							
 	
 						</div>		
+						@endforeach
 					</div>
 									
 					
 					<!--لغو شده-->
 					<div class="user-order-list-menu-item w-100 h-100 border-gray pt-3 padding-bottom mb-5 d-flex flex-column align-items-center gap-3 d-none">
-						
+					@foreach($canceled_archives as $canceled)
 						<div class="container-fluid rounded-3 w-75 form-bg-color p-0">
-							@foreach($canceled_archives as $canceled)
+							
 							<div class="row m-0">
 								<div class="col-lg-3 col-12 p-0 d-flex justify-content-center mb-2 mb-lg-0">
 									<div class="w-100">
@@ -377,8 +379,9 @@
 									</div>
 								</div>
 							</div>
-							@endforeach
-						</div>	
+							
+						</div>
+						@endforeach	
 						
 					</div>
 					
