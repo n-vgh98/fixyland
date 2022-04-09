@@ -231,12 +231,12 @@ class FrontSpecialistPanelController extends Controller
                 if($order_service->address->city_id == $city && $order_service->address->state_id == $state){
                     array_push($orders,$order_service->id);
                 }
-            }    
+            }
             if($order_service->address_id == null){
                 if($order_service->order_address->city_id == $city && $order_service->order_address->state_id == $state){
                     array_push($orders,$order_service);
                 }
-            }     
+            }
         }
         $proccess = Process::whereIn("order_id",$orders)->where([["status",1],["tech_id", null]])->get();
         $doing_archives = Archive::where([["tech_id",Auth::user()->id],["status", 1]])->get();
@@ -249,7 +249,7 @@ class FrontSpecialistPanelController extends Controller
     {
         $archives = new Archive();
         $archives->tech_id = $request->input("tech_id");
-        $archives->order_id = $request->input("order_id");    
+        $archives->order_id = $request->input("order_id");
         $process = Process::where("order_id",$request->order_id)->first();
         $process->status = 2;
         $process->tech_id = Auth::user()->id;
@@ -258,5 +258,12 @@ class FrontSpecialistPanelController extends Controller
         return redirect()->back()->with("success","سفارش تایید شد و به لیست سفارشات شما اضاف شد");
 
     }
-   
+
+    public function changeStatus(Request $request,$id)
+    {
+        $archives = Archive::findOrFail($id);
+        $archives->status = $request->status;
+        $archives->save();
+        return redirect()->back();
+    }
 }
