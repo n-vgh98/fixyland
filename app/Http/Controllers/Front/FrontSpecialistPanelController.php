@@ -234,11 +234,13 @@ class FrontSpecialistPanelController extends Controller
             }
             if($order_service->address_id == null){
                 if($order_service->order_address->city_id == $city && $order_service->order_address->state_id == $state){
-                    array_push($orders,$order_service);
+                    array_push($orders,$order_service->id);
                 }
             }
         }
+        // dd(Process::where([["status",1],["tech_id", null]])->get());
         $proccess = Process::whereIn("order_id",$orders)->where([["status",1],["tech_id", null]])->get();
+        // dd($proccess);
         $doing_archives = Archive::where([["tech_id",Auth::user()->id],["status", 1]])->get();
         $past_archives = Archive::where([["tech_id",Auth::user()->id],["status", 2]])->get();
         $canceled_archives = Archive::where([["tech_id",Auth::user()->id],["status", 3]])->get();

@@ -74,7 +74,7 @@
                                             {{ $pro->order->user->lastname }} </p>
                                         <p class="m-0 pb-2 fw-bold"> نوع: {{ $pro->service->name }} </p>
                                         <p class="m-0 pb-2 fw-bold"> آدرس:
-                                            {{ $pro->order->address->state->name }}-{{ $pro->order->address->city->name }}-{{ $pro->order->address->description }}
+                                            {{ $pro->order_address->address->state->name }}-{{ $pro->order->order_address->city->name }}-{{ $pro->order->order_address->description }}
                                         </p>
                                         <p class="m-0 pb-3 fw-bold"> شرح مشکل: {{ $pro->order->description }} </p>
                                         <p class="m-0 mb-3 align-self-end"> {{ $pro->created_at->toDateString() }} </p>
@@ -111,7 +111,8 @@
                                     </div>
 
                                     <div class="col-lg-10 col-md-8 col-12 pe-3 order-md-2 order-1">
-                                        <p class="m-0 pb-2 fw-bold darkgreen-text"> شرح مشکل:{{ $pro->order->description }}
+                                        <p class="m-0 pb-2 fw-bold darkgreen-text"> شرح
+                                            مشکل:{{ $pro->order->description }}
                                         </p>
                                         <p class="m-0 pb-2 fw-bold darkgreen-text"> جواب سوالات: </p>
                                         @foreach ($pro->order->formresults as $result)
@@ -250,14 +251,16 @@
                                 </div>
 
                                 <div class="col-lg-10 col-md-8 col-12 pe-3 order-md-2 order-1">
-                                    <p class="m-0 pb-2 fw-bold darkgreen-text"> شرح مشکل: {{ $doing->order->description }}
+                                    <p class="m-0 pb-2 fw-bold darkgreen-text"> شرح مشکل:
+                                        {{ $doing->order->description }}
                                     </p>
                                     <p class="m-0 pb-2 fw-bold darkgreen-text"> جواب سوالات: </p>
                                     @foreach ($doing->order->formresults as $result)
                                         <p class="m-0 pb-2">{{ $result->label }}: {{ $result->value }} </p>
                                     @endforeach
                                     <p class="m-0 pb-2 fw-bold darkgreen-text"> زمان انجام کار: </p>
-                                    <p class="m-0 pb-3"> {{ $doing->order->date }} {{ $doing->order->time }} </p>
+                                    <p class="m-0 pb-3"> {{ $doing->order->date }} {{ $doing->order->time }}
+                                    </p>
 
                                     <p class="m-0 pb-2 fw-bold darkgreen-text"> آدرس: </p>
                                     <p class="m-0 pb-2 mb-3">
@@ -542,7 +545,8 @@
                                         @endforeach
 
                                         <p class="m-0 pb-2 fw-bold darkgreen-text"> zaman anjam kar: </p>
-                                        <p class="m-0 pb-3">{{ $pro->order->date }} {{ $pro->order->time }} </p>
+                                        <p class="m-0 pb-3">{{ $pro->order->date }} {{ $pro->order->time }}
+                                        </p>
 
                                         <p class="m-0 pb-2 fw-bold darkgreen-text"> addrs: </p>
                                         <p class="m-0 pb-2 mb-3">
@@ -626,7 +630,7 @@
 
                                         <button type="button" class="job_more_inf_btn btn darkYellow w-100 ps-0 pe-0" id="job_more_inf_btn{{ $i }}> moshahede </button>
 
-                 <form class=" w-100 me-md-2">
+                         <form class="   w-100 me-md-2">
                                             <button class="w-100 btn btn-outline-dark me-md-3" type="submit"> cancel
                                             </button>
                                             </form>
