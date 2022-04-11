@@ -19,6 +19,7 @@ use App\Models\Order;
 use App\Models\OrderAddress;
 use App\Models\Process;
 use App\Models\TechnicianPortfolio;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 
 class FrontSpecialistPanelController extends Controller
@@ -238,6 +239,7 @@ class FrontSpecialistPanelController extends Controller
                 }
             }
         }
+        $process_time = Process::where('created_at', '<=', Carbon::now()->subMinutes(5))->delete();
         // dd(Process::where([["status",1],["tech_id", null]])->get());
         $proccess = Process::whereIn("order_id", $orders)->where([["status", 1], ["tech_id", null]])->get();
         // dd($proccess);
@@ -265,6 +267,18 @@ class FrontSpecialistPanelController extends Controller
     {
         $archives = Archive::findOrFail($id);
         $archives->status = $request->status;
+        $archives->save();
+        return redirect()->back();
+    }
+
+    public function factor(Request $request, $lang, $id)
+    {
+        $archives = Archive::findOrFail($id);
+        $archives->status = $request->status;
+        $archives->service_cost = $request->input("service_cost");
+        $archives->stuff_cost = $request->input("stuff_cost");
+        $archives->transport_cost = $request->input("transport_cost");
+        $archives->final_price = $request->input("final_price");
         $archives->save();
         return redirect()->back();
     }
