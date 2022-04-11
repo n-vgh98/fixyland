@@ -159,4 +159,9 @@ class FrontUserPanelController extends Controller
        $pnotifications = Notification::where([["mode", 1],["receiver_id",Auth::user()->id]])->get();
        return view("front.User.notification",compact(["notifications","pnotifications"])); 
     }
+
+    public function transactions()
+    {
+        return view('front.User.transaction_list');
+    } 
 }
