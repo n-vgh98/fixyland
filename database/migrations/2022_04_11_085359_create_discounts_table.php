@@ -15,6 +15,12 @@ return new class extends Migration
     {
         Schema::create('discounts', function (Blueprint $table) {
             $table->id();
+            $table->tinyInteger("mode")->comment("0 is public and 1 is private");
+            $table->date("expire_time");
+            $table->foreignId("user_id")->nullable()->constrained("users")->onUpdate("cascade")->onDelete("cascade");
+            $table->text("percent");
+            $table->text("max_price")->nullable();
+            $table->text("code");
             $table->timestamps();
         });
     }

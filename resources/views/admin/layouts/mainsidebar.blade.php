@@ -40,44 +40,6 @@
                             </p>
                         </a>
                         <ul class="nav nav-treeview">
-                            {{-- if needed --}}
-
-                            {{-- <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="nav-icon fa  fa-graduation-cap"></i>
-                                    <p>
-                                        دانش آموزان
-                                        <i class="right fa fa-angle-left"></i>
-                                    </p>
-                                </a>
-                                <ul class="nav nav-treeview">
-
-                                    <li class="nav-item">
-                                        <a href="#" class="nav-link">
-                                            <i class="fa fa-circle nav-icon"></i>
-                                            <p>
-                                                یازدهم
-                                                <i class="right fa fa-angle-left"></i>
-                                            </p>
-                                        </a>
-                                        <ul class="nav nav-treeview">
-                                            <li class="nav-item">
-                                                <a href="#" class="nav-link">
-                                                    <i class="fa fa-dot-circle-o nav-icon"></i>
-                                                    <p> یازدهم تجربی </p>
-                                                </a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a href="#" class="nav-link">
-                                                    <i class="fa fa-dot-circle-o nav-icon"></i>
-                                                    <p> یازدهم ریاضی</p>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </li>
-
-                                </ul>
-                            </li> --}}
 
                             {{-- all users --}}
                             <li class="nav-item">
@@ -250,11 +212,10 @@
 
                             {{-- covered area city --}}
                             <li class="nav-item">
-                                <a href="{{ route('admin.covered_city.index', 'ar') }}"
-                                    class="nav-link">
+                                <a href="{{ route('admin.covered_city.index', 'ar') }}" class="nav-link">
                                     <i class="nav-icon fa  fa-gears"></i>
                                     <p>
-                                       Cities
+                                        Cities
                                     </p>
                                 </a>
                             </li>
@@ -385,7 +346,8 @@
 
                             {{-- Articles Categories --}}
                             <li class="nav-item">
-                                <a href="{{ route('admin.article_categories.index', 'ar') }}" class="nav-link">
+                                <a href="{{ route('admin.article_categories.index', 'ar') }}"
+                                    class="nav-link">
                                     <i class="nav-icon fa  fa-clone"></i>
                                     <p>
                                         Articles Categories
@@ -395,11 +357,10 @@
 
                             {{-- Articles --}}
                             <li class="nav-item">
-                                <a href="{{ route('admin.articles.index', 'ar') }}"
-                                    class="nav-link">
+                                <a href="{{ route('admin.articles.index', 'ar') }}" class="nav-link">
                                     <i class="nav-icon fa  fa-file-text"></i>
                                     <p>
-                                       All Articles
+                                        All Articles
                                     </p>
                                 </a>
                             </li>
@@ -438,8 +399,8 @@
                             </li>
                         </ul>
                     </li>
-                     <!-- contact us links-->
-                     <li class="nav-item has-treeview ">
+                    <!-- contact us links-->
+                    <li class="nav-item has-treeview ">
                         <a href="#" class="nav-link bg-primary active">
                             <i class="nav-icon fa  fa-phone-square"></i>
                             <p>
@@ -481,8 +442,18 @@
                             </p>
                         </a>
                     </li>
-                     <!-- footer links-->
-                     <li class="nav-item has-treeview ">
+
+                    <li class="nav-item has-treeview">
+
+                        <a href="{{ route('admin.discount.index', 'ar') }}" class="nav-link bg-primary active">
+                            <i class="nav-icon fa fa-vcard-o"></i>
+                            <p>
+                                Discounts
+                            </p>
+                        </a>
+                    </li>
+                    <!-- footer links-->
+                    <li class="nav-item has-treeview ">
                         <a href="#" class="nav-link bg-primary active">
                             <i class="nav-icon fa  fa-long-arrow-down"></i>
                             <p>
@@ -504,10 +475,11 @@
 
                             {{-- Footer useful links --}}
                             <li class="nav-item">
-                                <a href="{{ route('admin.footer_useful_links.index', 'ar') }}" class="nav-link">
+                                <a href="{{ route('admin.footer_useful_links.index', 'ar') }}"
+                                    class="nav-link">
                                     <i class="nav-icon fa  fa-link"></i>
                                     <p>
-                                       Useful Links
+                                        Useful Links
                                     </p>
                                 </a>
                             </li>

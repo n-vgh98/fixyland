@@ -99,4 +99,9 @@ class User extends Authenticatable
     {
         return $this->hasMany("App\Models\TechScore", "tech_id");
     }
+
+    public function useddiscounts()
+    {
+        return $this->hasMany("App\Models\DiscountUser", "user_id");
+    }
 }

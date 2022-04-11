@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Discount extends Model
+class DiscountUser extends Model
 {
     use HasFactory;
 
@@ -14,8 +14,13 @@ class Discount extends Model
         return $this->belongsTo("App\Models\User", "user_id");
     }
 
-    public function useddiscounts()
+    public function order()
     {
-        return $this->hasMany("App\Models\DiscountUser", "discount_id");
+        return $this->belongsTo("App\Models\Order", "order_id");
+    }
+
+    public function discount()
+    {
+        return $this->belongsTo("App\Models\Discount", "discount_id");
     }
 }

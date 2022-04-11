@@ -42,4 +42,9 @@ class Order extends Model
     {
         return $this->hasOne("App\Models\Archive", "order_id");
     }
+
+    public function useddiscounts()
+    {
+        return $this->hasMany("App\Models\DiscountUser", "order_id");
+    }
 }

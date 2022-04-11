@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Discount;
 use Illuminate\Http\Request;
 
 class AdminDiscountController extends Controller
@@ -14,7 +15,8 @@ class AdminDiscountController extends Controller
      */
     public function index()
     {
-        //
+        $discounts = Discount::all();
+        return view("admin.discount.index", compact("discounts"));
     }
 
     /**
@@ -35,7 +37,26 @@ class AdminDiscountController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $code = rand(1, 900000);
+        $discounts = Discount::where("code", $code)->first();
+        $discount = new Discount();
+        $discount->mode = $request->mode;
+        $discount->expire_time = $request->expire_time;
+        $discount->percent = $request->percent;
+        $discount->max_price = $request->max_price;
+        if ($request->user_id != null) {
+            $discount->user_id = $request->user_id;
+        }
+
+        // make new unique code
+        while ($discounts != null) {
+            $code = rand(1, 900000);
+            $discounts = Discount::where("code", $code)->first();
+        }
+        $discount->code = $code;
+        $discount->save();
+        return redirect()->back()->with("success", "Your discount Created");
     }
 
     /**
@@ -80,6 +101,8 @@ class AdminDiscountController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $discount = Discount::find($id);
+        $discount->delete();
+        return redirect()->back()->with("success", "Your discount Deleted Successfully");
     }
 }

@@ -18,6 +18,7 @@ use App\Http\Controllers\Admin\AdminContactUsController;
 use App\Http\Controllers\Admin\AdminContactUsTextController;
 use App\Http\Controllers\Admin\AdminCoveredAreaCityController;
 use App\Http\Controllers\Admin\AdminCoveredAreaController;
+use App\Http\Controllers\Admin\AdminDiscountController;
 use App\Http\Controllers\Admin\AdminFooterInfoController;
 use App\Http\Controllers\Admin\AdminFooterUsefulLinkController;
 use App\Http\Controllers\Admin\AdminFormController;
@@ -334,6 +335,13 @@ route::prefix("admin")->middleware(['auth:sanctum', 'verified', "admin"])->group
             });
         });
     });
+
+    // routes for discounts
+    route::prefix("discounts")->group(function () {
+        route::get("/", [AdminDiscountController::class, "index"])->name("admin.discount.index");
+        route::post("/store", [AdminDiscountController::class, "store"])->name("admin.discount.store");
+        route::delete("/delete/{id}", [AdminDiscountController::class, "destroy"])->name("admin.discount.delete");
+    });
 });
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
@@ -398,13 +406,12 @@ route::prefix("{locale}")->middleware("language")->group(function () {
             route::post("/deleteportfolio/{pid}", "deleteporfolio")->name("front.technician.panel.delete.portfolio");
             route::post("/addportfolio", "addporfolio")->name("front.technician.panel.add.portfolio");
             route::get("/workdesk", "offers")->name("front.technician.panel.workdesk");
-            route::post("/workdesk","createArchivesProcsess")->name("front.technician.panel.workdesk.post.archive");
-            route::post("/suggestion_workdesk","createArchivesSuggest")->name("front.technician.panel.workdesk.post.suggestion.archive");
-            
+            route::post("/workdesk", "createArchivesProcsess")->name("front.technician.panel.workdesk.post.archive");
+            route::post("/suggestion_workdesk", "createArchivesSuggest")->name("front.technician.panel.workdesk.post.suggestion.archive");
+
             route::post("/cancele/{id}", "changeStatus")->name("front.technician.panel.workdesk.changeStatus.archive.cancle");
-            
+
             route::post("/factor/{id}", "factor")->name("front.technician.panel.workdesk.factor");
-            
         });
     });
 

@@ -1,6 +1,6 @@
 @extends('admin.layouts.master')
 @section('head')
-    @include("admin.layouts.datatable.head")
+    @include('admin.layouts.datatable.head')
 @endsection
 @section('title')
     All Customers
@@ -128,6 +128,10 @@
                                             Notifications</a>
                                     </div>
                                 </div>
+                                <button type="button" class="btn btn-info" data-toggle="modal"
+                                    data-target="#discount{{ $user->id }}">
+                                    Make Discount
+                                </button>
                             </td>
                         </tr>
                         @php
@@ -239,8 +243,7 @@
 
                                             <div class="form-group">
                                                 <label for="exampleFormControlTextarea1">Notification Text</label>
-                                                <textarea class="form-control" name="text"
-                                                    id="exampleFormControlTextarea1" rows="3"></textarea>
+                                                <textarea class="form-control" name="text" id="exampleFormControlTextarea1" rows="3"></textarea>
                                             </div>
 
                                             <div class="form-group">
@@ -253,6 +256,49 @@
                                                 <button type="button" class="btn btn-secondary"
                                                     data-dismiss="modal">Close</button>
                                                 <button type="submit" class="btn btn-primary">Send</button>
+                                            </div>
+                                        </form>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Modal for making new discount -->
+                        <div class="modal fade" id="discount{{ $user->id }}" tabindex="-1" role="dialog"
+                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Create Discount</h5>
+                                        <button type="button" class="close" data-dismiss="modal"
+                                            aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form method="post" action="{{ route('admin.discount.store') }}">
+                                            @csrf
+                                            <input type="hidden" name="mode" value="1">
+                                            <input type="hidden" name="user_id" value="{{ $user->id }}">
+                                            <div class="form-group">
+                                                <label for="question">percent:</label>
+                                                <input type="text" class="form-control" required name="percent">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="answer">Max Price:</label>
+                                                <input type="text" class="form-control" required name="max_price">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="meta_keywords">Expire Time</label>
+                                                <input name="expire_time" type="date">
+                                            </div>
+
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-dismiss="modal">Close</button>
+                                                <button type="submit" class="btn btn-primary">Save changes</button>
                                             </div>
                                         </form>
 
