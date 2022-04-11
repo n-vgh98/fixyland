@@ -242,17 +242,8 @@ class FrontSpecialistPanelController extends Controller
         }
 
         $process_time = Process::where('created_at', '<=', Carbon::now()->subMinutes(5))->delete();
-        
+
         // dd(Process::where([["status",1],["tech_id", null]])->get());
-<<<<<<< HEAD
-        $proccess = Process::whereIn("order_id",$orders)->where([["status",1],["tech_id", null]])->get();
-        $suggestions = Suggestion::where([["tech_id",Auth::user()->id],["status", 1 ]])->get();
-        // dd($proccess);
-        $doing_archives = Archive::where([["tech_id",Auth::user()->id],["status", 1]])->get();
-        $past_archives = Archive::where([["tech_id",Auth::user()->id],["status", 2]])->get();
-        $canceled_archives = Archive::where([["tech_id",Auth::user()->id],["status", 3]])->get();
-        return view("front.technician.workdesk",compact(["proccess","doing_archives","past_archives","canceled_archives","suggestions"]));
-=======
         $proccess = Process::whereIn("order_id", $orders)->where([["status", 1], ["tech_id", null]])->get();
         // dd($proccess);
 
@@ -260,7 +251,6 @@ class FrontSpecialistPanelController extends Controller
         $past_archives = Archive::where([["tech_id", Auth::user()->id], ["status", 2]])->get();
         $canceled_archives = Archive::where([["tech_id", Auth::user()->id], ["status", 3]])->get();
         return view("front.technician.workdesk", compact(["proccess", "doing_archives", "past_archives", "canceled_archives"]));
->>>>>>> refs/remotes/origin/master
     }
 
     public function createArchivesProcsess(Request $request)
@@ -276,24 +266,7 @@ class FrontSpecialistPanelController extends Controller
         return redirect()->back()->with("success", "سفارش تایید شد و به لیست سفارشات شما اضاف شد");
     }
 
-<<<<<<< HEAD
-    public function createArchivesSuggest(Request $request)
-    {
-        $archives = new Archive();
-        $archives->tech_id = $request->input("tech_id");
-        $archives->order_id = $request->input("order_id");
-        $suggest = Suggestion::where("order_id",$request->order_id)->first();
-        $suggest->status = 2;
-        $suggest->save();
-        $archives->save();
-        return redirect()->back()->with("success","سفارش تایید شد و به لیست سفارشات شما اضاف شد");
-
-    }
-
-    public function changeStatus(Request $request,$lang,$id)
-=======
     public function changeStatus(Request $request, $id)
->>>>>>> refs/remotes/origin/master
     {
         $archives = Archive::findOrFail($id);
         $archives->status = $request->status;
