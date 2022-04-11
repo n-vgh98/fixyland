@@ -470,7 +470,9 @@
                                     @if($past->order->order_address_id == null)
                                     <p class="m-0 pb-2 fw-bold" > آدرس: {{$past->order->address->state->name}}-{{$past->order->address->city->name}}-{{$past->order->address->description}} </p>
                                     @else
-                                    <p class="m-0 pb-2 fw-bold" > آدرس: {{$past->order->order_address->state->name}}-{{$past->order->order_address->city->name}}-{{$past->order->order_address->description}} </p>
+                                        <p class="m-0 pb-2 fw-bold"> آدرس:
+                                            {{ $doing->order->order_address->state->name }}-{{ $doing->order->order_address->city->name }}-{{ $doing->order->order_address->description }}
+                                        </p>
                                     @endif
 									<p class="m-0 pb-3 fw-bold" > شرح مشکل:  {{$past->order->description}} </p>
 									<div class="w-100 d-flex justify-content-center justify-content-lg-end">
@@ -502,7 +504,9 @@
                                     @if($canceled->order->order_address_id == null)
                                     <p class="m-0 pb-2 fw-bold" > آدرس: {{$canceled->order->address->state->name}}-{{$canceled->order->address->city->name}}-{{$canceled->order->address->description}} </p>
                                     @else
-                                    <p class="m-0 pb-2 fw-bold" > آدرس: {{$canceled->order->order_address->state->name}}-{{$canceled->order->order_address->city->name}}-{{$canceled->order->order_address->description}} </p>
+                                        <p class="m-0 pb-2 fw-bold"> آدرس:
+                                            {{ $doing->order->order_address->state->name }}-{{ $doing->order->order_address->city->name }}-{{ $doing->order->order_address->description }}
+                                        </p>
                                     @endif
 									<p class="m-0 pb-3 fw-bold" > شرح مشکل: {{$canceled->order->description}} </p>
 									<div class="w-100 d-flex justify-content-center justify-content-lg-end">

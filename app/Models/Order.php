@@ -38,4 +38,8 @@ class Order extends Model
     {
         return $this->hasMany("App\Models\OrderImage");
     }
+    public function archive()
+    {
+        return $this->hasOne("App\Models\Archive", "order_id");
+    }
 }

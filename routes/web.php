@@ -38,6 +38,7 @@ use App\Http\Controllers\Front\FrontSpecialistController;
 use App\Http\Controllers\Front\FrontSpecialistPanelController;
 use App\Http\Controllers\Front\FrontUserController;
 use App\Http\Controllers\Front\FrontUserPanelController;
+use App\Http\Controllers\User\ChatController;
 use GuzzleHttp\Middleware;
 
 /*
@@ -418,11 +419,6 @@ route::prefix("{locale}")->middleware("language")->group(function () {
             route::get("/favoritetechnicians", "favorittech")->name("user.panel.profile.favorittech.show");
             route::post("/favortech", "favortech")->name("user.panel.profile.favorittech.store");
             route::get("/techinfo/{id}", "techinfo")->name("user.panel.profile.tech.info");
-
-
-
-
-
             // routing for ms vaghefi
             route::get("/notification", "notifications")->name("user.panel.notification");
         });
@@ -443,4 +439,17 @@ route::prefix("{locale}")->middleware("language")->group(function () {
     });
     Route::get("/faq", [FrontFaqController::class, "index"])->name("front.faq.index");
     Route::get("/rules-terms", [FrontRuleController::class, "index"])->name("front.rules.index");
+
+
+
+    route::prefix("chat")->group(function () {
+        route::get("/message/{id}", [ChatController::class, "chat"])->name("user.chat.message");
+        route::post("/chatstatus/{id}", [ChatController::class, "chatstatus"])->name("user.chat.status");
+
+        route::get("/chatcheck/{id}", [ChatController::class, "chatcheck"])->name("user.chat.check");
+    });
+});
+route::prefix("chat")->group(function () {
+    route::post("/storemessage", [ChatController::class, "store"])->name("user.chat.message.send");
+    route::get("/getemessages/{id}", [ChatController::class, "getmessages"])->name("user.chat.message.get");
 });

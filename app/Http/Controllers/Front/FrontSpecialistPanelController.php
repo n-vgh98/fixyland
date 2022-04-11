@@ -218,25 +218,25 @@ class FrontSpecialistPanelController extends Controller
     public function offers()
     {
         $tec = Auth::user()->id;
-        $tec_info = TechInfo::where("user_id",$tec)->first();
+        $tec_info = TechInfo::where("user_id", $tec)->first();
         $city = $tec_info->covered_city_id;
         $state = $tec_info->covered_state_id;
-        $tec_skill = SkillUser::where("user_id",$tec)->get();
+        $tec_skill = SkillUser::where("user_id", $tec)->get();
         $skills = array();
-        foreach($tec_skill as $skill){
-            array_push($skills,$skill->service_sub_categoy_id);
+        foreach ($tec_skill as $skill) {
+            array_push($skills, $skill->service_sub_categoy_id);
         }
-        $orders_services = Order::whereIn("service_id",$skills)->get();
+        $orders_services = Order::whereIn("service_id", $skills)->get();
         $orders = array();
-        foreach($orders_services as $order_service){
-            if($order_service->order_address_id == null){
-                if($order_service->address->city_id == $city && $order_service->address->state_id == $state){
-                    array_push($orders,$order_service->id);
+        foreach ($orders_services as $order_service) {
+            if ($order_service->order_address_id == null) {
+                if ($order_service->address->city_id == $city && $order_service->address->state_id == $state) {
+                    array_push($orders, $order_service->id);
                 }
             }
-            if($order_service->address_id == null){
-                if($order_service->order_address->city_id == $city && $order_service->order_address->state_id == $state){
-                    array_push($orders,$order_service->id);
+            if ($order_service->address_id == null) {
+                if ($order_service->order_address->city_id == $city && $order_service->order_address->state_id == $state) {
+                    array_push($orders, $order_service->id);
                 }
             }
         }
@@ -244,6 +244,7 @@ class FrontSpecialistPanelController extends Controller
         $process_time = Process::where('created_at', '<=', Carbon::now()->subMinutes(5))->delete();
         
         // dd(Process::where([["status",1],["tech_id", null]])->get());
+<<<<<<< HEAD
         $proccess = Process::whereIn("order_id",$orders)->where([["status",1],["tech_id", null]])->get();
         $suggestions = Suggestion::where([["tech_id",Auth::user()->id],["status", 1 ]])->get();
         // dd($proccess);
@@ -251,6 +252,15 @@ class FrontSpecialistPanelController extends Controller
         $past_archives = Archive::where([["tech_id",Auth::user()->id],["status", 2]])->get();
         $canceled_archives = Archive::where([["tech_id",Auth::user()->id],["status", 3]])->get();
         return view("front.technician.workdesk",compact(["proccess","doing_archives","past_archives","canceled_archives","suggestions"]));
+=======
+        $proccess = Process::whereIn("order_id", $orders)->where([["status", 1], ["tech_id", null]])->get();
+        // dd($proccess);
+
+        $doing_archives = Archive::where([["tech_id", Auth::user()->id], ["status", 1]])->get();
+        $past_archives = Archive::where([["tech_id", Auth::user()->id], ["status", 2]])->get();
+        $canceled_archives = Archive::where([["tech_id", Auth::user()->id], ["status", 3]])->get();
+        return view("front.technician.workdesk", compact(["proccess", "doing_archives", "past_archives", "canceled_archives"]));
+>>>>>>> refs/remotes/origin/master
     }
 
     public function createArchivesProcsess(Request $request)
@@ -258,15 +268,15 @@ class FrontSpecialistPanelController extends Controller
         $archives = new Archive();
         $archives->tech_id = $request->input("tech_id");
         $archives->order_id = $request->input("order_id");
-        $process = Process::where("order_id",$request->order_id)->first();
+        $process = Process::where("order_id", $request->order_id)->first();
         $process->status = 2;
         $process->tech_id = Auth::user()->id;
         $process->save();
         $archives->save();
-        return redirect()->back()->with("success","سفارش تایید شد و به لیست سفارشات شما اضاف شد");
-
+        return redirect()->back()->with("success", "سفارش تایید شد و به لیست سفارشات شما اضاف شد");
     }
 
+<<<<<<< HEAD
     public function createArchivesSuggest(Request $request)
     {
         $archives = new Archive();
@@ -281,6 +291,9 @@ class FrontSpecialistPanelController extends Controller
     }
 
     public function changeStatus(Request $request,$lang,$id)
+=======
+    public function changeStatus(Request $request, $id)
+>>>>>>> refs/remotes/origin/master
     {
         $archives = Archive::findOrFail($id);
         $archives->status = $request->status;
@@ -288,7 +301,7 @@ class FrontSpecialistPanelController extends Controller
         return redirect()->back();
     }
 
-    public function factor(Request $request,$lang,$id)
+    public function factor(Request $request, $lang, $id)
     {
         $archives = Archive::findOrFail($id);
         $archives->status = $request->status;
