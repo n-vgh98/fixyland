@@ -421,6 +421,7 @@ route::prefix("{locale}")->middleware("language")->group(function () {
             route::get("/techinfo/{id}", "techinfo")->name("user.panel.profile.tech.info");
             // routing for ms vaghefi
             route::get("/notification", "notifications")->name("user.panel.notification");
+            route::get("/transactions", "transactions")->name("user.panel.transactions");
         });
     });
     route::get("/", [FrontHomeController::class, "index"])->name("user.home");
