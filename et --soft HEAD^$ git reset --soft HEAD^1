@@ -1,0 +1,1023 @@
+[33mcommit a5f7d96f070a39a64f43096e495ab1e80454c244[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: n-vgh98 <nazi.gh988@gmail.com>
+Date:   Mon Apr 11 12:02:43 2022 +0430
+
+    work desk
+
+[33mcommit fdccf57ca5100025dcf54783dc78c7d5cebf7872[m
+Author: n-vgh98 <nazi.gh988@gmail.com>
+Date:   Sat Apr 9 15:45:58 2022 +0430
+
+    proccess time is done
+
+[33mcommit 26bca45c513e0bfbee7274aed0fd8997caf9e627[m
+Author: n-vgh98 <nazi.gh988@gmail.com>
+Date:   Sat Apr 9 15:01:58 2022 +0430
+
+    cancele and finish archives in specialist wordkdesk is done
+
+[33mcommit 22a93f783a5989cc5d982f4f1ddbc0b44f473583[m
+Author: n-vgh98 <nazi.gh988@gmail.com>
+Date:   Sat Apr 9 13:16:42 2022 +0430
+
+    add post archives in wd
+
+[33mcommit 26f00ad63b9c5cb96256005ea85216b0de01c8d2[m
+Author: n-vgh98 <nazi.gh988@gmail.com>
+Date:   Sat Apr 9 13:10:03 2022 +0430
+
+    change addres->des to order_address->des
+
+[33mcommit b96c50e8b1639f4ec48d34e9101f8a6a45ff8b0f[m
+Merge: cf6a6f2 1cbfcd3
+Author: n-vgh98 <nazi.gh988@gmail.com>
+Date:   Sat Apr 9 13:06:50 2022 +0430
+
+    change address in wd
+
+[33mcommit cf6a6f2910de02d4235225d6bae17653232e09a9[m
+Author: n-vgh98 <nazi.gh988@gmail.com>
+Date:   Sat Apr 9 12:56:52 2022 +0430
+
+    edit work desk address
+
+[33mcommit 369aa8809b20e887c287e2764a8e2f55092292f0[m
+Author: n-vgh98 <nazi.gh988@gmail.com>
+Date:   Sat Apr 9 12:52:26 2022 +0430
+
+    edit address in work desk blade
+
+[33mcommit 1cbfcd3618205f9a4f280cdcdddcf2c5375fb16c[m
+Author: Danial <danialdark12098@gmail.com>
+Date:   Sat Apr 9 12:40:32 2022 +0430
+
+    ye kochoolo tahghir too desk
+
+[33mcommit 0f87e798080201e03a15cdfbd403a9a05ea96b29[m
+Merge: f16b5fa a8741f3
+Author: Danial <danialdark12098@gmail.com>
+Date:   Sat Apr 9 12:27:31 2022 +0430
+
+    fixing conflict
+
+[33mcommit f16b5fa780ddb9e53be37ff2957df664da5f9621[m
+Author: Danial <danialdark12098@gmail.com>
+Date:   Sat Apr 9 11:47:10 2022 +0430
+
+    making chat
+
+[33mcommit a8741f37ccde5584cf4d157c8bc1350e05b3ea48[m
+Merge: 0417c20 2df70ec
+Author: n-vgh98 <nazi.gh988@gmail.com>
+Date:   Sat Apr 9 11:26:26 2022 +0430
+
+    for debug
+
+[33mcommit 0417c2057b3cf17a4401e3248862c41e4737cd9a[m
+Author: n-vgh98 <nazi.gh988@gmail.com>
+Date:   Sat Apr 9 11:03:37 2022 +0430
+
+    for debug end if error
+
+[33mcommit 2df70ecffd362f54f3fd379477f72312e619e84c[m
+Merge: 82b8421 535fcac
+Author: Danial <danialdark12098@gmail.com>
+Date:   Sat Apr 9 11:02:20 2022 +0430
+
+    fixing conflict
+
+[33mcommit 82b8421c93464a9dbf1bc8176883e96405c2b5d1[m
+Author: Danial <danialdark12098@gmail.com>
+Date:   Sat Apr 9 11:00:37 2022 +0430
+
+    nothing important
+
+[33mcommit 535fcac66370a0dcea0e57294b591f6896e3ecae[m
+Author: n-vgh98 <nazi.gh988@gmail.com>
+Date:   Thu Apr 7 11:26:50 2022 +0430
+
+    en create archive is done
+
+[33mcommit 74518bb7b10586384c2083a4353ee929fd10cb06[m
+Author: n-vgh98 <nazi.gh988@gmail.com>
+Date:   Thu Apr 7 10:28:59 2022 +0430
+
+    create archive is done
+
+[33mcommit d766accd27f78c44817baf77574491060eadef5f[m
+Author: n-vgh98 <nazi.gh988@gmail.com>
+Date:   Tue Apr 5 15:37:43 2022 +0430
+
+    work desk is done but nit complete
+
+[33mcommit 70c8df0dc0fcc79a54f25a46cce410d91f76f4ed[m
+Author: Danial <danialdark12098@gmail.com>
+Date:   Tue Apr 5 12:53:25 2022 +0430
+
+    making a change on specialist register
+
+[33mcommit 0c0df837d301e591919b76c0c809c986f2230e21[m
+Author: Danial <danialdark12098@gmail.com>
+Date:   Tue Apr 5 00:51:22 2022 +0430
+
+    technician custom select finished
+
+[33mcommit 32f0701d33911281bda927de455a906a794ff6d5[m
+Author: Danial <danialdark12098@gmail.com>
+Date:   Tue Apr 5 00:15:41 2022 +0430
+
+    making a system to find beter technicians
+
+[33mcommit 3940257994cebd395d5dddb06ae2f1a5749d2001[m
+Author: Danial <danialdark12098@gmail.com>
+Date:   Mon Apr 4 23:43:01 2022 +0430
+
+    making score for technicians
+
+[33mcommit b19b7d872b693bb0c59c1cf7fbc9376a476ef933[m
+Author: Danial <danialdark12098@gmail.com>
+Date:   Mon Apr 4 23:07:27 2022 +0430
+
+    making custom find
+
+[33mcommit b3c53ae172cb7182a65cfdc01603aa26f9449249[m
+Author: Danial <danialdark12098@gmail.com>
+Date:   Mon Apr 4 22:46:58 2022 +0430
+
+    service method selection finished
+
+[33mcommit 8580afa236b6dc3ec8a2dd9c3ead2ca48d2190e6[m
+Author: Danial <danialdark12098@gmail.com>
+Date:   Mon Apr 4 21:44:15 2022 +0430
+
+    making order finished for english language
+
+[33mcommit 834a41b10072dace8daf3e1ef5d6360f2016b030[m
+Author: Danial <danialdark12098@gmail.com>
+Date:   Mon Apr 4 15:26:40 2022 +0430
+
+    sabte sefaresh
+
+[33mcommit 7b6ca4505d2c3a3e256af6d8feb55909e612c3b8[m
+Author: Danial <danialdark12098@gmail.com>
+Date:   Mon Apr 4 15:09:16 2022 +0430
+
+    fixing a bug
+
+[33mcommit 0f6a2da2fa1240c174638c8c134f8c4bc2c34442[m
+Merge: f921a85 5e27519
+Author: Danial <danialdark12098@gmail.com>
+Date:   Mon Apr 4 15:05:44 2022 +0430
+
+    Merge branch 'master' of https://github.com/n-vgh98/fixyland
+
+[33mcommit f921a851113d03bcc117d15fa1731d429eff61b1[m
+Author: Danial <danialdark12098@gmail.com>
+Date:   Mon Apr 4 15:05:38 2022 +0430
+
+    nothing important
+
+[33mcommit 5e27519b05f9d17b98dc50c132bd50f913ea0787[m
+Author: n-vgh98 <nazi.gh988@gmail.com>
+Date:   Mon Apr 4 15:05:24 2022 +0430
+
+    change name of from result and change addressess column in order table to nullable
+
+[33mcommit 49e75427eab97e6f0bdf983af34b647c1167433a[m
+Author: n-vgh98 <nazi.gh988@gmail.com>
+Date:   Mon Apr 4 15:02:01 2022 +0430
+
+    change order_address and addres id to nullable
+
+[33mcommit 676d83f869d81290f334cd964a67f093dd12864c[m
+Merge: 9c72650 42b56aa
+Author: Danial <danialdark12098@gmail.com>
+Date:   Mon Apr 4 14:23:40 2022 +0430
+
+    Merge branch 'master' of https://github.com/n-vgh98/fixyland
+
+[33mcommit 9c7265095b2ce939b9837aecdffd5a31d61fe641[m
+Author: Danial <danialdark12098@gmail.com>
+Date:   Mon Apr 4 14:19:44 2022 +0430
+
+    nothing important
+
+[33mcommit 42b56aa5384ddbe541013fc633aebf65a3fdfd6e[m
+Author: n-vgh98 <nazi.gh988@gmail.com>
+Date:   Mon Apr 4 13:21:06 2022 +0430
+
+    add address_id into orders
+
+[33mcommit d71d07ba5a8872a0aa314c56743115d6de88050a[m
+Author: Danial <danialdark12098@gmail.com>
+Date:   Mon Apr 4 11:43:36 2022 +0430
+
+    order prossess tables finished
+
+[33mcommit facb2b5423b58d2ad8a3a16fc7fe29c1ef3d8fa6[m
+Merge: db560b9 39af74a
+Author: Danial <danialdark12098@gmail.com>
+Date:   Mon Apr 4 11:29:26 2022 +0430
+
+    Merge branch 'master' of https://github.com/n-vgh98/fixyland
+
+[33mcommit db560b98c50e7d7d4a68ddad86ae61d48b529749[m
+Author: Danial <danialdark12098@gmail.com>
+Date:   Mon Apr 4 11:28:59 2022 +0430
+
+    order table order address table and result table finished
+
+[33mcommit 39af74a0de81ac38c587233734117aa3b52ebeb9[m
+Author: n-vgh98 <nazi.gh988@gmail.com>
+Date:   Mon Apr 4 11:19:06 2022 +0430
+
+    index article and faq link in index is done
+
+[33mcommit b60b36d9cea0a6a4047760a43f36460ec10f7490[m
+Author: Danial <danialdark12098@gmail.com>
+Date:   Mon Apr 4 09:52:49 2022 +0430
+
+    index page services finished
+
+[33mcommit b8632f82bc8b25f64a20a8d636a3e3b3d1d69e1c[m
+Author: Danial <danialdark12098@gmail.com>
+Date:   Mon Apr 4 08:48:56 2022 +0430
+
+    technician password change finished
+
+[33mcommit dd182270811c80927a2f6fa95148b740605756a9[m
+Merge: 2204d0d 6ae30ce
+Author: Danial <danialdark12098@gmail.com>
+Date:   Sun Apr 3 16:08:27 2022 +0430
+
+    Merge branch 'master' of https://github.com/n-vgh98/fixyland
+
+[33mcommit 2204d0ddf9d486f89778f0153f25a27b93ef9326[m
+Author: Danial <danialdark12098@gmail.com>
+Date:   Sun Apr 3 16:07:06 2022 +0430
+
+    fixing header bug
+
+[33mcommit 6ae30ce9c82e28d4c9731ebdf261dd2fbd32caf9[m
+Author: n-vgh98 <nazi.gh988@gmail.com>
+Date:   Sun Apr 3 15:40:38 2022 +0430
+
+    user panel notification is done
+
+[33mcommit c73d24ac8e572b5cf54290e1a72805d1e6829709[m
+Author: Danial <danialdark12098@gmail.com>
+Date:   Sun Apr 3 15:40:14 2022 +0430
+
+    favorit technician profile finished:
+
+[33mcommit d5fc2447e894f244e712d81352f1dcb5a630a2d7[m
+Author: Danial <danialdark12098@gmail.com>
+Date:   Sun Apr 3 15:24:38 2022 +0430
+
+    favorit technician finshed
+
+[33mcommit ad7b9f9ee91b6a2a29715ebee8ee9322cb856d86[m
+Author: Danial <danialdark12098@gmail.com>
+Date:   Sun Apr 3 15:01:58 2022 +0430
+
+    favorit technicians finished
+
+[33mcommit f88591dd9603cb9649169f3ac0153c6144c12fef[m
+Merge: 6138b72 84c949e
+Author: Danial <danialdark12098@gmail.com>
+Date:   Sun Apr 3 14:37:02 2022 +0430
+
+    Merge branch 'master' of https://github.com/n-vgh98/fixyland
+
+[33mcommit 6138b724d061d066703afd956a2c18e3abee09b4[m
+Author: Danial <danialdark12098@gmail.com>
+Date:   Sun Apr 3 14:36:40 2022 +0430
+
+    edit profile user finished
+
+[33mcommit 84c949e85b462979ee8be169fe9742cc3604876d[m
+Author: n-vgh98 <nazi.gh988@gmail.com>
+Date:   Sun Apr 3 14:11:32 2022 +0430
+
+    create layouts for tec panel and edit all file in tec panel
+
+[33mcommit 0e92d890d1e487b4a86b6f5a76ff7fc83aa6c7be[m
+Author: Danial <danialdark12098@gmail.com>
+Date:   Sun Apr 3 13:13:12 2022 +0430
+
+    password change finished
+
+[33mcommit 5dd269e778f3f81a3d06a00ff688a6e6b74396bf[m
+Merge: 1c4de57 5efaaa9
+Author: Danial <danialdark12098@gmail.com>
+Date:   Sun Apr 3 12:54:47 2022 +0430
+
+    Merge branch 'master' of https://github.com/n-vgh98/fixyland
+
+[33mcommit 1c4de57669216dc12ba089e236d278edb6b4a9c6[m
+Author: Danial <danialdark12098@gmail.com>
+Date:   Sun Apr 3 12:54:30 2022 +0430
+
+    profile photo user finished
+
+[33mcommit 5efaaa9b752c62b9504fc9f04349ee3565e150a3[m
+Author: n-vgh98 <nazi.gh988@gmail.com>
+Date:   Sun Apr 3 12:35:02 2022 +0430
+
+    technician notification is done
+
+[33mcommit 1cf2966535d9e0bc8a508d966667aff5c17272c5[m
+Author: n-vgh98 <nazi.gh988@gmail.com>
+Date:   Sun Apr 3 10:31:08 2022 +0430
+
+    fix bug in tecnesian register
+
+[33mcommit 7dd701d208fe219f9f2ac1bc1e79e6bcdee4b15a[m
+Author: Danial <danialdark12098@gmail.com>
+Date:   Sun Apr 3 10:30:37 2022 +0430
+
+    making routing line for vaghefi
+
+[33mcommit 6514e85d004b6faab6159426ba0bc7e81cae53da[m
+Author: Danial <danialdark12098@gmail.com>
+Date:   Sun Apr 3 10:29:26 2022 +0430
+
+    making button for users
+
+[33mcommit 9e10ab210574bb9a73c518b738d05da9b389f6c5[m
+Author: Danial <danialdark12098@gmail.com>
+Date:   Sun Apr 3 10:22:48 2022 +0430
+
+    adding user panel
+
+[33mcommit 31ab1422c1bbfcbee6efada70aa8e641f1333f8f[m
+Author: Danial <danialdark12098@gmail.com>
+Date:   Sun Apr 3 10:07:01 2022 +0430
+
+    fixing use signup
+
+[33mcommit a200663574776e41297055df0987878a83644b2d[m
+Merge: a754bcc a230a90
+Author: Danial <danialdark12098@gmail.com>
+Date:   Sun Apr 3 09:50:01 2022 +0430
+
+    Merge branch 'master' of https://github.com/n-vgh98/fixyland
+
+[33mcommit a754bcc3d953c40a5e80451d6b697f5e19449719[m
+Author: Danial <danialdark12098@gmail.com>
+Date:   Sun Apr 3 09:49:54 2022 +0430
+
+    npthing important
+
+[33mcommit a230a903098178160c7f1b2c00ff03db1befa58c[m
+Author: n-vgh98 <nazi.gh988@gmail.com>
+Date:   Sun Apr 3 09:49:18 2022 +0430
+
+    fix con not pull
+
+[33mcommit cf8ef0719ac21990392b4ba7e1a273413a284843[m
+Author: Danial <danialdark12098@gmail.com>
+Date:   Wed Mar 30 21:09:03 2022 +0430
+
+    portfolio finished
+
+[33mcommit 4e530ecb32c368b4207dd8775e30db4aa65be219[m
+Author: Danial <danialdark12098@gmail.com>
+Date:   Wed Mar 30 20:31:07 2022 +0430
+
+    making updating skills for technician en
+
+[33mcommit 4eb563b7e58146a9c6068427af4a4a4865381940[m
+Author: Danial <danialdark12098@gmail.com>
+Date:   Wed Mar 30 20:27:16 2022 +0430
+
+    making updating skills for technician fa
+
+[33mcommit 30f458b4c66d22c35ec579f75ab11de570104ed7[m
+Author: Danial <danialdark12098@gmail.com>
+Date:   Wed Mar 30 19:18:43 2022 +0430
+
+    making edit profile address for english
+
+[33mcommit 181e45b68cb4c807430a4c761b2b0517713a96c0[m
+Author: Danial <danialdark12098@gmail.com>
+Date:   Wed Mar 30 15:19:48 2022 +0430
+
+    address part finished
+
+[33mcommit 9261671a47305b92cd616ad00d9cc0f0575ae482[m
+Author: Danial <danialdark12098@gmail.com>
+Date:   Wed Mar 30 14:18:18 2022 +0430
+
+    mmaking edit profile (just email) option for specialist
+
+[33mcommit 4f5fe7cbd1dde7df65d02d1bd524959e68532932[m
+Author: Danial <danialdark12098@gmail.com>
+Date:   Wed Mar 30 13:27:34 2022 +0430
+
+    making panel page
+
+[33mcommit 7402fb4b2c42442b40e6028338e87fbc925554af[m
+Author: Danial <danialdark12098@gmail.com>
+Date:   Wed Mar 30 13:13:04 2022 +0430
+
+    making middleware for checking if the user is technician or not
+
+[33mcommit d278594b613328b02cacf9f685dc34dfc3539786[m
+Author: Danial <danialdark12098@gmail.com>
+Date:   Wed Mar 30 12:41:18 2022 +0430
+
+    making middleware to stop technician use services
+
+[33mcommit 15b8fb06be129754435a2a29031bf637b2b60d05[m
+Author: Danial <danialdark12098@gmail.com>
+Date:   Wed Mar 30 12:35:37 2022 +0430
+
+    fixing some bug on routing and athentication system
+
+[33mcommit 654f651c099686f3b6309f2093cff74c9751a054[m
+Author: Danial <danialdark12098@gmail.com>
+Date:   Wed Mar 30 12:11:39 2022 +0430
+
+    making validation for adding user
+
+[33mcommit b18e5750221199c32cdd334692bf8b3085cc80ce[m
+Author: Danial <danialdark12098@gmail.com>
+Date:   Mon Mar 28 22:07:55 2022 +0430
+
+    specialist regestration finished
+
+[33mcommit 63273d551a48ae047e92bee63c426dae34bb8fda[m
+Merge: c9cdd66 229cb6c
+Author: Danial <danialdark12098@gmail.com>
+Date:   Sat Mar 26 21:53:28 2022 +0430
+
+    Merge branch 'master' of https://github.com/n-vgh98/fixyland
+
+[33mcommit c9cdd66307ce623845079fd75074c23eae5b7b84[m
+Author: Danial <danialdark12098@gmail.com>
+Date:   Sat Mar 26 21:53:20 2022 +0430
+
+    address part for specialist finished?
+
+[33mcommit 4c60cb9d1575241f581fa78edc5a958f99fdcb1d[m
+Author: Danial <danialdark12098@gmail.com>
+Date:   Sat Mar 26 21:00:41 2022 +0430
+
+    fixing bug in city select
+
+[33mcommit bd3c524ff605d0e2252fe317f1ff0c0d5ee4b6db[m
+Author: Danial <danialdark12098@gmail.com>
+Date:   Sat Mar 26 19:25:56 2022 +0430
+
+    fixing a bug on footer
+
+[33mcommit 229cb6c69cbff020aeb48fa48aaeac66a6c4e2b6[m
+Author: n-vgh98 <nazi.gh988@gmail.com>
+Date:   Thu Mar 24 16:47:39 2022 +0430
+
+    rules is done
+
+[33mcommit e9032c74e9480c073789ce8d1931258a1bbd1438[m
+Author: n-vgh98 <nazi.gh988@gmail.com>
+Date:   Thu Mar 24 14:50:43 2022 +0430
+
+    faq is done
+
+[33mcommit 0b5be745f8c3b69a2bc68dbd708e8da3c8ad1f8f[m
+Author: n-vgh98 <nazi.gh988@gmail.com>
+Date:   Thu Mar 24 13:49:04 2022 +0430
+
+    contact us is done(text and form )
+
+[33mcommit 263e3918dd9b2b2c2d553244962208ca7867c487[m
+Merge: 399b520 f641219
+Author: Danial <danialdark12098@gmail.com>
+Date:   Thu Mar 24 12:44:16 2022 +0430
+
+    Merge branch 'master' of https://github.com/n-vgh98/fixyland
+
+[33mcommit 399b520fb2b467acacc17ffb8ec300232dbd4e66[m
+Author: Danial <danialdark12098@gmail.com>
+Date:   Thu Mar 24 12:44:00 2022 +0430
+
+    advertisments finished
+
+[33mcommit f6412194f49c1a1b971d596f8e10b41c64152409[m
+Author: n-vgh98 <nazi.gh988@gmail.com>
+Date:   Thu Mar 24 03:02:46 2022 +0430
+
+    footer information is done
+
+[33mcommit 152a63c03cf817ca0c7e99c695b7c3cb4a114e87[m
+Author: n-vgh98 <nazi.gh988@gmail.com>
+Date:   Thu Mar 24 02:45:38 2022 +0430
+
+    footer last article is done
+
+[33mcommit 8ff0f2638cac99684da6c98af910ee2e04ae6fea[m
+Author: n-vgh98 <nazi.gh988@gmail.com>
+Date:   Thu Mar 24 02:34:57 2022 +0430
+
+    Footer Useful links is done
+
+[33mcommit dc18aa3b8b65b1c10aaafafd3c8140ebf4b00522[m
+Author: n-vgh98 <nazi.gh988@gmail.com>
+Date:   Thu Mar 24 02:16:35 2022 +0430
+
+    front about us is done
+
+[33mcommit 97bf47c59b728676bf7336ab039525868de46536[m
+Author: n-vgh98 <nazi.gh988@gmail.com>
+Date:   Thu Mar 24 01:50:33 2022 +0430
+
+    front articles is done (index & details)
+
+[33mcommit c1c76593663720fad089c10064d7f893e4f1ca99[m
+Author: Danial <danialdark12098@gmail.com>
+Date:   Wed Mar 23 14:33:54 2022 +0430
+
+    not finished
+
+[33mcommit 028acafecc20633a4239125f39f2ba4809ed40d6[m
+Author: Danial <danialdark12098@gmail.com>
+Date:   Mon Mar 21 12:24:37 2022 +0330
+
+    changing authenticate middleware to be dynamic with locale
+
+[33mcommit 6229de42f3f72b34a1c9b5bbaabc265033860c0d[m
+Author: Danial <danialdark12098@gmail.com>
+Date:   Mon Mar 21 12:13:32 2022 +0330
+
+    finishing service forms until picking address
+
+[33mcommit f6bc1496dc0d93a1dca191d1362097067ac21539[m
+Author: Danial <danialdark12098@gmail.com>
+Date:   Mon Mar 21 11:56:08 2022 +0330
+
+    fixing description page bug
+
+[33mcommit efce1faa051691bc6f2f0b01346592c753fa809d[m
+Author: Danial <danialdark12098@gmail.com>
+Date:   Mon Mar 21 11:48:58 2022 +0330
+
+    updating signup pages
+
+[33mcommit 9fca2842653c72527b71e8afb3799638c88a6916[m
+Author: Danial <danialdark12098@gmail.com>
+Date:   Mon Mar 21 11:15:51 2022 +0330
+
+    updating project
+
+[33mcommit 90f0c2ecf14e9639ae22964b49e3e459d5498fba[m
+Author: Danial <danialdark12098@gmail.com>
+Date:   Mon Mar 21 10:55:32 2022 +0330
+
+    signup specialist.js update
+
+[33mcommit c56879f673681543783e38fb15ad0917d5ea648b[m
+Author: Danial <danialdark12098@gmail.com>
+Date:   Mon Mar 21 10:54:28 2022 +0330
+
+    making description and form for geting service
+
+[33mcommit f89573ed5cda0cdb44879db927815e39f540f723[m
+Author: Danial <danialdark12098@gmail.com>
+Date:   Sun Mar 20 12:43:53 2022 +0330
+
+    fixing bug on showing services with status
+
+[33mcommit a3cd2252206392295e1aac9b09eadaf9039b35b0[m
+Author: Danial <danialdark12098@gmail.com>
+Date:   Sun Mar 20 12:40:06 2022 +0330
+
+    making dynamic menu for services
+
+[33mcommit 7db0aa82557fa32b9e9b62818c7dca3b2eb77c25[m
+Author: Danial <danialdark12098@gmail.com>
+Date:   Sun Mar 20 12:34:10 2022 +0330
+
+    making menu dynamic for pc size
+
+[33mcommit 0720d9296de70ce8a62ab3471dfa222b5cabe4af[m
+Author: Danial <danialdark12098@gmail.com>
+Date:   Sun Mar 20 11:47:46 2022 +0330
+
+    making cities and states ok but waiting for front team to edit address javascript code
+
+[33mcommit 5de34c058db0c6d15ebf6bb7be2ca6f94ddd4d74[m
+Author: n-vgh98 <nazi.gh988@gmail.com>
+Date:   Sun Mar 20 10:41:30 2022 +0330
+
+    covered area is done
+
+[33mcommit f15769688abf58af0a2ad1d8d72cc78cbb6f8d3b[m
+Author: Danial <danialdark12098@gmail.com>
+Date:   Sat Mar 19 14:28:03 2022 +0330
+
+    making login system dont
+
+[33mcommit 3fb8610711d4ee7ac398fcf833977f9bee60f771[m
+Author: Danial <danialdark12098@gmail.com>
+Date:   Sat Mar 19 13:59:27 2022 +0330
+
+    making sign up page for specialist
+
+[33mcommit 67677a954732e994306adadd86bea56a3df933fc[m
+Author: Danial <danialdark12098@gmail.com>
+Date:   Sat Mar 19 13:53:47 2022 +0330
+
+    adding signup for users
+
+[33mcommit f7ab7e5f6525fccd011d294d9f1a7acaa0742a58[m
+Author: Danial <danialdark12098@gmail.com>
+Date:   Sat Mar 19 13:26:19 2022 +0330
+
+    adding register page for choosing if they are user or specialist
+
+[33mcommit 9ed95a59fd301f3875c99c0c41e921337e989400[m
+Author: Danial <danialdark12098@gmail.com>
+Date:   Sat Mar 19 12:14:53 2022 +0330
+
+    making language change button
+
+[33mcommit b82605ca01bf00c5aa46723dce36cdeffe0e3477[m
+Author: Danial <danialdark12098@gmail.com>
+Date:   Sat Mar 19 11:28:43 2022 +0330
+
+    making dynamic layouting for fronend
+
+[33mcommit 734163d743b0d06327faff1f804ea17e9fa44607[m
+Merge: 27792de 0f406ec
+Author: Danial <danialdark12098@gmail.com>
+Date:   Sat Mar 19 10:59:59 2022 +0330
+
+    Merge branch 'master' of https://github.com/n-vgh98/fixyland
+
+[33mcommit 27792de94a7fc20b4f71c29dcaf2c4a3fbac1eff[m
+Author: Danial <danialdark12098@gmail.com>
+Date:   Sat Mar 19 10:59:47 2022 +0330
+
+    adding front to public folder
+
+[33mcommit 0f406ecb4a3acd064693975314b6213c318c0f5d[m
+Author: n-vgh98 <nazi.gh988@gmail.com>
+Date:   Fri Feb 18 22:49:37 2022 +0330
+
+    change footer icons and change bg-info to bg-primary
+
+[33mcommit c1cdf5e129e9cf883bb720f01deb5d1c648dd4df[m
+Author: n-vgh98 <nazi.gh988@gmail.com>
+Date:   Fri Feb 18 22:37:51 2022 +0330
+
+    complete footer(footer_links & footer_info) CRUD
+
+[33mcommit 6705b2783198cdee7cf516f1e15a8e6bcea34bb6[m
+Author: n-vgh98 <nazi.gh988@gmail.com>
+Date:   Thu Feb 17 18:57:37 2022 +0330
+
+    complete contact_us table and that R
+
+[33mcommit 7bbd338e8e33058e94bf33655a542ac417a7aec6[m
+Author: n-vgh98 <nazi.gh988@gmail.com>
+Date:   Thu Feb 17 18:11:09 2022 +0330
+
+    complete contact us text CRUD
+
+[33mcommit 89d1bee22b92e235370cc0743947d22cbb10a903[m
+Author: n-vgh98 <nazi.gh988@gmail.com>
+Date:   Thu Feb 17 12:02:47 2022 +0330
+
+    complete articles CRUD
+
+[33mcommit 9551dea31f1351e6dcb745b15dd0d883fb772d68[m
+Merge: 08af3d4 d31a938
+Author: Danial <danialdark12098@gmail.com>
+Date:   Thu Feb 17 11:40:14 2022 +0330
+
+    Merge branch 'master' of https://github.com/n-vgh98/fixyland
+
+[33mcommit 08af3d454419542a3c19b1208241293755b78535[m
+Author: Danial <danialdark12098@gmail.com>
+Date:   Thu Feb 17 11:39:57 2022 +0330
+
+    question maker finished
+
+[33mcommit d31a938652d0d0f799a538405313e7091ba0b618[m
+Author: n-vgh98 <nazi.gh988@gmail.com>
+Date:   Thu Feb 17 10:31:28 2022 +0330
+
+    finish articles category CRUD
+
+[33mcommit 53aeeb25910484fddaffed26c438c446b7484c48[m
+Author: Danial <danialdark12098@gmail.com>
+Date:   Wed Feb 16 22:53:39 2022 +0330
+
+    adding form maker to main sidebar and first part finished
+
+[33mcommit bc6b2989ecff67b598a494a8c91eb2bb654b4566[m
+Author: Danial <danialdark12098@gmail.com>
+Date:   Wed Feb 16 22:07:46 2022 +0330
+
+    adding statics to mainsidebar
+
+[33mcommit 513f526a4de5c2173d732dcd531764b5bcb07408[m
+Author: Danial <danialdark12098@gmail.com>
+Date:   Wed Feb 16 22:01:21 2022 +0330
+
+    making description button for subcategory show page
+
+[33mcommit d0e2c19d4d0bad1ba4402543611860222197f770[m
+Author: Danial <danialdark12098@gmail.com>
+Date:   Wed Feb 16 16:43:34 2022 +0330
+
+    subcategory description finished
+
+[33mcommit d5d2305bfef333915ed15ded369a4e6626eb8198[m
+Author: n-vgh98 <nazi.gh988@gmail.com>
+Date:   Wed Feb 16 16:13:09 2022 +0330
+
+    completed faq CRUD
+
+[33mcommit 657f0f0c38cb595224b2d9abacc74f2e509045e4[m
+Merge: 328b01f 25bbd8e
+Author: Danial <danialdark12098@gmail.com>
+Date:   Wed Feb 16 16:08:45 2022 +0330
+
+    fixing conflict
+
+[33mcommit 328b01fce0f833ed68d9963f49a5910cf41abcb6[m
+Author: Danial <danialdark12098@gmail.com>
+Date:   Wed Feb 16 16:07:36 2022 +0330
+
+    index features finished
+
+[33mcommit 727436441743c0f53ff57b2498cd5f516c5acb2e[m
+Author: Danial <danialdark12098@gmail.com>
+Date:   Wed Feb 16 15:52:34 2022 +0330
+
+    decoration feature for index page finished
+
+[33mcommit ad5075eb958b5bad7900229c8df6abd7c492bc91[m
+Author: Danial <danialdark12098@gmail.com>
+Date:   Wed Feb 16 15:26:53 2022 +0330
+
+    index slider option added to admin panel
+
+[33mcommit 25bbd8e703636be221450778c270841d03f0c6ff[m
+Author: n-vgh98 <nazi.gh988@gmail.com>
+Date:   Wed Feb 16 14:47:59 2022 +0330
+
+    complete faq categories CRUD
+
+[33mcommit db20eec30a294b512b6943fde20956fa8c84243c[m
+Author: Danial <danialdark12098@gmail.com>
+Date:   Wed Feb 16 14:32:27 2022 +0330
+
+    scores part added to admin panel
+
+[33mcommit bc96283599eb174305d79e4f4d8619da1a4382a0[m
+Merge: dba5d81 bd1e921
+Author: Danial <danialdark12098@gmail.com>
+Date:   Wed Feb 16 12:39:18 2022 +0330
+
+    Merge branch 'master' of https://github.com/n-vgh98/fixyland
+
+[33mcommit dba5d81a542dddf4414a2059aaf0702dd52766e5[m
+Author: Danial <danialdark12098@gmail.com>
+Date:   Wed Feb 16 12:39:01 2022 +0330
+
+    popular service sub categories finished
+
+[33mcommit 087f0f3755815dfaef631dce01721b6f071fcaac[m
+Author: Danial <danialdark12098@gmail.com>
+Date:   Wed Feb 16 12:22:41 2022 +0330
+
+    making subcategory show and index page
+
+[33mcommit 63c895fc43667480a61960c10f8651cabfbd5800[m
+Author: Danial <danialdark12098@gmail.com>
+Date:   Wed Feb 16 11:41:25 2022 +0330
+
+    service subcategory index page finished
+
+[33mcommit bd1e92120ef316518dfc0274cf937d0675917f57[m
+Author: n-vgh98 <nazi.gh988@gmail.com>
+Date:   Wed Feb 16 11:34:10 2022 +0330
+
+    finish about us CRUD
+
+[33mcommit fac3374cfadda35abecbb4822e1e2f6788c7167c[m
+Author: Danial <danialdark12098@gmail.com>
+Date:   Wed Feb 16 11:12:18 2022 +0330
+
+    service category finshed
+
+[33mcommit 02168ec204300b567c9507c906639ee19b5d52b1[m
+Author: Danial <danialdark12098@gmail.com>
+Date:   Wed Feb 16 10:44:56 2022 +0330
+
+    making tab on navbar for services category and sub category
+    :
+
+[33mcommit ee47c7ee6fda0ff6d0d535a41d832ceeeb84811a[m
+Author: Danial <danialdark12098@gmail.com>
+Date:   Wed Feb 16 10:30:04 2022 +0330
+
+    making route model migration and controller for services
+    cls
+
+[33mcommit cd33f2a6eb0afa72955dfd3b0d4b5e13defbc02a[m
+Merge: ca9fa86 4fec68a
+Author: Danial <danialdark12098@gmail.com>
+Date:   Wed Feb 16 10:09:52 2022 +0330
+
+    Merge branch 'master' of https://github.com/n-vgh98/fixyland
+
+[33mcommit ca9fa8601d7b07da4686739ed8520c762603838f[m
+Author: Danial <danialdark12098@gmail.com>
+Date:   Wed Feb 16 10:09:37 2022 +0330
+
+    making ads multi langual and status option for admin panel
+    :
+
+[33mcommit 4fec68a02ee4a0f967caa88313a731cafec07293[m
+Author: n-vgh98 <nazi.gh988@gmail.com>
+Date:   Wed Feb 16 10:02:10 2022 +0330
+
+    create about_us migration and model and controller
+
+[33mcommit bd19b749e0e0dfef64e93ed02b0f951decb2b011[m
+Author: n-vgh98 <nazi.gh988@gmail.com>
+Date:   Tue Feb 15 23:31:25 2022 +0330
+
+    add modal for show full text for rules text
+
+[33mcommit ab78cb51462ff8d74fa6cc3c1e14899edd9b03cd[m
+Author: n-vgh98 <nazi.gh988@gmail.com>
+Date:   Tue Feb 15 23:11:56 2022 +0330
+
+    complete delete and edit rules
+
+[33mcommit 2343caaa5790cfee25bcf0484545c1596e97124b[m
+Merge: 688adca 2d3c24b
+Author: Danial <danialdark12098@gmail.com>
+Date:   Tue Feb 15 21:21:48 2022 +0330
+
+    handling conflict
+
+[33mcommit 688adca9836777dff9f5a9d8dda05212a34daf4b[m
+Author: Danial <danialdark12098@gmail.com>
+Date:   Tue Feb 15 21:19:33 2022 +0330
+
+    making advertisment section for admin panel
+
+[33mcommit 2d3c24bbbe90adbd6c81a41974ba44345ccf3ba3[m
+Author: n-vgh98 <nazi.gh988@gmail.com>
+Date:   Tue Feb 15 21:07:32 2022 +0330
+
+    complete rules create and index
+
+[33mcommit bff4fc89d8e996c57909d39f3fd00a7efc174cae[m
+Author: Danial <danialdark12098@gmail.com>
+Date:   Tue Feb 15 20:40:03 2022 +0330
+
+    making model migration controller and routes for ads
+
+[33mcommit 304ec300c2aa8ae195cbda4971cbd5a90a5bc64c[m
+Author: n-vgh98 <nazi.gh988@gmail.com>
+Date:   Tue Feb 15 18:22:40 2022 +0330
+
+    create langs table and that model
+
+[33mcommit 2daa1d297309a0dcbc8ee6363374a76224d4516e[m
+Author: Danial <danialdark12098@gmail.com>
+Date:   Tue Feb 15 17:03:29 2022 +0330
+
+    removing bugs of notifications
+
+[33mcommit cb83325cc0ffc64627246fa161e7fa285fdaec25[m
+Author: Danial <danialdark12098@gmail.com>
+Date:   Tue Feb 15 16:46:52 2022 +0330
+
+    making private message option for admin panel
+
+[33mcommit f8eba78dfad8f487f537827b25bef06db87e6b9c[m
+Author: Danial <danialdark12098@gmail.com>
+Date:   Tue Feb 15 16:35:18 2022 +0330
+
+    nothing important
+
+[33mcommit 0013929db0d06c7b62b85202b5ddeaef2478c946[m
+Author: Danial <danialdark12098@gmail.com>
+Date:   Tue Feb 15 16:30:57 2022 +0330
+
+    making public notification section for admin panel
+
+[33mcommit cc91ae42c7a83bc59fc5be111867e2dec9de62f4[m
+Author: Danial <danialdark12098@gmail.com>
+Date:   Tue Feb 15 16:12:33 2022 +0330
+
+    making page for showing all messages
+
+[33mcommit 8de938b3ce5cba0833689c9bedc6043ed71ef088[m
+Author: Danial <danialdark12098@gmail.com>
+Date:   Tue Feb 15 15:16:51 2022 +0330
+
+    making changing information and creating new user optionfor admin panel (sweet alert changet to timer mode) user part finished
+
+[33mcommit 4c5d0bc191f0749c9bd47333590b8e3c59d7d8e5[m
+Author: Danial <danialdark12098@gmail.com>
+Date:   Tue Feb 15 14:25:39 2022 +0330
+
+    making full show for all users
+
+[33mcommit 32156abc6418efb52cd9ccf6f266f47bd0a74451[m
+Author: Danial <danialdark12098@gmail.com>
+Date:   Tue Feb 15 14:13:38 2022 +0330
+
+    making views for showing all type of users
+
+[33mcommit 628a34bb45d0f009a7421122f0e32b94c8109e62[m
+Author: Danial <danialdark12098@gmail.com>
+Date:   Tue Feb 15 13:59:15 2022 +0330
+
+    customizing admin panel to show profile photo and name
+
+[33mcommit 7a21724bed0e2604ee3621acd45a2d44d26c027b[m
+Author: Danial <danialdark12098@gmail.com>
+Date:   Tue Feb 15 13:45:51 2022 +0330
+
+    making change roll option for admin panel
+
+[33mcommit cd6647fbac450ce460558e3caf8b61b759001807[m
+Author: Danial <danialdark12098@gmail.com>
+Date:   Tue Feb 15 12:37:21 2022 +0330
+
+    making dropdown button and delete account option for users in admin panel:
+
+[33mcommit 67fb45d6949a443112742d728d158987ead78a45[m
+Author: Danial <danialdark12098@gmail.com>
+Date:   Tue Feb 15 12:24:52 2022 +0330
+
+    layouting datatable scripts and links on admin/layouts/datatable folder
+
+[33mcommit 96790505d7292b39908b1f162e7491cb380dca7a[m
+Author: Danial <danialdark12098@gmail.com>
+Date:   Tue Feb 15 12:18:27 2022 +0330
+
+    making sweet alert for status change
+
+[33mcommit 3906f424a21ad40689f5bcafd73b985498424e50[m
+Author: Danial <danialdark12098@gmail.com>
+Date:   Tue Feb 15 12:15:35 2022 +0330
+
+    adding sweet alert to admin panel
+
+[33mcommit 02762725e55d527c77da32d41e07d253c65dd232[m
+Author: Danial <danialdark12098@gmail.com>
+Date:   Tue Feb 15 12:04:40 2022 +0330
+
+    making users table with live table and adding status to it
+
+[33mcommit 656a41bc3f4f2d4f0f39eeee1ae720f5fec0645b[m
+Author: Danial <danialdark12098@gmail.com>
+Date:   Tue Feb 15 11:22:54 2022 +0330
+
+    making menu sub bars for users
+
+[33mcommit 519849e66d90cdd02eb90a1d44f3c9e753813ed9[m
+Author: Danial <danialdark12098@gmail.com>
+Date:   Mon Feb 14 19:58:40 2022 +0330
+
+    making a file called times for writing times of each part
+
+[33mcommit ebe2c7be0e508cf3633412328928849dff73a81b[m
+Author: Danial <danialdark12098@gmail.com>
+Date:   Mon Feb 14 19:57:04 2022 +0330
+
+    custumizing jetstream and adding profile photo feature to it
+
+[33mcommit 5097601c8d2eb26c24af92c8909a9323a02d82de[m
+Author: Danial <danialdark12098@gmail.com>
+Date:   Mon Feb 14 19:32:49 2022 +0330
+
+    making authentication system and middleware for admin check
+
+[33mcommit 62b772b7b4ed6fddf719298b09d85ed5d699a06d[m
+Author: Danial <danialdark12098@gmail.com>
+Date:   Mon Feb 14 10:30:00 2022 +0330
+
+    adding admin lte for admin panel
+
+[33mcommit 7bdf396cac9ce22852496f4ed9ff8ca93e2bc129[m
+Author: Danial <danialdark12098@gmail.com>
+Date:   Mon Feb 14 09:49:04 2022 +0330
+
+    making folder for front team at public/frontend
+
+[33mcommit ad430dd790372da705cfcfe3a05f5e2035cd90e0[m
+Author: Danial <danialdark12098@gmail.com>
+Date:   Mon Feb 14 09:46:43 2022 +0330
+
+    initilizing project with jetstream v2 and laravel v9

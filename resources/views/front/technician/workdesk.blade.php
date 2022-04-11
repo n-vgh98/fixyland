@@ -10,13 +10,16 @@
 @endsection
 
 @section('tec_panel')
-    @if (app()->getLocale() == 'fa' || app()->getLocale() == 'ar')
-    <h1 class="mb-4"> میزکار </h1>
+	@if (app()->getLocale() == 'fa' || app()->getLocale() == 'ar')
+    		
+					
+					<h1 class="mb-4"> میزکار </h1>
 					
 					<!--order-list menu (swiper)-->
 					<div class="swiper mySwiper w-100">
 						<div class="swiper-wrapper">
 							<div class="swiper-slide w-auto darkYellow me-lg-5 ms-lg-5 rounded p-1" >پیشنهادات</div>
+							<div class="swiper-slide w-auto me-lg-5 ms-lg-5 rounded p-1" > پیشنهادات من </div>
 							<div class="swiper-slide w-auto me-lg-5 ms-lg-5 rounded p-1">در دست اجرا</div>
 							<div class="swiper-slide w-auto me-lg-5 ms-lg-5 rounded p-1">گذشته</div>
 							<div class="swiper-slide w-auto ms-1 me-lg-5 ms-lg-5 rounded p-1">لغو شده</div>
@@ -25,12 +28,12 @@
 
 							
 					<!--پیشنهادات-->
-					
 					<div class="user-order-list-menu-item w-100 h-100 pb-md-5 mb-5">
-					
-						<!--empty request-->
-						@if($proccess->isEmpty())
-						<div class="empty_request w-100 border-gray d-flex justify-content-center">
+						<!--requests-->
+						<div class="w-100 h-100 border-gray pt-3 pb-5 mb-5">
+							<!--empty request-->
+					@if($proccess->isEmpty())
+						<div class="empty_request position-relative w-100 d-flex justify-content-center">
 							<div class="empty_request_box form-bg-color p-md-5 pt-md-4 pb-md-4 p-2 mt-5">
 								<p> دوست عزیز
 									<br>
@@ -40,29 +43,25 @@
 							
 							<!--undraw vector mobile size-->		
 							<div class="position-absolute bottom-0 start-0 d-md-none">
-								<img class="pic-width-mobile" src="image/undraw_click_here_re_y6uq 1.png" alt="user" width="100%">
+								<img class="pic-width-mobile" src="{{asset('frontend/fixy-land-fa-main/image/undraw_click_here_re_y6uq 1.png')}}" alt="user" width="100%">
 							</div>
 
 							<!--undraw vector laptop size-->
 							<div class="position-absolute bottom-0 start-0 d-none d-md-block">
-								<img class="pic-width-laptop" src="image/undraw_click_here_re_y6uq 1.png" alt="user" width="100%">
+								<img class="pic-width-laptop" src="{{asset('frontend/fixy-land-fa-main/image/undraw_click_here_re_y6uq 1.png')}}" alt="user" width="100%">
 							</div>
 								
 						</div>
-						@else 
+					@else			
+						 
+							<!--requests short description 1-->
 						
-						
-						<!--requests-->
-						<div class="w-100 h-100 border-gray pt-3 pb-5 mb-5">
-							
-							<!--requests short description-->
 							<div class="req-short-dsc d-flex flex-column align-items-center gap-3 mb-3">
 							@php 
 								$i=0;
 							@endphp
-								@foreach($proccess as $pro)
+							@foreach($proccess as $pro)
 								<div class="container-fluid rounded-3 w-75 form-bg-color p-0">
-									
 									<div class="row m-0">
 										<div class="col-lg-3 col-12 p-0 d-flex justify-content-center mb-2 mb-lg-0">
 											<div class="w-100">
@@ -73,36 +72,34 @@
 										<div class="col-lg-9 col-12 mt-2 mt-sm-0 p-3 d-flex flex-column">
 											<p class="m-0 pb-2 fw-bold"> نام مشتری: {{$pro->order->user->firstname}} {{$pro->order->user->lastname}}  </p>
 											<p class="m-0 pb-2 fw-bold" > نوع:   {{$pro->service->name}} </p>
-                                            @if($pro->order->order_address_id == null)
-											<p class="m-0 pb-2 fw-bold" > آدرس: {{$pro->order->address->state->name}}-{{$pro->order->address->city->name}}-{{$pro->order->address->description}} </p>
+											@if($pro->order->order_address_id == null)
+												<p class="m-0 pb-2 fw-bold" > آدرس: {{$pro->order->address->state->name}}-{{$pro->order->address->city->name}}-{{$pro->order->address->description}} </p>
                                             @else
-                                            <p class="m-0 pb-2 fw-bold" > آدرس: {{$pro->order->order_address->state->name}}-{{$pro->order->order_address->city->name}}-{{$pro->order->order_address->description}} </p>
+                                            	<p class="m-0 pb-2 fw-bold" > آدرس: {{$pro->order->order_address->state->name}}-{{$pro->order->order_address->city->name}}-{{$pro->order->order_address->description}} </p>
                                             @endif
-											<p class="m-0 pb-3 fw-bold" > شرح مشکل:   {{$pro->order->description}} </p>
+											<p class="m-0 pb-3 fw-bold" > شرح مشکل: {{$pro->order->description}} </p>
 											<p class="m-0 mb-3 align-self-end"> {{$pro->created_at->toDateString()}} </p>
 											<div class="align-self-center mt-auto">
-												<button type="button" class="more_inf_btn btn darkYellow" id="more_inf_btn{{$i}}"> مشاهده </button>
+												<button type="button" id="more_inf_btn{{$i}}" class="more_inf_btn btn darkYellow"> مشاهده </button>
 											</div>
 
 										</div>
 									</div>
-									
 								</div>
+
 								@php 
 									$i++;
 								@endphp
-								@endforeach
-						</div>
+							@endforeach
+							</div>
 							
-							
-							<!--requests long description-->
+							<!--requests long description 1-->
 							@foreach($proccess as $pro)
 							<div class="req-long-dsc d-none">
 								<div class="pe-md-3">
 									<p class="fw-bold pe-3 font-size24"> اطلاعات بیشتر </p>
 									
 									<div class="row m-0">
-										
 										<div class="col-lg-2 col-md-4 col-12 p-0 d-flex justify-content-center mb-2 mb-lg-0 order-md-1 order-2">
 											<div class="w-100 h-100">
 												<img class="rounded-3 mw-100 mh-100" src="image/human3.jpg" alt="specialist" height="auto" width="100%">
@@ -126,7 +123,6 @@
                                             <p class="m-0 pb-2 fw-bold" > آدرس: {{$pro->order->order_address->state->name}}-{{$pro->order->order_address->city->name}}-{{$pro->order->order_address->description}} </p>
                                             @endif					
 										</div>
-										
 									</div>
 									
 									
@@ -140,8 +136,6 @@
 												<button class="w-100 btn btn-outline-dark darkYellow ms-md-3" type="submit"> قبول </button>
 											</form>
 		
-
-
 											<p class="go-back-btn btn btn-outline-dark w-100 mt-3"> بازگشت </p>
 										</div>
 									</div>
@@ -150,16 +144,129 @@
 								</div>	
 							</div>
 							@endforeach
-							
-						
 						@endif
-						
-				
-						
-						
+							
+						</div>
 					</div>
-					
+								
 	
+					<!--پیشنهادات من-->
+					<div class="user-order-list-menu-item w-100 h-100 pb-md-5 mb-5 d-none">
+
+						<div class="w-100 h-100 border-gray pt-3 pb-5 mb-5">
+								<!--empty request-->
+							@if($suggestions->isEmpty())
+								<div class="empty_request position-relative w-100 d-flex justify-content-center">
+									<div class="empty_request_box form-bg-color p-md-5 pt-md-4 pb-md-4 p-2 mt-5">
+										<p> دوست عزیز
+											<br>
+											شما در حال حاضر هیچ درخواستی ندارید. 
+										</p>
+									</div>
+									
+									<!--undraw vector mobile size-->		
+									<div class="position-absolute bottom-0 start-0 d-md-none">
+										<img class="pic-width-mobile" src="{{asset('frontend/fixy-land-fa-main/image/undraw_click_here_re_y6uq 1.png')}}" alt="user" width="100%">
+									</div>
+
+									<!--undraw vector laptop size-->
+									<div class="position-absolute bottom-0 start-0 d-none d-md-block">
+										<img class="pic-width-laptop" src="{{asset('frontend/fixy-land-fa-main/image/undraw_click_here_re_y6uq 1.png')}}" alt="user" width="100%">
+									</div>
+										
+								</div>
+							@else			
+							@php 
+								$i=0;
+							@endphp
+							@foreach($suggestions as $suggest)
+							<div class="mine_req-short-dsc d-flex flex-column align-items-center gap-3 mb-3">
+								<div class="container-fluid rounded-3 w-75 form-bg-color p-0">
+								<div class="row m-0">
+									<div class="col-lg-3 col-12 p-0 d-flex justify-content-center mb-2 mb-lg-0">
+										<div class="w-100">
+											<img class="rounded-3 mw-100 mh-100" src="image/human2.jpg" alt="specialist" height="auto" width="100%">
+										</div>
+									</div>
+									
+									<div class="col-lg-9 col-12 mt-2 mt-sm-0 p-3 d-flex flex-column">
+										<p class="m-0 pb-2 fw-bold"> نام مشتری:  {{$suggest->order->user->firstname}} {{$suggest->order->user->lastname}}  </p>
+										<p class="m-0 pb-2 fw-bold" > نوع:   {{$suggest->order->service->name}} </p>
+											@if($suggest->order->order_address_id == null)
+												<p class="m-0 pb-2 fw-bold" > آدرس: {{$suggest->order->address->state->name}}-{{$suggest->order->address->city->name}}-{{$suggest->order->address->description}} </p>
+                                            @else
+                                            	<p class="m-0 pb-2 fw-bold" > آدرس: {{$suggest->order->order_address->state->name}}-{{$suggest->order->order_address->city->name}}-{{$suggest->order->order_address->description}} </p>
+                                            @endif
+										<p class="m-0 mb-3 align-self-end"> {{$suggest->created_at->toDateString()}}</p>
+										<div class="align-self-center mt-auto">
+											<button type="button" id="mine_more_inf_btn{{$i}}" class="mine_more_inf_btn btn darkYellow"> مشاهده </button>
+										</div>
+
+									</div>
+								</div>
+							</div>
+							</div>
+							@php 
+								$i++;
+							@endphp
+							@endforeach
+	
+						
+							
+							<!--requests long description 1-->
+							@foreach($suggestions as $suggest)
+							<div class="mine_req-long-dsc d-none">
+								<div class="pe-md-3">
+									<p class="fw-bold pe-3 font-size24"> اطلاعات بیشتر </p>
+								
+								<div class="row m-0">
+									<div class="col-lg-2 col-md-4 col-12 p-0 d-flex justify-content-center mb-2 mb-lg-0 order-md-1 order-2">
+										<div class="w-100 h-100">
+											<img class="rounded-3 mw-100 mh-100" src="image/human3.jpg" alt="specialist" height="auto" width="100%">
+										</div>
+									</div>
+									
+									<div class="col-lg-10 col-md-8 col-12 pe-3 order-md-2 order-1">
+										<p class="m-0 pb-2 fw-bold darkgreen-text"> شرح مشکل: {{$suggest->order->description}} </p>
+										<p class="m-0 pb-2 fw-bold darkgreen-text"> جواب سوالات:  </p>
+										@foreach($suggest->order->formresults as $result)
+											<p class="m-0 pb-2" >{{$result->label}}: {{$result->value}} </p>
+										@endforeach
+										
+										<p class="m-0 pb-2 fw-bold darkgreen-text"> زمان انجام کار:  </p>
+										<p class="m-0 pb-3" > {{$suggest->order->date}}  {{$suggest->order->time}}</p>
+										
+										<p class="m-0 pb-2 fw-bold darkgreen-text"> آدرس:   </p>
+										@if($suggest->order->order_address_id == null)
+											<p class="m-0 pb-2 fw-bold" > {{$suggest->order->address->state->name}}-{{$suggest->order->address->city->name}}-{{$suggest->order->address->description}} </p>
+										@else
+											<p class="m-0 pb-2 fw-bold" > {{$suggest->order->order_address->state->name}}-{{$suggest->order->order_address->city->name}}-{{$suggest->order->order_address->description}} </p>
+										@endif	
+									</div>
+								</div>
+								
+								
+								<div class="w-100 d-flex justify-content-center mb-1 mt-5">
+									<div class="w-50 d-flex flex-column align-items-center flex-md-row justify-content-md-center gap-2">
+									<form class="w-100 ms-md-2" method="POST" action="{{ route('front.technician.panel.workdesk.post.suggestion.archive') }}">
+									@csrf
+										<input type="hidden" value="{{auth()->user()->id}}" name="tech_id">
+										<input type="hidden" value="{{$suggest->order->id}}" name="order_id">
+										<button class="w-100 btn btn-outline-dark darkYellow ms-md-3" type="submit"> قبول </button>
+									</form>
+										<p class="mine_go-back-btn btn btn-outline-dark w-100 mt-3"> بازگشت </p>
+									</div>
+								</div>
+								
+								
+							</div>	
+						</div>
+						@endforeach
+					@endif
+					</div>	
+				</div>
+				
+				
 					<!--در دست اجرا-->
 					<div class="user-order-list-menu-item border-gray w-100 h-100 pb-2 pt-1 pb-md-5 mb-5 d-none">
 						
@@ -222,6 +329,9 @@
 							
 
 							<!--job long description-->
+							@php 
+								$i = 0;
+							@endphp
 							@foreach($doing_archives as $doing)
 							<div class="job-long-dsc d-none">
 								<div class="pe-md-3">
@@ -265,7 +375,7 @@
 										</div>
 
 										<div class=" d-flex justify-content-lg-center gap-1 mb-1 flex-column flex-lg-row align-items-center align-items-md-end w-75">
-											<p id="paying_btn" class="btn text-black lightgreen w-50 m-0"> اتمام این کار </p>
+											<p id="paying_btn{{$i}}" class="paying_btn btn text-black lightgreen w-50 m-0"> اتمام این کار </p>
 
 											<form class="w-50" method="POST" action="{{ route('front.technician.panel.workdesk.changeStatus.archive.cancle',$doing->id) }}">
 													@csrf
@@ -278,17 +388,21 @@
 									</div>
 								</div>	
 							</div>
+							@php 
+								$i++;
+							@endphp
 							@endforeach
 						</div>
 						
 						
 
 						<!--اتمام کار توسط متخصص-->
-						<div id="spc_req_money" class="w-100 d-flex justify-content-center d-none">
+						@foreach($doing_archives as $doing)
+						<div class="spc_req_money w-100 d-flex justify-content-center d-none">
 								<div class="row w-100 m-0"> 
 									<div class="col-12 col-lg-6 pe-lg-5">
 										<p class="font-size24 fw-bold"> اتمام کار (توسط متخصص) </p>
-										@foreach($doing_archives as $doing)
+										
 										<form class="mt-4" method="POST" action="{{ route('front.technician.panel.workdesk.factor',$doing->id) }}">
 										@csrf
 										<input type="hidden" name="status" value="2">
@@ -324,11 +438,7 @@
 												اتمام
 											</button>
 																		
-										</form>
-										@endforeach
-										
-
-										
+										</form>	
 									</div>
 									
 									<div class="col-6 d-none d-lg-flex justify-content-center align-items-center">
@@ -339,7 +449,7 @@
 								</div>
 	
 						</div>
-						
+						@endforeach
 						
 					</div>
 						
@@ -348,7 +458,6 @@
 					<div class="user-order-list-menu-item w-100 h-100 border-gray pt-3 padding-bottom mb-5 d-flex flex-column align-items-center gap-3 d-none">
 					@foreach($past_archives as $past)
 						<div class="container-fluid rounded-3 w-75 form-bg-color p-0">
-						
 							<div class="row m-0">
 								<div class="col-lg-3 col-12 p-0 d-flex justify-content-center mb-2 mb-lg-0">
 									<div class="w-100">
@@ -376,7 +485,6 @@
 						@endforeach
 					</div>
 									
-					
 					<!--لغو شده-->
 					<div class="user-order-list-menu-item w-100 h-100 border-gray pt-3 padding-bottom mb-5 d-flex flex-column align-items-center gap-3 d-none">
 					@foreach($canceled_archives as $canceled)
@@ -408,11 +516,7 @@
 						@endforeach	
 						
 					</div>
-					
-					
-				</div>
-			
-	
+						
     @else
     <h1 class="mb-4"> desk </h1>
 					
@@ -420,6 +524,7 @@
 					<div class="swiper mySwiper w-100">
 						<div class="swiper-wrapper">
 							<div class="swiper-slide w-auto darkYellow me-lg-5 ms-lg-5 rounded p-1" >pishnahadat</div>
+							<div class="swiper-slide w-auto me-lg-5 ms-lg-5 rounded p-1" >my suggest</div>
 							<div class="swiper-slide w-auto me-lg-5 ms-lg-5 rounded p-1">dar dast ejra</div>
 							<div class="swiper-slide w-auto me-lg-5 ms-lg-5 rounded p-1">gozashte</div>
 							<div class="swiper-slide w-auto ms-1 me-lg-5 ms-lg-5 rounded p-1">laghv shode</div>
@@ -429,11 +534,13 @@
 		
 					
 					<!--پیشنهادات-->
-					<div class="user-order-list-menu-item w-100 h-100 pb-md-5 mb-5">
+					<div class="user-order-list-menu-item w-100 h-100 pb-md-5 mb-5"
 						
-						<!--empty request-->
+						<!--requests-->
+						<div class="w-100 h-100 border-gray pt-3 pb-5 mb-5">
+							<!--empty request-->
 						@if($proccess->isEmpty())
-						<div class="empty_request w-100 border-gray d-flex justify-content-center">
+						<div class="empty_request position-relative w-100 d-flex justify-content-center">
 							<div class="empty_request_box form-bg-color p-md-5 pt-md-4 pb-md-4 p-2 mt-5">
 								<p> dooste aziz
 									<br>
@@ -442,19 +549,16 @@
 							</div>	
 							<!--undraw vector mobile size-->		
 							<div class="position-absolute bottom-0 end-0 d-md-none">
-								<img class="pic-width-mobile transform_img" src="image/undraw_click_here_re_y6uq 1.png" alt="user" width="100%">
+								<img class="pic-width-mobile transform_img" src="{{asset('frontend/fixy-land-en-main/image/undraw_click_here_re_y6uq 1.png')}}" alt="user" width="100%">
 							</div>
 
 							<!--undraw vector laptop size-->
 							<div class="position-absolute bottom-0 end-0 d-none d-md-block">
-								<img class="pic-width-laptop transform_img" src="image/undraw_click_here_re_y6uq 1.png" alt="user" width="100%">
+								<img class="pic-width-laptop transform_img" src="{{asset('frontend/fixy-land-en-main/image/undraw_click_here_re_y6uq 1.png')}}" alt="user" width="100%">
 							</div>
 								
 						</div>
 						@else 
-						
-						<!--requests-->
-						<div class="w-100 h-100 border-gray pt-3 pb-5 mb-5">
 							
 							<!--requests short description-->
 							<div class="req-short-dsc d-flex flex-column align-items-center gap-3 mb-3">
@@ -547,16 +651,128 @@
 								</div>	
 							</div>
 							
-						</div>
 						@endforeach
 						@endif
 						
 				
-						
+						</div>
 						
 					</div>
 								
-				
+				<!--  پیشنهادات من-->
+				<div class="user-order-list-menu-item w-100 h-100 pb-md-5 mb-5 d-none">
+					
+					<div class="w-100 h-100 border-gray pt-3 pb-5 mb-5">
+							<!--empty request-->
+							@if($suggestions->isEmpty())
+							<div class="empty_request position-relative w-100 d-flex justify-content-center">
+									<div class="empty_request_box form-bg-color p-md-5 pt-md-4 pb-md-4 p-2 mt-5">
+										<p> dooste aziz
+											<br>
+											shoma dar hale hzer hich darkhsti nadarid. 
+										</p>
+									</div>	
+									<!--undraw vector mobile size-->		
+									<div class="position-absolute bottom-0 end-0 d-md-none">
+										<img class="pic-width-mobile transform_img" src="{{asset('frontend/fixy-land-en-main/image/undraw_click_here_re_y6uq 1.png')}}" alt="user" width="100%">
+									</div>
+
+									<!--undraw vector laptop size-->
+									<div class="position-absolute bottom-0 end-0 d-none d-md-block">
+										<img class="pic-width-laptop transform_img" src="{{asset('frontend/fixy-land-en-main/image/undraw_click_here_re_y6uq 1.png')}}" alt="user" width="100%">
+									</div>
+									
+							</div>
+							@else			
+							@php 
+								$i=0;
+							@endphp
+							@foreach($suggestions as $suggest)
+						<!--requests short description 1-->
+						<div class="mine_req-short-dsc d-flex flex-column align-items-center gap-3 mb-3">
+							<div class="container-fluid rounded-3 w-75 form-bg-color p-0">
+								<div class="row m-0">
+									<div class="col-lg-3 col-12 p-0 d-flex justify-content-center mb-2 mb-lg-0">
+										<div class="w-100">
+											<img class="rounded-3 mw-100 mh-100" src="image/human2.jpg" alt="specialist" height="auto" width="100%">
+										</div>
+									</div>
+									
+									<div class="col-lg-9 col-12 mt-1 mt-sm-0 p-2 d-flex flex-column">
+										<p class="m-0 pb-2 fw-bold"> name:{{$suggest->order->user->firstname}} {{$suggest->order->user->lastname}} </p>
+										<p class="m-0 pb-2 fw-bold" > noe: {{$suggest->order->service->name}}  </p>
+										@if($suggest->order->order_address_id == null)
+											<p class="m-0 pb-2 fw-bold" > آدرس: {{$suggest->order->address->state->name}}-{{$suggest->order->address->city->name}}-{{$suggest->order->address->description}} </p>
+										@else
+											<p class="m-0 pb-2 fw-bold" > آدرس: {{$suggest->order->order_address->state->name}}-{{$suggest->order->order_address->city->name}}-{{$suggest->order->order_address->description}} </p>
+										@endif
+										<p class="m-0 mb-3 align-self-end">  {{$suggest->created_at->toDateString()}} </p>
+										<div class="align-self-center mt-auto">
+											<button type="button" id="mine_more_inf_btn{{$i}}" class="mine_more_inf_btn btn darkYellow"> moshahede </button>
+										</div>
+
+									</div>
+								</div>
+							</div>
+
+
+					</div>
+					@php 
+						$i++;
+					@endphp
+					@endforeach
+					@foreach($suggestions as $suggest)
+						<!--requests long description 1-->
+						<div class="mine_req-long-dsc d-none">
+							<div class="ps-md-3">
+								<p class="fw-bold ps-3 font-size24"> etelaate bishtar </p>
+								
+								<div class="row m-0">
+									<div class="col-lg-2 col-md-4 col-12 p-0 d-flex justify-content-center mb-2 mb-lg-0 order-md-1 order-2">
+										<div class="w-100 h-100">
+											<img class="rounded-3 mw-100 mh-100" src="image/human3.jpg" alt="specialist" height="auto" width="100%">
+										</div>
+									</div>
+									
+									<div class="col-lg-10 col-md-8 col-12 ps-3 order-md-2 order-1">
+										<p class="m-0 pb-2 fw-bold darkgreen-text"> sharhe moshkel: {{$suggest->order->description}}  </p>
+										<p class="m-0 pb-2 fw-bold darkgreen-text"> javabe soalat:  </p>
+										@foreach($suggest->order->formresults as $result)
+											<p class="m-0 pb-2" >{{$result->label}}: {{$result->value}} </p>
+										@endforeach
+										
+										<p class="m-0 pb-2 fw-bold darkgreen-text"> zaman anjam kar:  </p>
+										<p class="m-0 pb-3">{{$suggest->order->date}}  {{$suggest->order->time}} </p>
+										
+										<p class="m-0 pb-2 fw-bold darkgreen-text"> addrs:   </p>
+										@if($suggest->order->order_address_id == null)
+											<p class="m-0 pb-2 fw-bold" >  {{$suggest->order->address->state->name}}-{{$suggest->order->address->city->name}}-{{$suggest->order->address->description}} </p>
+										@else
+											<p class="m-0 pb-2 fw-bold" >{{$suggest->order->order_address->state->name}}-{{$suggest->order->order_address->city->name}}-{{$suggest->order->order_address->description}} </p>
+										@endif	
+									</div>
+								</div>
+								
+								
+								<div class="w-100 d-flex justify-content-center mb-1 mt-5">
+									<div class="w-50 d-flex flex-column align-items-center flex-md-row justify-content-md-center gap-2">
+									<form class="w-100 ms-md-2" method="POST" action="{{ route('front.technician.panel.workdesk.post.suggestion.archive') }}">
+										@csrf
+										<input type="hidden" value="{{auth()->user()->id}}" name="tech_id">
+										<input type="hidden" value="{{$suggest->order->id}}" name="order_id">
+										<button class="w-100 btn btn-outline-dark darkYellow ms-md-3" type="submit"> قبول </button>
+									</form>
+										<p class="mine_go-back-btn btn btn-outline-dark w-100 mt-3"> back </p>
+									</div>
+								</div>
+								
+								
+							</div>	
+						</div>
+						@endforeach
+					@endif
+					</div>	
+				</div>
 					
 					<!--در دست اجرا-->
 					<div class="user-order-list-menu-item border-gray w-100 h-100 pb-2 pt-1 pb-md-5 mb-5 d-none">
@@ -595,10 +811,13 @@
 											<div class="w-100 align-self-center mt-auto d-flex justify-content-center justify-content-md-end mb-1">
 												<div class="w-50 d-flex flex-column align-items-center flex-md-row justify-content-md-center gap-2">
 													
-													<button type="button" class="job_more_inf_btn btn darkYellow w-100 ps-0 pe-0" id="job_more_inf_btn{{$i}}> moshahede </button>
+													<button type="button" class="job_more_inf_btn btn darkYellow w-100 ps-0 pe-0" id="job_more_inf_btn{{$i}}"> moshahede </button>
 													
-													<form class="w-100 me-md-2">
-														<button class="w-100 btn btn-outline-dark me-md-3" type="submit"> cancel </button>
+													<form class="w-100 me-md-2" method="POST" action="{{ route('front.technician.panel.workdesk.changeStatus.archive.cancle',$doing->id) }}">
+													@csrf
+													@method('POST')
+													<input type="hidden" name="status" value="3">
+														<button class="w-100 btn btn-outline-dark me-md-3" type="submit" id="cancle_job_btn{{$i}}"> cancel </button>
 													</form>
 													
 												</div>
@@ -618,6 +837,9 @@
 							
 
 							<!--job long description-->
+							@php 
+								$i = 0;
+							@endphp
 							@foreach($doing_archives as $doing)
 							<div class="job-long-dsc d-none">
 								<div class="ps-md-3">
@@ -631,20 +853,21 @@
 										</div>
 										
 										<div class="col-lg-10 col-md-8 col-12 pe-3 order-md-2 order-1">
-											<p class="m-0 pb-2 fw-bold darkgreen-text"> sharhe moshkel: {{$doing->order->description}} </p>
+											<p class="m-0 pb-2 fw-bold darkgreen-text"> sharhe moshkel:{{$doing->order->description}}   </p>
 											<p class="m-0 pb-2 fw-bold darkgreen-text"> javabe soalat:  </p>
 											@foreach($doing->order->formresults as $result)
 												<p class="m-0 pb-2" >{{$result->label}}: {{$result->value}} </p>
 											@endforeach
 											<p class="m-0 pb-2 fw-bold darkgreen-text"> zaman anjam kar: </p>
-											<p class="m-0 pb-3" > {{$doing->order->date}}  {{$doing->order->time}} </p>
+											<p class="m-0 pb-3" >{{$doing->order->date}}  {{$doing->order->time}} </p>
 											
 											<p class="m-0 pb-2 fw-bold darkgreen-text"> addrs:   </p>
-                                            @if($doing->order->order_address_id == null)
-											<p class="m-0 pb-2 fw-bold" > آدرس: {{$doing->order->address->state->name}}-{{$doing->order->address->city->name}}-{{$doing->order->address->description}} </p>
-                                            @else
-                                            <p class="m-0 pb-2 fw-bold" > آدرس: {{$doing->order->order_address->state->name}}-{{$doing->order->order_address->city->name}}-{{$doing->order->order_address->description}} </p>
-                                            @endif					
+											@if($doing->order->order_address_id == null)
+											<p class="m-0 pb-2 mb-3" > {{$doing->order->address->state->name}}-{{$doing->order->address->city->name}}-{{$doing->order->address->description}} </p>
+											@else
+											<p class="m-0 pb-2 mb-3" > {{$doing->order->address->state->name}}-{{$doing->order->address->city->name}}-{{$doing->order->address->description}} </p>
+											@endif
+					
 										</div>
 									</div>
 									
@@ -658,54 +881,62 @@
 										</div>
 
 										<div class=" d-flex justify-content-lg-center gap-1 mb-1 flex-column flex-lg-row align-items-center align-items-md-end w-75">
-											<p id="paying_btn" class="btn text-black lightgreen w-50 m-0"> etmam in kar </p>
+											<p id="paying_btn{{$i}}" class="paying_btn btn text-black lightgreen w-50 m-0"> etmam in kar </p>
 
-											<a href="#" class="btn btn-outline-danger text-decoration-none white text-black w-50"> laghve in kar </a>
+											<form class="w-50" method="POST" action="{{ route('front.technician.panel.workdesk.changeStatus.archive.cancle',$doing->id) }}">
+													@csrf
+													@method('POST')
+													<input type="hidden" name="status" value="3">
+												<button id="cancelJob0" class="btn btn-outline-danger white text-black w-100">  cancele 
+												</button>
+											</form>
 										</div>
 									</div>
 									
 									
 								</div>	
 							</div>
+							@php 
+								$i++;
+							@endphp
 							@endforeach
-							
 						</div>
-						
-						
-
 						<!--اتمام کار توسط متخصص-->
-						<div id="spc_req_money" class="w-100 d-flex justify-content-center d-none">
+						@foreach($doing_archives as $doing)
+						<div class="spc_req_money w-100 d-flex justify-content-center d-none">
 								<div class="row w-100 m-0"> 
 									<div class="col-12 col-lg-6 pe-lg-5">
 										<p class="font-size24 fw-bold"> etmam kar(tavasote motekhases) </p>
 										
-										<form class="mt-4">
+										<form class="mt-4" method="POST" action="{{ route('front.technician.panel.workdesk.factor',$doing->id) }}">
+										@csrf
+										<input type="hidden" name="status" value="2">
 											<div class="mb-4">
 												<label for="wages" class="form-label">
 													dastmoz anjam kar
 												</label>
-												<input type="text" class="form-control text-center border border-dark p-2" id="wages" placeholder="motabegh tavafogh">
+												<input type="text" name="service_cost" class="form-control text-center border border-dark p-2" id="wages" placeholder="motabegh tavafogh">
 											</div>
 											
 											<div class="mb-4">
 												<label for="equipment-cost" class="form-label">
 													hazine vasayel
 												</label>
-												<input id="equipment-cost" type="text" class="form-control text-center border border-dark p-2" placeholder="motabegh faktor">
+												<input id="equipment-cost" type="text" name="stuff_cost" class="form-control text-center border border-dark p-2" placeholder="motabegh faktor">
 											</div>
 											
 											<div class="mb-4">
 												<label for="transportation-cost" class="form-label">
 													ayab o zahab
 												</label>
-												<input id="transportation-cost" type="text" class="form-control text-center border border-dark p-2">
+												<input id="transportation-cost" name="transport_cost" type="text" class="form-control text-center border border-dark p-2">
 											</div>
 											
 											<div class="mb-4">
 												<label for="total-cost" class="form-label">
 													jame kole hazine ha
 												</label>
-												<input id="total-cost" type="text" class="form-control text-center border border-dark lightgreen-text fw-bold p-2">
+												<input id="total-cost" type="text" name="final_price" class="form-control text-center border border-dark lightgreen-text fw-bold p-2">
 											</div>
 
 											<button type="submit" class="w-100 border-0 rounded-3 darkYellow p-2">
@@ -727,7 +958,7 @@
 								</div>
 	
 						</div>
-						
+						@endforeach
 						
 					</div>
 					
@@ -747,15 +978,17 @@
 									<p class="m-0 pb-2 fw-bold"> name: {{$past->order->user->firstname}} {{$past->order->user->lastname}} </p>
 									<p class="m-0 pb-2 fw-bold" > noe: {{$past->order->service->name}}  </p>
                                     @if($past->order->order_address_id == null)
-                                    <p class="m-0 pb-2 fw-bold" > آدرس: {{$past->order->address->state->name}}-{{$past->order->address->city->name}}-{{$past->order->address->description}} </p>
+                                    <p class="m-0 pb-2 fw-bold" > address: {{$past->order->address->state->name}}-{{$past->order->address->city->name}}-{{$past->order->address->description}} </p>
                                     @else
-                                    <p class="m-0 pb-2 fw-bold" > آدرس: {{$past->order->order_address->state->name}}-{{$past->order->order_address->city->name}}-{{$past->order->order_address->description}} </p>
-                                    @endif									<p class="m-0 pb-3 fw-bold" > sharhe moshkel: {{$past->order->description}} </p>
+                                    <p class="m-0 pb-2 fw-bold" > address: {{$past->order->order_address->state->name}}-{{$past->order->order_address->city->name}}-{{$past->order->order_address->description}} </p>
+									@endif									
+									<p class="m-0 pb-3 fw-bold" > sharhe moshkel: {{$past->order->description}} </p>
 									<div class="w-100 d-flex justify-content-center justify-content-lg-start">
 										<p class="m-0 me-5"> {{$past->created_at->toTimeString()}} </p>
 										<p class="m-0"> {{$past->created_at->toDateString()}}</p>
 									</div>
 								</div>
+							</div>
 						</div>
 						@endforeach
 					</div>
@@ -794,7 +1027,7 @@
 					
 				</div>
 			
-    @endif
+@endif
 @endsection
 @section('script')
     @if (app()->getLocale() == 'fa' || app()->getLocale() == 'ar')
