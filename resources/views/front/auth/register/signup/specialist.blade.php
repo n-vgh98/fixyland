@@ -281,6 +281,12 @@
                         </div>
 
                         <div class="mb-3 ">
+                            <label for="identifierCode-register-cutomer" class="form-label">code moaref:</label>
+                            <input class="form-control" name="moaref_code" id="identifierCode-register-cutomer"
+                                type="text" placeholder="add code">
+                        </div>
+
+                        <div class="mb-3 ">
                             <input type="checkbox" required="required" class="form-check-input"
                                 id="check-register-specialist">
                             <label class="form-check-label" for="check-register-specialist">قوانین و مقررات را مطالعه و
@@ -575,10 +581,18 @@
                         </div>
 
                         <div class="mb-3 ">
+                            <label for="identifierCode-register-cutomer" class="form-label">code moaref:</label>
+                            <input class="form-control" name="moaref_code" id="identifierCode-register-cutomer"
+                                type="text" placeholder="add code">
+                        </div>
+
+                        <div class="mb-3 ">
                             <input type="checkbox" required="required" class="form-check-input"
                                 id="check-register-specialist">
                             <label class="form-check-label" for="check-register-specialist">Agree With Site Rules.</label>
                         </div>
+
+
 
 
                         <div class="d-flex mb-3 gap-3">

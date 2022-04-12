@@ -4,11 +4,12 @@ namespace App\Http\Controllers\Front;
 
 use App\Models\Lang;
 use App\Models\User;
+use App\Models\Reward;
+use App\Models\Address;
 use App\Models\CoveredArea;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use App\Models\Address;
 use App\Models\CoveredAreaCity;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 
 class FrontUserController extends Controller
@@ -50,8 +51,17 @@ class FrontUserController extends Controller
         $user->phone = $request->phone;
         $user->role_name = "user";
         $user->password = Hash::make($request->password);
-        $user->code = Hash::make($request->email);
+        $user->code = rand(1, 9000) + rand(1, 90000);
         $user->save();
+        if ($request->moaref_code != null) {
+            $intoroduced = User::where("code", $request->moaref_code)->first();
+            if ($intoroduced != null) {
+                $reward = new Reward();
+                $reward->introducer = $user->id;
+                $reward->intoroduced = $intoroduced->id;
+                $reward->save();
+            }
+        }
         $address = new Address();
         $address->user_id = $user->id;
         $city = CoveredAreaCity::where("name", $request->city_id)->first();

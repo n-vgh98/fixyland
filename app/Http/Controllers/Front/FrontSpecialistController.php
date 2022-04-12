@@ -62,7 +62,7 @@ class FrontSpecialistController extends Controller
                 $user->role_name = "technician";
                 $user->password = Hash::make($request->password);
                 $user->phone = $request->phone;
-                $user->code = count($users) + 3;
+                $user->code = rand(1, 9000) + rand(1, 90000);
                 $user->save();
 
                 // making address

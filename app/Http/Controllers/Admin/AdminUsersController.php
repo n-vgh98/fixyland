@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Reward;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
 
@@ -203,9 +204,18 @@ class AdminUsersController extends Controller
         $user->phone = $request->phone;
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
-        $user->code = Hash::make($request->email);
+        $user->code = rand(1, 9000) + rand(1, 90000);
         $user->role_name = $request->role;
         $user->save();
+        if ($request->moaref_code != null) {
+            $intoroduced = User::where("code", $request->moaref_code)->first();
+            if ($intoroduced != null) {
+                $reward = new Reward();
+                $reward->introducer = $user->id;
+                $reward->intoroduced = $intoroduced->id;
+                $reward->save();
+            }
+        }
         return redirect()->back()->with("success", "User Account added successfully");
     }
 
@@ -216,7 +226,7 @@ class AdminUsersController extends Controller
         $user->phone = $request->phone;
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
-        $user->code = Hash::make($request->email);
+        $user->code = rand(1, 9000) + rand(1, 90000);
         $user->role_name = $request->role;
         $user->save();
         return redirect()->back()->with("success", "User Account updated successfully");

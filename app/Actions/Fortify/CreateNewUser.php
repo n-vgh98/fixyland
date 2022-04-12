@@ -37,7 +37,7 @@ class CreateNewUser implements CreatesNewUsers
         $user->phone = $input['phone'];
         $user->email = $input['email'];
         $user->password = Hash::make($input['password']);
-        $user->code = Hash::make($input['email']);
+        $user->code = rand(1, 9000) + rand(1, 90000);
         $user->save();
         return $user;
 
