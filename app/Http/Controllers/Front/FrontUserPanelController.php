@@ -171,4 +171,12 @@ class FrontUserPanelController extends Controller
         // dd($doing_archives); 
         return view('front.User.transaction_list',compact(["doing_archives","past_archives","cancele_archives"]));
     } 
+
+    public function changeStatus(Request $request,$lang,$id)
+    {
+        $archives = Archive::findOrFail($id);
+        $archives->status = $request->status;
+        $archives->save();
+        return redirect()->back();
+    }
 }
