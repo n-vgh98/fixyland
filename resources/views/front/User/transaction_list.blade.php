@@ -28,8 +28,6 @@
 					<!--order-list menu (swiper)-->
 					<div class="swiper mySwiper w-100">
 						<div class="swiper-wrapper">
-							<div class="swiper-slide w-auto darkYellow me-lg-5 ms-lg-5 rounded p-1" > 
-							پیشنهادات </div>
 							<div class="swiper-slide w-auto me-lg-5 ms-lg-5 rounded p-1">در دست اجرا</div>
 							<div class="swiper-slide w-auto me-lg-5 ms-lg-5 rounded p-1">گذشته</div>
 							<div class="swiper-slide w-auto ms-1 me-lg-5 ms-lg-5 rounded p-1">لغو شده</div>
@@ -37,52 +35,6 @@
 					</div>
 
 		
-					
-					<!--پیشنهادات-->
-					<div class="user-order-list-menu-item w-100 h-100 border-gray pt-3 padding-bottom mb-5 d-flex flex-column align-items-center gap-3">
-						<div class="border border-primary rounded-3 pt-2 pb-2 p-2 p-md-3 mb-4 mt-2 w-75">
-							<div class="container-fluid">
-								<div class="row">
-									<div class="col-lg-4 col-12 p-0 d-flex justify-content-center mb-3 mb-lg-0">
-										<div class="circle-img-div">
-											<img class="rounded-circle w-100 h-100" src="image/human4.jpg" alt="specialist">
-										</div>
-									</div>
-									<div class="col-lg-8 col-12 mt-2 text-center mt-sm-0 text-lg-end p-0">
-										<div class="mb-2">
-											<img src="image/gray-star.png" alt="rating">
-											<img src="image/gray-star.png" alt="rating">
-											<img src="image/yellow-star.png" alt="rating">
-											<img src="image/yellow-star.png" alt="rating">
-											<img src="image/yellow-star.png" alt="rating">
-										</div>
-										<p class="m-0 pb-1"> محمدرضا امیری </p>
-										<p class="m-0" > متخصص تعمیر لوازم خانگی </p>
-									</div>
-								</div>	
-							</div>
-
-							<p class="mt-4 text_justify ps-1 pe-1 ps-lg-3 pe-lg-3 ps-xl-5 pe-xl-5">
-								لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. 
-							</p>
-
-							<a href="#" class="text-decoration-none darkYellow-text ps-1 pe-1 ps-lg-3 pe-lg-3 ps-xl-5 pe-xl-5 d-flex justify-content-center justify-content-md-end">
-								مشاهده اطلاعات بیشتر
-							</a>
-
-							<div class="text-center mb-1 mt-4 ps-1 pe-1 ps-lg-3 pe-lg-3 ps-xl-5 pe-xl-5 d-flex justify-content-end flex-column flex-md-row">
-								<form class="d-inline-block mb-3">
-									<button class="btn btn-outline-dark darkYellow ms-3" type="submit"> انتخاب این متخصص </button>
-								</form>
-								<form class="d-inline-block mb-3">
-									<button class="btn btn-outline-dark ps-5 pe-5" type="submit"> لغو </button>
-								</form>
-							</div>	
-							
-						</div>	
-					</div>
-					
-					
 					<!--در دست اجرا-->
 					<div class="user-order-list-menu-item w-100 h-100 border-gray pt-1 padding-bottom mb-5 d-flex flex-column align-items-center gap-3 d-none">
 						
@@ -263,8 +215,10 @@
 					
 					<!--گذشته-->
 					<div class="user-order-list-menu-item w-100 h-100 border-gray pt-3 padding-bottom mb-5 d-flex flex-column align-items-center gap-3 d-none">
-						
+					@foreach($past_archives as $past)
+					@if($past->order->user_id == Auth::user()->id)
 						<div class="border border-3 border-dark rounded-3 pt-2 pb-2 p-2 p-md-3 mb-4 mt-2 w-75">
+						
 							<div class="container-fluid">
 								<div class="row">
 									<div class="col-lg-3 col-12 p-0 d-flex justify-content-center mb-3 mb-lg-0">
@@ -273,10 +227,14 @@
 										</div>
 									</div>
 									<div class="col-lg-9 col-12 mt-2 text-center mt-sm-0 text-lg-end p-0">
-										<p class="m-0 pb-2 me-lg-3 fw-bold"> نام: محمدرضا امیری </p>
-										<p class="m-0 pb-2 me-lg-3 fw-bold" > نوع: تعویض فریم گوشی </p>
-										<p class="m-0 pb-2 me-lg-3 fw-bold" > آدرس: شیراز-ملاصدرا-خیابان جمالی </p>
-										<p class="m-0 pb-3 me-lg-3 fw-bold" > شرح مشکل: تعویض فریم گوشی </p>
+										<p class="m-0 pb-2 me-lg-3 fw-bold"> نام: {{$past->technician->name}} </p>
+										<p class="m-0 pb-2 me-lg-3 fw-bold" > نوع: {{$past->order->service->name}} </p>
+										@if($past->order->order_address_id == null)
+										<p class="m-0 pb-2 me-lg-3 fw-bold" > آدرس: {{$past->order->address->state->name}}-{{$past->order->address->city->name}}-{{$past->order->address->description}}  </p>
+										@else
+										<p class="m-0 pb-2 me-lg-3 fw-bold" > آدرس: {{$past->order->order_address->state->name}}-{{$past->order_address->address->city->name}}-{{$past->order_address->address->description}}  </p>
+										@endif
+										<p class="m-0 pb-3 me-lg-3 fw-bold" > شرح مشکل: {{$past->order->description}} </p>
 										<form class="me-3 pb-3">
 											<button type="submit" class="border-0 bg-white text-danger"> 
 												افزودن به متخصص منتخب
@@ -285,49 +243,23 @@
 										</form>
 										<p class="m-0 pb-1 me-3"> کدپیگیری: 655423 </p>
 										<p class="m-0 pb-3 me-3"> هزینه پرداخت شده: 130.000 تومان </p>
-										<p class="m-0 mt-3 pb-1 text-start" > 1400/2/24 </p>
-									</div>
-								</div>	
-							</div>
-
-	
-						</div>	
-						
-						<div class="border border-3 border-dark rounded-3 pt-2 pb-2 p-2 p-md-3 mb-4 mt-2 w-75">
-							<div class="container-fluid">
-								<div class="row">
-									<div class="col-lg-3 col-12 p-0 d-flex justify-content-center mb-3 mb-lg-0">
-										<div>
-											<img class="rounded-3 mw-100 mh-100" src="image/human3.jpg" alt="specialist" height="auto">
-										</div>
-									</div>
-									<div class="col-lg-9 col-12 mt-2 text-center mt-sm-0 text-lg-end p-0">
-										<p class="m-0 pb-2 me-lg-3 fw-bold"> نام: محمدرضا امیری </p>
-										<p class="m-0 pb-2 me-lg-3 fw-bold" > نوع: تعویض فریم گوشی </p>
-										<p class="m-0 pb-2 me-lg-3 fw-bold" > آدرس: شیراز-ملاصدرا-خیابان جمالی </p>
-										<p class="m-0 pb-3 me-lg-3 fw-bold" > شرح مشکل: تعویض فریم گوشی </p>
-										<form class="me-3 pb-3">
-											<button type="submit" class="border-0 bg-white text-danger"> 
-												افزودن به متخصص منتخب
-												<i class="fa-regular fa-heart text-dark"></i> 
-											</button>
-										</form>
-										<p class="m-0 pb-1 me-3"> کدپیگیری: 655423 </p>
-										<p class="m-0 pb-3 me-3"> هزینه پرداخت شده: 130.000 تومان </p>
-										<p class="m-0 mt-3 pb-1 text-start" > 1400/2/24 </p>
+										<p class="m-0 mt-3 pb-1 text-start" > {{$past->created_at->toDateString()}} </p>
 									</div>
 								</div>	
 							</div>
 
 	
 						</div>
-						
+					@endif
+					@endforeach	
 					</div>
 					
 					
 					
 					<!--لغو شده-->
 					<div class="user-order-list-menu-item w-100 h-100 border-gray pt-3 padding-bottom mb-5 d-flex flex-column align-items-center gap-3 d-none">
+					@foreach($cancele_archives as $cancele)
+					@if($cancele->order->user_id == Auth::user()->id)
 						<div class="border border-3 border-dark rounded-3 pt-2 pb-2 p-2 p-md-3 mb-4 mt-2 w-75">
 							<div class="container-fluid">
 								<div class="row">
@@ -337,17 +269,21 @@
 										</div>
 									</div>
 									<div class="col-lg-9 col-12 mt-2 text-center mt-sm-0 text-lg-end p-0">
-										<p class="m-0 pb-2 me-lg-3 fw-bold"> نام: محمدرضا امیری </p>
-										<p class="m-0 pb-2 me-lg-3 fw-bold" > نوع: تعویض فریم گوشی </p>
-										<p class="m-0 pb-2 me-lg-3 fw-bold" > آدرس: شیراز-ملاصدرا-خیابان جمالی </p>
-										<p class="m-0 pb-3 me-lg-3 fw-bold" > شرح مشکل: تعویض فریم گوشی </p>
+										<p class="m-0 pb-2 me-lg-3 fw-bold"> نام:{{$cancele->technician->name}} </p>
+										<p class="m-0 pb-2 me-lg-3 fw-bold" > نوع:  {{$cancele->order->service->name}} </p>
+										@if($cancele->order->order_address_id == null)
+										<p class="m-0 pb-2 me-lg-3 fw-bold" > آدرس: {{$cancele->order->address->state->name}}-{{$cancele->order->address->city->name}}-{{$cancele->order->address->description}}  </p>
+										@else
+										<p class="m-0 pb-2 me-lg-3 fw-bold" > آدرس: {{$cancele->order->order_address->state->name}}-{{$cancele->order->order_address->city->name}}-{{$cancele->order->order_address->description}}  </p>
+										@endif
+										<p class="m-0 pb-3 me-lg-3 fw-bold" > شرح مشکل: {{$cancele->order->description}} </p>
 										<form class="me-3">
 											<button type="submit" class="border-0 bg-white text-danger"> 
 												افزودن به متخصص منتخب
 												<i class="fa-regular fa-heart text-dark"></i> 
 											</button>
 										</form>
-										<p class="m-0 mt-3 pb-1 text-start" > 1400/2/24 </p>
+										<p class="m-0 mt-3 pb-1 text-start" > {{$cancele->created_at->toDateString()}} </p>
 										
 									</div>
 								</div>	
@@ -357,6 +293,8 @@
 							
 							
 						</div>	
+					@endif
+					@endforeach
 					</div>
 					
 					
@@ -377,61 +315,11 @@
 					<!--order-list menu (swiper)-->
 					<div class="swiper mySwiper w-100">
 						<div class="swiper-wrapper">
-							<div class="swiper-slide w-auto darkYellow me-lg-5 ms-lg-5 rounded p-1">
-								pishnahadat
-							</div>
 							<div class="swiper-slide w-auto me-lg-5 ms-lg-5 rounded p-1">dar dast ejra</div>
 							<div class="swiper-slide w-auto me-lg-5 ms-lg-5 rounded p-1">gozashte</div>
 							<div class="swiper-slide w-auto me-5 me-lg-5 ms-lg-5 rounded p-1">laghv shode</div>
 						</div>
 					</div>
-
-				
-					<!--پیشنهادات-->
-					<div class="user-order-list-menu-item w-100 h-100 border-gray pt-3 padding-bottom mb-5 d-flex flex-column align-items-center gap-3">
-						<div class="border border-primary rounded-3 pt-2 pb-2 p-2 p-md-3 mb-4 mt-2 w-75">
-							<div class="container-fluid">
-								<div class="row">
-									<div class="col-lg-4 col-12 p-0 d-flex justify-content-center mb-3 mb-lg-0">
-										<div class="circle-img-div">
-											<img class="rounded-circle w-100 h-100" src="image/human4.jpg" alt="specialist">
-										</div>
-									</div>
-									<div class="col-lg-8 col-12 mt-2 text-center mt-sm-0 text-lg-start p-0">
-										<div class="mb-2">
-											<img src="image/gray-star.png" alt="rating">
-											<img src="image/gray-star.png" alt="rating">
-											<img src="image/yellow-star.png" alt="rating">
-											<img src="image/yellow-star.png" alt="rating">
-											<img src="image/yellow-star.png" alt="rating">
-										</div>
-										<p class="m-0 pb-1"> mohammad amiri </p>
-										<p class="m-0" > mobile expert </p>
-									</div>
-								</div>	
-							</div>
-
-							<p class="mt-4 text_justify ps-1 pe-1 ps-lg-3 pe-lg-3 ps-xl-5 pe-xl-5">
-								Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. 
-							</p>
-
-							<a href="#" class="text-decoration-none darkYellow-text ps-1 pe-1 ps-lg-3 pe-lg-3 ps-xl-5 pe-xl-5 d-flex justify-content-center justify-content-md-start">
-								more info.
-							</a>
-
-							<div class="text-center mb-1 mt-4 ps-1 pe-1 ps-lg-3 pe-lg-3 ps-xl-5 pe-xl-5 d-flex justify-content-start flex-column flex-md-row">
-								<form class="d-inline-block mb-3">
-									<button class="btn btn-outline-dark darkYellow me-md-3 me-0" type="submit">
-										choose this one </button>
-								</form>
-								<form class="d-inline-block mb-3">
-									<button class="btn btn-outline-dark ps-5 pe-5" type="submit"> cancel </button>
-								</form>
-							</div>	
-							
-						</div>	
-					</div>
-					
 					
 					<!--در دست اجرا-->
 					<div class="user-order-list-menu-item w-100 h-100 border-gray pt-1 padding-bottom mb-5 d-flex flex-column align-items-center gap-3 d-none">
@@ -618,7 +506,8 @@
 					
 					<!--گذشته-->
 					<div class="user-order-list-menu-item w-100 h-100 border-gray pt-3 padding-bottom mb-5 d-flex flex-column align-items-center gap-3 d-none">
-						
+					@foreach($past_archives as $past)
+					@if($past->order->user_id == Auth::user()->id)
 						<div class="border border-3 border-dark rounded-3 pt-2 pb-2 p-2 p-md-3 mb-4 mt-2 w-75">
 							<div class="container-fluid">
 								<div class="row">
@@ -628,10 +517,14 @@
 										</div>
 									</div>
 									<div class="col-lg-9 col-12 mt-2 mt-sm-0 p-0">
-										<p class="m-0 pb-2 ms-lg-3 fw-bold"> name: mohammad amiri </p>
-										<p class="m-0 pb-2 ms-lg-3 fw-bold" > noe: taviz </p>
-										<p class="m-0 pb-2 ms-lg-3 fw-bold" > adr: shiraz </p>
-										<p class="m-0 pb-3 ms-lg-3 fw-bold" > sharhe moshkel: jjj </p>
+										<p class="m-0 pb-2 ms-lg-3 fw-bold"> name: {{$past->technician->name}} </p>
+										<p class="m-0 pb-2 ms-lg-3 fw-bold" > noe: {{$past->order->service->name}} </p>
+										@if($past->order->order_address_id == null)
+										<p class="m-0 pb-2 ms-lg-3 fw-bold" > adr:  {{$past->order->address->state->name}}-{{$past->order->address->city->name}}-{{$past->order->address->description}}  </p>
+										@else
+										<p class="m-0 pb-2 ms-lg-3 fw-bold" > adr:  {{$past->order->order_address->state->name}}-{{$past->order->order_address->city->name}}-{{$past->order->order_address->description}}  </p>
+										@endif
+										<p class="m-0 pb-3 ms-lg-3 fw-bold" > sharhe moshkel: {{$past->order->description}} </p>
 										<form class="ms-lg-3 pb-3">
 											<button type="submit" class="border-0 bg-white text-danger text-start"> 
 												<i class="fa-regular fa-heart text-dark"></i>
@@ -640,49 +533,23 @@
 										</form>
 										<p class="m-0 pb-1 ms-lg-3"> code: 656565  </p>
 										<p class="m-0 pb-3 ms-lg-3"> pardakht shode: $ 1300 </p>
-										<p class="m-0 mt-3 pb-1 text-end" > 1400/2/24 </p>
+										<p class="m-0 mt-3 pb-1 text-end" >{{$past->created_at->toDateString()}} </p>
 									</div>
 								</div>	
 							</div>
 
 	
 						</div>	
-						
-						<div class="border border-3 border-dark rounded-3 pt-2 pb-2 p-2 p-md-3 mb-4 mt-2 w-75">
-							<div class="container-fluid">
-								<div class="row">
-									<div class="col-lg-3 col-12 p-0 d-flex justify-content-center mb-3 mb-lg-0">
-										<div>
-											<img class="rounded-3 mw-100 mh-100" src="image/human3.jpg" alt="specialist" height="auto">
-										</div>
-									</div>
-									<div class="col-lg-9 col-12 mt-2 mt-sm-0 p-0">
-										<p class="m-0 pb-2 ms-lg-3 fw-bold"> name: mohammad amiri </p>
-										<p class="m-0 pb-2 ms-lg-3 fw-bold" > noe: taviz </p>
-										<p class="m-0 pb-2 ms-lg-3 fw-bold" > adr: shiraz </p>
-										<p class="m-0 pb-3 ms-lg-3 fw-bold" > sharhe moshkel: jjj </p>
-										<form class="ms-lg-3 pb-3">
-											<button type="submit" class="border-0 bg-white text-danger text-start"> 
-												<i class="fa-regular fa-heart text-dark"></i>
-												afzoodan be montakhab 
-											</button>
-										</form>
-										<p class="m-0 pb-1 ms-lg-3"> code: 656565  </p>
-										<p class="m-0 pb-3 ms-lg-3"> pardakht shode: $ 1300 </p>
-										<p class="m-0 mt-3 pb-1 text-end" > 1400/2/24 </p>
-									</div>
-								</div>	
-							</div>
-
-	
-						</div>
-						
+						@endif
+					@endforeach	
 					</div>
 					
 					
 					
 					<!--لغو شده-->
 					<div class="user-order-list-menu-item w-100 h-100 border-gray pt-3 padding-bottom mb-5 d-flex flex-column align-items-center gap-3 d-none">
+					@foreach($cancele_archives as $cancele)
+					@if($cancele->order->user_id == Auth::user()->id)
 						<div class="border border-3 border-dark rounded-3 pt-2 pb-2 p-2 p-md-3 mb-4 mt-2 w-75">
 							<div class="container-fluid">
 								<div class="row">
@@ -692,9 +559,13 @@
 										</div>
 									</div>
 									<div class="col-lg-9 col-12 mt-2 mt-sm-0 p-0">
-										<p class="m-0 pb-2 ms-lg-3 fw-bold"> name: mohammad amiri </p>
-										<p class="m-0 pb-2 ms-lg-3 fw-bold" > noe: taviz </p>
-										<p class="m-0 pb-2 ms-lg-3 fw-bold" > adr: shiraz </p>
+										<p class="m-0 pb-2 ms-lg-3 fw-bold"> name: {{$cancele->technician->name}}  </p>
+										<p class="m-0 pb-2 ms-lg-3 fw-bold" > noe: {{$cancele->order->service->name}} </p>
+										@if($cancele->order->order_address_id == null)
+										<p class="m-0 pb-2 ms-lg-3 fw-bold" > adr: {{$cancele->order->address->state->name}}-{{$cancele->order->address->city->name}}-{{$cancele->order->address->description}}  </p>
+										@else
+										<p class="m-0 pb-2 me-lg-3 fw-bold" > آدرس: {{$cancele->order->order_address->state->name}}-{{$cancele->order->order_address->city->name}}-{{$cancele->order->order_address->description}}  </p>
+										@endif
 										<p class="m-0 pb-3 ms-lg-3 fw-bold" > sharhe moshkel: jjj </p>
 										<form class="ms-lg-3">
 											<button type="submit" class="border-0 bg-white text-danger text-start"> 
@@ -702,7 +573,7 @@
 												afzoodan be montakhab 
 											</button>
 										</form>
-										<p class="m-0 mt-3 pb-1 text-lg-end text-center" > 1400/2/24 </p>
+										<p class="m-0 mt-3 pb-1 text-lg-end text-center" >{{$cancele->created_at->toDateString()}} </p>
 										
 									</div>
 								</div>	
@@ -711,7 +582,9 @@
 							
 							
 							
-						</div>	
+						</div>
+					@endif
+					@endforeach
 					</div>
 					
 					
@@ -725,6 +598,11 @@
 
 
 @section('script')
+    @if (app()->getLocale() == 'fa' || app()->getLocale() == 'ar')
     <script src="{{ asset('frontend/fixy-land-fa-main/script/user-panel.js') }}" type="text/javascript"></script>
     <script src="{{ asset('frontend/fixy-land-fa-main/script/user-order-list.js') }}" type="text/javascript"></script>
+    @else
+    <script src="{{ asset('frontend/fixy-land-en-main/script/user-panel.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('frontend/fixy-land-en-main/script/user-order-list.js') }}" type="text/javascript"></script>
+    @endif
 @endsection

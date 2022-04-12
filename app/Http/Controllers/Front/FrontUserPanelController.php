@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Address;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Archive;
 use App\Models\CoveredAreaCity;
 use App\Models\Notification;
 use Illuminate\Support\Facades\Auth;
@@ -160,8 +161,14 @@ class FrontUserPanelController extends Controller
        return view("front.User.notification",compact(["notifications","pnotifications"])); 
     }
 
-    public function transactions()
+    public function transactionDoing()
     {
-        return view('front.User.transaction_list');
+        $doing_archives = Archive::where("status", 1)->get();
+        $past_archives = Archive::where("status", 2)->get();
+        $cancele_archives = Archive::where("status", 3)->get();
+        
+       
+        // dd($doing_archives); 
+        return view('front.User.transaction_list',compact(["doing_archives","past_archives","cancele_archives"]));
     } 
 }
