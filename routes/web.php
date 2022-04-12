@@ -27,6 +27,7 @@ use App\Http\Controllers\Admin\AdminInputController;
 use App\Http\Controllers\Admin\AdminNotificationsController;
 use App\Http\Controllers\Admin\AdminServiceCategoryController;
 use App\Http\Controllers\Admin\AdminServiceSubCategoryController;
+use App\Http\Controllers\Admin\AdminSettingController;
 use App\Http\Controllers\Admin\AdminSubCategoryServiceDescriptionController;
 use App\Http\Controllers\Front\FrontAboutUsController;
 use App\Http\Controllers\Front\FrontArticleController;
@@ -341,6 +342,18 @@ route::prefix("admin")->middleware(['auth:sanctum', 'verified', "admin"])->group
         route::get("/", [AdminDiscountController::class, "index"])->name("admin.discount.index");
         route::post("/store", [AdminDiscountController::class, "store"])->name("admin.discount.store");
         route::delete("/delete/{id}", [AdminDiscountController::class, "destroy"])->name("admin.discount.delete");
+    });
+
+    // routes for settingss
+    route::prefix("settings")->group(function () {
+        route::get("/", [AdminSettingController::class, "index"])->name("admin.setting.index");
+        route::post("/store", [AdminSettingController::class, "store"])->name("admin.setting.store");
+        route::delete("/delete/{id}", [AdminSettingController::class, "destroy"])->name("admin.setting.delete");
+    });
+
+    // routes for rewards
+    route::prefix("settings")->group(function () {
+        route::post("/store", [Admin::class, "store"])->name("admin.setting.store");
     });
 });
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {

@@ -452,6 +452,18 @@
                             </p>
                         </a>
                     </li>
+
+
+                    {{-- link for setting --}}
+                    <li class="nav-item has-treeview">
+
+                        <a href="{{ route('admin.setting.index', 'ar') }}" class="nav-link bg-primary active">
+                            <i class="nav-icon fa fa-vcard-o"></i>
+                            <p>
+                                Settings
+                            </p>
+                        </a>
+                    </li>
                     <!-- footer links-->
                     <li class="nav-item has-treeview ">
                         <a href="#" class="nav-link bg-primary active">
