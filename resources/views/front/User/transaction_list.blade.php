@@ -324,7 +324,7 @@
                                                 </div>
                                             </div>
                                             <div class="col-lg-9 col-12 mt-2 text-center mt-sm-0 text-lg-end p-0">
-                                                <p class="m-0 pb-2 me-lg-3 fw-bold"> نام: {{ $waiting->technician->firstname }}
+                                                <p class="m-0 pb-2 me-lg-3 fw-bold"> نام: {{ $waiting->technician->firstname }} {{ $waiting->technician->lastname }}
                                                 </p>
                                                 <p class="m-0 pb-2 me-lg-3 fw-bold"> نوع:
                                                     {{ $waiting->order->service->name }}
@@ -370,7 +370,7 @@
                                                 </div>
                                             </div>
                                             <div class="col-lg-9 col-12 mt-2 text-center mt-sm-0 text-lg-end p-0">
-                                                <p class="m-0 pb-2 me-lg-3 fw-bold"> نام: {{ $past->technician->name }}
+                                                <p class="m-0 pb-2 me-lg-3 fw-bold"> نام: {{ $past->technician->firstname }} {{ $past->technician->lastname }}
                                                 </p>
                                                 <p class="m-0 pb-2 me-lg-3 fw-bold"> نوع:
                                                     {{ $past->order->service->name }}
@@ -424,7 +424,7 @@
                                             </div>
                                             <div class="col-lg-9 col-12 mt-2 text-center mt-sm-0 text-lg-end p-0">
                                                 <p class="m-0 pb-2 me-lg-3 fw-bold">
-                                                    نام:{{ $cancele->technician->name }}
+                                                    نام:{{ $cancele->technician->firstname }} {{ $cancele->technician->lastname }}
                                                 </p>
                                                 <p class="m-0 pb-2 me-lg-3 fw-bold"> نوع:
                                                     {{ $cancele->order->service->name }} </p>
@@ -479,6 +479,7 @@
                     <div class="swiper mySwiper w-100">
                         <div class="swiper-wrapper">
                             <div class="swiper-slide w-auto me-lg-5 ms-lg-5 rounded p-1 darkYellow">dar dast ejra</div>
+                            <div class="swiper-slide w-auto me-lg-5 ms-lg-5 rounded p-1">dar entezare taeid</div>
                             <div class="swiper-slide w-auto me-lg-5 ms-lg-5 rounded p-1">gozashte</div>
                             <div class="swiper-slide w-auto me-5 me-lg-5 ms-lg-5 rounded p-1">laghv shode</div>
                         </div>
@@ -512,7 +513,7 @@
 
                                                     <div class="col-lg-9 col-12 mt-2 mt-sm-0 p-0">
                                                         <p class="m-0 pb-2 ms-lg-3 "> name:
-                                                            {{ $doing_archive->technician->name }} </p>
+                                                            {{ $doing_archive->technician->firstname }} {{ $doing_archive->technician->lastname }} </p>
                                                         <p class="m-0 pb-2 ms-lg-3 "> noe:
                                                             {{ $doing_archive->order->service->name }} </p>
                                                         @if ($doing_archive->order->order_address_id == null)
@@ -748,6 +749,56 @@
                         @endforeach
                     </div>
 
+                    <!--در انتظار تایید-->
+                    <div
+                        class="user-order-list-menu-item w-100 h-100 border-gray pt-3 padding-bottom mb-5 d-flex flex-column align-items-center gap-3 d-none">
+                        @foreach ($waiting_suggest as $waiting)
+                            @if ($waiting->order->user_id == Auth::user()->id)
+                            <div class="border border-3 border-dark rounded-3 pt-2 pb-2 p-2 p-md-3 mb-4 mt-2 w-75">
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="col-lg-3 col-12 p-0 d-flex justify-content-center mb-3 mb-lg-0">
+                                                <div>
+                                                    <img class="rounded-3 mw-100 mh-100" src="image/human3.jpg"
+                                                        alt="specialist" height="auto">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-9 col-12 mt-2 mt-sm-0 p-0">
+                                                <p class="m-0 pb-2 ms-lg-3 fw-bold"> name: {{ $waiting->technician->firstname }} {{ $waiting->technician->lastname }}
+                                                </p>
+                                                <p class="m-0 pb-2 ms-lg-3 fw-bold"> noe:
+                                                    {{ $waiting->order->service->name }} </p>
+                                                @if ($waiting->order->order_address_id == null)
+                                                    <p class="m-0 pb-2 ms-lg-3 fw-bold"> adr:
+                                                        {{ $waiting->order->address->state->name }}-{{ $waiting->order->address->city->name }}-{{ $waiting->order->address->description }}
+                                                    </p>
+                                                @else
+                                                    <p class="m-0 pb-2 ms-lg-3 fw-bold"> adr:
+                                                        {{ $waiting->order->order_address->state->name }}-{{ $waiting->order->order_address->city->name }}-{{ $waiting->order->order_address->description }}
+                                                    </p>
+                                                @endif
+                                                <p class="m-0 pb-3 ms-lg-3 fw-bold"> sharhe moshkel:
+                                                    {{ $waiting->order->description }} </p>
+                                                <form class="ms-lg-3 pb-3">
+                                                    <button type="submit" class="border-0 bg-white text-danger text-start">
+                                                        <i class="fa-regular fa-heart text-dark"></i>
+                                                        afzoodan be montakhab
+                                                    </button>
+                                                </form>
+                                                <p class="m-0 pb-1 ms-lg-3"> code: {{$waiting->id}} </p>
+                                                <p class="m-0 mt-3 pb-1 text-end">
+                                                    {{ $waiting->created_at->toDateString() }}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            @endif
+                        @endforeach
+                    </div>
+
                     <!--گذشته-->
                     <div
                         class="user-order-list-menu-item w-100 h-100 border-gray pt-3 padding-bottom mb-5 d-flex flex-column align-items-center gap-3 d-none">
@@ -763,7 +814,7 @@
                                                 </div>
                                             </div>
                                             <div class="col-lg-9 col-12 mt-2 mt-sm-0 p-0">
-                                                <p class="m-0 pb-2 ms-lg-3 fw-bold"> name: {{ $past->technician->name }}
+                                                <p class="m-0 pb-2 ms-lg-3 fw-bold"> name: {{ $past->technician->firstname }} {{ $past->technician->lastname }}
                                                 </p>
                                                 <p class="m-0 pb-2 ms-lg-3 fw-bold"> noe:
                                                     {{ $past->order->service->name }} </p>
@@ -817,7 +868,7 @@
                                             </div>
                                             <div class="col-lg-9 col-12 mt-2 mt-sm-0 p-0">
                                                 <p class="m-0 pb-2 ms-lg-3 fw-bold"> name:
-                                                    {{ $cancele->technician->name }} </p>
+                                                    {{ $cancele->technician->firstname }}  {{ $cancele->technician->lastname }} </p>
                                                 <p class="m-0 pb-2 ms-lg-3 fw-bold"> noe:
                                                     {{ $cancele->order->service->name }} </p>
                                                 @if ($cancele->order->order_address_id == null)
