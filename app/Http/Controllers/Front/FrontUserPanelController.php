@@ -24,6 +24,7 @@ class FrontUserPanelController extends Controller
      */
     public function index()
     {
+
         return view("front.User.panel");
     }
 
@@ -82,12 +83,18 @@ class FrontUserPanelController extends Controller
         return view("front.User.favorittech");
     }
 
-    public function favortech(Request $request)
+    public function favortech(Request $request, $lang, $id)
     {
-        $fav = new FavoritTechnician();
-        $fav->technician_id = $request->tech_id;
-        $fav->customer_id = auth()->user()->id;
-        $fav->save();
+        $selectfav = FavoritTechnician::where([["technician_id", $id], ["customer_id", auth()->user()->id]])->first();
+        if ($selectfav != null) {
+            $selectfav->delete();
+        } else {
+            $fav = new FavoritTechnician();
+            $fav->technician_id = $id;
+            $fav->customer_id = auth()->user()->id;
+            $fav->save();
+        }
+        return redirect()->back();
     }
 
     public function  techinfo($lang, $id)
@@ -173,14 +180,15 @@ class FrontUserPanelController extends Controller
 
     public function transactions()
     {
+
         $doing_archives = Archive::where("status", 1)->get();
         $past_archives = Archive::where("status", 2)->get();
         $cancele_archives = Archive::where("status", 3)->get();
-        $waiting_suggest = Suggestion::where("status", 1 )->get();
+        $waiting_suggest = Suggestion::where("status", 1)->get();
 
 
         // dd($doing_archives);
-        return view('front.User.transaction_list', compact(["doing_archives", "past_archives", "cancele_archives","waiting_suggest"]));
+        return view('front.User.transaction_list', compact(["doing_archives", "past_archives", "cancele_archives", "waiting_suggest"]));
     }
 
     public function changeStatus(Request $request, $lang, $id)

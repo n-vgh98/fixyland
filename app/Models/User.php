@@ -92,7 +92,7 @@ class User extends Authenticatable
 
     public function favortechs()
     {
-        return $this->hasMany("App\Models\FavoritTechnician", "technician_id");
+        return $this->hasMany("App\Models\FavoritTechnician", "customer_id");
     }
 
     public function techscores()

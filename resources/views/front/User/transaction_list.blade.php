@@ -78,25 +78,27 @@
                                                         <p class="m-0 pb-3 me-lg-3 fw-bold"> شرح مشکل:
                                                             {{ $doing_archive->order->description }} </p>
                                                         @php
-                                                            $techs = auth()->user()->favortechs;
+                                                            $favs = auth()->user()->favortechs;
                                                             $favids = [];
-                                                            foreach ($techs as $tech) {
-                                                                if ($tech->id == $doing_archive->technician->id) {
-                                                                    array_push($favids, $tech->id);
-                                                                }
+                                                            foreach ($favs as $fav) {
+                                                                array_push($favids, $fav->technician->id);
                                                             }
                                                         @endphp
-                                                        @if (in_array($doing_archive, $favids))
-                                                            <form class="me-3" method="post"
-                                                                action="{{ route('user.panel.profile.favorittech.store', $doing_archieve->technician->id) }}">
+                                                        <form class="me-3" method="post"
+                                                            action="{{ route('user.panel.profile.favorittech.store', $doing_archive->technician->id) }}">
+                                                            @csrf
+                                                            @if (in_array($doing_archive->technician->id, $favids))
+                                                                <button type="submit" class="border-0 bg-white text-danger">
+                                                                    حذف از متخصص منتخب
+                                                                    <i class="fa-solid fa-heart text-danger"></i>
+                                                                </button>
                                                             @else
                                                                 <button type="submit" class="border-0 bg-white text-danger">
                                                                     افزودن به متخصص منتخب
                                                                     <i class="fa-regular fa-heart text-dark"></i>
                                                                 </button>
-                                                            </form>
-                                                        @endif
-                                                        
+                                                            @endif
+                                                        </form>
                                                         <p class="m-0 mt-3 pb-1 text-center text-lg-start">
                                                             {{ $doing_archive->created_at->toDateString() }} </p>
 
@@ -308,8 +310,8 @@
                         @endforeach
                     </div>
 
-                      <!--در انتظار تایید-->
-                      <div
+                    <!--در انتظار تایید-->
+                    <div
                         class="user-order-list-menu-item w-100 h-100 border-gray pt-3 padding-bottom mb-5 d-flex flex-column align-items-center gap-3 d-none">
                         @foreach ($waiting_suggest as $waiting)
                             @if ($waiting->order->user_id == Auth::user()->id)
@@ -324,7 +326,8 @@
                                                 </div>
                                             </div>
                                             <div class="col-lg-9 col-12 mt-2 text-center mt-sm-0 text-lg-end p-0">
-                                                <p class="m-0 pb-2 me-lg-3 fw-bold"> نام: {{ $waiting->technician->firstname }}
+                                                <p class="m-0 pb-2 me-lg-3 fw-bold"> نام:
+                                                    {{ $waiting->technician->firstname }}
                                                 </p>
                                                 <p class="m-0 pb-2 me-lg-3 fw-bold"> نوع:
                                                     {{ $waiting->order->service->name }}
@@ -340,7 +343,7 @@
                                                 @endif
                                                 <p class="m-0 pb-3 me-lg-3 fw-bold"> شرح مشکل:
                                                     {{ $waiting->order->description }} </p>
-                                                <p class="m-0 pb-1 me-3"> کدپیگیری: {{$waiting->id}} </p>
+                                                <p class="m-0 pb-1 me-3"> کدپیگیری: {{ $waiting->id }} </p>
                                                 <p class="m-0 mt-3 pb-1 text-start">
                                                     {{ $waiting->created_at->toDateString() }} </p>
                                             </div>
