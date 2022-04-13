@@ -244,13 +244,14 @@ class FrontSpecialistPanelController extends Controller
         $process_time = Process::where('created_at', '<=', Carbon::now()->subMinutes(5))->delete();
 
         // dd(Process::where([["status",1],["tech_id", null]])->get());
-        $proccess = Process::whereIn("order_id",$orders)->where([["status",1],["tech_id", null]])->get();
-        $suggestions = Suggestion::where([["tech_id",Auth::user()->id],["status", 1 ]])->get();
+        $proccess = Process::whereIn("order_id", $orders)->where([["status", 1], ["tech_id", null]])->get();
+        $suggestions = Suggestion::where([["tech_id", Auth::user()->id], ["status", 1]])->get();
         // dd($proccess);
-        $doing_archives = Archive::where([["tech_id",Auth::user()->id],["status", 1]])->get();
-        $past_archives = Archive::where([["tech_id",Auth::user()->id],["status", 2]])->get();
-        $canceled_archives = Archive::where([["tech_id",Auth::user()->id],["status", 3]])->get();
-        return view("front.technician.workdesk",compact(["proccess","doing_archives","past_archives","canceled_archives","suggestions"]));
+        $doing_archives = Archive::where([["tech_id", Auth::user()->id], ["status", 1]])->get();
+        $past_archives = Archive::where([["tech_id", Auth::user()->id], ["status", 2]])->get();
+        $canceled_archives = Archive::where([["tech_id", Auth::user()->id], ["status", 3]])->get();
+
+        return view("front.technician.workdesk", compact(["proccess", "doing_archives", "past_archives", "canceled_archives", "suggestions"]));
     }
 
     public function createArchivesProcsess(Request $request)
@@ -271,15 +272,14 @@ class FrontSpecialistPanelController extends Controller
         $archives = new Archive();
         $archives->tech_id = $request->input("tech_id");
         $archives->order_id = $request->input("order_id");
-        $suggest = Suggestion::where("order_id",$request->order_id)->first();
+        $suggest = Suggestion::where("order_id", $request->order_id)->first();
         $suggest->status = 2;
         $suggest->save();
         $archives->save();
-        return redirect()->back()->with("success","سفارش تایید شد و به لیست سفارشات شما اضاف شد");
-
+        return redirect()->back()->with("success", "سفارش تایید شد و به لیست سفارشات شما اضاف شد");
     }
 
-    public function changeStatus(Request $request,$lang,$id)
+    public function changeStatus(Request $request, $lang, $id)
     {
         $archives = Archive::findOrFail($id);
         $archives->status = $request->status;

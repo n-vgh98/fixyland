@@ -50,7 +50,7 @@ class FrontServiceController extends Controller
 
     public function resultsave($lang, Request $request)
     {
-        if ($request->city_id != null || $request->address_description) {
+        if ($request->city_id != null || $request->address_description != null) {
             $address = new OrderAddress();
             $address->user_id = auth()->user()->id;
             $city = CoveredAreaCity::where("name", $request->city_id)->first();
@@ -59,11 +59,12 @@ class FrontServiceController extends Controller
             $address->description = $request->address_description;
             $address->save();
         }
+
         $order = new Order();
-        if ($request->city_id != null || $request->address_description) {
+        if ($request->city_id != null || $request->address_description != null) {
             $order->order_address_id = $address->id;
         } else {
-            $order->address_id = $request->addr_radio;
+            $order->order_address_id = $request->addr_radio;
         }
         $order->user_id = auth()->user()->id;
         $order->service_id = $request->service_id;
@@ -110,10 +111,20 @@ class FrontServiceController extends Controller
     public function autofind($lang, $id)
     {
         $order = Order::find($id);
-        $process = new Process();
-        $process->order_id = $id;
-        $process->service_id = $order->service_id;
-        $process->save();
+        $selectedprocess = Process::where("order_id", $id)->first();
+        if ($selectedprocess == null) {
+            $process = new Process();
+            $process->order_id = $id;
+            $process->service_id = $order->service_id;
+            $process->save();
+            return view("front.User.loader", compact("order"));
+        } else {
+            $process = $selectedprocess;
+            $process->order_id = $id;
+            $process->service_id = $order->service_id;
+            $process->save();
+            return view("front.User.loader", compact("order"));
+        }
     }
 
 
@@ -213,6 +224,20 @@ class FrontServiceController extends Controller
         $suggest->save();
     }
 
+
+
+
+
+    public function checker($lang, $id)
+    {
+        $process = Process::where("order_id", $id)->first();
+        $message = "متخصص شما با موفقیت پیدا شد و میتونید در قسمت لیست سفارشات و سفارشات در دست اجرا انرا ببینید.";
+        if ($process->tech_id != null && $process->status == 2) {
+            return response()->json(['route' => "http://127.0.0.1:8000/$lang/userpanel", "message" => $message]);
+        } else {
+            return response()->json(['status' => "0"]);
+        }
+    }
 
     /**
      * Show the form for creating a new resource.
