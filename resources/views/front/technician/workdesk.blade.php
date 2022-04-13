@@ -173,7 +173,7 @@
         <!--پیشنهادات من-->
         <div class="user-order-list-menu-item w-100 h-100 pb-md-5 mb-5 d-none">
 
-            <div class="w-100 h-100 border-gray pt-3 pb-5 mb-5">
+            <div class="w-100 h-100 border-gray pt-1 pb-5 mb-5">
                 <!--empty request-->
                 @if ($suggestions->isEmpty())
                     <div class="empty_request position-relative w-100 d-flex justify-content-center">
@@ -248,6 +248,9 @@
                     @foreach ($suggestions as $suggest)
                         <div class="mine_req-long-dsc d-none">
                             <div class="pe-md-3">
+                                <div>
+                                    <button type="button" class="mine_go-back-btn btn p-0 ps-2 pe-2 gray-text font-size24"> <i class="fa-solid fa-xmark"></i> </button>
+                                </div>
                                 <p class="fw-bold pe-3 font-size24"> اطلاعات بیشتر </p>
 
                                 <div class="row m-0">
@@ -296,7 +299,11 @@
                                             <button class="w-100 btn btn-outline-dark darkYellow ms-md-3" type="submit">
                                                 قبول </button>
                                         </form>
-                                        <p class="mine_go-back-btn btn btn-outline-dark w-100 mt-3"> بازگشت </p>
+                                        <form class="w-100 ms-md-2" method="POST"
+                                            action="{{ route('front.technician.panel.workdesk.delete.suggestion', $suggest->id) }}">
+                                            @csrf 
+                                            <button class="w-100 btn btn-outline-dark ms-md-3" type="submit"> لغو </button>
+                                        </form>
                                     </div>
                                 </div>
 
@@ -770,7 +777,7 @@
         <!--  پیشنهادات من-->
         <div class="user-order-list-menu-item w-100 h-100 pb-md-5 mb-5 d-none">
 
-            <div class="w-100 h-100 border-gray pt-3 pb-5 mb-5">
+            <div class="w-100 h-100 border-gray pt-1 pb-5 mb-5">
                 <!--empty request-->
                 @if ($suggestions->isEmpty())
                     <div class="empty_request position-relative w-100 d-flex justify-content-center">
@@ -845,6 +852,9 @@
                         <!--requests long description 1-->
                         <div class="mine_req-long-dsc d-none">
                             <div class="ps-md-3">
+                                <div>
+                                    <button type="button" class="mine_go-back-btn btn p-0 ps-2 pe-2 gray-text font-size24"> <i class="fa-solid fa-xmark"></i> </button>
+                                </div>
                                 <p class="fw-bold ps-3 font-size24"> etelaate bishtar </p>
 
                                 <div class="row m-0">
@@ -891,9 +901,16 @@
                                             <input type="hidden" value="{{ auth()->user()->id }}" name="tech_id">
                                             <input type="hidden" value="{{ $suggest->order->id }}" name="order_id">
                                             <button class="w-100 btn btn-outline-dark darkYellow ms-md-3" type="submit">
-                                                قبول </button>
+                                                accept </button>
                                         </form>
-                                        <p class="mine_go-back-btn btn btn-outline-dark w-100 mt-3"> back </p>
+                                        <form class="w-100 ms-md-2" method="POST"
+                                            action="{{ route('front.technician.panel.workdesk.post.suggestion.archive') }}">
+                                            @csrf
+                                            <input type="hidden" value="{{ auth()->user()->id }}" name="tech_id">
+                                            <input type="hidden" value="{{ $suggest->order->id }}" name="order_id">
+                                            <button class="w-100 btn btn-outline-dark ms-md-3" type="submit">
+                                                cancele </button>
+                                        </form>
                                     </div>
                                 </div>
 

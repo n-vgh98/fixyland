@@ -425,6 +425,7 @@ route::prefix("{locale}")->middleware("language")->group(function () {
             route::get("/workdesk", "offers")->name("front.technician.panel.workdesk");
             route::post("/workdesk", "createArchivesProcsess")->name("front.technician.panel.workdesk.post.archive");
             route::post("/suggestion_workdesk", "createArchivesSuggest")->name("front.technician.panel.workdesk.post.suggestion.archive");
+            Route::post("/workdesk/{id}", "destroy")->name("front.technician.panel.workdesk.delete.suggestion");
 
             route::post("/cancele/{id}", "changeStatus")->name("front.technician.panel.workdesk.changeStatus.archive.cancle");
 
