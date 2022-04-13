@@ -22,60 +22,13 @@
                 <!--profile panel-->
                 @include('front.User.menu')
 
-				<div class="h-100 col-12 col-md-9 d-flex flex-column align-items-center pt-3 pt-md-5 pb-5 p-md-5">
-					<h1 class="mb-4"> لیست سفارشات </h1>
-
-					<!--order-list menu (swiper)-->
-					<div class="swiper mySwiper w-100">
-						<div class="swiper-wrapper">
-							<div class="swiper-slide w-auto me-lg-5 ms-lg-5 rounded p-1 darkYellow">در دست اجرا</div>
-							<div class="swiper-slide w-auto me-lg-5 ms-lg-5 rounded p-1">گذشته</div>
-							<div class="swiper-slide w-auto ms-1 me-lg-5 ms-lg-5 rounded p-1">لغو شده</div>
-						</div>
-					</div>
-
-					<!--در دست اجرا-->
-					<div class="user-order-list-menu-item w-100 h-100 border-gray pt-1 padding-bottom mb-5 d-flex flex-column align-items-center gap-3">
-
-						<!--default box-->
-						<div id="running_job" class="w-100 d-flex flex-column align-items-center">
-
-							<!-- box 1 -->
-							@php
-								$i = 0;
-							@endphp
-							@foreach($doing_archives as $doing_archive)
-							@if($doing_archive->order->user_id == Auth::user()->id)
-							<div class="w-100 d-flex flex-column align-items-center">
-								<div class="border border-3 border-dark rounded-3 pt-2 pb-2 p-2 p-md-3 mb-4 mt-2 w-75">
-									<div class="container-fluid">
-										<div class="row">
-											<div class="col-lg-3 col-12 p-0 d-flex justify-content-center mb-3 mb-lg-0">
-												<div>
-													<img class="rounded-3 mw-100 nh-100" src="image/human1.jpg" alt="specialist" height="auto">
-												</div>
-											</div>
-											<div class="col-lg-9 col-12 mt-2 text-center mt-sm-0 text-lg-end p-0">
-												<p class="m-0 pb-2 me-lg-3 fw-bold"> نام:{{$doing_archive->technician->name}} </p>
-												<p class="m-0 pb-2 me-lg-3 fw-bold" > نوع: {{$doing_archive->order->service->name}} </p>
-												@if($doing_archive->order->order_address_id == null)
-												<p class="m-0 pb-2 me-lg-3 fw-bold" > آدرس:{{$doing_archive->order->address->state->name}}-{{$doing_archive->order->address->city->name}}-{{$doing_archive->order->address->description}} </p>
-												@else
-												<p class="m-0 pb-2 me-lg-3 fw-bold" > آدرس:{{$doing_archive->order->order_address->state->name}}-{{$doing_archive->order->order_address->city->name}}-{{$doing_archive->order->order_address->description}}</p>
-												@endif
-												<p class="m-0 pb-3 me-lg-3 fw-bold" > شرح مشکل:  {{$doing_archive->order->description}} </p>
-												<form class="me-3">
-													<button type="submit" class="border-0 bg-white text-danger">
-														افزودن به متخصص منتخب
-														<i class="fa-regular fa-heart text-dark"></i>
-													</button>
-												</form>
-												<p class="m-0 mt-3 pb-1 text-center text-lg-start" > {{$doing_archive->created_at->toDateString()}} </p>
+                <div class="h-100 col-12 col-md-9 d-flex flex-column align-items-center pt-3 pt-md-5 pb-5 p-md-5">
+                    <h1 class="mb-4"> لیست سفارشات </h1>
 
                     <!--order-list menu (swiper)-->
                     <div class="swiper mySwiper w-100">
                         <div class="swiper-wrapper">
-                            <div class="swiper-slide w-auto me-lg-5 ms-lg-5 rounded p-1">در دست اجرا</div>
+                            <div class="swiper-slide w-auto me-lg-5 ms-lg-5 rounded p-1 darkYellow">در دست اجرا</div>
                             <div class="swiper-slide w-auto me-lg-5 ms-lg-5 rounded p-1">گذشته</div>
                             <div class="swiper-slide w-auto ms-1 me-lg-5 ms-lg-5 rounded p-1">لغو شده</div>
                         </div>
@@ -83,7 +36,7 @@
 
                     <!--در دست اجرا-->
                     <div
-                        class="user-order-list-menu-item w-100 h-100 border-gray pt-1 padding-bottom mb-5 d-flex flex-column align-items-center gap-3 d-none">
+                        class="user-order-list-menu-item w-100 h-100 border-gray pt-1 padding-bottom mb-5 d-flex flex-column align-items-center gap-3">
 
                         <!--default box-->
                         <div id="running_job" class="w-100 d-flex flex-column align-items-center">
@@ -123,11 +76,24 @@
                                                         @endif
                                                         <p class="m-0 pb-3 me-lg-3 fw-bold"> شرح مشکل:
                                                             {{ $doing_archive->order->description }} </p>
-                                                        <form class="me-3">
-                                                            <button type="submit" class="border-0 bg-white text-danger">
-                                                                افزودن به متخصص منتخب
-                                                                <i class="fa-regular fa-heart text-dark"></i>
-                                                            </button>
+                                                        @php
+                                                            $techs = auth()->user()->favortechs;
+                                                            $favids = [];
+                                                            foreach ($techs as $tech) {
+                                                                if ($tech->id == $doing_archive->technician->id) {
+                                                                    array_push($favids, $tech->id);
+                                                                }
+                                                            }
+                                                        @endphp
+                                                        @if (in_array($favids, $doing_archive->technician->id))
+                                                            <form class="me-3" method="post"
+                                                                action="{{ route('user.panel.profile.favorittech.store', $doing_archieve->technician->id) }}">
+                                                            @else
+                                                                <button type="submit" class="border-0 bg-white text-danger">
+                                                                    افزودن به متخصص منتخب
+                                                                    <i class="fa-regular fa-heart text-dark"></i>
+                                                                </button>
+                                                        @endif
                                                         </form>
                                                         <p class="m-0 mt-3 pb-1 text-center text-lg-start">
                                                             {{ $doing_archive->created_at->toDateString() }} </p>
@@ -459,44 +425,19 @@
                 @include('front.User.menu')
 
                 <div class="h-100 col-12 col-md-9 d-flex flex-column align-items-center pt-3 pt-md-5 pb-5 p-md-5">
-					<h1 class="mb-4"> list sefareshat </h1>
-
-					<!--order-list menu (swiper)-->
-					<div class="swiper mySwiper w-100">
-						<div class="swiper-wrapper">
-							<div class="swiper-slide w-auto me-lg-5 ms-lg-5 rounded p-1 darkYellow">dar dast ejra</div>
-							<div class="swiper-slide w-auto me-lg-5 ms-lg-5 rounded p-1">gozashte</div>
-							<div class="swiper-slide w-auto me-5 me-lg-5 ms-lg-5 rounded p-1">laghv shode</div>
-						</div>
-					</div>
-					<!--در دست اجرا-->
-					<div class="user-order-list-menu-item w-100 h-100 border-gray pt-1 padding-bottom mb-5 d-flex flex-column align-items-center gap-3">
-
-						<!--default box-->
-						<div id="running_job" class="w-100 d-flex flex-column align-items-center">
-
-							<!-- box 1 -->
-							@php
-								$i = 0;
-							@endphp
-							@foreach($doing_archives as $doing_archive)
-							@if($doing_archive->order->user_id == Auth::user()->id)
-							<div class="w-100 d-flex flex-column align-items-center">
-								<div class="border border-3 border-dark rounded-3 pt-2 pb-2 p-2 p-md-3 mb-4 mt-2 w-75">
-									<div class="container-fluid">
-										<div class="row">
+                    <h1 class="mb-4"> list sefareshat </h1>
 
                     <!--order-list menu (swiper)-->
                     <div class="swiper mySwiper w-100">
                         <div class="swiper-wrapper">
-                            <div class="swiper-slide w-auto me-lg-5 ms-lg-5 rounded p-1">dar dast ejra</div>
+                            <div class="swiper-slide w-auto me-lg-5 ms-lg-5 rounded p-1 darkYellow">dar dast ejra</div>
                             <div class="swiper-slide w-auto me-lg-5 ms-lg-5 rounded p-1">gozashte</div>
                             <div class="swiper-slide w-auto me-5 me-lg-5 ms-lg-5 rounded p-1">laghv shode</div>
                         </div>
                     </div>
                     <!--در دست اجرا-->
                     <div
-                        class="user-order-list-menu-item w-100 h-100 border-gray pt-1 padding-bottom mb-5 d-flex flex-column align-items-center gap-3 d-none">
+                        class="user-order-list-menu-item w-100 h-100 border-gray pt-1 padding-bottom mb-5 d-flex flex-column align-items-center gap-3">
 
                         <!--default box-->
                         <div id="running_job" class="w-100 d-flex flex-column align-items-center">

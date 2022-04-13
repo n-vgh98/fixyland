@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Archive;
 use App\Models\CoveredAreaCity;
+use App\Models\FavoritTechnician;
 use App\Models\Notification;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -78,6 +79,14 @@ class FrontUserPanelController extends Controller
     public function favorittech()
     {
         return view("front.User.favorittech");
+    }
+
+    public function favortech(Request $request)
+    {
+        $fav = new FavoritTechnician();
+        $fav->technician_id = $request->tech_id;
+        $fav->customer_id = auth()->user()->id;
+        $fav->save();
     }
 
     public function  techinfo($lang, $id)
@@ -156,9 +165,9 @@ class FrontUserPanelController extends Controller
 
     public function notifications()
     {
-       $notifications = Notification::where([["mode", 0],["receivers","Customers"]])->get();
-       $pnotifications = Notification::where([["mode", 1],["receiver_id",Auth::user()->id]])->get();
-       return view("front.User.notification",compact(["notifications","pnotifications"])); 
+        $notifications = Notification::where([["mode", 0], ["receivers", "Customers"]])->get();
+        $pnotifications = Notification::where([["mode", 1], ["receiver_id", Auth::user()->id]])->get();
+        return view("front.User.notification", compact(["notifications", "pnotifications"]));
     }
 
     public function transactionDoing()
@@ -166,13 +175,13 @@ class FrontUserPanelController extends Controller
         $doing_archives = Archive::where("status", 1)->get();
         $past_archives = Archive::where("status", 2)->get();
         $cancele_archives = Archive::where("status", 3)->get();
-        
-       
-        // dd($doing_archives); 
-        return view('front.User.transaction_list',compact(["doing_archives","past_archives","cancele_archives"]));
-    } 
 
-    public function changeStatus(Request $request,$lang,$id)
+
+        // dd($doing_archives);
+        return view('front.User.transaction_list', compact(["doing_archives", "past_archives", "cancele_archives"]));
+    }
+
+    public function changeStatus(Request $request, $lang, $id)
     {
         $archives = Archive::findOrFail($id);
         $archives->status = $request->status;

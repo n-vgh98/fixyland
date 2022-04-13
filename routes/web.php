@@ -441,7 +441,7 @@ route::prefix("{locale}")->middleware("language")->group(function () {
             route::get("/editprofile", "editprofile")->name("user.panel.profile.edit");
             route::post("/updateprofile", "updateprofile")->name("user.panel.profile.update");
             route::get("/favoritetechnicians", "favorittech")->name("user.panel.profile.favorittech.show");
-            route::post("/favortech", "favortech")->name("user.panel.profile.favorittech.store");
+            route::post("/favortech/{id}", "favortech")->name("user.panel.profile.favorittech.store");
             route::get("/techinfo/{id}", "techinfo")->name("user.panel.profile.tech.info");
             // routing for ms vaghefi
             route::get("/notification", "notifications")->name("user.panel.notification");
