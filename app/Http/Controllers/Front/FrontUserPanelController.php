@@ -11,6 +11,7 @@ use App\Models\Archive;
 use App\Models\CoveredAreaCity;
 use App\Models\FavoritTechnician;
 use App\Models\Notification;
+use App\Models\Suggestion;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
@@ -170,15 +171,16 @@ class FrontUserPanelController extends Controller
         return view("front.User.notification", compact(["notifications", "pnotifications"]));
     }
 
-    public function transactionDoing()
+    public function transactions()
     {
         $doing_archives = Archive::where("status", 1)->get();
         $past_archives = Archive::where("status", 2)->get();
         $cancele_archives = Archive::where("status", 3)->get();
+        $waiting_suggest = Suggestion::where("status", 1 )->get();
 
 
         // dd($doing_archives);
-        return view('front.User.transaction_list', compact(["doing_archives", "past_archives", "cancele_archives"]));
+        return view('front.User.transaction_list', compact(["doing_archives", "past_archives", "cancele_archives","waiting_suggest"]));
     }
 
     public function changeStatus(Request $request, $lang, $id)

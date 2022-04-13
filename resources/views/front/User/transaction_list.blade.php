@@ -29,6 +29,7 @@
                     <div class="swiper mySwiper w-100">
                         <div class="swiper-wrapper">
                             <div class="swiper-slide w-auto me-lg-5 ms-lg-5 rounded p-1 darkYellow">در دست اجرا</div>
+                            <div class="swiper-slide w-auto me-lg-5 ms-lg-5 rounded p-1">در انتظار تایید</div>
                             <div class="swiper-slide w-auto me-lg-5 ms-lg-5 rounded p-1">گذشته</div>
                             <div class="swiper-slide w-auto ms-1 me-lg-5 ms-lg-5 rounded p-1">لغو شده</div>
                         </div>
@@ -85,7 +86,7 @@
                                                                 }
                                                             }
                                                         @endphp
-                                                        @if (in_array($favids, $doing_archive->technician->id))
+                                                        @if (in_array($doing_archive, $favids))
                                                             <form class="me-3" method="post"
                                                                 action="{{ route('user.panel.profile.favorittech.store', $doing_archieve->technician->id) }}">
                                                             @else
@@ -93,8 +94,9 @@
                                                                     افزودن به متخصص منتخب
                                                                     <i class="fa-regular fa-heart text-dark"></i>
                                                                 </button>
+                                                            </form>
                                                         @endif
-                                                        </form>
+                                                        
                                                         <p class="m-0 mt-3 pb-1 text-center text-lg-start">
                                                             {{ $doing_archive->created_at->toDateString() }} </p>
 
@@ -305,6 +307,52 @@
                             </div>
                         @endforeach
                     </div>
+
+                      <!--در انتظار تایید-->
+                      <div
+                        class="user-order-list-menu-item w-100 h-100 border-gray pt-3 padding-bottom mb-5 d-flex flex-column align-items-center gap-3 d-none">
+                        @foreach ($waiting_suggest as $waiting)
+                            @if ($waiting->order->user_id == Auth::user()->id)
+                                <div class="border border-3 border-dark rounded-3 pt-2 pb-2 p-2 p-md-3 mb-4 mt-2 w-75">
+
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="col-lg-3 col-12 p-0 d-flex justify-content-center mb-3 mb-lg-0">
+                                                <div>
+                                                    <img class="rounded-3 mw-100 mh-100" src="image/human3.jpg"
+                                                        alt="specialist" height="auto">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-9 col-12 mt-2 text-center mt-sm-0 text-lg-end p-0">
+                                                <p class="m-0 pb-2 me-lg-3 fw-bold"> نام: {{ $waiting->technician->firstname }}
+                                                </p>
+                                                <p class="m-0 pb-2 me-lg-3 fw-bold"> نوع:
+                                                    {{ $waiting->order->service->name }}
+                                                </p>
+                                                @if ($waiting->order->order_address_id == null)
+                                                    <p class="m-0 pb-2 me-lg-3 fw-bold"> آدرس:
+                                                        {{ $waiting->order->address->state->name }}-{{ $waiting->order->address->city->name }}-{{ $waiting->order->address->description }}
+                                                    </p>
+                                                @else
+                                                    <p class="m-0 pb-2 me-lg-3 fw-bold"> آدرس:
+                                                        {{ $waiting->order->order_address->state->name }}-{{ $waiting->order_address->address->city->name }}-{{ $waiting->order_address->address->description }}
+                                                    </p>
+                                                @endif
+                                                <p class="m-0 pb-3 me-lg-3 fw-bold"> شرح مشکل:
+                                                    {{ $waiting->order->description }} </p>
+                                                <p class="m-0 pb-1 me-3"> کدپیگیری: {{$waiting->id}} </p>
+                                                <p class="m-0 mt-3 pb-1 text-start">
+                                                    {{ $waiting->created_at->toDateString() }} </p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            @endif
+                        @endforeach
+                    </div>
+
 
                     <!--گذشته-->
                     <div

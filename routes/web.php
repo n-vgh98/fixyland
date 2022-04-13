@@ -445,7 +445,7 @@ route::prefix("{locale}")->middleware("language")->group(function () {
             route::get("/techinfo/{id}", "techinfo")->name("user.panel.profile.tech.info");
             // routing for ms vaghefi
             route::get("/notification", "notifications")->name("user.panel.notification");
-            route::get("/transactions", "transactionDoing")->name("user.panel.transactions");
+            route::get("/transactions", "transactions")->name("user.panel.transactions");
             route::post("/cancele_transaction/{id}", "changeStatus")->name("user.panel.transactions.cancele.change_status");
         });
     });
