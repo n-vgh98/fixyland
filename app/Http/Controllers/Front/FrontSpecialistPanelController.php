@@ -245,6 +245,7 @@ class FrontSpecialistPanelController extends Controller
 
         // dd(Process::where([["status",1],["tech_id", null]])->get());
         $proccess = Process::whereIn("order_id",$orders)->where([["status",1],["tech_id", null]])->get();
+        $Suggestion_time = Suggestion::where('created_at', '<=', Carbon::now()->subMinutes(5))->delete();
         $suggestions = Suggestion::where([["tech_id",Auth::user()->id],["status", 1 ]])->get();
         // dd($proccess);
         $doing_archives = Archive::where([["tech_id",Auth::user()->id],["status", 1]])->get();

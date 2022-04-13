@@ -28,14 +28,14 @@
 					<!--order-list menu (swiper)-->
 					<div class="swiper mySwiper w-100">
 						<div class="swiper-wrapper">
-							<div class="swiper-slide w-auto me-lg-5 ms-lg-5 rounded p-1">در دست اجرا</div>
+							<div class="swiper-slide w-auto me-lg-5 ms-lg-5 rounded p-1 darkYellow">در دست اجرا</div>
 							<div class="swiper-slide w-auto me-lg-5 ms-lg-5 rounded p-1">گذشته</div>
 							<div class="swiper-slide w-auto ms-1 me-lg-5 ms-lg-5 rounded p-1">لغو شده</div>
 						</div>
 					</div>
 
 					<!--در دست اجرا-->
-					<div class="user-order-list-menu-item w-100 h-100 border-gray pt-1 padding-bottom mb-5 d-flex flex-column align-items-center gap-3 d-none">
+					<div class="user-order-list-menu-item w-100 h-100 border-gray pt-1 padding-bottom mb-5 d-flex flex-column align-items-center gap-3">
 						
 						<!--default box-->
 						<div id="running_job" class="w-100 d-flex flex-column align-items-center">
@@ -345,13 +345,13 @@
 					<!--order-list menu (swiper)-->
 					<div class="swiper mySwiper w-100">
 						<div class="swiper-wrapper">
-							<div class="swiper-slide w-auto me-lg-5 ms-lg-5 rounded p-1">dar dast ejra</div>
+							<div class="swiper-slide w-auto me-lg-5 ms-lg-5 rounded p-1 darkYellow">dar dast ejra</div>
 							<div class="swiper-slide w-auto me-lg-5 ms-lg-5 rounded p-1">gozashte</div>
 							<div class="swiper-slide w-auto me-5 me-lg-5 ms-lg-5 rounded p-1">laghv shode</div>
 						</div>
 					</div>
 					<!--در دست اجرا-->
-					<div class="user-order-list-menu-item w-100 h-100 border-gray pt-1 padding-bottom mb-5 d-flex flex-column align-items-center gap-3 d-none">
+					<div class="user-order-list-menu-item w-100 h-100 border-gray pt-1 padding-bottom mb-5 d-flex flex-column align-items-center gap-3">
 						
 						<!--default box-->
 						<div id="running_job" class="w-100 d-flex flex-column align-items-center">
