@@ -239,6 +239,14 @@ class FrontServiceController extends Controller
         }
     }
 
+
+    public function autofindcancel($lang, $id)
+    {
+        $order = Order::find($id);
+        $order->delete();
+        return redirect()->route("user.panel.inedx");
+    }
+
     /**
      * Show the form for creating a new resource.
      *

@@ -23,9 +23,15 @@
 
     <main>
 
-        <div class="vh-100 d-flex justify-content-center align-items-center">
+        <div class="vh-100 d-flex justify-content-center align-items-center flex-column">
             <img src="{{ asset('frontend/fixy-land-en-main/gif/loader.gif') }}" alt="loader" />
+            <form action="{{ route('user.service.form.cancel.auto', $order->id) }}" method="post">
+                @csrf
+                <button class="btn btn-warning">cancel</button>
+            </form>
         </div>
+
+
     </main>
 
 
