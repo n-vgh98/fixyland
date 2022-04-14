@@ -294,7 +294,6 @@ class FrontSpecialistPanelController extends Controller
     public function factor(Request $request, $lang, $id)
     {
         $archives = Archive::findOrFail($id);
-        $archives->status = $request->status;
         $archives->service_cost = $request->input("service_cost");
         $archives->stuff_cost = $request->input("stuff_cost");
         $archives->transport_cost = $request->input("transport_cost");

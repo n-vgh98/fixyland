@@ -481,7 +481,6 @@
                             <form class="mt-4" method="POST"
                                 action="{{ route('front.technician.panel.workdesk.factor', $doing->id) }}">
                                 @csrf
-                                <input type="hidden" name="status" value="2">
                                 <div class="mb-4">
                                     <label for="wages" class="form-label">
                                         دستمزد انجام کار
@@ -1086,7 +1085,6 @@
                             <form class="mt-4" method="POST"
                                 action="{{ route('front.technician.panel.workdesk.factor', $doing->id) }}">
                                 @csrf
-                                <input type="hidden" name="status" value="2">
                                 <div class="mb-4">
                                     <label for="wages" class="form-label">
                                         dastmoz anjam kar
