@@ -326,34 +326,34 @@
                                                 </div>
                                             </div>
                                             <div class="col-lg-9 col-12 mt-2 text-center mt-sm-0 text-lg-end p-0">
-                                                    <p class="m-0 pb-2 me-lg-3 fw-bold"> نام:
-                                                        {{ $waiting->technician->firstname }}
-                                                        {{ $waiting->technician->lastname }}
+                                                <p class="m-0 pb-2 me-lg-3 fw-bold"> نام:
+                                                    {{ $waiting->technician->firstname }}
+                                                    {{ $waiting->technician->lastname }}
+                                                </p>
+                                                <p class="m-0 pb-2 me-lg-3 fw-bold"> نوع:
+                                                    {{ $waiting->order->service->name }}
+                                                </p>
+                                                @if ($waiting->order->order_address_id == null)
+                                                    <p class="m-0 pb-2 me-lg-3 fw-bold"> آدرس:
+                                                        {{ $waiting->order->address->state->name }}-{{ $waiting->order->address->city->name }}-{{ $waiting->order->address->description }}
                                                     </p>
-                                                    <p class="m-0 pb-2 me-lg-3 fw-bold"> نوع:
-                                                        {{ $waiting->order->service->name }}
+                                                @else
+                                                    <p class="m-0 pb-2 me-lg-3 fw-bold"> آدرس:
+                                                        {{ $waiting->order->order_address->state->name }}-{{ $waiting->order_address->address->city->name }}-{{ $waiting->order_address->address->description }}
                                                     </p>
-                                                    @if ($waiting->order->order_address_id == null)
-                                                        <p class="m-0 pb-2 me-lg-3 fw-bold"> آدرس:
-                                                            {{ $waiting->order->address->state->name }}-{{ $waiting->order->address->city->name }}-{{ $waiting->order->address->description }}
-                                                        </p>
-                                                    @else
-                                                        <p class="m-0 pb-2 me-lg-3 fw-bold"> آدرس:
-                                                            {{ $waiting->order->order_address->state->name }}-{{ $waiting->order_address->address->city->name }}-{{ $waiting->order_address->address->description }}
-                                                        </p>
-                                                    @endif
-                                                    <p class="m-0 pb-3 me-lg-3 fw-bold"> شرح مشکل:
-                                                        {{ $waiting->order->description }} </p>
-                                                    <p class="m-0 pb-1 me-3"> کدپیگیری: {{ $waiting->id }} </p>
-                                                    <p class="m-0 mt-3 pb-1 text-start">
-                                                        {{ $waiting->created_at->toDateString() }} </p>
-                                                        <form class="w-50" method="POST"
-                                                        action="{{ route('user.panel.transactions.cancele.waiting.suggest', $waiting->id) }}">
-                                                        @csrf
-                                                        @method('POST')
-                                                        <button class="btn btn-outline-danger white text-black w-100"
-                                                            type="submit"> لغو این کار </button>
-                                                    </form>
+                                                @endif
+                                                <p class="m-0 pb-3 me-lg-3 fw-bold"> شرح مشکل:
+                                                    {{ $waiting->order->description }} </p>
+                                                <p class="m-0 pb-1 me-3"> کدپیگیری: {{ $waiting->id }} </p>
+                                                <p class="m-0 mt-3 pb-1 text-start">
+                                                    {{ $waiting->created_at->toDateString() }} </p>
+                                                <form class="w-50" method="POST"
+                                                    action="{{ route('user.panel.transactions.cancele.waiting.suggest', $waiting->id) }}">
+                                                    @csrf
+                                                    @method('POST')
+                                                    <button class="btn btn-outline-danger white text-black w-100"
+                                                        type="submit"> لغو این کار </button>
+                                                </form>
                                             </div>
                                         </div>
                                     </div>
@@ -394,7 +394,7 @@
                                                     </p>
                                                 @else
                                                     <p class="m-0 pb-2 me-lg-3 fw-bold"> آدرس:
-                                                        {{ $past->order->order_address->state->name }}-{{ $past->order_address->address->city->name }}-{{ $past->order_address->address->description }}
+                                                        {{ $past->order->order_address->state->name }}-{{ $past->order->order_address->city->name }}-{{ $past->order->order_address->description }}
                                                     </p>
                                                 @endif
                                                 <p class="m-0 pb-3 me-lg-3 fw-bold"> شرح مشکل:
