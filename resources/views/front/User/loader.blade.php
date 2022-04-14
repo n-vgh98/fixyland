@@ -43,7 +43,9 @@
                     url: "{{ route('user.service.find.checker', $order->id) }}",
                     type: 'get',
                     success: function(data) {
-                        window.location.replace(data.route);
+                        if (typeof data.route !== 'undefined') {
+                            window.location.replace(data.route);
+                        }
                     }
                 });
 
