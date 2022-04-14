@@ -448,6 +448,7 @@ route::prefix("{locale}")->middleware("language")->group(function () {
             route::get("/notification", "notifications")->name("user.panel.notification");
             route::get("/transactions", "transactions")->name("user.panel.transactions");
             route::post("/cancele_transaction/{id}", "changeStatus")->name("user.panel.transactions.cancele.change_status");
+            route::post("/cancele_waiting/{id}", "destroy")->name("user.panel.transactions.cancele.waiting.suggest");
         });
     });
     route::get("/", [FrontHomeController::class, "index"])->name("user.home");

@@ -326,13 +326,9 @@
                                                 </div>
                                             </div>
                                             <div class="col-lg-9 col-12 mt-2 text-center mt-sm-0 text-lg-end p-0">
-                                                <<<<<<< HEAD <p class="m-0 pb-2 me-lg-3 fw-bold"> نام:
-                                                    {{ $waiting->technician->firstname }}
-                                                    =======
                                                     <p class="m-0 pb-2 me-lg-3 fw-bold"> نام:
                                                         {{ $waiting->technician->firstname }}
                                                         {{ $waiting->technician->lastname }}
-                                                        >>>>>>> 539ae292c99601365298f9575259dcdb8fae7ecd
                                                     </p>
                                                     <p class="m-0 pb-2 me-lg-3 fw-bold"> نوع:
                                                         {{ $waiting->order->service->name }}
@@ -351,6 +347,13 @@
                                                     <p class="m-0 pb-1 me-3"> کدپیگیری: {{ $waiting->id }} </p>
                                                     <p class="m-0 mt-3 pb-1 text-start">
                                                         {{ $waiting->created_at->toDateString() }} </p>
+                                                        <form class="w-50" method="POST"
+                                                        action="{{ route('user.panel.transactions.cancele.waiting.suggest', $waiting->id) }}">
+                                                        @csrf
+                                                        @method('POST')
+                                                        <button class="btn btn-outline-danger white text-black w-100"
+                                                            type="submit"> لغو این کار </button>
+                                                    </form>
                                             </div>
                                         </div>
                                     </div>
