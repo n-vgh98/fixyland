@@ -25,6 +25,7 @@ use App\Http\Controllers\Admin\AdminFormController;
 use App\Http\Controllers\Admin\AdminIndexStaticController;
 use App\Http\Controllers\Admin\AdminInputController;
 use App\Http\Controllers\Admin\AdminNotificationsController;
+use App\Http\Controllers\Admin\AdminPaymentController;
 use App\Http\Controllers\Admin\AdminServiceCategoryController;
 use App\Http\Controllers\Admin\AdminServiceSubCategoryController;
 use App\Http\Controllers\Admin\AdminSettingController;
@@ -452,6 +453,8 @@ route::prefix("{locale}")->middleware("language")->group(function () {
             route::post("/cancele_waiting/{id}", "destroy")->name("user.panel.transactions.cancele.waiting.suggest");
         });
     });
+
+
     route::get("/", [FrontHomeController::class, "index"])->name("user.home");
     Route::prefix("articles")->group(function () {
         Route::controller(FrontArticleController::class)->group(function () {
@@ -476,6 +479,12 @@ route::prefix("{locale}")->middleware("language")->group(function () {
         route::post("/chatstatus/{id}", [ChatController::class, "chatstatus"])->name("user.chat.status");
 
         route::get("/chatcheck/{id}", [ChatController::class, "chatcheck"])->name("user.chat.check");
+    });
+
+    // routes for payment
+    route::prefix("payment")->group(function () {
+        route::post("pay/{id}", [AdminPaymentController::class, "pay"])->name("payment.pay");
+        route::post("problems/{id}", [AdminPaymentController::class, "problems"])->name("problems.store");
     });
 });
 route::prefix("chat")->group(function () {

@@ -22,7 +22,7 @@ return new class extends Migration
             $table->text("stuff_cost")->nullable();
             $table->text("transport_cost")->nullable();
             $table->text("final_price")->nullable();
-            $table->text("total _price")->nullable();
+            $table->text("total_price")->nullable();
             $table->timestamps();
         });
     }

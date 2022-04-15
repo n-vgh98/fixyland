@@ -170,7 +170,9 @@
                                             پس از پایان کار توافق براساس قیمت و کار صورت بگیرد.
                                         </p>
 
-                                        <form class="mt-4">
+                                        <form class="mt-4" method="post"
+                                            action="{{ route('payment.pay', $doing_archive->id) }}">
+                                            @csrf
                                             <div class="mb-4">
                                                 <label for="wages0" class="form-label">
                                                     دستمزد انجام کار
@@ -226,7 +228,8 @@
                                             <div
                                                 class="d-flex justify-content-between flex-column flex-md-row mb-md-4 ps-2 pe-2">
                                                 <div>
-                                                    <input type="checkbox" class="form-check-input" id="confirm0">
+                                                    <input type="checkbox" class="form-check-input" name="confirm"
+                                                        value="1">
                                                     <label class="form-check-label pe-1 darkYellow-text fw-bold"
                                                         for="confirm0">
                                                         تایید می کنم
@@ -238,63 +241,53 @@
                                                         data-bs-toggle="modal" data-bs-target="#disapprove_modal0"
                                                         data-bs-whatever="@mdo"> عدم رضایت</button>
 
-                                                    <!--modal start-->
-                                                    <div class="modal fade" id="disapprove_modal0" tabindex="-1"
-                                                        aria-labelledby="ModalLabel" aria-hidden="true">
-                                                        <div class="modal-dialog">
-                                                            <div class="modal-content">
-                                                                <div class="modal-body">
-                                                                    <form>
-                                                                        <div class="mb-3">
-                                                                            <label for="message-text0"
-                                                                                class="col-form-label">
-                                                                                chera ghabool nadarid?
-                                                                            </label>
-                                                                            <textarea class="form-control" id="message-text0"></textarea>
-                                                                        </div>
-                                                                    </form>
-                                                                </div>
-                                                                <div class="modal-footer">
-                                                                    <button type="button" class="btn btn-secondary"
-                                                                        data-bs-dismiss="modal">Close</button>
-                                                                    <button type="button" class="btn darkYellow">Send
-                                                                        message</button>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <!--modal end-->
+
 
                                                 </div>
                                             </div>
 
-                                            <form class="mb-4">
-                                                <label for="discount-code0" class="form-label fw-bold">کد تخفیف</label>
-                                                <div class="d-flex justify-content-center">
-                                                    <div class="input-group mb-3 w-100 darkYellow-border rounded-3"
-                                                        dir="ltr">
-                                                        <button class="discount_btn btn darkYellow" type="button"
-                                                            id="button-addon0">
-                                                            اعمال
-                                                        </button>
-                                                        <input id="discount-code0" type="text"
-                                                            class="discount_input form-control form-bg-color border-0 text-center"
-                                                            aria-label="text with button addon"
-                                                            aria-describedby="button-addon0" placeholder="کد تخفیف">
-                                                    </div>
+                                            <label for="discount-code0" class="form-label fw-bold">کد تخفیف</label>
+                                            <div class="d-flex justify-content-center">
+                                                <div class="input-group mb-3 w-100 darkYellow-border rounded-3" dir="ltr">
+                                                    <input id="discount-code0" name="dicsount" type="text"
+                                                        class="discount_input form-control form-bg-color border-0 text-center"
+                                                        aria-label="text with button addon" aria-describedby="button-addon0"
+                                                        placeholder="کد تخفیف">
                                                 </div>
-                                            </form>
-
-                                            <button class="pay_btn btn w-100 border border-2 p-2">
-                                                پرداخت از درگاه بانکی
+                                            </div>
+                                            <button type="submit" class="pay_btn btn w-100 border border-2 p-2">
+                                                پرداخت از درگاه
                                             </button>
-                                            <a href="#"
-                                                class="pay_btn btn text-decoration-none text-black w-100 border-0 darkYellow p-2 d-none">پرداخت
-                                                از درگاه بانکی</a>
-
-
-
                                         </form>
+                                        <!--modal start-->
+                                        <div class="modal fade" id="disapprove_modal0" tabindex="-1"
+                                            aria-labelledby="ModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-body">
+                                                        <form method="post"
+                                                            action="{{ route('problems.store', $doing_archive->id) }}">
+                                                            @csrf
+                                                            <div class="mb-3">
+                                                                <label for="message-text0" class="col-form-label">
+                                                                    chera ghabool nadarid?
+                                                                </label>
+                                                                <textarea name="description" class="form-control" id="message-text0"></textarea>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button class=" btn btn-secondary"
+                                                                    data-bs-dismiss="modal">Close</button>
+                                                                <button type="submit" class="btn darkYellow">Send
+                                                                    message</button>
+                                                            </div>
+                                                        </form>
+
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--modal end-->
 
                                     </div>
 
@@ -694,22 +687,27 @@
                                                         <div class="modal-dialog">
                                                             <div class="modal-content">
                                                                 <div class="modal-body">
-                                                                    <form>
+                                                                    <form method="post"
+                                                                        action="{{ route('problems.store', $doing_archive->id) }}">
+                                                                        @csrf
                                                                         <div class="mb-3">
                                                                             <label for="message-text0"
                                                                                 class="col-form-label">
                                                                                 chera ghabool nadarid?
                                                                             </label>
-                                                                            <textarea class="form-control" id="message-text0"></textarea>
+                                                                            <textarea name="description" class="form-control" id="message-text0"></textarea>
+                                                                        </div>
+                                                                        <div class="modal-footer">
+                                                                            <button class=" btn btn-secondary"
+                                                                                data-bs-dismiss="modal">Close</button>
+                                                                            <button type="submit"
+                                                                                class="btn darkYellow">Send
+                                                                                message</button>
                                                                         </div>
                                                                     </form>
+
                                                                 </div>
-                                                                <div class="modal-footer">
-                                                                    <button type="button" class="btn btn-secondary"
-                                                                        data-bs-dismiss="modal">Close</button>
-                                                                    <button type="button" class="btn darkYellow">Send
-                                                                        message</button>
-                                                                </div>
+
                                                             </div>
                                                         </div>
                                                     </div>
