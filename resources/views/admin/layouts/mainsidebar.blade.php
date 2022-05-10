@@ -313,7 +313,7 @@
                      <!-- Order list links-->
                      <li class="nav-item has-treeview">
 
-                        <a href="{{ route('admin.scores.index', 'ar') }}" class="nav-link bg-primary active">
+                        <a href="{{ route('admin.transaction.index', 'ar') }}" class="nav-link bg-primary active">
                             <i class="nav-icon fa fa-first-order"></i>
                             <p>
                                 Order List

@@ -30,6 +30,7 @@ use App\Http\Controllers\Admin\AdminServiceCategoryController;
 use App\Http\Controllers\Admin\AdminServiceSubCategoryController;
 use App\Http\Controllers\Admin\AdminSettingController;
 use App\Http\Controllers\Admin\AdminSubCategoryServiceDescriptionController;
+use App\Http\Controllers\Admin\AdminTransactionController;
 use App\Http\Controllers\Front\FrontAboutUsController;
 use App\Http\Controllers\Front\FrontArticleController;
 use App\Http\Controllers\Front\FrontContactUsController;
@@ -145,6 +146,13 @@ route::prefix("admin")->middleware(['auth:sanctum', 'verified', "admin"])->group
                 route::post("/activate_question/{question}", "activate")->name("admin.forms.questions.activate");
                 route::post("/deactive_question/{question}", "deactive")->name("admin.forms.questions.deactive");
             });
+        });
+    });
+
+    //routes for order list
+    route::prefix("orders")->group(function () {
+        route::controller(AdminTransactionController::class)->group(function () {
+            route::get("/", "index")->name("admin.transaction.index");
         });
     });
 

@@ -514,11 +514,15 @@
                                     <input id="total-cost" type="text" name="final_price"
                                         class="form-control text-center border border-dark lightgreen-text fw-bold p-2">
                                 </div>
-
+                                @if(($doing->service_cost == null ) && ($doing->stuff_cost == null) && ($doing->transport_cost == null) && ($doing->final_price == null))
                                 <button type="submit" class="w-100 border-0 rounded-3 darkYellow p-2">
-                                    اتمام
+                                    ارسال فاکتور
                                 </button>
-
+                                @else
+                                <button type="button" class="w-100 border-0 rounded-3 darkYellow p-2">
+                                    منتظر تایید مشتری
+                                </button>
+                                @endif
                             </form>
                         </div>
 
@@ -1118,11 +1122,14 @@
                                     <input id="total-cost" type="text" name="final_price"
                                         class="form-control text-center border border-dark lightgreen-text fw-bold p-2">
                                 </div>
-
+                                @if(($doing->service_cost == null ) && ($doing->stuff_cost == null) && ($doing->transport_cost == null) && ($doing->final_price == null))
                                 <button type="submit" class="w-100 border-0 rounded-3 darkYellow p-2">
-                                    etmam
+                                    send to customer
                                 </button>
-
+                                @else
+                                <button type="button" class="w-100 border-0 rounded-3 darkYellow p-2">
+                                    waiting for customer approval 
+                                </button>
                             </form>
 
 
