@@ -11,20 +11,20 @@
 @section('content')
     @if (app()->getLocale() == 'fa' || app()->getLocale() == 'ar')
 	<article>
-			<h1 class="mt-5 mb-3">
+			<h1 class="mt-5 mb-3 mx-5">
 				{{$article->title}}
 			</h1>
 			
-
-			<img src="{{asset($article->photo_path)}}" alt="{{$article->photo_alt}}" width="100%" height="500px">
-
+			<div class="mx-5">
+				<img src="{{asset($article->photo_path)}}" alt="{{$article->photo_alt}}" width="100%" height="500px">
+			</div>
 			
-			<h2 class="mt-5 mb-3">
+			<h2 class="mt-5 mb-3 mx-5">
 				{{$article->title}} 
 			</h2>
 
 
-			<div class="container-fluid">
+			<div class="mx-5">
 				<div class="row">
 					<div class="col-12 col-md-6">
 						<p class="text_justify">
@@ -35,13 +35,30 @@
 						<h3 class="mt-3 mb-4">
 							{{$article->title}} 
 						</h3>
-						
-						<img src="{{asset($article->photo_path)}}" alt="{{$article->photo_alt}}" width="100%" height="300">
-						
+						@if($article->photo_path_2)
+						<img src="{{asset($article->photo_path_2)}}" alt="{{$article->photo_alt_2}}" title="{{$article->photo_name_2}}" width="100%" height="300">
+						@endif
+						@if($article->photo_path_3)
+						<img src="{{asset($article->photo_path_3)}}" alt="{{$article->photo_alt_3}}" title="{{$article->photo_name_3}}" width="100%" height="300">
+						@endif
 						<p class="text_justify pt-4 mb-5">
 						{!! $article->text_2 !!}
 						</p>
-
+						@if($article->photo_path_4)
+						<img src="{{asset($article->photo_path_4)}}" alt="{{$article->photo_alt_4}}" title="{{$article->photo_name_4}}" width="100%" height="300">
+						@endif
+						@if($article->photo_path_5)
+						<img src="{{asset($article->photo_path_5)}}" alt="{{$article->photo_alt_5}}" title="{{$article->photo_name_5}}" width="100%" height="300">
+						@endif
+						<p class="text_justify pt-4 mb-5">
+						{!! $article->text_3 !!}
+						</p>
+						@if($article->photo_path_6)
+						<img src="{{asset($article->photo_path_6)}}" alt="{{$article->photo_alt_6}}" title="{{$article->photo_name_6}}" width="100%" height="300">
+						@endif 
+						@if($article->photo_path_7)
+						<img src="{{asset($article->photo_path_7)}}" alt="{{$article->photo_alt_7}}" title="{{$article->photo_name_7}}" width="100%" height="300">
+						@endif
 
 					</div>
 
@@ -75,20 +92,21 @@
 		</article>
     @else
 	<article>
-			<h1 class="mt-5 mb-3">
+			<h1 class="mt-5 mb-3 mx-5">
 				{{$article->title}}
 			</h1>
 			
 
-			<img src="{{asset($article->photo_path)}}" alt="{{$article->photo_alt}}" width="100%" height="500px">
-
+			<div class="mx-5">
+				<img src="{{asset($article->photo_path)}}" alt="{{$article->photo_alt}}" width="100%" height="500px">
+			</div>
 			
-			<h2 class="mt-5 mb-3">
+			<h2 class="mt-5 mb-3 mx-5">
 				{{$article->title}}  
 			</h2>
 
 
-			<div class="container-fluid">
+			<div class="mx-5">
 				<div class="row">
 					<div class="col-12 col-md-6">
 						<p class="text_justify">
@@ -100,12 +118,30 @@
 							{{$article->title}} 
 						</h3>
 						
-						<img src="{{asset($article->photo_path)}}" alt="{{$article->photo_alt}}" width="100%" height="300">
-						
+						@if($article->photo_path_2)
+						<img src="{{asset($article->photo_path_2)}}" alt="{{$article->photo_alt_2}}" title="{{$article->photo_name_2}}" width="100%" height="300">
+						@endif
+						@if($article->photo_path_3)
+						<img src="{{asset($article->photo_path_3)}}" alt="{{$article->photo_alt_3}}" title="{{$article->photo_name_3}}" width="100%" height="300">
+						@endif
 						<p class="text_justify pt-4 mb-5">
-							{!! $article->text_2 !!}
+						{!! $article->text_2 !!}
 						</p>
-
+						@if($article->photo_path_4)
+						<img src="{{asset($article->photo_path_4)}}" alt="{{$article->photo_alt_4}}" title="{{$article->photo_name_4}}" width="100%" height="300">
+						@endif
+						@if($article->photo_path_5)
+						<img src="{{asset($article->photo_path_5)}}" alt="{{$article->photo_alt_5}}" title="{{$article->photo_name_5}}" width="100%" height="300">
+						@endif
+						<p class="text_justify pt-4 mb-5">
+						{!! $article->text_3 !!}
+						</p>
+						@if($article->photo_path_6)
+						<img src="{{asset($article->photo_path_6)}}" alt="{{$article->photo_alt_6}}" title="{{$article->photo_name_6}}" width="100%" height="300">
+						@endif 
+						@if($article->photo_path_7)
+						<img src="{{asset($article->photo_path_7)}}" alt="{{$article->photo_alt_7}}" title="{{$article->photo_name_7}}" width="100%" height="300">
+						@endif
 
 					</div>
 

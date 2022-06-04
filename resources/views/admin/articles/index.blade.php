@@ -156,7 +156,7 @@
         </div>
     </div>
   
-    <a href="{{ route('admin.articles.create', $lang) }}" class="btn btn-primary">Make New About Us</a>
+    <a href="{{ route('admin.articles.create', $lang) }}" class="btn btn-primary">Make New Article</a>
 @endsection
 @section('script')
     @include('admin.layouts.datatable.script')
